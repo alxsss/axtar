@@ -1,0 +1,7 @@
+mapSuccess:
+  has_layout:     on
+  layout:         layout_map
+autosuggestSuccess:
+  has_layout:     off
+apiSuccess:
+  has_layout:     off

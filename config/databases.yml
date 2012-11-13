@@ -1,0 +1,36 @@
+dev:
+  propel:
+    param:
+      classname:  DebugPDO
+
+test:
+  propel:
+    param:
+      classname:  DebugPDO
+
+all:
+  propel:
+    class:        sfPropelDatabase
+    param:
+      classname:  PropelPDO
+      dsn:        mysql:dbname=axtar;host=localhost
+      username:   axtar
+      password:   '<?php include("db.inc")?>'
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+      options:
+        MYSQL_ATTR_USE_BUFFERED_QUERY: {value: on}
+prod:
+  propel:
+    class:        sfPropelDatabase
+    param:
+      classname:  PropelPDO
+      dsn:        mysql:dbname=axtar;host=localhost
+      username:   axtar
+      password:   '<?php include("db.inc")?>'
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+      options:
+        MYSQL_ATTR_USE_BUFFERED_QUERY: {value: on}

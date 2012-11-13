@@ -1,0 +1,8 @@
+all:
+  http_metas:
+    content-type: text/html
+  
+  
+  stylesheets:    [main]
+  has_layout:     on
+  layout:         layout

@@ -1,0 +1,7 @@
+cache/
+log/
+lib/
+data/
+test/
+web/uploads/
+web/sf*

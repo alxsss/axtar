@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.9.0" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfOauthServerPlugin</name>
+ <channel>plugins.symfony-project.org</channel>
+ <summary>Jean-Baptiste Cayrou</summary>
+ <description>This plugin permits to create easily an authentication for a module or an action. This authentication works both with OAuth 1.0 and 2.0
+For instance, it allows to secure an API and control access and permissions of each cusumers (applications).</description>
+ <lead>
+  <name>Jean-Baptiste Cayrou</name>
+  <user>artis</user>
+  <email>lordartis@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-05-01</date>
+ <time>19:55:13</time>
+ <version>
+  <release>0.8.0</release>
+  <api>0.8.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.symfony-project.org/license">MIT license</license>
+ <notes>
+-
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="2e79822d1e9d0947f633b4c9f2024857" name="/lib/task/sfOauthClearNonceTask.class.php" role="data"/>
+   <file md5sum="da235533eed245609920e1f927f18561" name="/lib/task/sfOauthClearTokenTask.class.php" role="data"/>
+   <file md5sum="73c653ec059b597f02f86290e7f227a5" name="/lib/task/sfOauthClearTokenTask.class.php~" role="data"/>
+   <file md5sum="e36e9487e6ed3764e9ad95c062fe8b66" name="/lib/form/doctrine/PluginsfOauthServerUserScopeForm.class.php" role="data"/>
+   <file md5sum="676ff4d77ff78a59710367f4713b96bc" name="/lib/form/doctrine/PluginsfOauthServerConsumerForm.class.php" role="data"/>
+   <file md5sum="2d65653dd7d6cb76ea685a0bab1e3e28" name="/lib/form/doctrine/PluginsfOauthServerUserScropeForm.class.php" role="data"/>
+   <file md5sum="4bd961846d5fbc0e632847647ad67d51" name="/lib/form/sfOauthAdminConsumerForm.class.php" role="data"/>
+   <file md5sum="da9a72d750c77609b6be21872d79b309" name="/lib/model/doctrine/PluginsfOauthServerConsumerTable.class.php" role="data"/>
+   <file md5sum="6cdba8734a0a7109382d1797c7b8f0f0" name="/lib/model/doctrine/PluginsfOauthServerAccessToken.class.php" role="data"/>
+   <file md5sum="50045794b5cf72368077bffcc4e17c71" name="/lib/model/doctrine/PluginsfOauthServerRequestTokenTable.class.php" role="data"/>
+   <file md5sum="62da24a9606ac262e454711c2eb6aa7c" name="/lib/model/doctrine/PluginsfOauthServerNonce.class.php" role="data"/>
+   <file md5sum="020652d1ebaed55302045b4661f69118" name="/lib/model/doctrine/PluginsfOauthServerNonceTable.class.php" role="data"/>
+   <file md5sum="a2fa1fd3804c71707de795bd05bf5d54" name="/lib/model/doctrine/PluginsfOauthServerUserScopeTable.class.php" role="data"/>
+   <file md5sum="3d2965ef8199ee543f021260a6fadd70" name="/lib/model/doctrine/PluginsfOauthServerConsumer.class.php" role="data"/>
+   <file md5sum="6430c4df726692db7ee7b881c0249554" name="/lib/model/doctrine/PluginsfOauthServerRequestToken.class.php" role="data"/>
+   <file md5sum="7cc90039fafd2a53997375ce5dee2803" name="/lib/model/doctrine/PluginsfOauthServerAccessTokenTable.class.php" role="data"/>
+   <file md5sum="d00d153e2c8895c0df428ae8d09d55a6" name="/lib/model/doctrine/PluginsfOauthServerUserScope.class.php" role="data"/>
+   <file md5sum="c5e74297c0c9b2ff61be61e9bfe666f2" name="/lib/filter/doctrine/PluginsfOauthServerUserScropeFormFilter.class.php" role="data"/>
+   <file md5sum="c28b4481f149486392e1033712d933a4" name="/lib/filter/doctrine/PluginsfOauthServerConsumerFormFilter.class.php" role="data"/>
+   <file md5sum="5cd24cfb0e89456a2e6aff83e193aca3" name="/lib/filter/doctrine/PluginsfOauthServerUserScopeFormFilter.class.php" role="data"/>
+   <file md5sum="827a4b05f50e9a26897fca8ee15bdf93" name="/lib/filter/sfOauthFilter.class.php" role="data"/>
+   <file md5sum="4aff416f9ae838fb624090ed78c526c9" name="/lib/vendor/oauth2-php/lib/OAuth2.php" role="data"/>
+   <file md5sum="6aebf88008939e7b635b67aa7ad9f3ba" name="/lib/vendor/oauth2-php/lib/OAuth2Client.php" role="data"/>
+   <file md5sum="d0b9456a85ce589d3224d137778988a9" name="/lib/vendor/oauth2-php/lib/OAuth2Exception.php" role="data"/>
+   <file md5sum="7f673dc96ca17e2306527b4aa9c28c7b" name="/lib/vendor/oauth2-php/docs/html/search/functions_63.html" role="data"/>
+   <file md5sum="8fc173daaff655a052253358bb1cc7ab" name="/lib/vendor/oauth2-php/docs/html/search/functions_66.html" role="data"/>
+   <file md5sum="cfc3b71ac37e0b76e1e98cd9dec1a37a" name="/lib/vendor/oauth2-php/docs/html/search/classes_70.html" role="data"/>
+   <file md5sum="d4fc846ed35700e5aaffb02d768065c9" name="/lib/vendor/oauth2-php/docs/html/search/functions_6d.html" role="data"/>
+   <file md5sum="209a188c2cf50fd6478de3190753bd27" name="/lib/vendor/oauth2-php/docs/html/search/all_70.html" role="data"/>
+   <file md5sum="611981097000d1cd9afe35d5c547e98d" name="/lib/vendor/oauth2-php/docs/html/search/search.css" role="data"/>
+   <file md5sum="20910c4cfe0e8efc8211bc9f7e58b7ff" name="/lib/vendor/oauth2-php/docs/html/search/search_m.png" role="data"/>
+   <file md5sum="89e8004c6d91933bc95c3fdf008226d7" name="/lib/vendor/oauth2-php/docs/html/search/functions_62.html" role="data"/>
+   <file md5sum="61a9e1ede0fc0531381eeb1f436046b0" name="/lib/vendor/oauth2-php/docs/html/search/classes_6d.html" role="data"/>
+   <file md5sum="03ee24f1971c0e31ffb6246882e18edd" name="/lib/vendor/oauth2-php/docs/html/search/search_r.png" role="data"/>
+   <file md5sum="e55309a01eb21c6693ea5c91253e51ee" name="/lib/vendor/oauth2-php/docs/html/search/files_70.html" role="data"/>
+   <file md5sum="89324619f86c4b99485bc2e1381e1d66" name="/lib/vendor/oauth2-php/docs/html/search/enums_70.html" role="data"/>
+   <file md5sum="be03e63d7379983b28a2c092867a1d67" name="/lib/vendor/oauth2-php/docs/html/search/mag_sel.png" role="data"/>
+   <file md5sum="70e543bb32b71e211485b77de132c0ea" name="/lib/vendor/oauth2-php/docs/html/search/all_75.html" role="data"/>
+   <file md5sum="c079de7f20ea7ff41691a7dc8c56d546" name="/lib/vendor/oauth2-php/docs/html/search/functions_61.html" role="data"/>
+   <file md5sum="a76951bd28cdc8a083784a886ca77d45" name="/lib/vendor/oauth2-php/docs/html/search/all_6f.html" role="data"/>
+   <file md5sum="496450f84d51c69db49f756b2d0acc20" name="/lib/vendor/oauth2-php/docs/html/search/search_l.png" role="data"/>
+   <file md5sum="022d0a936d1593bf772fc055fdc503fd" name="/lib/vendor/oauth2-php/docs/html/search/all_5f.html" role="data"/>
+   <file md5sum="70e543bb32b71e211485b77de132c0ea" name="/lib/vendor/oauth2-php/docs/html/search/functions_75.html" role="data"/>
+   <file md5sum="36aa69641f5bd36c1930825fc0e9a80b" name="/lib/vendor/oauth2-php/docs/html/search/functions_65.html" role="data"/>
+   <file md5sum="75734e3468e61510461d7cd4855e302b" name="/lib/vendor/oauth2-php/docs/html/search/enums_6f.html" role="data"/>
+   <file md5sum="7f673dc96ca17e2306527b4aa9c28c7b" name="/lib/vendor/oauth2-php/docs/html/search/all_63.html" role="data"/>
+   <file md5sum="36aa69641f5bd36c1930825fc0e9a80b" name="/lib/vendor/oauth2-php/docs/html/search/all_65.html" role="data"/>
+   <file md5sum="11549dd9a8cf6810514e126805d5e8b7" name="/lib/vendor/oauth2-php/docs/html/search/classes_6f.html" role="data"/>
+   <file md5sum="6b93302675193f449b666944574632b5" name="/lib/vendor/oauth2-php/docs/html/search/files_6f.html" role="data"/>
+   <file md5sum="36552130475da344c288851028d71db2" name="/lib/vendor/oauth2-php/docs/html/search/functions_68.html" role="data"/>
+   <file md5sum="19b7a82f63b90b9f0abf38fb2ef517fd" name="/lib/vendor/oauth2-php/docs/html/search/functions_73.html" role="data"/>
+   <file md5sum="5b7f5dbc48fdd00ba5b9b8ab97b7c8be" name="/lib/vendor/oauth2-php/docs/html/search/files_6d.html" role="data"/>
+   <file md5sum="19b7a82f63b90b9f0abf38fb2ef517fd" name="/lib/vendor/oauth2-php/docs/html/search/all_73.html" role="data"/>
+   <file md5sum="1b668917a6b0e7189ca0e69c95949008" name="/lib/vendor/oauth2-php/docs/html/search/files_74.html" role="data"/>
+   <file md5sum="4b6b8a9cdd4585910ff0c8d9ad1482ba" name="/lib/vendor/oauth2-php/docs/html/search/all_67.html" role="data"/>
+   <file md5sum="f2a00a6749c42f827a230357320242cc" name="/lib/vendor/oauth2-php/docs/html/search/variables_24.html" role="data"/>
+   <file md5sum="022d0a936d1593bf772fc055fdc503fd" name="/lib/vendor/oauth2-php/docs/html/search/functions_5f.html" role="data"/>
+   <file md5sum="55f2da9b70c24f0d586339f69131bf58" name="/lib/vendor/oauth2-php/docs/html/search/all_61.html" role="data"/>
+   <file md5sum="36552130475da344c288851028d71db2" name="/lib/vendor/oauth2-php/docs/html/search/all_68.html" role="data"/>
+   <file md5sum="d2ec2b58a05ab40ac2abe989c97cd407" name="/lib/vendor/oauth2-php/docs/html/search/all_64.html" role="data"/>
+   <file md5sum="89e8004c6d91933bc95c3fdf008226d7" name="/lib/vendor/oauth2-php/docs/html/search/all_62.html" role="data"/>
+   <file md5sum="2414ad3cc0ed34da17bdc0d12c6d8ed6" name="/lib/vendor/oauth2-php/docs/html/search/nomatches.html" role="data"/>
+   <file md5sum="9c72132b779bdc47c94d4bd7175f41d6" name="/lib/vendor/oauth2-php/docs/html/search/all_76.html" role="data"/>
+   <file md5sum="8fc173daaff655a052253358bb1cc7ab" name="/lib/vendor/oauth2-php/docs/html/search/all_66.html" role="data"/>
+   <file md5sum="f7f08818087c0bdb5c49a9097ea920a7" name="/lib/vendor/oauth2-php/docs/html/search/files_61.html" role="data"/>
+   <file md5sum="f466a7fdf1edfb1aa52ffab60f819119" name="/lib/vendor/oauth2-php/docs/html/search/close.png" role="data"/>
+   <file md5sum="f2a00a6749c42f827a230357320242cc" name="/lib/vendor/oauth2-php/docs/html/search/all_24.html" role="data"/>
+   <file md5sum="08f3c7a5a8efe277f260896c0f8204f7" name="/lib/vendor/oauth2-php/docs/html/search/all_6d.html" role="data"/>
+   <file md5sum="bb0badb60d485b5a10ac94c3acbb6fde" name="/lib/vendor/oauth2-php/docs/html/search/enums_6d.html" role="data"/>
+   <file md5sum="4b6b8a9cdd4585910ff0c8d9ad1482ba" name="/lib/vendor/oauth2-php/docs/html/search/functions_67.html" role="data"/>
+   <file md5sum="9c72132b779bdc47c94d4bd7175f41d6" name="/lib/vendor/oauth2-php/docs/html/search/functions_76.html" role="data"/>
+   <file md5sum="1b668917a6b0e7189ca0e69c95949008" name="/lib/vendor/oauth2-php/docs/html/search/all_74.html" role="data"/>
+   <file md5sum="d2ec2b58a05ab40ac2abe989c97cd407" name="/lib/vendor/oauth2-php/docs/html/search/functions_64.html" role="data"/>
+   <file md5sum="b4e06495815abfa22caa7decba553eb1" name="/lib/vendor/oauth2-php/docs/html/search/search.js" role="data"/>
+   <file md5sum="4fdcd9063e570aa8bb823031ded9ad9c" name="/lib/vendor/oauth2-php/docs/html/pdo_2protected__resource_8php_source.html" role="data"/>
+   <file md5sum="232bf9a1a7ff8e813d8f8da47a1f1725" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__section__4.html" role="data"/>
+   <file md5sum="6369a6e4335116a85513de728f00fd25" name="/lib/vendor/oauth2-php/docs/html/ftv2plastnode.png" role="data"/>
+   <file md5sum="f0f51e7aa35137cbc4e0c2d4d7f4eaf7" name="/lib/vendor/oauth2-php/docs/html/tab_s.png" role="data"/>
+   <file md5sum="fbf0f34ddb359928aca2d15e6429d255" name="/lib/vendor/oauth2-php/docs/html/pdo_2addclient_8php_source.html" role="data"/>
+   <file md5sum="017996b29ddd02123f214836826619d6" name="/lib/vendor/oauth2-php/docs/html/modules.html" role="data"/>
+   <file md5sum="b86c6f4907f4fc5a10694c3495ab759d" name="/lib/vendor/oauth2-php/docs/html/closed.png" role="data"/>
+   <file md5sum="eda221bbdce3c6877d00dc855808a583" name="/lib/vendor/oauth2-php/docs/html/tabs.css" role="data"/>
+   <file md5sum="fb5df9c82cf5735162e401c4d67253fa" name="/lib/vendor/oauth2-php/docs/html/_p_d_o_o_auth2_8inc_source.html" role="data"/>
+   <file md5sum="f2b35016b0dcbcefb70226d71c385ebd" name="/lib/vendor/oauth2-php/docs/html/pdo_2authorize_8php_source.html" role="data"/>
+   <file md5sum="3ed7b9ca7f286d016a6d8175c6f0acf0" name="/lib/vendor/oauth2-php/docs/html/_p_d_o_o_auth2_8inc.html" role="data"/>
+   <file md5sum="09f71d2c3678d02473310cdd20c241df" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_client_8inc_source.html" role="data"/>
+   <file md5sum="cdbca84987c3f4227deb788667fbc269" name="/lib/vendor/oauth2-php/docs/html/mongo_2addclient_8php_source.html" role="data"/>
+   <file md5sum="53dd3d38f1beaa51ef062294dfd931ad" name="/lib/vendor/oauth2-php/docs/html/main.html" role="data"/>
+   <file md5sum="2d0177d3ec0d79256ad6382ba507347b" name="/lib/vendor/oauth2-php/docs/html/ftv2lastnode.png" role="data"/>
+   <file md5sum="0d76351b6560933b02d7cb7877f0199a" name="/lib/vendor/oauth2-php/docs/html/nav_f.png" role="data"/>
+   <file md5sum="529d251d3e7018c0c305ee0438d68cf2" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_exception_8inc_source.html" role="data"/>
+   <file md5sum="d962fa057486e9ad0270d071a7a9054a" name="/lib/vendor/oauth2-php/docs/html/_mongo_o_auth2_8inc_source.html" role="data"/>
+   <file md5sum="ad52a6f6b94aa5d19493fc91ebde8796" name="/lib/vendor/oauth2-php/docs/html/classes.html" role="data"/>
+   <file md5sum="294e7ee072492da5fc7e23262aeccd87" name="/lib/vendor/oauth2-php/docs/html/tree.html" role="data"/>
+   <file md5sum="ed97b51834de0299d1c421680ada47ca" name="/lib/vendor/oauth2-php/docs/html/mongo_2token_8php.html" role="data"/>
+   <file md5sum="9b4d26c4bbbd7ef11f96e86168f1a952" name="/lib/vendor/oauth2-php/docs/html/index.html" role="data"/>
+   <file md5sum="0ff40ef458b829c02edf87a8b79e386b" name="/lib/vendor/oauth2-php/docs/html/ftv2node.png" role="data"/>
+   <file md5sum="b6493b2f70f880852962d3d19ca0574f" name="/lib/vendor/oauth2-php/docs/html/mongo_2protected__resource_8php_source.html" role="data"/>
+   <file md5sum="faf54f2847b7036a7166f0cff5ccd58f" name="/lib/vendor/oauth2-php/docs/html/globals_vars.html" role="data"/>
+   <file md5sum="1308b6e47c105a23f87d44820856e11f" name="/lib/vendor/oauth2-php/docs/html/doxygen.png" role="data"/>
+   <file md5sum="fb48153f0c59433ead7664392c0c7cc1" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__section__2.html" role="data"/>
+   <file md5sum="c97bdc7a4ddc6ebfa188a3aafde158bb" name="/lib/vendor/oauth2-php/docs/html/ftv2pnode.png" role="data"/>
+   <file md5sum="88b0250fe485909a78eaa97ecf7180ec" name="/lib/vendor/oauth2-php/docs/html/ftv2folderopen.png" role="data"/>
+   <file md5sum="2d24602420a9dca23bf8d48f752b529c" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2_client.html" role="data"/>
+   <file md5sum="0134d9a26c4c3fb8df9f722956c60fbe" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2_exception-members.html" role="data"/>
+   <file md5sum="fa66aa52e6979dcf4baf351c578b93c4" name="/lib/vendor/oauth2-php/docs/html/files.html" role="data"/>
+   <file md5sum="d0320767c066a01d518f1df4fe553e75" name="/lib/vendor/oauth2-php/docs/html/pdo_2token_8php.html" role="data"/>
+   <file md5sum="3d93a39c1292449973af222acd40c028" name="/lib/vendor/oauth2-php/docs/html/mongo_2addclient_8php.html" role="data"/>
+   <file md5sum="d5edca726dd54db11ab832c1e1366861" name="/lib/vendor/oauth2-php/docs/html/ftv2link.png" role="data"/>
+   <file md5sum="ef2875e1c0d52fe9056617c2ba3ae713" name="/lib/vendor/oauth2-php/docs/html/tab_a.png" role="data"/>
+   <file md5sum="209a4a599be33a8e273d029b7d403a13" name="/lib/vendor/oauth2-php/docs/html/hierarchy.html" role="data"/>
+   <file md5sum="9aef56fc65ac7823eff55b222c1f09eb" name="/lib/vendor/oauth2-php/docs/html/doxygen.css" role="data"/>
+   <file md5sum="c1526e017b670e172979023dfb0274b1" name="/lib/vendor/oauth2-php/docs/html/pdo_2protected__resource_8php.html" role="data"/>
+   <file md5sum="0759f86ebda876799a2e97d1e4394f13" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_exception_8inc.html" role="data"/>
+   <file md5sum="b32cd83a0b033345fa9753ebb4049e6d" name="/lib/vendor/oauth2-php/docs/html/_mongo_o_auth2_8inc.html" role="data"/>
+   <file md5sum="1c9eb453ee5d829a7f0aa78726d24b02" name="/lib/vendor/oauth2-php/docs/html/tab_h.png" role="data"/>
+   <file md5sum="e3106e09a76a0267736ac23b7d4121bb" name="/lib/vendor/oauth2-php/docs/html/pdo_2token_8php_source.html" role="data"/>
+   <file md5sum="ecb0089444b72fe891a4639004127f23" name="/lib/vendor/oauth2-php/docs/html/ftv2folderclosed.png" role="data"/>
+   <file md5sum="dae47f632cab0a5828ad2e6c43b66261" name="/lib/vendor/oauth2-php/docs/html/installdox" role="data"/>
+   <file md5sum="56661e87a2ebb66b166e679c97dc213b" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__http__status.html" role="data"/>
+   <file md5sum="32d9dd833564914bf0354d2ed0e04768" name="/lib/vendor/oauth2-php/docs/html/ftv2mlastnode.png" role="data"/>
+   <file md5sum="0d5737149c6e69fd83cb0477788ac751" name="/lib/vendor/oauth2-php/docs/html/pdo_2addclient_8php.html" role="data"/>
+   <file md5sum="d5f5f87900ff65cb71f6e0d7eae1b422" name="/lib/vendor/oauth2-php/docs/html/functions.html" role="data"/>
+   <file md5sum="7aacc6534457dc347b7b2c7f06c95d53" name="/lib/vendor/oauth2-php/docs/html/class_mongo_o_auth2-members.html" role="data"/>
+   <file md5sum="f143c8b9269b6025d6858f6523946f75" name="/lib/vendor/oauth2-php/docs/html/class_mongo_o_auth2.html" role="data"/>
+   <file md5sum="49ee2dac530eeb28482c2ded8a2126da" name="/lib/vendor/oauth2-php/docs/html/functions_vars.html" role="data"/>
+   <file md5sum="638b843b68ae54a68b1b990b0906dab0" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__error.html" role="data"/>
+   <file md5sum="c50e2603ea9682964ba2a27628ec631e" name="/lib/vendor/oauth2-php/docs/html/ftv2mnode.png" role="data"/>
+   <file md5sum="657cf13e55b800027fd46c17af02904c" name="/lib/vendor/oauth2-php/docs/html/tab_b.png" role="data"/>
+   <file md5sum="fa55df91926234cb3a84a880f2b6593c" name="/lib/vendor/oauth2-php/docs/html/nav_h.png" role="data"/>
+   <file md5sum="cf3a5993b8871066406bf78566902ee4" name="/lib/vendor/oauth2-php/docs/html/globals_enum.html" role="data"/>
+   <file md5sum="c97bf9d5914f5a10d8ef126e342d5da2" name="/lib/vendor/oauth2-php/docs/html/ftv2doc.png" role="data"/>
+   <file md5sum="2d6ef70ef2e1db572b19a3b8f2d7b246" name="/lib/vendor/oauth2-php/docs/html/functions_func.html" role="data"/>
+   <file md5sum="9a88a79322084dd278839af8bf414817" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_8inc_source.html" role="data"/>
+   <file md5sum="09ed2ab7d7a816978b7da05b6bf59a5e" name="/lib/vendor/oauth2-php/docs/html/class_mongo_o_auth2.png" role="data"/>
+   <file md5sum="775f16f375aab7dff053294f76bb6406" name="/lib/vendor/oauth2-php/docs/html/class_p_d_o_o_auth2.html" role="data"/>
+   <file md5sum="f6749765cf4a9cc4e0dd561aa7e31d67" name="/lib/vendor/oauth2-php/docs/html/class_p_d_o_o_auth2.png" role="data"/>
+   <file md5sum="856897c8f5727e5648655a80d892e016" name="/lib/vendor/oauth2-php/docs/html/ftv2blank.png" role="data"/>
+   <file md5sum="bdca7eefc9c71552cdaf688aa1053370" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2_exception.html" role="data"/>
+   <file md5sum="32e4c7652bebaf554c76b292816bc4d5" name="/lib/vendor/oauth2-php/docs/html/pdo_2authorize_8php.html" role="data"/>
+   <file md5sum="540b4182e962e2020dac23ba2467917e" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__section__5.html" role="data"/>
+   <file md5sum="87f70538203897ccff6d27e16f1ae4fb" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2-members.html" role="data"/>
+   <file md5sum="a0a7ae0219a629d76ed3561563e51391" name="/lib/vendor/oauth2-php/docs/html/mongo_2authorize_8php_source.html" role="data"/>
+   <file md5sum="b4b9469dde990b1aa367f9b57cc3363a" name="/lib/vendor/oauth2-php/docs/html/ftv2vertline.png" role="data"/>
+   <file md5sum="f8b36a9f5371b29e18257b21cfcbc3d7" name="/lib/vendor/oauth2-php/docs/html/mongo_2authorize_8php.html" role="data"/>
+   <file md5sum="39288f88be2912de1677afe29e288d2b" name="/lib/vendor/oauth2-php/docs/html/bc_s.png" role="data"/>
+   <file md5sum="3c115962e15fe0fd6782b30812f4b09c" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_client_8inc.html" role="data"/>
+   <file md5sum="7ffe2cff9f5c327ab9b2ec4dd5a4ffba" name="/lib/vendor/oauth2-php/docs/html/_o_auth2_8inc.html" role="data"/>
+   <file md5sum="c9647471ac9fad4a10d8ebedcdc967a3" name="/lib/vendor/oauth2-php/docs/html/mongo_2protected__resource_8php.html" role="data"/>
+   <file md5sum="615d6575465bae966dcda5df5880f4d3" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2_client-members.html" role="data"/>
+   <file md5sum="b1adc1c6164ce4ccf07a3daeda358d23" name="/lib/vendor/oauth2-php/docs/html/mongo_2token_8php_source.html" role="data"/>
+   <file md5sum="f69582a6694bb619f31a92f067aedc4e" name="/lib/vendor/oauth2-php/docs/html/group__oauth2__section__3.html" role="data"/>
+   <file md5sum="c3326268a0b46b0e2b796f2a7d0f5d73" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2.html" role="data"/>
+   <file md5sum="22a64a39aa6f6bbec3fe6be4dee0af96" name="/lib/vendor/oauth2-php/docs/html/annotated.html" role="data"/>
+   <file md5sum="78885359d5370b3fa8247fd1f038797b" name="/lib/vendor/oauth2-php/docs/html/pages.html" role="data"/>
+   <file md5sum="0237eaf8127bfcc3819712b5aed42e8d" name="/lib/vendor/oauth2-php/docs/html/class_o_auth2.png" role="data"/>
+   <file md5sum="16d96c44ffaf558b22f0650361179017" name="/lib/vendor/oauth2-php/docs/html/class_p_d_o_o_auth2-members.html" role="data"/>
+   <file md5sum="89b7c039fdfa803083989337312c177f" name="/lib/vendor/oauth2-php/docs/html/open.png" role="data"/>
+   <file md5sum="df5239904940fd36b95faa069384d7ab" name="/lib/vendor/oauth2-php/docs/html/globals.html" role="data"/>
+   <file md5sum="52ad04a2d0310f12fabd23294b40d96f" name="/lib/vendor/oauth2-php/docs/html/todo.html" role="data"/>
+   <file md5sum="364f52e7863817dfc8d1c747a4625bbd" name="/lib/vendor/oauth2-php/server/examples/mongo/lib/MongoOAuth2.inc" role="data"/>
+   <file md5sum="0de44e86aa096dea542e3f3ffa23fa4c" name="/lib/vendor/oauth2-php/server/examples/mongo/addclient.php" role="data"/>
+   <file md5sum="0288ffb2bd89c4777e40f32aedf15882" name="/lib/vendor/oauth2-php/server/examples/mongo/token.php" role="data"/>
+   <file md5sum="a86b2aa697a8ff29ede4eccbd6ab83e1" name="/lib/vendor/oauth2-php/server/examples/mongo/protected_resource.php" role="data"/>
+   <file md5sum="1d846d2ece48562e683e964f6920ff6e" name="/lib/vendor/oauth2-php/server/examples/mongo/authorize.php" role="data"/>
+   <file md5sum="1c563474e8651b7a5a62f0ed682b8941" name="/lib/vendor/oauth2-php/server/examples/pdo/lib/PDOOAuth2.inc" role="data"/>
+   <file md5sum="03d18849468e1a795fad91efdc5c8501" name="/lib/vendor/oauth2-php/server/examples/pdo/addclient.php" role="data"/>
+   <file md5sum="7690ae17bd206374fc5396395cf39d68" name="/lib/vendor/oauth2-php/server/examples/pdo/token.php" role="data"/>
+   <file md5sum="f87baf47e61f53d374a0720e1147d4b2" name="/lib/vendor/oauth2-php/server/examples/pdo/protected_resource.php" role="data"/>
+   <file md5sum="e3f7cbae0811fc393ad41d2a2ed57c86" name="/lib/vendor/oauth2-php/server/examples/pdo/mysql_create_tables.sql" role="data"/>
+   <file md5sum="b1cb07029efc60b7b05b3f8a702730f0" name="/lib/vendor/oauth2-php/server/examples/pdo/authorize.php" role="data"/>
+   <file md5sum="0c1fba57944f5fc4f2e0f3641ab8a12c" name="/lib/vendor/oauth2-php/.hg_archival.txt" role="data"/>
+   <file md5sum="102dedb6884afd6f1870a52793ec6497" name="/lib/vendor/oauth2-php/CHANGELOG.txt" role="data"/>
+   <file md5sum="27bd90921fc331014f7d6806c7e5896f" name="/lib/vendor/oauth2-php/LICENSE.txt" role="data"/>
+   <file md5sum="a0dd0551baf51a97cbdee8adb6bb7930" name="/lib/vendor/oauth2-php/config.doxy" role="data"/>
+   <file md5sum="05b96b11c420e1396a29e40e9853768e" name="/lib/vendor/OAuth/doc/design.txt" role="data"/>
+   <file md5sum="6d1e0fba33eadea30aa463f5f97a4ee0" name="/lib/vendor/OAuth/tests/common.php" role="data"/>
+   <file md5sum="b0b242b95ebee118abdc8996e533e9c0" name="/lib/vendor/OAuth/tests/OAuthRequestTest.php" role="data"/>
+   <file md5sum="46e99a7cb224b0cce7774af4616e7515" name="/lib/vendor/OAuth/tests/Mock_OAuthDataStore.php" role="data"/>
+   <file md5sum="4505beecf4f79754a032d98d22d4ee7b" name="/lib/vendor/OAuth/tests/OAuthServerTest.php" role="data"/>
+   <file md5sum="ff22cf8ae2eea2cdf0f6252444612871" name="/lib/vendor/OAuth/tests/OAuthSignatureMethodRsaSha1Test.php" role="data"/>
+   <file md5sum="e717bfc7085f08699f6c46ea5a73709c" name="/lib/vendor/OAuth/tests/Mock_OAuthBaseStringRequest.php" role="data"/>
+   <file md5sum="d365cdbad1feaa82d088682d29c2829a" name="/lib/vendor/OAuth/tests/Mock_OAuthSignatureMethod_RSA_SHA1.php" role="data"/>
+   <file md5sum="499737e3fbf38081274a75edc56806e8" name="/lib/vendor/OAuth/tests/OAuthUtilTest.php" role="data"/>
+   <file md5sum="ec685182ddb1f86de03ce1eb4f6e4954" name="/lib/vendor/OAuth/tests/OAuthSignatureMethodPlaintextTest.php" role="data"/>
+   <file md5sum="63f6608c7e8cf9a8390610c97e96b8fe" name="/lib/vendor/OAuth/tests/OAuthTokenTest.php" role="data"/>
+   <file md5sum="51979e6397dc06c9a794d3befcc78fad" name="/lib/vendor/OAuth/tests/OAuthSignatureMethodHmacSha1Test.php" role="data"/>
+   <file md5sum="7fd33062ff4fbb6389b1ecfb0bf63c4b" name="/lib/vendor/OAuth/tests/OAuthConsumerTest.php" role="data"/>
+   <file md5sum="7d3dd9d97c327884936d79793c432440" name="/lib/vendor/OAuth/example/request_token.php" role="data"/>
+   <file md5sum="846b678cbb44005a0b82a897af6b36ba" name="/lib/vendor/OAuth/example/SimpleOAuthDataStore.php" role="data"/>
+   <file md5sum="65524f9fc7b7138be3f108ac85085d0c" name="/lib/vendor/OAuth/example/access_token.php" role="data"/>
+   <file md5sum="5bb87104be365465079ce742b5c3b11c" name="/lib/vendor/OAuth/example/echo_api.php" role="data"/>
+   <file md5sum="4a72103151fdb06f61f5b6002989f41c" name="/lib/vendor/OAuth/example/client.php" role="data"/>
+   <file md5sum="1b082fcbeb41cf57e65bb95b3aada8c1" name="/lib/vendor/OAuth/example/index.php" role="data"/>
+   <file md5sum="4579a72745db10b50d68b1536447e2e6" name="/lib/vendor/OAuth/example/common.inc.php" role="data"/>
+   <file md5sum="1f2390ecf25c9bc2dadcb74e5011c22c" name="/lib/vendor/OAuth/OAuth_TestServer.php" role="data"/>
+   <file md5sum="14aa6418ce3f7602b24b982bde359797" name="/lib/vendor/OAuth/OAuth.php" role="data"/>
+   <file md5sum="a02abcb0cde7d8b61d5602c58f930a4e" name="/lib/vendor/OAuth/CHANGELOG.txt" role="data"/>
+   <file md5sum="e71357d3baead6bdbd37f82e3eb5177c" name="/lib/vendor/OAuth/LICENSE.txt" role="data"/>
+   <file md5sum="52bd32fc2b3150025e06e5ec85850bad" name="/lib/vendor/OAuth/OAuthTests.xml" role="data"/>
+   <file md5sum="bd34c167f6ad571578e51bd36bedecd0" name="/lib/sfOAuth2Server.php" role="data"/>
+   <file md5sum="5c8e274a7d7abdf8b3b95acb814a97e8" name="/lib/sfOAuthServer.php" role="data"/>
+   <file md5sum="f17e53c04fc041a27e38b9952d44a356" name="/lib/sfOauth.class.php" role="data"/>
+   <file md5sum="77b8daf13cb00af595d1357c7dc71ca8" name="/config/doctrine/schema.yml" role="data"/>
+   <file md5sum="c74d2dd40bd0a48b51db5b751b169280" name="/config/error/error.xml.php" role="data"/>
+   <file md5sum="5e4701845db4767bcf8c744949fe75b1" name="/config/error/error.json.php" role="data"/>
+   <file md5sum="d0616237f6abc027c3e9db39985c8cd9" name="/config/config_handlers.yml" role="data"/>
+   <file md5sum="25b64f4f75d1f5394edbb76884a4d7f8" name="/config/routing.yml" role="data"/>
+   <file md5sum="51b9a06861c26dffcf2af498c4e54af8" name="/config/sfOauthServerConfigHandler.class.php" role="data"/>
+   <file md5sum="ddcdd55236be2fd591a796dd1e6d2fa7" name="/config/sfOauthServerConfigFilterHandler.class.php" role="data"/>
+   <file md5sum="617b2f7a0adfbba60bbd4c1a13c6f2c0" name="/config/app.yml" role="data"/>
+   <file md5sum="4a279c0eae0721b76292020c1ae02aff" name="/modules/application/config/security.yml" role="data"/>
+   <file md5sum="7fe710588a9a06edcdf57d2470549662" name="/modules/application/actions/actions.class.php" role="data"/>
+   <file md5sum="b72023814f81dd4273d46f2ccaa76429" name="/modules/application/templates/authorizeSuccess.php" role="data"/>
+   <file md5sum="8b1878aaa0d1471031ed042c97b285ce" name="/modules/oauth/config/oauth.yml" role="data"/>
+   <file md5sum="6778094b7a966e11a3c7979628627a29" name="/modules/oauth/actions/actions.class.php" role="data"/>
+   <file md5sum="fcd30bb481297729901bb3e598490876" name="/modules/oauth/templates/tokenSuccess.xml.php" role="data"/>
+   <file md5sum="67c0addc90990e809a78ceea6ed5c58e" name="/modules/oauth/templates/tokenSuccess.json.php" role="data"/>
+   <file md5sum="0458c41da5c40d07be526c8e44e3bd62" name="/modules/sfOauthAdmin/lib/sfOauthAdminGeneratorHelper.class.php" role="data"/>
+   <file md5sum="4292162d72d3438de03c0d72195e2382" name="/modules/sfOauthAdmin/lib/sfOauthAdminGeneratorConfiguration.class.php" role="data"/>
+   <file md5sum="db1b69d8afb0b03a90c51d75ae05f723" name="/modules/sfOauthAdmin/config/generator.yml" role="data"/>
+   <file md5sum="2330ddea0158bcf6ee1cd6f9736e120d" name="/modules/sfOauthAdmin/actions/actions.class.php" role="data"/>
+   <file md5sum="d41d8cd98f00b204e9800998ecf8427e" name="/modules/sfOauthAdmin/templates/.sf" role="data"/>
+   <file md5sum="a12acfa9ff19394c253fc581c5f3da3a" name="/README" role="data"/>
+   <file md5sum="8a80444392e2cc875fb22947d95f3c93" name="/LICENSE" role="data"/>
+   <file md5sum="3023d074987b8327d5efbfdce7470009" name="/TODO.txt" role="data"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.4</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   
+   <package>
+    <name>sfGuardUserPlugin</name>
+    <channel>plugins.symfony-project.org</channel>
+    <min>1.0.0</min>
+    <max>5.0.0</max>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease/>
+ <changelog>
+  <release>
+   <version>
+    <release>0.8.0</release>
+    <api>0.8.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-05-01</date>
+   <license uri="http://www.symfony-project.org/license">MIT license</license>
+   <notes>
+* First public version !
+   </notes>
+  </release>
+ </changelog>
+</package>

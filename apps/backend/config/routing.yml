@@ -1,0 +1,47 @@
+sponsor:
+  class: sfPropelRouteCollection
+  options:
+    model:                Sponsor
+    module:               sponsor
+    prefix_path:          sponsor
+    column:               id
+    with_wildcard_routes: true
+
+advertise:
+  class: sfPropelRouteCollection
+  options:
+    model:                Advertise
+    module:               advertise
+    prefix_path:          advertise
+    column:               id
+    with_wildcard_routes: true
+
+url:
+  class: sfPropelRouteCollection
+  options:
+    model:                Url
+    module:               url
+    prefix_path:          url
+    column:               id
+    with_wildcard_routes: true
+
+search:
+  class: sfPropelRouteCollection
+  options:
+    model:                Search
+    module:               search
+    prefix_path:          search
+    column:               id
+    with_wildcard_routes: true
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

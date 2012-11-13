@@ -1,0 +1,16 @@
+# default values
+all:
+  sfLanguageSwitch:
+    flagPath:  /images/flag   # optional if you wanna change the path
+    availableLanguages:
+      az:
+        title: Az
+        image: /images/flag/az.png
+      en:
+        title: En
+        image: /images/flag/en.png
+      ru:
+        title: Ru
+        image: /images/flag/ru.png   # optional if you wanna change the flag
+  pager:
+    search_max: 10

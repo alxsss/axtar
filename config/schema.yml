@@ -1,0 +1,33 @@
+propel:
+  advertise:
+    _attributes:  {idMethod:  native }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    name:  {  type:  VARCHAR, size: 100, required:  true  }
+    company:  {  type:  VARCHAR, size: 100, required:  true  }
+    email:  {  type:  VARCHAR, size: 100, required:  true  }
+    phone:  {  type:  VARCHAR, size: 15, required:  true  }
+    comment: {  type:  LONGVARCHAR }
+    created_at: {  type: TIMESTAMP  }
+  search:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    query:  {type:  VARCHAR, size: 256}
+    raw_ip:  { type: VARCHAR, size: 50  }
+    created_at: {  type: TIMESTAMP  }
+  url:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    name:  {type:  VARCHAR, size: 256, required:  true}
+    created_at: {  type: TIMESTAMP  }
+  sponsor:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    url:  {type:  VARCHAR, size: 256, required: true}
+    description: {type:LONGVARCHAR }
+    start:       {type:date, required:true }
+    end:         {type:date, required:true }
+    email:  {type:  VARCHAR, size: 100, required: true  }
+    phone:  {type:  VARCHAR, size: 15 }
+    comment: {type:  LONGVARCHAR }
+    payment:  {type:TINYINT, size: 4, default:0}
+    created_at: {type: timestamp }

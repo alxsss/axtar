@@ -1,0 +1,73 @@
+news:
+  url:  /:sf_culture/news
+  param: {module: content, action: news }
+autosuggest:
+  url:   /autosuggest
+  param: { module: search, action: autosuggest }
+map:
+  url:  /:sf_culture/map
+  param: {module: search, action: map }
+  requirements: { sf_culture: (?:az|en|ru) }
+submiturl:
+  url:  /:sf_culture/submiturl
+  param: {module: submiturl, action: index }
+contact:
+  url:   /:sf_culture/contact
+  param: {module: contact, action: create }
+  requirements: { sf_culture: (?:az|en|ru) }
+about:
+  url:   /:sf_culture/about
+  param: {module: content, action: about }
+  requirements: { sf_culture: (?:az|en|ru) }
+investor:
+  url:   /:sf_culture/investor
+  param: {module: content, action: investor }
+  requirements: { sf_culture: (?:az|en|ru) }
+faq:
+  url:   /:sf_culture/faq
+  param: {module: content, action: faq }
+  requirements: { sf_culture: (?:az|en|ru) }
+copyright:
+  url:   /:sf_culture/copyright
+  param: { module: content, action: copyright }
+ts:
+  url:   /:sf_culture/termsofservice
+  param: { module: content, action: ts }
+privacyp:
+  url:   /:sf_culture/privacypolicy
+  param: { module: content, action: privacyp }
+contact:
+  url:   /:sf_culture/contact
+  param: { module: contact, action: create }
+search_search:
+  url:  /:sf_culture/axtar
+  param: { module:  search, action: search }
+search_site:
+  url:  /:sf_culture/axtarsite
+  param: { module:  search, action: searchsite }
+image_search:
+  url:  /:sf_culture/imageaxtar
+  param: { module:  search, action: imagesearch }
+image_index:
+  url:  /:sf_culture/image
+  param: { module:  search, action: imageindex }
+# default rules
+#homepage:
+ # url:   /
+  #param: { module: default, action: index }
+#default_index:
+ # url:   /:module
+  #param: { action: index }
+#default:
+ # url:   /:module/:action/*
+homepage:
+  url:   /
+  param: {module: search, action: index }
+  requirements: { sf_culture: (?:az|en|ru) }
+default_index:
+  url:   /:sf_culture/:module
+  requirements: { sf_culture: (?:az|en|ru) }
+  param: { action: index }
+default:
+  url:   /:sf_culture/:module/:action/*
+  requirements: { sf_culture: (?:az|en|ru) }

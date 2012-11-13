@@ -1,0 +1,188 @@
+diff --git a/src/java/org/apache/nutch/crawl/CustomFetchSchedule.java b/src/java/org/apache/nutch/crawl/CustomFetchSchedule.java
+new file mode 100755
+index 0000000..ec4172b
+--- /dev/null
++++ b/src/java/org/apache/nutch/crawl/CustomFetchSchedule.java
+@@ -0,0 +1,25 @@
++package org.apache.nutch.crawl;
++
++import org.apache.nutch.storage.WebPage;
++/**
++ * updated page fetchTime will  be set to
++ * fetchTime + customFetchTime*1000.
++ *
++ * @author A. Kingson
++ * @date  07/30/12
++ */
++public class CustomFetchSchedule extends AbstractFetchSchedule{
++ public void setFetchSchedule(String url, WebPage page, long prevFetchTime, long prevModifiedTime,  long fetchTime, long modifiedTime, int state , long customFetchTime)
++ {
++    page.setRetriesSinceFetch(0);
++    if(customFetchTime>0)
++    {
++      page.setFetchTime(fetchTime + customFetchTime*1000L);
++    }
++    else
++    {
++      page.setFetchTime(fetchTime + page.getFetchInterval() * 1000L);
++    }
++    page.setModifiedTime(modifiedTime);
++  }
++}
+diff --git a/src/java/org/apache/nutch/crawl/DbUpdateReducer.java b/src/java/org/apache/nutch/crawl/DbUpdateReducer.java
+index 75c5a97..16ba2db 100644
+--- a/src/java/org/apache/nutch/crawl/DbUpdateReducer.java
++++ b/src/java/org/apache/nutch/crawl/DbUpdateReducer.java
+@@ -51,11 +51,14 @@ extends GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
+   private List<ScoreDatum> inlinkedScoreData = new ArrayList<ScoreDatum>();
+   private int maxLinks;
+ 
++  private long customFetchTime;
++
+   @Override
+   protected void setup(Context context) throws IOException, InterruptedException {
+     Configuration conf = context.getConfiguration();
+     retryMax = conf.getInt("db.fetch.retry.max", 3);
+     additionsAllowed = conf.getBoolean(CRAWLDB_ADDITIONS_ALLOWED, true);
++    customFetchTime = conf.getLong(DbUpdaterJob.CUSTOM_FETCH_TIME,0);
+     maxInterval = conf.getInt("db.fetch.interval.max", 0 );
+     schedule = FetchScheduleFactory.getFetchSchedule(conf);
+     scoringFilters = new ScoringFilters(conf);
+@@ -139,9 +142,7 @@ extends GoraReducer<UrlWithScore, NutchWritable, String, WebPage> {
+           long fetchTime = page.getFetchTime();
+           long prevFetchTime = page.getPrevFetchTime();
+           long modifiedTime = page.getModifiedTime();
+-
+-          schedule.setFetchSchedule(url, page, prevFetchTime, 0L,
+-              fetchTime, modifiedTime, modified);
++          schedule.setFetchSchedule(url, page, prevFetchTime, 0L, fetchTime, modifiedTime, modified,customFetchTime);
+           if (maxInterval < page.getFetchInterval())
+             schedule.forceRefetch(url, page, false);
+           break;
+diff --git a/src/java/org/apache/nutch/crawl/DbUpdaterJob.java b/src/java/org/apache/nutch/crawl/DbUpdaterJob.java
+index a86f0dc..f3e71c3 100644
+--- a/src/java/org/apache/nutch/crawl/DbUpdaterJob.java
++++ b/src/java/org/apache/nutch/crawl/DbUpdaterJob.java
+@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
+ public class DbUpdaterJob extends NutchTool implements Tool {
+ 
+   public static final Logger LOG = LoggerFactory.getLogger(DbUpdaterJob.class);
+-
++  public static final String CUSTOM_FETCH_TIME = "db.update.custom.fetch.time";
+ 
+   private static final Collection<WebPage.Field> FIELDS =
+     new HashSet<WebPage.Field>();
+@@ -71,6 +71,10 @@ public class DbUpdaterJob extends NutchTool implements Tool {
+     
+   public Map<String,Object> run(Map<String,Object> args) throws Exception {
+     String crawlId = (String)args.get(Nutch.ARG_CRAWL);
++    boolean additionsAllowed = (Boolean)args.get(DbUpdateReducer.CRAWLDB_ADDITIONS_ALLOWED);
++    long customFetchTime = (Long)args.get(CUSTOM_FETCH_TIME);
++    getConf().setBoolean(DbUpdateReducer.CRAWLDB_ADDITIONS_ALLOWED, additionsAllowed);
++    getConf().setLong(CUSTOM_FETCH_TIME, customFetchTime);
+     numJobs = 1;
+     currentJobNum = 0;
+     currentJob = new NutchJob(getConf(), "update-table");
+@@ -81,7 +85,6 @@ public class DbUpdaterJob extends NutchTool implements Tool {
+     ScoringFilters scoringFilters = new ScoringFilters(getConf());
+     HashSet<WebPage.Field> fields = new HashSet<WebPage.Field>(FIELDS);
+     fields.addAll(scoringFilters.getFields());
+-    
+     // Partition by {url}, sort by {url,score} and group by {url}.
+     // This ensures that the inlinks are sorted by score when they enter
+     // the reducer.
+@@ -90,31 +93,48 @@ public class DbUpdaterJob extends NutchTool implements Tool {
+     currentJob.setSortComparatorClass(UrlScoreComparator.class);
+     currentJob.setGroupingComparatorClass(UrlOnlyComparator.class);
+     
+-    StorageUtils.initMapperJob(currentJob, fields, UrlWithScore.class,
+-        NutchWritable.class, DbUpdateMapper.class);
++    StorageUtils.initMapperJob(currentJob, fields, UrlWithScore.class, NutchWritable.class, DbUpdateMapper.class);
+     StorageUtils.initReducerJob(currentJob, DbUpdateReducer.class);
+     currentJob.waitForCompletion(true);
+     ToolUtil.recordJobStatus(null, currentJob, results);
+     return results;
+   }
+   
+-  private int updateTable(String crawlId) throws Exception {
++  private int updateTable(String crawlId, boolean additionsAllowed, long customFetchTime) throws Exception {
+     LOG.info("DbUpdaterJob: starting");
+-    run(ToolUtil.toArgMap(Nutch.ARG_CRAWL, crawlId));
++    run(ToolUtil.toArgMap(Nutch.ARG_CRAWL, crawlId, DbUpdateReducer.CRAWLDB_ADDITIONS_ALLOWED,additionsAllowed, CUSTOM_FETCH_TIME,customFetchTime));
+     LOG.info("DbUpdaterJob: done");
+     return 0;
+   }
+ 
+   public int run(String[] args) throws Exception {
+     String crawlId = null;
+-    if (args.length == 0) {
+-      //
+-    } else if (args.length == 2 && "-crawlId".equals(args[0])) {
+-      crawlId = args[1];
+-    } else {
+-      throw new IllegalArgumentException("usage: " + "(-crawlId <id>)");
++     if (args.length>0&&args[0].equals("-help")) {
++      System.err.println("Usage: Updatedb [-crawlId id] [-noAdditions] [-customFetchTime number_in_minutes]");
++      System.err.println("\tcrawldb\tUpdatedb to update");
++      System.err.println("\t-noAdditions\tonly update already existing URLs, don't add any newly discovered URLs");
++      System.err.println("\t-noAdditions\tadd customFetchTime to current time as a new fetch time of fetched URLs");
++      return -1;
++    }
++    boolean additionsAllowed = getConf().getBoolean(DbUpdateReducer.CRAWLDB_ADDITIONS_ALLOWED, true);
++    long customFetchTime=0;
++    for (int i = 0; i < args.length; i++)
++    {
++      if (args[i].equals("-noAdditions"))
++      {
++        additionsAllowed = false;
++      }
++      else if ("-customFetchTime".equals(args[i])) {
++        customFetchTime = Integer.parseInt(args[i + 1]);
++         customFetchTime =  customFetchTime*1L*60;
++        i++;
++      }
++      else if("-crawlId".equals(args[i]))
++      {
++        crawlId = args[i+1];
++      }
+     }
+-    return updateTable(crawlId);
++    return updateTable(crawlId, additionsAllowed, customFetchTime);
+   }
+ 
+   public static void main(String[] args) throws Exception {
+diff --git a/src/java/org/apache/nutch/crawl/FetchSchedule.java b/src/java/org/apache/nutch/crawl/FetchSchedule.java
+index 729e5e1..86d72b5 100644
+--- a/src/java/org/apache/nutch/crawl/FetchSchedule.java
++++ b/src/java/org/apache/nutch/crawl/FetchSchedule.java
+@@ -75,7 +75,29 @@ public interface FetchSchedule extends Configurable {
+   public void setFetchSchedule(String url, WebPage page,
+       long prevFetchTime, long prevModifiedTime,
+       long fetchTime, long modifiedTime, int state);
+-
++  /**
++   * Sets the <code>fetchInterval</code> and <code>fetchTime</code> on a
++   * successfully fetched page.
++   * Implementations may use supplied arguments to support different re-fetching
++   * schedules.
++   *
++   * @param url url of the page
++   * @param page
++   * @param prevFetchTime previous value of fetch time, or -1 if not available
++   * @param prevModifiedTime previous value of modifiedTime, or -1 if not available
++   * @param fetchTime the latest time, when the page was recently re-fetched. Most FetchSchedule
++   * implementations should update the value in {@param datum} to something greater than this value.
++   * @param modifiedTime last time the content was modified. This information comes from
++   * the protocol implementations, or is set to < 0 if not available. Most FetchSchedule
++   * implementations should update the value in {@param datum} to this value.
++   * @param state if {@link #STATUS_MODIFIED}, then the content is considered to be "changed" before the
++   * @param customFetchTime fetch time specified by user
++   * <code>fetchTime</code>, if {@link #STATUS_NOTMODIFIED} then the content is known to be unchanged.
++   * This information may be obtained by comparing page signatures before and after fetching. If this
++   * is set to {@link #STATUS_UNKNOWN}, then it is unknown whether the page was changed; implementations
++   * are free to follow a sensible default behavior.
++   */
++  public void setFetchSchedule(String url, WebPage page, long prevFetchTime, long prevModifiedTime, long fetchTime, long modifiedTime, int state, long customFetchTime);
+   /**
+    * This method specifies how to schedule refetching of pages
+    * marked as GONE. Default implementation increases fetchInterval by 50%,

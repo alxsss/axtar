@@ -1,0 +1,5 @@
+1. Came across to the name of sfLanguageSwitch plugin on Nov 22, 2009, when was preparing to leave to Baku.
+2. there was need for more memory in Nov, 2011. Checked website of the sever provider and saw that they provide
+ 1GB mem server  and twice space for the same price as I was paying for 500MB RAM seerver.
+3. I was thinking about creating a index doc for each img tag in a url. I saw a post in nutch's mailing list about this kind of issue a few days later on 02/05/12
+5. 03/15/12 . Forta trust offered 2GB server for the same price that I was paying for 1GB memory server
