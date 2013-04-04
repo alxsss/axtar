@@ -72,7 +72,7 @@
        }*/
         $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
         ?>
-      <div class="image"><a href="<?php echo  $parent_url ?>"><img src="<?php echo $src ?>" title="<?php echo  $parent_url ?>" /></a></div>
+      <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="<?php echo $src ?>" title="<?php echo  $parent_url ?>" /></a></div>
       <?php if($cnt==7){echo '</div><div class="image_line">';$cnt=0;}?>
     <?php endforeach; ?>
   </div>

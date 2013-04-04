@@ -10,6 +10,72 @@
  */
 class searchActions extends sfActions
 {
+  public function executeIndextest(sfWebRequest $request)
+  {
+  }
+  public function executeSearchtest(sfWebRequest $request)
+  {
+    if (!$this->query = $request->getParameter('query'))
+    {
+      return $this->redirect('search/indextest');	  
+    }
+    $this->page =$request->getParameter('page', 1);
+    $start=10*($this->page-1);
+    $this->query=trim($this->query);
+    $query_db=$this->query;
+    $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
+    $this->query=str_replace($search, '',strtolower($this->query));
+    //$this->query=str_replace(' ','+',$this->query);
+    $nb_axtar_results=0;
+    $nbResults=0;
+    //declare boolean variables for each feed
+    $this->axtar_site_feed=0;
+    $this->axtar_feed=0;
+    $this->feed_feed=0;
+
+    $solr_query = new SolrQueryTest;
+    //send additional request for phrase words to display websites with words in url first
+    if(count(explode(' ',$this->query))>1&&$this->page<2)
+    {
+      $site_data=$solr_query->runQuery($this->query, 0,'site');
+      if($site_data)
+      { 
+         $this->axtar_site_feed=1;
+         $this->axtar_site_xml = simplexml_load_string($site_data);
+         $this->site_results=$this->axtar_site_xml->xpath("//result");
+      }
+    }
+    $data = $solr_query->runQuery($this->query, $start);
+    if($data)
+    {
+       $this->axtar_xml = simplexml_load_string($data);
+       $nb_axtar_results=$this->axtar_xml->xpath("//lst[@name='grouped']/lst[@name='site']/int[@name='ngroups']");
+       $nb_axtar_results=$nb_axtar_results[0];
+       //$nb_axtar_results=$xml->result[0]->attributes()->numFound;
+       //get suggestions
+       //$this->spellcheck=$xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']/*");	
+       $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");	
+    }
+       
+    $pages_in_axtar=floor($nb_axtar_results/10);
+    //add this variable to show results that are less than 10
+    $residual=$nb_axtar_results%10;	
+    $additional_number=0;
+    if($residual>0)$additional_number=1;
+    if($this->page<=($pages_in_axtar+$additional_number))
+    {
+      //$this->results=$this->axtar_xml->xpath("//result");
+      $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
+      $this->axtar_feed=1;
+    }
+      //get pagination
+     $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nbResults+$nb_axtar_results);
+     $this->feed_pager->setPage($this->page);
+     $this->feed_pager->init();
+     //set title
+     $this->getResponse()->setTitle($this->query.' -axtar.az');
+
+  }
   public function executeApi(sfWebRequest $request)
   {
     if (!$this->query = $request->getParameter('query'))
@@ -74,17 +140,6 @@ class searchActions extends sfActions
       $search->save();	
     }*/
   }
-  public function executeIndextest(sfWebRequest $request)
-  {
-  }
-  public function executeSearchtest(sfWebRequest $request)
-  {
-    if (!$this->query = $request->getParameter('query'))
-    {
-      return $this->redirect('search/indextest');	  
-    }
-
-  }
   public function executeAutosuggest(sfWebRequest $request)
   {
     $query = $request->getParameter('term');
@@ -112,7 +167,7 @@ class searchActions extends sfActions
     $this->query=trim($this->query);
     $query_db=$this->query;
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
-    $this->query=str_replace($search, '',strtolower($this->query));
+    $this->query=str_replace($search, '',$this->query);
     //$this->query=str_replace(' ','+',$this->query);
     $nb_axtar_results=0;
     $nbResults=0;
@@ -130,10 +185,11 @@ class searchActions extends sfActions
       { 
          $this->axtar_site_feed=1;
          $this->axtar_site_xml = simplexml_load_string($site_data);
-         $this->site_results=$this->axtar_site_xml->xpath("//result");
+         //$this->site_results=$this->axtar_site_xml->xpath("//result");
+         $this->site_results=$this->axtar_site_xml->xpath("//arr[@name='groups']/lst");
       }
     }
-    $data = $solr_query->runQuery($this->query, $start);
+    $data = $solr_query->runQuery($this->query, $start, 'axtar');
     if($data)
     {
        $this->axtar_xml = simplexml_load_string($data);
@@ -141,7 +197,6 @@ class searchActions extends sfActions
        $nb_axtar_results=$nb_axtar_results[0];
        //$nb_axtar_results=$xml->result[0]->attributes()->numFound;
        //get suggestions
-       //$this->spellcheck=$xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']/*");	
        $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");	
     }
        
@@ -153,6 +208,7 @@ class searchActions extends sfActions
     if($this->page<=($pages_in_axtar+$additional_number))
     {
       $this->results=$this->axtar_xml->xpath("//result");
+      $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
       $this->axtar_feed=1;
     }
     if($this->page>$pages_in_axtar)
@@ -242,6 +298,7 @@ class searchActions extends sfActions
     $this->query=trim($this->query);
     //$this->query=str_replace(' ','+',$this->query);
     $nb_axtar_results=0;
+    $this->axtar_feed=0;
     $solr_query = new SolrQuery;
     $data = $solr_query->runQuery($this->query, $start,$this->site);
     if($data)
@@ -250,7 +307,7 @@ class searchActions extends sfActions
        $nb_axtar_results=$xml->result[0]->attributes()->numFound;
        //get suggestions
        //$this->spellcheck=$xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']/*");	
-       $this->spellcheck=$xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");	
+       //$this->spellcheck=$xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");	
     }
        
     $pages_in_axtar=floor($nb_axtar_results/10);
@@ -273,7 +330,6 @@ class searchActions extends sfActions
             if($name=='id')
             {
               $xmlarray["content"] =$xml->xpath("//lst[@name='highlighting']/lst[@name='$value']/arr[@name='content']/*");
-              //$xmlarray["$name"] = "$value";
             }
             if($name=='content')
             { 

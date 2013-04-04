@@ -32,9 +32,7 @@
 <?php include_partial('search_small')?>
 <div id="left_col">&nbsp;</div>
 <div id="results">
-  <?php if(!empty($spellcheck)):?>  
-    <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
-  <?php endif;?>
+ <?php if($axtar_feed):?>
     <?php foreach($results as $result): ?>
       <h3><a href="<?php echo $result['url'];?>" target="_blank"><?php if(empty($result['title'])){echo $result['url'];}else{echo truncate_text($result['title'],60);}?></a></h3> 
       <div class="abstract"><?php echo $result['content'][0];?></div>
@@ -45,7 +43,8 @@
       <?php echo pager_navigation($feed_pager, '@search_site?query='.$query.'&site='.$site ) ?>
     </div>
   </div>
-</div>
+ <?php endif;?>
+  </div>
 <div class="sponsor_ads">
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
   <h3><a href="http://hemsinif.com" target="_blank">hemsinif.com</a></h3>

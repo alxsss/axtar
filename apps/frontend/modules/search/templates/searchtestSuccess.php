@@ -44,6 +44,7 @@
       <?php $title=$str[2];?>
       <?php $url=$str[3];?>
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
+      <?php //$title=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if($title==''){echo $url;}else{echo truncate_text($title,60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
@@ -54,26 +55,28 @@
   <?php endif;?>
 
   <?php if($axtar_feed):?>
+    <?php print_r($results);?>
     <?php foreach($results as $result): ?>
-      <?php $numfound= $result->attributes()->numFound;?>
-      <?php $str=$result->doc->str;?>
+      <?php $site= $result->str;?>
+      <?php $numfound= $result->result->attributes()->numFound;?>
+      <?php $str=$result->result->doc->str;?>
       <?php //print_r($str->attributes()->name);?>
       <?php //$id=$str->xpath("//str[@name='id']"); echo 'id='.$id[0];?>
       <?php //$url=$str->xpath("//str[@name='url']"); echo 'url='.$url[0];?>
-<?php foreach($str as $s){
-if($s->attributes()=='id')
-{ 
-  $id=$s;
-  echo 'id='.$id[0];
+      <?php foreach($str as $s){
+           if($s->attributes()=='id')
+           { 
+             $id=$s;
+             echo 'id='.$id[0];
 }
-else if($s->attributes()=='id')
+else if($s->attributes()=='site')
 {
   $site=$s;
   echo 'site='.$site[0];
 }
 if($s->attributes()=='title')
 {
-  $title=$title;
+  $title=$s;
   echo 'title='.$title[0];
 }
 if($s->attributes()=='url')
@@ -82,17 +85,15 @@ if($s->attributes()=='url')
   echo 'url='.$url[0];
 }
 
-//foreach($s->attributes() as $key=>$value)
-  //     echo $key.'='.$value;
 echo $s->attributes();
 
 }?>																					
-      <?php $id=$str[0];?>
-      <?php $site=$str[1];?>
-      <?php $title=$str[2];?>
-      <?php $url=$str[3];?>
+      <?php //$id=$str[0];?>
+      <?php //$title=$str[1];?>
+      <?php //$url=$str[2];?>
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if($title==''){echo $url;}else{echo truncate_text($title,60);}?></a></h3>
+      <?php $title=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if($title[0]==''){echo $url;}else{echo truncate_text($title[0],60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
@@ -120,9 +121,3 @@ echo $s->attributes();
   </div>
   <?php // endif;?>
 </div>
-<div class="sponsor_ads">
- <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
-  <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
-  Sinif yoldaşlarını, dostalrı tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
-</div>
-<?php //include_partial('search')?>

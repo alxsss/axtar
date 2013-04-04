@@ -37,31 +37,27 @@
   <?php endif;?>
   <?php if($axtar_site_feed):?>
     <?php foreach($site_results as $result): ?>
-      <?php //$numfound= $result->attributes()->numFound;?>
-      <?php $str=$result->doc->str;?>
-      <?php $title='';?>
-      <?php foreach($str as $s)
-            {
-               if($s->attributes()=='id')
-               {
-                  $id=$s;
-               }
-               else if($s->attributes()=='site')
-               {
-                 $site=$s;
-               }
-               if($s->attributes()=='title')
-               {
-                 $title=$s;
-               }
-               if($s->attributes()=='url')
-               {
-                 $url=$s;
-               }
-            }
-     ?>
-      <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if($title==''){echo $url;}else{echo truncate_text($title,60);}?></a></h3>
+      <?php $site= $result->str;?>
+      <?php $str=$result->result->doc->str;?>
+      <?php foreach($str as $s){
+           if($s->attributes()=='id')
+           {
+             $id=$s;
+           }
+           if($s->attributes()=='url')
+           {
+             $url=$s;
+           }
+           if($s->attributes()=='title')
+           {
+             $title=$s;
+           }
+  
+      }?>  
+      
+      <?php $content=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
+      <?php //$title=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{echo truncate_text($title,60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
@@ -69,32 +65,29 @@
       </div>
     <?php endforeach; ?>
   <?php endif;?>
-
   <?php if($axtar_feed):?>
     <?php foreach($results as $result): ?>
-      <?php $numfound= $result->attributes()->numFound;?>
-      <?php $str=$result->doc->str;?>
-      <?php $title='';?>
-<?php foreach($str as $s){                                                                                                                                                       if($s->attributes()=='id')
-{
-  $id=$s;
-}
-else if($s->attributes()=='site')
-{
-  $site=$s;
-}
-if($s->attributes()=='title')
-{
-  $title=$s;
-}
-if($s->attributes()=='url')
-{
-  $url=$s;
-}
-}
-?>
+      <?php $site= $result->str;?>
+      <?php $numfound= $result->result->attributes()->numFound;?>
+      <?php $str=$result->result->doc->str;?>
+      <?php foreach($str as $s){
+            if($s->attributes()=='id')
+           {
+             $id=$s;
+           }
+           if($s->attributes()=='title')
+           {
+             $title=$s;
+           }
+           if($s->attributes()=='url')
+           {
+             $url=$s;
+           }
+      }?>  
+      
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if($title==''){echo $url;}else{echo truncate_text($title,60);}?></a></h3>
+      <?php //$title=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text($title,60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
@@ -105,6 +98,8 @@ if($s->attributes()=='url')
       </div>
     <?php endforeach; ?>
   <?php endif;?>
+
+  
   <?php //if($feed_feed&&empty($spellcheck)):?>
   <?php if($feed_feed):?>
     <?php foreach($xml->web->results->result as $result):?>
