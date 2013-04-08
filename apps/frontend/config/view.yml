@@ -8,6 +8,6 @@ default:
     language:     en
     robots:       index, follow
   stylesheets:    [main.css]
-  javascripts:    [jquery.js, jquery.axtar.js]
+  javascripts:    [jquery.js, jquery.axtar.js?v=1]
   has_layout:     on
   layout:         layout

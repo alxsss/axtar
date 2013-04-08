@@ -14,3 +14,4 @@ all:
         image: /images/flag/ru.png   # optional if you wanna change the flag
   pager:
     search_max: 10
+    image_search_max:  35

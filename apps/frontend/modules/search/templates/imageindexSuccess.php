@@ -1,6 +1,6 @@
 <div class="search_main_page">
 <div class="logo">
-  <img src="/images/logo.png" alt="axtar" title="axtar">
+  <img src="/images/logo_pic.png" alt="axtar" title="axtar">
 </div>
   <div class="search">
     <div class="help"></div>

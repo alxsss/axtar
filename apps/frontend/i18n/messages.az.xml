@@ -179,10 +179,14 @@
         <source>Faq</source>
         <target>Ttss</target>
       </trans-unit>   
-   <trans-unit id="43">
+      <trans-unit id="43">
         <source>Keyboard</source>
         <target>Klaviatura</target>
-   </trans-unit>		
+      </trans-unit>
+      <trans-unit id="44">
+        <source>Image</source>
+        <target>Şəkil</target>
+      </trans-unit>   
     </body>
   </file>
 </xliff>

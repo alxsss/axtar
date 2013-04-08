@@ -1,6 +1,7 @@
 <div id="main-header">
  	<ul id="navlinks">
 	<li><?php echo link_to(__('Home'), '@homepage') ?></li>
+	 <li><?php echo link_to(__('Image'), '@image_search?query='.$sf_request->getParameter('query')) ?></li>
 	 <li><?php echo link_to(__('About'), '@about') ?></li>
 	 <li><?php echo link_to(__('Map'), '@map') ?></li>
 	 <!--li class="first"><?php //echo link_to(__('Advertise'), '/advertise/') ?></li-->

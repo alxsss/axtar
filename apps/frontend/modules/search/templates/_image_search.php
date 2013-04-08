@@ -1,5 +1,5 @@
   <div class="logo_small">
-    <img src="/images/logo_small.png" alt="axtar" title="axtar">
+    <img src="/images/logo_pic_small.png" alt="axtar" title="axtar">
  </div>
 <div class="search_small">
  <div class="help"></div>

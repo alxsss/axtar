@@ -101,10 +101,11 @@ class searchActions extends sfActions
   {
     if (!$this->query = trim($request->getParameter('query')))
     {
-      return $this->redirect('search/index');	  
+      return $this->redirect('search/imageindex');	  
     }
+    $limit=sfConfig::get('app_pager_image_search_max');
     $this->page =$request->getParameter('page', 1);
-    $start=10*($this->page-1);
+    $start=$limit*($this->page-1);
     $this->query=trim($this->query);
     $query_db=$this->query;
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
@@ -113,11 +114,11 @@ class searchActions extends sfActions
     $nbResults=0;
     //declare boolean variables for each feed
     $axtar_feed=0;
-    $solr_query = new SolrQueryTest;
+    $solr_query = new SolrQuery;
     $data = $solr_query->runQuery($this->query, $start,'image');
     if($data)
     {
-      $axtar_feed=1;
+       $axtar_feed=1;
        $this->axtar_xml = simplexml_load_string($data);
        $nb_axtar_result=$this->axtar_xml->xpath("//result");
        $nb_axtar_results=$nb_axtar_result[0]->attributes()->numFound; 
@@ -126,7 +127,7 @@ class searchActions extends sfActions
        $this->results=$this->axtar_xml->xpath("//doc");
     }
     //get pagination
-    $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('image_search_max'), $nb_axtar_results);
+    $this->feed_pager = new sfFeedPager('Feed', $limit, $nb_axtar_results);
     $this->feed_pager->setPage($this->page);
     $this->feed_pager->init();
     //set title
@@ -134,7 +135,7 @@ class searchActions extends sfActions
     //save search keyword
     /*if($this->page==1)
     {
-      $search=new Search();
+      $search=new ImageSearch();
       $search->setQuery($query_db);
       $search->setRawIp($_SERVER['REMOTE_ADDR']);
       $search->save();	
