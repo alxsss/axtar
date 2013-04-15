@@ -133,13 +133,13 @@ class searchActions extends sfActions
     //set title
     $this->getResponse()->setTitle($this->query.' -image-axtar.az');
     //save search keyword
-    /*if($this->page==1)
+    if($this->page==1)
     {
-      $search=new ImageSearch();
+      $search=new Search();
       $search->setQuery($query_db);
       $search->setRawIp($_SERVER['REMOTE_ADDR']);
       $search->save();	
-    }*/
+    }
   }
   public function executeAutosuggest(sfWebRequest $request)
   {

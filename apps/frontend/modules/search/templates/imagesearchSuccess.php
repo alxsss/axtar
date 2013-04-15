@@ -42,7 +42,6 @@
   <?php $cnt=0;?>
   <div class="image_line">
     <?php foreach($results as $result): ?>
-      <?php $cnt++;?>
       <?php $str=$result->str;?>
         <?php foreach($str as $s){ 
           if($s->attributes()=='id')
@@ -62,7 +61,8 @@
             $image_id=$s;
           }
         }
-      /* if (file_exists('/uploads/assets/image_data/'.$image_id.'_tbn.jpg')) 
+       /*
+       if(file_exists('/uploads/assets/image_data/'.$image_id.'_tbn.jpg')) 
        {
          $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
        } 
@@ -71,7 +71,26 @@
          $src=$id;
        }*/
         $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
+        $found=false;
+        $arr=array('png', 'jpg', 'gif','jpeg','peg','bmp','tiff');
+        foreach($arr as $a)
+        {
+          if (stripos($id,$a)!== false)
+          {
+            $found=true;
+            break;
+          }
+        }
+        if(!$found)
+        {
+            //open file and put solr delete statements
+            $file=fopen('/home/www/axtar/web/solr_delte.txt','a');
+            fwrite($file, '<delete><id>'.$id.'</id></delete>'."\n");
+            fclose($file);
+            continue;           
+        }
         ?>
+      <?php $cnt++;?>
       <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="<?php echo $src ?>" title="<?php echo  $parent_url ?>" /></a></div>
       <?php if($cnt==7){echo '</div><div class="image_line">';$cnt=0;}?>
     <?php endforeach; ?>
