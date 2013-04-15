@@ -183,9 +183,13 @@
         <target>Клавиатура</target>
       </trans-unit>      
       <trans-unit id="44">
-        <source>Image</source>
-        <target>Картинки</target>
-      </trans-unit>   	  
+        <source>image</source>
+        <target>картинки</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>web</source>
+        <target>веб</target>
+      </trans-unit>    	  
     </body>
   </file>
 </xliff>

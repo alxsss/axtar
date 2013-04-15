@@ -184,9 +184,13 @@
         <target>Klaviatura</target>
       </trans-unit>
       <trans-unit id="44">
-        <source>Image</source>
-        <target>Şəkil</target>
-      </trans-unit>   
+        <source>image</source>
+        <target>şəkil</target>
+      </trans-unit> 
+      <trans-unit id="44">
+        <source>web</source>
+        <target>veb</target>
+      </trans-unit> 	  
     </body>
   </file>
 </xliff>

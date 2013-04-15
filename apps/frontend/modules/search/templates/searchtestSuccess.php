@@ -29,7 +29,7 @@
   return $navigation;
 }
 ?>
-<?php include_partial('search_small')?>
+<?php include_partial('search_test')?>
 <div id="left_col">&nbsp;</div>
 <div id="results">
   <?php if(!empty($spellcheck)):?>  

@@ -1,6 +1,11 @@
   <div class="logo_small">
     <img src="/images/logo_pic_small.png" alt="axtar" title="axtar">
  </div>
+ <div id="veb_image_links_small">
+  <a id="image" href="<?php echo url_for('@search_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('web')?></a>
+  <a id="veb" href="<?php echo url_for('@image_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('image')?></a>
+</div>
+
 <div class="search_small">
  <div class="help"></div>
 <form action="<?php echo url_for('@image_search') ?>" method="post">
