@@ -28,11 +28,10 @@
   return $navigation;
 }
 ?>
-
-<?php include_partial('search_small')?>
-<div id="left_col">&nbsp;</div>
-<div id="results">
- <?php if($axtar_feed):?>
+<div id="search_results">
+  <?php include_partial('search_small')?>
+  <div id="results">
+    <?php if($axtar_feed):?>
     <?php foreach($results as $result): ?>
       <h3><a href="<?php echo $result['url'];?>" target="_blank"><?php if(empty($result['title'])){echo $result['url'];}else{echo truncate_text($result['title'],60);}?></a></h3> 
       <div class="abstract"><?php echo $result['content'][0];?></div>
@@ -44,11 +43,12 @@
     </div>
   </div>
  <?php endif;?>
-  </div>
+ </div>
 <div class="sponsor_ads">
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
   <h3><a href="http://hemsinif.com" target="_blank">hemsinif.com</a></h3>
   Sinif yoldaşlarını, dostalrı tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
 </div>
-<?php //include_partial('search')?>
+
+</div>
 

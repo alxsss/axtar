@@ -29,17 +29,17 @@
   return $navigation;
 }
 ?>
-<?php include_partial('search_small')?>
-<div id="left_col">&nbsp;</div>
-<div id="results">
-  <?php if(!empty($spellcheck)):?>  
-    <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
-  <?php endif;?>
-  <?php if($axtar_site_feed):?>
-    <?php foreach($site_results as $result): ?>
-      <?php $site= $result->str;?>
-      <?php $str=$result->result->doc->str;?>
-      <?php foreach($str as $s){
+<div id="search_results">
+  <?php include_partial('search_small')?>
+  <div id="results">
+    <?php if(!empty($spellcheck)):?>  
+      <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
+    <?php endif;?>
+    <?php if($axtar_site_feed):?>
+      <?php foreach($site_results as $result): ?>
+        <?php $site= $result->str;?>
+        <?php $str=$result->result->doc->str;?>
+        <?php foreach($str as $s){
            if($s->attributes()=='id')
            {
              $id=$s;
@@ -61,8 +61,7 @@
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
-      <div class="url"><?php echo truncate_text($url,60);?>
-      </div>
+      <div class="url"><?php echo truncate_text($url,60);?></div>
     <?php endforeach; ?>
   <?php endif;?>
   <?php if($axtar_feed):?>
@@ -86,7 +85,6 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <?php //$title=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text($title,60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
@@ -128,4 +126,5 @@
   Dedicated Server Hosting Starting $29.95
  </div>
 </div>
-<?php //include_partial('search')?>
+
+</div>
