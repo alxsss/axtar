@@ -29,8 +29,9 @@
   return $navigation;
 }
 ?>
+<div id="search_results">
+
 <?php include_partial('image_search')?>
-<div id="left_col">&nbsp;</div>
 <div id="image_results">
   <?php if(!empty($spellcheck)):?>  
     <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
@@ -106,4 +107,5 @@
   <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
   Sinif yoldaşlarını, dostları tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
 </div>
-<?php //include_partial('search')?>
+
+</div>
