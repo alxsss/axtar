@@ -11,6 +11,9 @@ map:
 submiturl:
   url:  /:sf_culture/submiturl
   param: {module: submiturl, action: index }
+collaboration:
+  url:  /:sf_culture/collaboration
+  param: {module: content, action:collaboration }
 contact:
   url:   /:sf_culture/contact
   param: {module: contact, action: create }

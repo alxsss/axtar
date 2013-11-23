@@ -5,3 +5,4 @@ data/
 test/
 web/uploads/
 web/sf*
+web/missing_thumb.txt

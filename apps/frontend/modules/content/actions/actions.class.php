@@ -10,6 +10,15 @@
  */
 class contentActions extends sfActions
 {
+  public function executeCollaboration()
+  {
+    $file = sfConfig::get('sf_data_dir').'/content/collaboration_'.$this->getUser()->getCulture().'.txt';
+    if (!is_readable($file))
+    {
+      $file = sfConfig::get('sf_data_dir').'/content/collaboration_en.txt';
+    }
+    $this->html = file_get_contents($file);
+  }
   public function executeInvestor()
   {
     $file = sfConfig::get('sf_data_dir').'/content/investor_'.$this->getUser()->getCulture().'.txt';

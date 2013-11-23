@@ -190,7 +190,11 @@
       <trans-unit id="44">
         <source>web</source>
         <target>veb</target>
-      </trans-unit> 	  
+      </trans-unit>
+       <trans-unit id="45">
+        <source>Collaboration</source>
+        <target>Əməkdaşlıq</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

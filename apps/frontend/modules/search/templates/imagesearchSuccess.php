@@ -41,6 +41,10 @@
       <?php $mage_id='';?>
       <?php $site='';?>
   <?php $cnt=0;?>
+  <?php  
+      $update_cnt=0;
+      $thumbfile_cnt=0
+  ?>
   <div class="image_line">
     <?php foreach($results as $result): ?>
       <?php $str=$result->str;?>
@@ -62,32 +66,49 @@
             $image_id=$s;
           }
         }
-       /*
-       if(file_exists('/uploads/assets/image_data/'.$image_id.'_tbn.jpg')) 
+      //replace with image url if thumbnail is missing 
+       //$style='';
+       if(!file_exists('/home/www/axtar/web/uploads/assets/image_data/'.$image_id.'_tbn.jpg')) 
        {
-         $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
-       } 
-       else
-       {
-         $src=$id;
-       }*/
+         //$style='style="max-height: 100px; max-width: 100px"';
+         //$src=$id;
+         if(!$thumbfile_cnt){
+           $thumbfile=fopen('/home/www/axtar/web/missing_thumb.txt','a');
+           $thumbfile_cnt=1;
+         }
+         fwrite($thumbfile, $id."\n");
+
+       }
         $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
-        $found=false;
-        $arr=array('png', 'jpg', 'gif','jpeg','peg','bmp','tiff');
+        //$found=false;
+        $found=true;
+        //$arr=array('png', 'jpg', 'gif','jpeg','peg','bmp','tiff');
+        /*
         foreach($arr as $a)
         {
-          if (stripos($id,$a)!== false)
+          if (stripos($id,$a)== false)
           {
             $found=true;
             break;
           }
         }
+        */
+        $a='.html';
+        if (stripos($id,$a)== true)
+        {
+            $found=true;
+            break;
+        }
+
         if(!$found)
         {
-            //open file and put solr delete statements
-            $file=fopen('/home/www/axtar/web/solr_delte.txt','a');
-            fwrite($file, '<delete><id>'.$id.'</id></delete>'."\n");
-            fclose($file);
+            if(!$update_cnt){
+              $file=fopen('/home/www/axtar/web/solr_delete.txt','a');
+              fwrite($file, '<update>'."\n");
+              $update_cnt=1;
+            }
+            fwrite($file, '<delete><id>'.htmlentities($id).'</id></delete>'."\n");
+            //do not increase cnt
             continue;           
         }
         ?>
@@ -95,6 +116,20 @@
       <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="<?php echo $src ?>" title="<?php echo  $parent_url ?>" /></a></div>
       <?php if($cnt==7){echo '</div><div class="image_line">';$cnt=0;}?>
     <?php endforeach; ?>
+    <?php 
+         if($update_cnt)
+         {
+           fwrite($file, '</update>'."\n");
+           fclose($file);
+           //exec("/usr/bin/curl -H 'Content-Type: text/xml' http://serverslave:8983/solr/image/update?commit=true --data @/home/www/axtar/web/solr_delete.txt"); 
+           unlink("/home/www/axtar/web/solr_delete.txt");
+          } 
+          if($thumbfile_cnt)
+          {
+            fclose($file);
+            //exec("cd /home/kingson");
+          }
+?>
   </div>
   <div class="pagination">
     <div id="photos_pager">

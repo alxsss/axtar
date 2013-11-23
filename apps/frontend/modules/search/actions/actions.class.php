@@ -168,7 +168,7 @@ class searchActions extends sfActions
     $this->query=trim($this->query);
     $query_db=$this->query;
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
-    $this->query=str_replace($search, '',$this->query);
+    //$this->query=str_replace($search, '',$this->query);
     //$this->query=str_replace(' ','+',$this->query);
     $nb_axtar_results=0;
     $nbResults=0;
