@@ -57,7 +57,7 @@
       
       <?php $content=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
       <?php //$title=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{echo truncate_text($title,60);}?></a></h3>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
@@ -85,7 +85,7 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text($title,60);}?></a></h3>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
