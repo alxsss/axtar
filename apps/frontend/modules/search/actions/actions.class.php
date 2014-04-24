@@ -88,6 +88,8 @@ class searchActions extends sfActions
     $query_db=$this->query;
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
     $this->query=str_replace($search, '',strtolower($this->query));
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
 
     $solr_query = new SolrQuery;
     //send additional request for phrase words to display websites with words in url first
@@ -110,6 +112,8 @@ class searchActions extends sfActions
     $query_db=$this->query;
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
     $this->query=str_replace($search, '',strtolower($this->query));
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
     $nb_axtar_results=0;
     $nbResults=0;
     //declare boolean variables for each feed
@@ -170,6 +174,8 @@ class searchActions extends sfActions
     $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
     //$this->query=str_replace($search, '',$this->query);
     //$this->query=str_replace(' ','+',$this->query);
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
     $nb_axtar_results=0;
     $nbResults=0;
     //declare boolean variables for each feed
@@ -298,6 +304,8 @@ class searchActions extends sfActions
     $start=10*($this->page-1);
     $this->query=trim($this->query);
     //$this->query=str_replace(' ','+',$this->query);
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
     $nb_axtar_results=0;
     $this->axtar_feed=0;
     $solr_query = new SolrQuery;
