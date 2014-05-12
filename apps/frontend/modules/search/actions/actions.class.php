@@ -99,6 +99,47 @@ class searchActions extends sfActions
   public function executeImageindex(sfWebRequest $request)
   {
   }
+  public function executeTestimageindex(sfWebRequest $request)
+  {
+  }
+  public function executeTestimagesearch(sfWebRequest $request)
+  {
+    if (!$this->query = trim($request->getParameter('query')))
+    {
+      return $this->redirect('search/testimageindex');	  
+    }
+    $limit=sfConfig::get('app_pager_image_search_max');
+    $this->page =$request->getParameter('page', 1);
+    $start=$limit*($this->page-1);
+    $this->query=trim($this->query);
+    $query_db=$this->query;
+    $search  = array('.com', '.net', '.az', '.info', '.ru','.tk','.ws');
+    $this->query=str_replace($search, '',strtolower($this->query));
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
+    $nb_axtar_results=0;
+    $nbResults=0;
+    //declare boolean variables for each feed
+    $axtar_feed=0;
+    $solr_query = new SolrQueryTest;
+    $data = $solr_query->runQuery($this->query, $start,'image');
+    if($data)
+    {
+       $axtar_feed=1;
+       $this->axtar_xml = simplexml_load_string($data);
+       $nb_axtar_result=$this->axtar_xml->xpath("//result");
+       $nb_axtar_results=$nb_axtar_result[0]->attributes()->numFound; 
+       //get suggestions
+       $pages_in_axtar=floor($nb_axtar_results/10);
+       $this->results=$this->axtar_xml->xpath("//doc");
+    }
+    //get pagination
+    $this->feed_pager = new sfFeedPager('Feed', $limit, $nb_axtar_results);
+    $this->feed_pager->setPage($this->page);
+    $this->feed_pager->init();
+    //set title
+    $this->getResponse()->setTitle($this->query.' -image-axtar.az');
+  }
   public function executeImagesearch(sfWebRequest $request)
   {
     if (!$this->query = trim($request->getParameter('query')))

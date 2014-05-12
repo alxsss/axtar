@@ -51,6 +51,12 @@ search_site:
 image_search:
   url:  /:sf_culture/imageaxtar
   param: { module:  search, action: imagesearch }
+test_image_search:
+  url:  /:sf_culture/testimageaxtar
+  param: { module:  search, action: testimagesearch }
+test_image_index:
+  url:  /:sf_culture/testimage
+  param: { module:  search, action: testimageindex }
 image_index:
   url:  /:sf_culture/image
   param: { module:  search, action: imageindex }
