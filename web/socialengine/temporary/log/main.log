@@ -1,0 +1,14 @@
+2012-09-26T20:53:51+00:00 CRIT (2): 
+Error Code: f28fe6
+exception 'Zend_Http_Client_Adapter_Exception' with message 'Unable to Connect to tcp://aaaa:80. Error #0: php_network_getaddresses: getaddrinfo failed: Name or service not known' in /var/www/axtar/web/socialengine/application/libraries/Zend/Http/Client/Adapter/Socket.php:213
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Http/Client.php(875): Zend_Http_Client_Adapter_Socket->connect('aaaa', 80, false)
+#1 /var/www/axtar/web/socialengine/application/modules/Core/controllers/LinkController.php(171): Zend_Http_Client->request()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Action.php(513): Core_LinkController->previewAction()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('previewAction')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Front.php(946): Zend_Controller_Dispatcher_Standard->dispatch(Object(Zend_Controller_Request_Http), Object(Zend_Controller_Response_Http))
+#5 /var/www/axtar/web/socialengine/application/modules/Core/Bootstrap.php(75): Zend_Controller_Front->dispatch()
+#6 /var/www/axtar/web/socialengine/application/libraries/Engine/Application.php(160): Core_Bootstrap->run()
+#7 /var/www/axtar/web/socialengine/application/index.php(194): Engine_Application->run()
+#8 /var/www/axtar/web/socialengine/index.php(24): include('/var/www/axtar/...')
+#9 {main}

@@ -1,0 +1,102 @@
+2012-09-19T22:23:29+00:00 NOTICE (5): [8] Undefined index: statistics (/var/www/axtar/web/socialengine/install/controllers/InstallController.php) [759]
+Error Code: 187649
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Action.php(513): InstallController->dbCreateAction()
+#1 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('dbCreateAction')
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Front.php(946): Zend_Controller_Dispatcher_Standard->dispatch(Zend_Controller_Request_Http, Zend_Controller_Response_Http)
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/Bootstrap.php(77): Zend_Controller_Front->dispatch()
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(358): Zend_Application_Bootstrap_Bootstrap->run()
+#5 /var/www/axtar/web/socialengine/install/index.php(87): Zend_Application->run()
+#6 {main}
+
+2012-09-21T18:44:38+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:44:39+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:44:39+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:44:48+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:51:13+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:51:13+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T18:51:13+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T19:05:08+00:00 WARN (4): exception 'Zend_Db_Adapter_Mysqli_Exception' with message 'Access denied for user 'axtar'@'localhost' (using password: YES)' in /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php:352
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Db/Adapter/Mysqli.php(566): Zend_Db_Adapter_Mysqli->_connect()
+#1 /var/www/axtar/web/socialengine/install/Bootstrap.php(324): Zend_Db_Adapter_Mysqli->getServerVersion()
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(662): Install_Bootstrap->_initDb()
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(615): Zend_Application_Bootstrap_BootstrapAbstract->_executeResource('db')
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/BootstrapAbstract.php(579): Zend_Application_Bootstrap_BootstrapAbstract->_bootstrap(NULL)
+#5 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(347): Zend_Application_Bootstrap_BootstrapAbstract->bootstrap(NULL)
+#6 /var/www/axtar/web/socialengine/install/index.php(86): Zend_Application->bootstrap()
+#7 {main}
+2012-09-21T19:19:14+00:00 NOTICE (5): [8] Undefined index: statistics (/var/www/axtar/web/socialengine/install/controllers/InstallController.php) [759]
+Error Code: 659d73
+Stack trace:
+#0 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Action.php(513): InstallController->dbCreateAction()
+#1 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Dispatcher/Standard.php(289): Zend_Controller_Action->dispatch('dbCreateAction')
+#2 /var/www/axtar/web/socialengine/application/libraries/Zend/Controller/Front.php(946): Zend_Controller_Dispatcher_Standard->dispatch(Zend_Controller_Request_Http, Zend_Controller_Response_Http)
+#3 /var/www/axtar/web/socialengine/application/libraries/Zend/Application/Bootstrap/Bootstrap.php(77): Zend_Controller_Front->dispatch()
+#4 /var/www/axtar/web/socialengine/application/libraries/Zend/Application.php(358): Zend_Application_Bootstrap_Bootstrap->run()
+#5 /var/www/axtar/web/socialengine/install/index.php(87): Zend_Application->run()
+#6 {main}
+
