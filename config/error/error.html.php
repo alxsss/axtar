@@ -10,7 +10,7 @@
 <meta name="description" content="new search engine, yeni axatish muherriki" />
 <meta name="keywords" content="axtar, search, poisk" />
 <meta name="language" content="en" />
-<title>hemsinif</title>
+<title>axtar.az</title>
 
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $path ?>/css/layout.css" />
 

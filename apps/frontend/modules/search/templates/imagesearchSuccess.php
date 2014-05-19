@@ -48,9 +48,9 @@
   <div class="image_line">
     <?php foreach($results as $result): ?>
       <?php $str=$result->str;?>
-        <?php foreach($str as $s){ 
+        <?php foreach($str as $s){
           if($s->attributes()=='id')
-          { 
+          {
             $id=$s;
           }
           else if($s->attributes()=='site')
@@ -62,74 +62,19 @@
             $parent_url=$s;
           }
           else if($s->attributes()=='image_id')
-          {      
+          {
             $image_id=$s;
           }
-        }
-      //replace with image url if thumbnail is missing 
-       //$style='';
-       if(!file_exists('/home/www/axtar/web/uploads/assets/image_data/'.$image_id.'_tbn.jpg')) 
-       {
-         //$style='style="max-height: 100px; max-width: 100px"';
-         //$src=$id;
-         if(!$thumbfile_cnt){
-           $thumbfile=fopen('/home/www/axtar/web/missing_thumb.txt','a');
-           $thumbfile_cnt=1;
-         }
-         fwrite($thumbfile, $id."\n");
-
-       }
-        $src='/uploads/assets/image_data/'.$image_id.'_tbn.jpg';
-        //$found=false;
-        $found=true;
-        //$arr=array('png', 'jpg', 'gif','jpeg','peg','bmp','tiff');
-        /*
-        foreach($arr as $a)
-        {
-          if (stripos($id,$a)== false)
+          else if($s->attributes()=='thumbnail')
           {
-            $found=true;
-            break;
+            $thumbnail=$s;
           }
-        }
-        */
-        $a='.html';
-        if (stripos($id,$a)== true)
-        {
-            $found=true;
-            break;
-        }
-
-        if(!$found)
-        {
-            if(!$update_cnt){
-              $file=fopen('/home/www/axtar/web/solr_delete.txt','a');
-              fwrite($file, '<update>'."\n");
-              $update_cnt=1;
-            }
-            fwrite($file, '<delete><id>'.htmlentities($id).'</id></delete>'."\n");
-            //do not increase cnt
-            continue;           
         }
         ?>
       <?php $cnt++;?>
-      <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="<?php echo $src ?>" title="<?php echo  $parent_url ?>" /></a></div>
+      <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="data:image/jpeg;base64,<?php echo $thumbnail ?>" title="<?php echo  $parent_url ?>" /></a></div>
       <?php if($cnt==7){echo '</div><div class="image_line">';$cnt=0;}?>
     <?php endforeach; ?>
-    <?php 
-         if($update_cnt)
-         {
-           fwrite($file, '</update>'."\n");
-           fclose($file);
-           //exec("/usr/bin/curl -H 'Content-Type: text/xml' http://serverslave:8983/solr/image/update?commit=true --data @/home/www/axtar/web/solr_delete.txt"); 
-           unlink("/home/www/axtar/web/solr_delete.txt");
-          } 
-          if($thumbfile_cnt)
-          {
-            fclose($file);
-            //exec("cd /home/kingson");
-          }
-?>
   </div>
   <div class="pagination">
     <div id="photos_pager">
@@ -140,7 +85,7 @@
 <div class="sponsor_ads">
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
   <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
-  Sinif yoldaşlarını, dostları tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
+  Sinif yoldaÅarını, dostları tapmaq vÉonlarla ÉaqÉÉolmaq üçün sosial ÅbÉÉ
 </div>
 
 </div>

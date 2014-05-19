@@ -232,7 +232,7 @@ class sfProjectConfiguration
     $dirs = $this->getGeneratorTemplateDirs($class, $theme);
     foreach ($dirs as $dir)
     {
-      if (is_readable($dir.'/'.$path))
+      if (($dir.'/'.$path != '/') &&is_readable($dir.'/'.$path))
       {
         return $dir.'/'.$path;
       }

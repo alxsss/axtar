@@ -118,7 +118,7 @@ class SolrQuery {
       }
       else if($site=='image')//image handler here
       {
-        $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
+        $querystring = "/newimage/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
       }
       else 
       {
@@ -153,7 +153,7 @@ class SolrQuery {
 		
 		if (curl_errno($ch)) {
 			//$logger "setting results to false, error";
-		//	print curl_error($ch);
+			//print curl_error($ch);
 			$results=false;
 		} else {
 			curl_close($ch);
