@@ -31,3 +31,10 @@ propel:
     comment: {type:  LONGVARCHAR }
     payment:  {type:TINYINT, size: 4, default:0}
     created_at: {type: timestamp }
+  keyphrase:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    keyphrase:  {type:  VARCHAR, size: 256, required:  true}
+    count:  {  type: INTEGER  }
+    active:  {  type: BOOLEAN, default:0  }
+    created_at: {  type: TIMESTAMP  }

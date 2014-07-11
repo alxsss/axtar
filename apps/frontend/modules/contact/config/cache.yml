@@ -1,6 +1,6 @@
 create:
-  enabled:     on 
+  enabled:     true 
 update:
-  enabled:     on 
+  enabled:     true 
   with_layout: true   # Default value
   lifetime:    86400   # Default value

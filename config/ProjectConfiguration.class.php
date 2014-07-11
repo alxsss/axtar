@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__FILE__).'/../lib/symfony/autoload/sfCoreAutoload.class.php';
+//require_once dirname(__FILE__).'/../lib/symfony/autoload/sfCoreAutoload.class.php';
+require_once dirname(__FILE__).'/../lib/vendor/symfony/lib/autoload/sfCoreAutoload.class.php';
 sfCoreAutoload::register();
 
 class ProjectConfiguration extends sfProjectConfiguration
@@ -32,6 +33,7 @@ class ProjectConfiguration extends sfProjectConfiguration
         //$this->setWebDir($this->getRootDir().'/../www/axtar/web');
         $this->setWebDir($this->getRootDir().'/web');
     $this->enableAllPluginsExcept(array('sfDoctrinePlugin','sfCompat10Plugin'));
-   }
+     $this->enablePlugins('sfCalendarPlugin');
+  }
 }
 

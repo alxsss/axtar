@@ -1,3 +1,12 @@
+keyphrase:
+  class: sfPropelRouteCollection
+  options:
+    model:                Keyphrase
+    module:               keyphrase
+    prefix_path:          /keyphrase
+    column:               id
+    with_wildcard_routes: true
+
 sponsor:
   class: sfPropelRouteCollection
   options:

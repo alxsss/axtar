@@ -403,15 +403,6 @@ class searchActions extends sfActions
      $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
-
-    //save search keyword
-   /* if($this->page==1)
-    {
-      $search=new Search();
-      $search->setQuery($this->query);
-	  $search->setRawIp($_SERVER['REMOTE_ADDR']);
-      $search->save();	
-    }*/
   }
     
   public function executeTranslate(sfWebRequest $request)

@@ -8,12 +8,13 @@
   </head>
   <body>
      <?php if ($sf_user->isAuthenticated()): ?>
-	   <?php echo link_to('axtar','/')?>
+       <?php echo link_to('axtar','/')?>
        <?php echo link_to('search','search')?>
        <?php echo link_to('url','url')?>
-	   <?php echo link_to('advertise','advertise')?>
-	    <?php echo link_to('sponsor','sponsor')?>
-	 <?php endif ?> 
+       <?php echo link_to('advertise','advertise')?>
+       <?php echo link_to('sponsor','sponsor')?>
+       <?php echo link_to('keyphrase','keyphrase')?>
+     <?php endif ?> 
     <?php echo $sf_content ?>
   </body>
 </html>

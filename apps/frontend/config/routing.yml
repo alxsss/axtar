@@ -42,6 +42,12 @@ privacyp:
 contact:
   url:   /:sf_culture/contact
   param: { module: contact, action: create }
+xeber_index:
+  url:  /:sf_culture/xeber
+  param: { module:  xeber, action: index }
+xeber_search:
+  url:  /:sf_culture/xeberaxtar
+  param: { module:  xeber, action: search }
 search_search:
   url:  /:sf_culture/axtar
   param: { module:  search, action: search }

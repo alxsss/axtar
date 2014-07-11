@@ -195,6 +195,10 @@
         <source>Collaboration</source>
         <target>Əməkdaşlıq</target>
       </trans-unit>
+       <trans-unit id="46">
+        <source>news</source>
+        <target>xəbər</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

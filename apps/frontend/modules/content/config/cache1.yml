@@ -1,14 +1,14 @@
 about:
-  enabled:     on
+  enabled:     true
 copyright:
-  enabled:     on
+  enabled:     true
 ts:
-  enabled:     on
+  enabled:     true
 privacyp:
-  enabled:     on
+  enabled:     true
 contact:
-  enabled:     on
+  enabled:     true
 unavailable:
-  enabled:     on    
+  enabled:     true    
   with_layout: true   # Default value
   lifetime:    300   # Default value
