@@ -3,12 +3,13 @@
 /**
  * sfGuardGroupPermission form base class.
  *
+ * @method sfGuardGroupPermission getObject() Returns the current form's model object
+ *
  * @package    ##PROJECT_NAME##
  * @subpackage form
  * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
  */
-class BasesfGuardGroupPermissionForm extends BaseFormPropel
+abstract class BasesfGuardGroupPermissionForm extends BaseFormPropel
 {
   public function setup()
   {

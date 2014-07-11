@@ -3,29 +3,30 @@
 /**
  * sfGuardPermission form base class.
  *
+ * @method sfGuardPermission getObject() Returns the current form's model object
+ *
  * @package    ##PROJECT_NAME##
  * @subpackage form
  * @author     ##AUTHOR_NAME##
- * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
  */
-class BasesfGuardPermissionForm extends BaseFormPropel
+abstract class BasesfGuardPermissionForm extends BaseFormPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'                             => new sfWidgetFormInputHidden(),
-      'name'                           => new sfWidgetFormInput(),
+      'name'                           => new sfWidgetFormInputText(),
       'description'                    => new sfWidgetFormTextarea(),
-      'sf_guard_group_permission_list' => new sfWidgetFormPropelChoiceMany(array('model' => 'sfGuardGroup')),
-      'sf_guard_user_permission_list'  => new sfWidgetFormPropelChoiceMany(array('model' => 'sfGuardUser')),
+      'sf_guard_group_permission_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
+      'sf_guard_user_permission_list'  => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardUser')),
     ));
 
     $this->setValidators(array(
-      'id'                             => new sfValidatorPropelChoice(array('model' => 'sfGuardPermission', 'column' => 'id', 'required' => false)),
+      'id'                             => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
       'name'                           => new sfValidatorString(array('max_length' => 255)),
       'description'                    => new sfValidatorString(array('required' => false)),
-      'sf_guard_group_permission_list' => new sfValidatorPropelChoiceMany(array('model' => 'sfGuardGroup', 'required' => false)),
-      'sf_guard_user_permission_list'  => new sfValidatorPropelChoiceMany(array('model' => 'sfGuardUser', 'required' => false)),
+      'sf_guard_group_permission_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
+      'sf_guard_user_permission_list'  => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardUser', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -94,7 +95,7 @@ class BasesfGuardPermissionForm extends BaseFormPropel
       return;
     }
 
-    if (is_null($con))
+    if (null === $con)
     {
       $con = $this->getConnection();
     }
@@ -129,7 +130,7 @@ class BasesfGuardPermissionForm extends BaseFormPropel
       return;
     }
 
-    if (is_null($con))
+    if (null === $con)
     {
       $con = $this->getConnection();
     }
