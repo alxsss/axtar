@@ -110,19 +110,19 @@ class SolrQuery {
      */
       if($site=='axtar')
       {
-        $querystring = "/axtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml";
+        $querystring = "/newaxtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml";
       }
       else if($site=='site')
       {
-         $querystring = "/axtar/site?q=".trim(urlencode($query))."&start=".$start."&rows=2&indent=on&wt=xml";
+         $querystring = "/newaxtar/site?q=".trim(urlencode($query))."&start=".$start."&rows=2&indent=on&wt=xml";
       }
       else if($site=='image')//image handler here
       {
-        $querystring = "/newimage/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
+        $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
       }
       else 
       {
-         $querystring = "/axtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";
+         $querystring = "/newaxtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";
       }
 		//if (!$this->httppost) $selecturl = "/?$querystring";
 		if (!$this->httppost) $selecturl = "$querystring";

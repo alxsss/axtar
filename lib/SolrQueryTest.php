@@ -38,7 +38,7 @@ class SolrQueryTest {
       $url = "http://".SOLR_META_QUERY."/solr";
       if($site=='image')
       {
-        $querystring = "/image_test/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&wt=xml";
+        $querystring = "/image_test/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&wt=xml&fl=thumbnail,id,parent_url";
       }
       else if(!empty($site))
       {

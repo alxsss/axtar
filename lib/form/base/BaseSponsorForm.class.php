@@ -3,30 +3,31 @@
 /**
  * Sponsor form base class.
  *
+ * @method Sponsor getObject() Returns the current form's model object
+ *
  * @package    axtar
  * @subpackage form
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
  */
-class BaseSponsorForm extends BaseFormPropel
+abstract class BaseSponsorForm extends BaseFormPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id'          => new sfWidgetFormInputHidden(),
-      'url'         => new sfWidgetFormInput(),
+      'url'         => new sfWidgetFormInputText(),
       'description' => new sfWidgetFormTextarea(),
       'start'       => new sfWidgetFormDate(),
       'end'         => new sfWidgetFormDate(),
-      'email'       => new sfWidgetFormInput(),
-      'phone'       => new sfWidgetFormInput(),
+      'email'       => new sfWidgetFormInputText(),
+      'phone'       => new sfWidgetFormInputText(),
       'comment'     => new sfWidgetFormTextarea(),
-      'payment'     => new sfWidgetFormInput(),
+      'payment'     => new sfWidgetFormInputText(),
       'created_at'  => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorPropelChoice(array('model' => 'Sponsor', 'column' => 'id', 'required' => false)),
+      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->getId()), 'empty_value' => $this->getObject()->getId(), 'required' => false)),
       'url'         => new sfValidatorString(array('max_length' => 256)),
       'description' => new sfValidatorString(array('required' => false)),
       'start'       => new sfValidatorDate(),
@@ -34,7 +35,7 @@ class BaseSponsorForm extends BaseFormPropel
       'email'       => new sfValidatorString(array('max_length' => 100)),
       'phone'       => new sfValidatorString(array('max_length' => 15, 'required' => false)),
       'comment'     => new sfValidatorString(array('required' => false)),
-      'payment'     => new sfValidatorInteger(array('required' => false)),
+      'payment'     => new sfValidatorInteger(array('min' => -128, 'max' => 127, 'required' => false)),
       'created_at'  => new sfValidatorDateTime(array('required' => false)),
     ));
 
