@@ -101,7 +101,8 @@ class XeberQuery {
     }
    else
    {
-        $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&fl=id%20url%20title%20tstamp";
+        //$querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&fl=id%20url%20title%20tstamp";
+        $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp";
    } 
       //$querystring = "/axtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";
 		//if (!$this->httppost) $selecturl = "/?$querystring";

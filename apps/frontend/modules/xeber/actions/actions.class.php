@@ -57,7 +57,15 @@ class xeberActions extends sfActions
      //set title
      $this->getResponse()->setTitle('Butun xeberler -axtar.az');
 
-    $cal = new sfCalendarPlugin();
+     //get keyphrases
+     $c=new Criteria();
+     $c->add(KeyphrasePeer::ACTIVE, 1);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
+     $c->setLimit(20);
+     $this->acar_sozler=KeyphrasePeer::doSelect($c);
+
+/*    $cal = new sfCalendarPlugin();
 
     //Add events to calendar
     $cal->addEvent("2014-06-25","First Event");
@@ -74,7 +82,7 @@ class xeberActions extends sfActions
 
     //We pass on the calendar to the template
     $this->cal = $cal;
-
+*/
   }
 
  public function executeSearch(sfWebRequest $request)
@@ -116,6 +124,14 @@ class xeberActions extends sfActions
      $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
+  
+     //get keyphrases
+     $c=new Criteria();
+     $c->add(KeyphrasePeer::ACTIVE, 1);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
+     $c->setLimit(20);
+     $this->acar_sozler=KeyphrasePeer::doSelect($c);
   }
  public function executeSearchClst(sfWebRequest $request)
   {

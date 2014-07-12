@@ -32,9 +32,16 @@
 <div id="search_results">
   <?php include_partial('search_small')?>
   <div id="results">
+       <div id="acar_sozler">
+      <?php foreach($acar_sozler as $acar_soz):?>
+        <div class="acar_soz"> <?php echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
+      <?php endforeach;?>
+    </div>
 <!-- Generate the date picker input field -->
     <!-- The parameter represents the name & id of the input field generated -->
     <?php //echo $cal->RenderAjax("mydate")?>
+
+    <div id="xeber_results">
 
     <?php foreach($results->doc as $result): ?>
       <?php $str=$result->str;?>
@@ -60,32 +67,26 @@
       
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
-       <div class="abstract">
-<?php
+         <div class="abstract">
+           <?php
+              $hhmm=substr($azdate,strpos($azdate,':')-2,5);
+              $poshhmm=strpos($content[0],$hhmm);
 
-$hhmm=substr($azdate,strpos($azdate,':')-2,5);
-$poshhmm=strpos($content[0],$hhmm);
-
-//echo 'date='.$azdate;
-//echo 'hhmm='.$hhmm;
-//echo 'poshhmm='.$poshhmm;
-//echo '<br><br>';
- echo substr($content[0],$poshhmm+5, 200);?></div>
+              echo substr($content[0],$poshhmm+5, 200);?>
+         </div>
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,60);?> </div>
        <div class="xeberdatetime"><?php echo $azdate ?></div>
     <?php endforeach; ?>
-</div>
 
  <div class="pagination">
-    <div id="photos_pager">
-      <?php echo pager_navigation($feed_pager, 'xeberler/index?query=') ?>
-    </div>
-  </div>
+    <div id="photos_pager"> <?php echo pager_navigation($feed_pager, '@xeber_index?query=') ?> </div>
+ </div>
+
+</div><!-- xeber_results -->
+</div>
 
 <div class="sponsor_ads">
-
-
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
  <div class="reklam">
   <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
@@ -98,3 +99,6 @@ $poshhmm=strpos($content[0],$hhmm);
 </div>
 
 </div>
+
+
+

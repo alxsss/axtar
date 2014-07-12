@@ -32,6 +32,14 @@
 <div id="search_results">
   <?php include_partial('search_small')?>
   <div id="results">
+   <div id="acar_sozler">
+      <?php // foreach($acar_sozler as $acar_soz):?>
+        <div class="acar_soz"> <?php // echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
+      <?php // endforeach;?>
+    </div>
+   
+    <div id="xeber_results">
+
     <?php if(!empty($spellcheck)):?>  
       <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
     <?php endif;?>
@@ -114,7 +122,10 @@
     </div>
   </div>
   <?php // endif;?>
+
+ </div><!-- xeber_results -->
 </div>
+
 <div class="sponsor_ads">
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
  <div class="reklam">

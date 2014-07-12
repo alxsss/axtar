@@ -7,7 +7,7 @@ default:
     keywords:     search, axtar
     language:     en
     robots:       index, follow
-  stylesheets:    [main.css?v=5]
-  javascripts:    [jquery.js, jquery.axtar.js?v=5]
+  stylesheets:    [main.css?v=6]
+  javascripts:    [jquery.js, jquery.axtar.js?v=6]
   has_layout:     true
   layout:         layout

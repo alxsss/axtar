@@ -33,6 +33,16 @@
 
 <?php include_partial('image_search')?>
 <div id="image_results">
+ <div id="acar_sozler">
+      <div class="title_acar_sozler"><?php //echo __('Most frequent keywords');?> </div>
+      <?php //foreach($acar_sozler as $acar_soz):?>
+        <div class="acar_soz"> <?php //echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
+      <?php //endforeach;?>
+    </div>
+
+    <div id="xeber_results_image">
+
+
   <?php if(!empty($spellcheck)):?>  
     <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
   <?php endif;?>
@@ -81,7 +91,10 @@
       <?php echo pager_navigation($feed_pager, '@image_search?query='.$query) ?>
     </div>
   </div>
+
+</div><!--xeber_result-->
 </div>
+
 <div class="sponsor_ads">
  <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
   <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
