@@ -95,10 +95,6 @@
 </div><!--xeber_result-->
 </div>
 
-<div class="sponsor_ads">
- <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
-  <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
-  Sinif yoldaÅarını, dostları tapmaq vÉonlarla ÉaqÉÉolmaq üçün sosial ÅbÉÉ
-</div>
+ <?php include_partial('sponsor_ads')?>
 
 </div>

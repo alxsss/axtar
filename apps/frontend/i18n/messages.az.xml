@@ -199,6 +199,10 @@
         <source>news</source>
         <target>xəbər</target>
       </trans-unit>
+	   <trans-unit id="47">
+        <source>Most frequent keywords in news</source>
+        <target>Xəbərlərdə olan açar sözlər</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

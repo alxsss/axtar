@@ -1,0 +1,69 @@
+sfCalendarPlugin plugin
+==============
+
+The `sfCalendarPlugin` is a symfony plugin that provides a better date picker with enhanced features.
+
+- It manages all events added to it.
+- Displays how many events are in each day.
+- Can set a Past limit on the minimum day a user can pick.
+- Can set a Future limit on the maximum day a user can pick.
+- Ajax independed. Uses old school own ajax library.
+
+Installation
+------------
+
+  * Install the plugin
+
+        $ symfony plugin:install sfCalendarPlugin
+
+  * Enable one or more modules in your `settings.yml` (optional)
+    * For general use:  sfCalendarPlugin
+
+            [php]
+            all:
+              .settings:
+                enabled_modules:      [default, sfCalendarPlugin]
+
+  * Clear you cache
+
+        $ symfony cc
+
+
+Using in you application
+------------------------
+
+  * Initialise calendar in action:
+
+            [php]
+
+            $cal = new sfCalendarPlugin();
+            
+            //Add events to calendar
+            $cal->addEvent("2010-04-10","First Event");
+            $cal->addEvent("2010-04-25","Second Event");
+            ... and so on
+            
+            //Force user to select a date greater than 2010-01-01 (Optional)
+            $cal->setPastLimit("2010-01-01");
+            
+            //Force user to select a date smaller than 2011-01-01 (Optional)
+            $cal->setFutureLimit("2011-01-01");
+            
+            //We save the calendar class to session (To be used in ajax navigation of months and years)
+            $cal->save($this->getUser());
+            
+            //We pass on the calendar to the template
+            $this->cal = $cal;
+            
+  * Use calendar in template:
+
+            [php]
+
+            <!-- Generate the date picker input field -->
+            <!-- The parameter represents the name & id of the input field generated -->
+            <?=$cal->RenderAjax("mydate")?>
+            
+  * It generated a input field and a button. Once the button was clicked or the input field was clicked, the calendar will appear.
+  * A demo image can be found here
+  
+  ![Demo image](http://img32.imageshack.us/img32/9281/screencalendar.png "Demo image")

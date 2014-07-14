@@ -6,6 +6,7 @@
 </div>
  <div id="veb_image_links">
   <a id="image" href="<?php echo url_for('@search_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('web')?></a>
+  <a id="image" href="<?php echo url_for('@xeber_index')?>"><?php echo __('news')?></a>
   <a id="veb" href="<?php echo url_for('@image_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('image')?></a>
 </div>
 
@@ -16,5 +17,7 @@
       <input type="submit" value="axtar" id="search_button" />
     </form>
   </div>
+<?php include_component('xeber', 'acarsozlersearch')?>
+
   <?php // include_partial('search')?>
 </div>

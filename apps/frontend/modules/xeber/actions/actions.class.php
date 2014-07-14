@@ -57,14 +57,6 @@ class xeberActions extends sfActions
      //set title
      $this->getResponse()->setTitle('Butun xeberler -axtar.az');
 
-     //get keyphrases
-     $c=new Criteria();
-     $c->add(KeyphrasePeer::ACTIVE, 1);
-     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
-     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
-     $c->setLimit(20);
-     $this->acar_sozler=KeyphrasePeer::doSelect($c);
-
 /*    $cal = new sfCalendarPlugin();
 
     //Add events to calendar
@@ -91,7 +83,7 @@ class xeberActions extends sfActions
     {
       return $this->redirect('xeber/index');
     }
-    $rows=100;
+    $rows=20;
     $this->page =$request->getParameter('page', 1);
     $this->site=$request->getParameter('site');
     $start=$rows*($this->page-1);
@@ -101,7 +93,7 @@ class xeberActions extends sfActions
     $this->axtar_feed=0;
 //
     $axtar_query = new XeberQuery;
-    $data = $axtar_query->runQuery($this->query, $start, 2, 50);
+    $data = $axtar_query->runQuery($this->query, $start, 2, $rows);
     if($data)
     {
        $this->axtar_xml = simplexml_load_string($data);
@@ -124,14 +116,14 @@ class xeberActions extends sfActions
      $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
-  
-     //get keyphrases
-     $c=new Criteria();
-     $c->add(KeyphrasePeer::ACTIVE, 1);
-     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
-     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
-     $c->setLimit(20);
-     $this->acar_sozler=KeyphrasePeer::doSelect($c);
+      
+     if($this->page==1)
+     {
+       $search=new Search();
+       $search->setQuery($this->query);
+       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+       $search->save();
+     }
   }
  public function executeSearchClst(sfWebRequest $request)
   {

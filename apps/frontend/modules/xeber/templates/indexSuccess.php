@@ -32,17 +32,15 @@
 <div id="search_results">
   <?php include_partial('search_small')?>
   <div id="results">
-       <div id="acar_sozler">
-      <?php foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
-      <?php endforeach;?>
-    </div>
-<!-- Generate the date picker input field -->
+    <?php include_component('xeber', 'acarsozler')?>
+   
+    <!-- Generate the date picker input field -->
     <!-- The parameter represents the name & id of the input field generated -->
     <?php //echo $cal->RenderAjax("mydate")?>
 
     <div id="xeber_results">
 
+    <?php $azdate='';$imageurl='';?>
     <?php foreach($results->doc as $result): ?>
       <?php $str=$result->str;?>
       <?php $date=$result->date;?>
@@ -59,20 +57,29 @@
            {
              $url=$s;
            }
+           if($s->attributes()=='imageurl')
+           {
+             $imageurl=$s;
+           }
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
      
-       <?php $time = strtotime($date); $azdate= date("Y-m-d, H:i", $time); ?>
-      
+       <?php if(!empty($date)):?>
+          <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
+       <?php endif;?>
+     
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
          <div class="abstract">
+           <?php if(!empty($imageurl)):?>
+              <a href="<?php echo $url;?>" target="_blank"> <img src="<?php echo $imageurl;?>" width="75" class="imageurl"/> </a> 
+            <?php endif;?>
            <?php
               $hhmm=substr($azdate,strpos($azdate,':')-2,5);
               $poshhmm=strpos($content[0],$hhmm);
 
-              echo substr($content[0],$poshhmm+5, 200);?>
+              echo substr($content[0],$poshhmm+5, 250);?>
          </div>
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,60);?> </div>
@@ -86,18 +93,7 @@
 </div><!-- xeber_results -->
 </div>
 
-<div class="sponsor_ads">
- <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
- <div class="reklam">
-  <h3><a href="http://hemsinif.com" target="blank">hemsinif.com</a></h3>
-  Sinif yoldaşlarını, dostları tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
- </div>
- <div class="reklam">
-  <h3><a href="http://accounts.fortatrust.com/aff.php?aff=305" target="blank">Dedicated servers</a></h3>
-  Dedicated Server Hosting Starting $29.95
- </div>
-</div>
-
+ <?php include_partial('search/sponsor_ads')?>
 </div>
 
 

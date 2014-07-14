@@ -88,7 +88,7 @@ class XeberQuery {
       else if($koma==0)
       {
         //$querystring = "/xeber/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc";
-        $querystring = "/xeber/select/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&hl=true&hl.fl=content&f.content.hl.alternateField=content&hl.maxAlternateFieldLength=700&fl=id%20url%20title%20tstamp";
+        $querystring = "/xeber/select/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&hl=true&hl.fl=content&f.content.hl.alternateField=content&hl.maxAlternateFieldLength=700&fl=id%20url%20title%20tstamp%20imageurl";
 /*
 <str name="hl">true</str>
       <str name="hl.fl">content</str>
@@ -102,7 +102,7 @@ class XeberQuery {
    else
    {
         //$querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&fl=id%20url%20title%20tstamp";
-        $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp";
+        $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl";
    } 
       //$querystring = "/axtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";
 		//if (!$this->httppost) $selecturl = "/?$querystring";
