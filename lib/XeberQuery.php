@@ -99,9 +99,14 @@ class XeberQuery {
       <str name="hl.maxAlternateFieldLength">300</str>
 */  
     }
+   else if($koma==3)
+   {
+       $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl&group=true&group.field=site&group.ngroups=true";
+   } 
    else
    {
         //$querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&fl=id%20url%20title%20tstamp";
+        //$querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl&group=true&group.field=site";
         $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl";
    } 
       //$querystring = "/axtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";

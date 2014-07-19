@@ -10,6 +10,53 @@
  */
 class xeberActions extends sfActions
 {
+ public function executeSearchgr(sfWebRequest $request)
+  {
+    if (!$this->query = $request->getParameter('query'))
+    {
+      return $this->redirect('xeber/index');
+    }
+    $rows=20;
+    $this->page =$request->getParameter('page', 1);
+    $start=$rows*($this->page-1);
+    $this->query=trim($this->query);
+    $nb_axtar_results=0;
+    $axtar_query = new XeberQuery;
+    $data = $axtar_query->runQuery($this->query, $start, 3, $rows);
+
+    if($data)
+    {
+       $this->axtar_xml = simplexml_load_string($data);
+       $nb_axtar_results=$this->axtar_xml->xpath("//lst[@name='grouped']/lst[@name='site']/int[@name='ngroups']");
+       $nb_axtar_results=$nb_axtar_results[0];
+       //get suggestions
+       $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
+       $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");
+    }
+/*
+ $pages_in_axtar=floor($nb_axtar_results/$rows); 
+     //add this variable to show results that are less than 10
+    $residual=$nb_axtar_results%$rows;
+    $additional_number=0;
+    if($residual>0)$additional_number=1;
+    if($this->page<=($pages_in_axtar+$additional_number))
+    {
+      $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
+    }
+  */
+     //get pagination
+     $this->feed_pager = new sfFeedPager('Feed', $rows, $nb_axtar_results);
+     $this->feed_pager->setPage($this->page);
+     $this->feed_pager->init();
+      
+     if($this->page==1)
+     {
+       $search=new Search();
+       $search->setQuery($this->query);
+       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+       $search->save();
+     }
+  }
  /**
   * Executes index action
   *
@@ -51,7 +98,7 @@ class xeberActions extends sfActions
     }
     
      //get pagination
-     $this->feed_pager = new sfFeedPager('Feed', 20, $nb_axtar_results);
+     $this->feed_pager = new sfFeedPager('Feed', $rows, $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
      //set title

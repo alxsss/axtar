@@ -47,7 +47,7 @@ xeber_index:
   param: { module:  xeber, action: index }
 xeber_search:
   url:  /:sf_culture/xeberaxtar
-  param: { module:  xeber, action: search }
+  param: { module:  xeber, action: searchgr }
 search_search:
   url:  /:sf_culture/axtar
   param: { module:  search, action: search }

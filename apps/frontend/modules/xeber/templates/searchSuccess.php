@@ -39,9 +39,9 @@
     <?php //echo $cal->RenderAjax("mydate")?>
 
     <div id="xeber_results">
-       <?php $azdate=''; $imageurl='';?>     
 
       <?php foreach($results->doc as $result): ?>
+        <?php $azdate=''; $imageurl='';?>     
         <?php $str=$result->str;?>
         <?php $date=$result->date;?>
         <?php foreach($str as $s){
@@ -62,7 +62,6 @@
              $imageurl=$s;
            }
       }
-      $azdate='';
       ?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>

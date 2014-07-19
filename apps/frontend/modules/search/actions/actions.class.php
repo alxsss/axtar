@@ -255,7 +255,7 @@ class searchActions extends sfActions
     if($residual>0)$additional_number=1;
     if($this->page<=($pages_in_axtar+$additional_number))
     {
-      $this->results=$this->axtar_xml->xpath("//result");
+      //$this->results=$this->axtar_xml->xpath("//result");
       $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
       $this->axtar_feed=1;
     }
