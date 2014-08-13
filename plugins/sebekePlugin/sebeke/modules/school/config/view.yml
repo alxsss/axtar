@@ -1,3 +1,0 @@
-all:
-  has_layout:     on
-  layout:         layout_profile 

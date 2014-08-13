@@ -1,1 +1,0 @@
-<?php include_partial('comment', array('playlist' => $playlist)) ?>

@@ -85,7 +85,7 @@ class XeberQuery {
       {
         $querystring = "/xeber/clst_axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc";
       }
-      else if($koma==0)
+      else if($koma==0)//select all news
       {
         //$querystring = "/xeber/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc";
         $querystring = "/xeber/select/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&hl=true&hl.fl=content&f.content.hl.alternateField=content&hl.maxAlternateFieldLength=700&fl=id%20url%20title%20tstamp%20imageurl";
@@ -99,9 +99,9 @@ class XeberQuery {
       <str name="hl.maxAlternateFieldLength">300</str>
 */  
     }
-   else if($koma==3)
+   else if($koma==3)//search in news
    {
-       $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl&group=true&group.field=site&group.ngroups=true";
+       $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl&group=true&group.field=site&group.ngroups=true&boost=recip(ms(NOW,tstamp),2.7100271002710027e-8,0.9878048780487805,1)";
    } 
    else
    {

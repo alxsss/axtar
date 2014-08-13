@@ -1,1 +1,0 @@
-<?php include_partial('comment', array('videos'=>$videos, 'comment' => $comment)) ?>

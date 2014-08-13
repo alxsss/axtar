@@ -1,1 +1,0 @@
-<?php echo image_tag('/'.sfConfig::get('sf_upload_dir_name').'/photos/'.$user->getPhotos());?>

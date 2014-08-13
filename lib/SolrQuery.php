@@ -110,7 +110,8 @@ class SolrQuery {
      */
       if($site=='axtar')
       {
-        $querystring = "/newaxtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml";
+        $querystring = "/newaxtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml&boost=if(exists(query({!v%3D'site:az.wikipedia.org'}))+,100,1)";
+             //{indent=true&start=0&q=???D&boost=if(exists(query({!v%3D'site:az.wikipedia.org'}))+,100,1)&wt=xml&rows=20
       }
       else if($site=='site')
       {

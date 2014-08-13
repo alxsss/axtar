@@ -1,2 +1,17 @@
 User-agent: *
-Disallow: /
+Disallow: /az/xeber
+Disallow: /en/xeber
+Disallow: /ru/xeber
+Disallow: /az/xeberaxtar
+Disallow: /en/xeberaxtar
+Disallow: /ru/xeberaxtar
+Disallow: /az/axtarsite
+Disallow: /en/axtarsite
+Disallow: /ru/axtarsite
+Disallow: /az/imageaxtar
+Disallow: /en/imageaxtar
+Disallow: /ru/imageaxtar
+Disallow: /az/axtar
+Disallow: /en/axtar
+Disallow: /ru/axtar
+

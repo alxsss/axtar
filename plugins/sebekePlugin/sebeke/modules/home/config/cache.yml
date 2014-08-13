@@ -1,6 +1,0 @@
-index:
-  enabled:     off
-  with_layout: false   # Default value
-  lifetime:    86400   # Default value
-_regions:
-  enabled:  off
