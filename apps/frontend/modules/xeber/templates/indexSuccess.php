@@ -73,7 +73,7 @@
       <?php if(!empty($content)):?>
          <div class="abstract">
            <?php if(!empty($imageurl)):?>
-              <a href="<?php echo $url;?>" target="_blank"> <img src="<?php echo str_replace('http://www.azadliq.info/','',$imageurl);?>" width="100" class="imageurl"/> </a> 
+              <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo str_replace('http://www.azadliq.info/','',$imageurl);?>" width="100" class="imageurl"/></a> 
             <?php endif;?>
            <?php
               $hhmm=substr($azdate,strpos($azdate,':')-2,5);
