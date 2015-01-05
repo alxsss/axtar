@@ -1,6 +1,6 @@
 <?php
 
-require 'lib/model/om/BaseKeyphrase.php';
+//require 'lib/model/om/BaseKeyphrase.php';
 
 
 /**

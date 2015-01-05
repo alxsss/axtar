@@ -81,7 +81,8 @@ all:
 #    standard_helpers:       [Partial, Cache, Form]
 #
 #    # Activated modules from plugins or from the symfony core
-    enabled_modules:        [default, sfLanguageSwitch, sfCalendarPlugin, oauth, application, sfOauthAdmin, sebeke,home]
+    enabled_modules:        [default, sfLanguageSwitch ]
+    #enabled_modules:        [friends, default, sfLanguageSwitch, sfGuardAuth, sebekePlugin,home]
 #
 #    # Charset used for the response
 #    charset:                utf-8

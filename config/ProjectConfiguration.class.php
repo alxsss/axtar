@@ -33,7 +33,8 @@ class ProjectConfiguration extends sfProjectConfiguration
         //$this->setWebDir($this->getRootDir().'/../www/axtar/web');
         $this->setWebDir($this->getRootDir().'/web');
     $this->enableAllPluginsExcept(array('sfDoctrinePlugin','sfCompat10Plugin'));
-     $this->enablePlugins('sfCalendarPlugin');
+  //   $this->enablePlugins('sfCalendarPlugin');
+//     $this->enablePlugins('sebekePlugin');
   }
 }
 

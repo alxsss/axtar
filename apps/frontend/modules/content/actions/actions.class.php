@@ -15,7 +15,7 @@ class contentActions extends sfActions
     $file = sfConfig::get('sf_data_dir').'/content/collaboration_'.$this->getUser()->getCulture().'.txt';
     if (!is_readable($file))
     {
-      $file = sfConfig::get('sf_data_dir').'/content/collaboration_en.txt';
+      $file = sfConfig::get('sf_data_dir').'/content/collaboration_az.txt';
     }
     $this->html = file_get_contents($file);
   }

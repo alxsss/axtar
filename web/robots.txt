@@ -1,10 +1,4 @@
 User-agent: *
-Disallow: /az/xeber
-Disallow: /en/xeber
-Disallow: /ru/xeber
-Disallow: /az/xeberaxtar
-Disallow: /en/xeberaxtar
-Disallow: /ru/xeberaxtar
 Disallow: /az/axtarsite
 Disallow: /en/axtarsite
 Disallow: /ru/axtarsite
@@ -14,4 +8,13 @@ Disallow: /ru/imageaxtar
 Disallow: /az/axtar
 Disallow: /en/axtar
 Disallow: /ru/axtar
+Disallow: /az/axtarwww
+Disallow: /en/axtarwww
+Disallow: /ru/axtarwww
+#Disallow: /az/xeber
+#Disallow: /en/xeber
+#Disallow: /ru/xeber
+#Disallow: /az/xeberaxtar
+#Disallow: /en/xeberaxtar
+#Disallow: /ru/xeberaxtar
 

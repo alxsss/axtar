@@ -8,7 +8,7 @@ class xeberComponents extends sfComponents
      $c->add(KeyphrasePeer::ACTIVE, 1);
      $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
      $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
-     $c->setLimit(30);
+     $c->setLimit(15);
      $this->acar_sozler=KeyphrasePeer::doSelect($c);
 
   }  
@@ -19,7 +19,7 @@ class xeberComponents extends sfComponents
      $c->add(KeyphrasePeer::ACTIVE, 1);
      $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
      $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
-     $c->setLimit(30);
+     $c->setLimit(15);
      $this->acar_sozler=KeyphrasePeer::doSelect($c);
 
   }  

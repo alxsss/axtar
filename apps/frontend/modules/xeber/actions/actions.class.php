@@ -10,6 +10,10 @@
  */
 class xeberActions extends sfActions
 {
+  public function preExecute()
+  {
+     $this->bot=array('188.165.15','144.76.85','144.76.195','62.210.170','37.58.100','92.232.53','37.58.100','46.165.197','199.192.207','31.31.72','199.58.86','162.210.196','199.21.99','81.70.141','95.91.179','108.59.8','207.46.13','78.46.94','88.198.247','142.4.209','142.4.213','148.251.124','46.235.12','66.249.79','66.249.65','66.249.67','100.43.90','157.55.39','192.99.149','192.241.242','89.163.224','198.27.82','198.27.64','144.76.95','208.115.111','88.198.160','88.198.247');
+  }
  public function executeSearchgr(sfWebRequest $request)
   {
     if (!$this->query = $request->getParameter('query'))
@@ -48,8 +52,17 @@ class xeberActions extends sfActions
      $this->feed_pager = new sfFeedPager('Feed', $rows, $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
-      
-     if($this->page==1)
+
+      //set title
+     $this->getResponse()->setTitle($this->query.' -axtar.az/xeber');
+ 
+     //extract ip without digits after last dot
+     $remote_ip=$_SERVER['REMOTE_ADDR'];
+     $ip = substr($remote_ip, 0, strrpos($remote_ip, "."));
+     $user_agent=$_SERVER["HTTP_USER_AGENT"];
+         
+     //if($this->page==1&&!in_array($ip,$this->bot)) 
+     if($this->page==1&&!(strpos(strtolower($user_agent),'bot')||in_array($ip,$this->bot)) ) 
      {
        $search=new Search();
        $search->setQuery($this->query);
@@ -82,7 +95,6 @@ class xeberActions extends sfActions
        $this->axtar_xml = simplexml_load_string($data);
        $this->results=$this->axtar_xml->result->doc;
        $nb_axtar_results=$this->axtar_xml->result[0]->attributes()->numFound;
-       error_log('numfound='.$nb_axtar_results.'and results='.count($this->results));
        //get suggestions
        $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");
     }
@@ -102,7 +114,7 @@ class xeberActions extends sfActions
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
      //set title
-     $this->getResponse()->setTitle('Butun xeberler -axtar.az');
+     $this->getResponse()->setTitle('Butun xeberler ve onlarda olan acar sozler -axtar.az');
 
 /*    $cal = new sfCalendarPlugin();
 
@@ -163,8 +175,15 @@ class xeberActions extends sfActions
      $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nb_axtar_results);
      $this->feed_pager->setPage($this->page);
      $this->feed_pager->init();
-      
-     if($this->page==1)
+      //set title
+     $this->getResponse()->setTitle($this->query.' -axtar.az/xeber');
+     
+     $remote_ip=$_SERVER['REMOTE_ADDR'];
+     $ip = substr($remote_ip, 0, strrpos($remote_ip, "."));
+     $user_agent=$_SERVER["HTTP_USER_AGENT"];
+    // if($this->page==1&&!in_array($_SERVER['REMOTE_ADDR'],$this->bot))
+     if($this->page==1&&!(strpos(strtolower($user_agent),'bot')||in_array($ip,$this->bot)) )
+ 
      {
        $search=new Search();
        $search->setQuery($this->query);

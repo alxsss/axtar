@@ -16,6 +16,9 @@ generator:
       fields:  ~
       list:    
         max_per_page: 100
+        batch_actions:
+          delete: ~
+          edit: ~
       filter:  ~
       form:    ~
       edit:    ~
