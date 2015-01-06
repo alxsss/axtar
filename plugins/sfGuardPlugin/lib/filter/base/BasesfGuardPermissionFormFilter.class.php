@@ -44,7 +44,7 @@ abstract class BasesfGuardPermissionFormFilter extends BaseFormFilterPropel
       return;
     }
 
-    $criteria->addJoin(sfGuardGroupPermissionPeer::PERMISSION_ID, sfGuardPermissionPeer::ID);
+    $criteria->addJoin(sfGuardPermissionPeer::ID, sfGuardGroupPermissionPeer::PERMISSION_ID);
 
     $value = array_pop($values);
     $criterion = $criteria->getNewCriterion(sfGuardGroupPermissionPeer::GROUP_ID, $value);
@@ -69,7 +69,7 @@ abstract class BasesfGuardPermissionFormFilter extends BaseFormFilterPropel
       return;
     }
 
-    $criteria->addJoin(sfGuardUserPermissionPeer::PERMISSION_ID, sfGuardPermissionPeer::ID);
+    $criteria->addJoin(sfGuardPermissionPeer::ID, sfGuardUserPermissionPeer::PERMISSION_ID);
 
     $value = array_pop($values);
     $criterion = $criteria->getNewCriterion(sfGuardUserPermissionPeer::USER_ID, $value);

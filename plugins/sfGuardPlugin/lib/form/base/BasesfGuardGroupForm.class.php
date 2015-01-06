@@ -112,7 +112,7 @@ abstract class BasesfGuardGroupForm extends BaseFormPropel
         $obj = new sfGuardGroupPermission();
         $obj->setGroupId($this->object->getPrimaryKey());
         $obj->setPermissionId($value);
-        $obj->save();
+        $obj->save($con);
       }
     }
   }
@@ -147,7 +147,7 @@ abstract class BasesfGuardGroupForm extends BaseFormPropel
         $obj = new sfGuardUserGroup();
         $obj->setGroupId($this->object->getPrimaryKey());
         $obj->setUserId($value);
-        $obj->save();
+        $obj->save($con);
       }
     }
   }

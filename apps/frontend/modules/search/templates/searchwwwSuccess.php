@@ -39,7 +39,7 @@
     </div>
    
     <div id="xeber_results">
-
+    <?php //$spellcheck=$spellcheck->getRawValue();?>
     <?php if(!empty($spellcheck)):?>  
       <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
     <?php endif;?>
@@ -48,8 +48,8 @@
   <?php //print_r($xml->web->result);?>
 
     <?php foreach($xml->web->results->result as $result):?>
-      <div> <h3><a href="<?php echo $result->url;?>" target="_blank"><?php echo $result->title;?></a></h3> </div>
-      <div class="abstract"> <?php echo $result->abstract;?> </div>
+      <div> <h3><a href="<?php echo $result->url;?>" target="_blank"><?php echo sfOutputEscaper::unescape($result->title);?></a></h3> </div>
+      <div class="abstract"> <?php echo sfOutputEscaper::unescape($result->abstract);?> </div>
       <div class="url"> <?php echo $result->url;?> </div>
     <?php endforeach;?>
   
@@ -74,6 +74,7 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
+      <?php $content=$content->getRawValue();?> 
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>

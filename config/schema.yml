@@ -38,3 +38,42 @@ propel:
     count:  {  type: INTEGER  }
     active:  {  type: BOOLEAN, default:0  }
     created_at: {  type: TIMESTAMP  }
+  biznes:
+    _attributes:  {idMethod:  native  }
+    id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id  }
+    address: { type: varchar, size: 255 }
+    telefon: { type: varchar, size: 100 }
+    website: { type: varchar, size: 255 }
+    photo: { type: VARCHAR, size: 255, required: true }
+    created_at: ~
+    rating: { type: INTEGER }
+    num_comment: { type: INTEGER }
+    title:  { type: VARCHAR, size: 255 }
+    approved:  { type: BOOLEAN, default: 1 }
+    visibility: { type: TINYINT, required: true, default: 1}
+  biznes_comment:
+    _attributes:  {idMethod:  native  }
+    biznes_id: { type: INTEGER, required: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
+    id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
+    comment: { type: LONGVARCHAR }
+    created_at: ~
+    raw_ip:  { type: VARCHAR, size: 50  }
+    user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+  biznes_tag:
+    biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
+    user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+    created_at: ~
+    tag: { type: VARCHAR, size: 100  }
+    normalized_tag: { type: VARCHAR, size: 100, required: true,       primaryKey: true, index: true }
+  biznes_fav:
+    biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
+    user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade, primaryKey: true }
+    created_at: ~
+  biznes_rate:
+    biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
+    user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade, primaryKey: true }
+    rate:  {  type:integer  }
+    created_at: ~
+    checked:  {type: BOOLEAN, default: 0 }
+    deleted:  {type: BOOLEAN, default: 0 }  

@@ -23,8 +23,10 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'last_login'                    => new sfWidgetFormDateTime(),
       'is_active'                     => new sfWidgetFormInputCheckbox(),
       'is_super_admin'                => new sfWidgetFormInputCheckbox(),
-      'sf_guard_user_group_list'      => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
+      'biznes_fav_list'               => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Biznes')),
+      'biznes_rate_list'              => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Biznes')),
       'sf_guard_user_permission_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
+      'sf_guard_user_group_list'      => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
     ));
 
     $this->setValidators(array(
@@ -37,8 +39,10 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'last_login'                    => new sfValidatorDateTime(array('required' => false)),
       'is_active'                     => new sfValidatorBoolean(),
       'is_super_admin'                => new sfValidatorBoolean(),
-      'sf_guard_user_group_list'      => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
+      'biznes_fav_list'               => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Biznes', 'required' => false)),
+      'biznes_rate_list'              => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Biznes', 'required' => false)),
       'sf_guard_user_permission_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
+      'sf_guard_user_group_list'      => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -62,15 +66,26 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
   {
     parent::updateDefaultsFromObject();
 
-    if (isset($this->widgetSchema['sf_guard_user_group_list']))
+    if (isset($this->widgetSchema['biznes_fav_list']))
     {
       $values = array();
-      foreach ($this->object->getsfGuardUserGroups() as $obj)
+      foreach ($this->object->getBiznesFavs() as $obj)
       {
-        $values[] = $obj->getGroupId();
+        $values[] = $obj->getBiznesId();
       }
 
-      $this->setDefault('sf_guard_user_group_list', $values);
+      $this->setDefault('biznes_fav_list', $values);
+    }
+
+    if (isset($this->widgetSchema['biznes_rate_list']))
+    {
+      $values = array();
+      foreach ($this->object->getBiznesRates() as $obj)
+      {
+        $values[] = $obj->getBiznesId();
+      }
+
+      $this->setDefault('biznes_rate_list', $values);
     }
 
     if (isset($this->widgetSchema['sf_guard_user_permission_list']))
@@ -84,24 +99,37 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       $this->setDefault('sf_guard_user_permission_list', $values);
     }
 
+    if (isset($this->widgetSchema['sf_guard_user_group_list']))
+    {
+      $values = array();
+      foreach ($this->object->getsfGuardUserGroups() as $obj)
+      {
+        $values[] = $obj->getGroupId();
+      }
+
+      $this->setDefault('sf_guard_user_group_list', $values);
+    }
+
   }
 
   protected function doSave($con = null)
   {
     parent::doSave($con);
 
-    $this->savesfGuardUserGroupList($con);
+    $this->saveBiznesFavList($con);
+    $this->saveBiznesRateList($con);
     $this->savesfGuardUserPermissionList($con);
+    $this->savesfGuardUserGroupList($con);
   }
 
-  public function savesfGuardUserGroupList($con = null)
+  public function saveBiznesFavList($con = null)
   {
     if (!$this->isValid())
     {
       throw $this->getErrorSchema();
     }
 
-    if (!isset($this->widgetSchema['sf_guard_user_group_list']))
+    if (!isset($this->widgetSchema['biznes_fav_list']))
     {
       // somebody has unset this widget
       return;
@@ -113,18 +141,53 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
     }
 
     $c = new Criteria();
-    $c->add(sfGuardUserGroupPeer::USER_ID, $this->object->getPrimaryKey());
-    sfGuardUserGroupPeer::doDelete($c, $con);
+    $c->add(BiznesFavPeer::USER_ID, $this->object->getPrimaryKey());
+    BiznesFavPeer::doDelete($c, $con);
 
-    $values = $this->getValue('sf_guard_user_group_list');
+    $values = $this->getValue('biznes_fav_list');
     if (is_array($values))
     {
       foreach ($values as $value)
       {
-        $obj = new sfGuardUserGroup();
+        $obj = new BiznesFav();
         $obj->setUserId($this->object->getPrimaryKey());
-        $obj->setGroupId($value);
-        $obj->save();
+        $obj->setBiznesId($value);
+        $obj->save($con);
+      }
+    }
+  }
+
+  public function saveBiznesRateList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['biznes_rate_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(BiznesRatePeer::USER_ID, $this->object->getPrimaryKey());
+    BiznesRatePeer::doDelete($c, $con);
+
+    $values = $this->getValue('biznes_rate_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new BiznesRate();
+        $obj->setUserId($this->object->getPrimaryKey());
+        $obj->setBiznesId($value);
+        $obj->save($con);
       }
     }
   }
@@ -159,7 +222,42 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
         $obj = new sfGuardUserPermission();
         $obj->setUserId($this->object->getPrimaryKey());
         $obj->setPermissionId($value);
-        $obj->save();
+        $obj->save($con);
+      }
+    }
+  }
+
+  public function savesfGuardUserGroupList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['sf_guard_user_group_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(sfGuardUserGroupPeer::USER_ID, $this->object->getPrimaryKey());
+    sfGuardUserGroupPeer::doDelete($c, $con);
+
+    $values = $this->getValue('sf_guard_user_group_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new sfGuardUserGroup();
+        $obj->setUserId($this->object->getPrimaryKey());
+        $obj->setGroupId($value);
+        $obj->save($con);
       }
     }
   }

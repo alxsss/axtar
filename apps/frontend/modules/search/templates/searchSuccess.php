@@ -40,7 +40,7 @@
    
     <div id="xeber_results">
   
-
+    <?php $spellcheck=$spellcheck->getRawValue();?>
     <?php if(!empty($spellcheck)):?>  
       <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
     <?php endif;?>
@@ -65,6 +65,7 @@
       }?>  
       
       <?php $content=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
+     <?php $content=$content->getRawValue();?>
       <?php //$title=$axtar_site_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='title']/str");?>
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
@@ -94,12 +95,13 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
+      <?php $content=$content->getRawValue();?> 
+     <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
       <?php if(!empty($content)):?>
        <div class="abstract"><?php echo str_replace('<!', '<',$content[0]);?></div>
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,60);?>
-        <?php if($numfound>1):?>
+        <?php if($numfound->getRawValue()>1):?>
           <span class="more_results"><a href="<?php echo url_for('@search_site?query='.$query.'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
         <?php endif;?>
       </div>

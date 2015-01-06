@@ -64,7 +64,7 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-     
+     <?php $content=$content->getRawValue();?> 
        <?php if(!empty($date)):?>
           <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
        <?php endif;?>

@@ -1,6 +1,9 @@
 cache/*
 log/*
-lib/
+*lib/om/
+*lib/model/om/
+*lib/forms/om/
+*lib/filters/om/
 data/
 test/
 web/uploads/

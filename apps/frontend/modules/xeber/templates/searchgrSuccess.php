@@ -68,7 +68,7 @@
       }?>
 
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-      
+     <?php $content=$content->getRawValue();?> 
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{/*truncate_text(str_replace('<!', '<',$title),80);*/ echo truncate_text($title,80); }?></a></h3>
       <?php if(!empty($content)):?>
           <?php if(!empty($imageurl)):?>
@@ -77,8 +77,8 @@
        <div class="abstract"><?php echo $content[0];?></div>
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,80);?>
-        <?php if($numfound>1):?>
-          <span class="more_results"><a href="<?php echo url_for('@search_site?query='.$query.'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
+        <?php if($numfound->getRawValue()>1):?>
+          <span class="more_results"><a href="<?php echo url_for('@search_site?query='.sfOutputEscaper::unescape($query).'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
         <?php endif;?>
       </div>
        <?php if(!empty($date)):?>     
@@ -91,7 +91,7 @@
 
  <div class="pagination">
     <div id="photos_pager">
-      <?php echo pager_navigation($feed_pager, '@xeber_search?query='.$query) ?>
+      <?php echo pager_navigation($feed_pager, '@xeber_search?query='.sfOutputEscaper::unescape($query)) ?>
     </div>
   </div>
 
