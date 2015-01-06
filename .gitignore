@@ -1,9 +1,9 @@
 cache/*
 log/*
-*lib/om/
-*lib/model/om/
-*lib/forms/om/
-*lib/filters/om/
+lib/om/
+lib/model/om/
+lib/form/base/
+lib/filter/base/
 data/
 test/
 web/uploads/
