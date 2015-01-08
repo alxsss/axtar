@@ -19,6 +19,8 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'algorithm'                     => new sfWidgetFormInputText(),
       'salt'                          => new sfWidgetFormInputText(),
       'password'                      => new sfWidgetFormInputText(),
+      'email'                         => new sfWidgetFormInputText(),
+      'password_hint'                 => new sfWidgetFormInputText(),
       'created_at'                    => new sfWidgetFormDateTime(),
       'last_login'                    => new sfWidgetFormDateTime(),
       'is_active'                     => new sfWidgetFormInputCheckbox(),
@@ -27,6 +29,8 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'biznes_rate_list'              => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'Biznes')),
       'sf_guard_user_permission_list' => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
       'sf_guard_user_group_list'      => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
+      'sf_social_event_user_list'     => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfSocialEvent')),
+      'sf_social_group_user_list'     => new sfWidgetFormPropelChoice(array('multiple' => true, 'model' => 'sfSocialGroup')),
     ));
 
     $this->setValidators(array(
@@ -35,6 +39,8 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'algorithm'                     => new sfValidatorString(array('max_length' => 128)),
       'salt'                          => new sfValidatorString(array('max_length' => 128)),
       'password'                      => new sfValidatorString(array('max_length' => 128)),
+      'email'                         => new sfValidatorString(array('max_length' => 100)),
+      'password_hint'                 => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'                    => new sfValidatorDateTime(array('required' => false)),
       'last_login'                    => new sfValidatorDateTime(array('required' => false)),
       'is_active'                     => new sfValidatorBoolean(),
@@ -43,6 +49,8 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       'biznes_rate_list'              => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'Biznes', 'required' => false)),
       'sf_guard_user_permission_list' => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
       'sf_guard_user_group_list'      => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
+      'sf_social_event_user_list'     => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfSocialEvent', 'required' => false)),
+      'sf_social_group_user_list'     => new sfValidatorPropelChoice(array('multiple' => true, 'model' => 'sfSocialGroup', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -110,6 +118,28 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       $this->setDefault('sf_guard_user_group_list', $values);
     }
 
+    if (isset($this->widgetSchema['sf_social_event_user_list']))
+    {
+      $values = array();
+      foreach ($this->object->getsfSocialEventUsers() as $obj)
+      {
+        $values[] = $obj->getEventId();
+      }
+
+      $this->setDefault('sf_social_event_user_list', $values);
+    }
+
+    if (isset($this->widgetSchema['sf_social_group_user_list']))
+    {
+      $values = array();
+      foreach ($this->object->getsfSocialGroupUsers() as $obj)
+      {
+        $values[] = $obj->getGroupId();
+      }
+
+      $this->setDefault('sf_social_group_user_list', $values);
+    }
+
   }
 
   protected function doSave($con = null)
@@ -120,6 +150,8 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
     $this->saveBiznesRateList($con);
     $this->savesfGuardUserPermissionList($con);
     $this->savesfGuardUserGroupList($con);
+    $this->savesfSocialEventUserList($con);
+    $this->savesfSocialGroupUserList($con);
   }
 
   public function saveBiznesFavList($con = null)
@@ -255,6 +287,76 @@ abstract class BasesfGuardUserForm extends BaseFormPropel
       foreach ($values as $value)
       {
         $obj = new sfGuardUserGroup();
+        $obj->setUserId($this->object->getPrimaryKey());
+        $obj->setGroupId($value);
+        $obj->save($con);
+      }
+    }
+  }
+
+  public function savesfSocialEventUserList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['sf_social_event_user_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(sfSocialEventUserPeer::USER_ID, $this->object->getPrimaryKey());
+    sfSocialEventUserPeer::doDelete($c, $con);
+
+    $values = $this->getValue('sf_social_event_user_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new sfSocialEventUser();
+        $obj->setUserId($this->object->getPrimaryKey());
+        $obj->setEventId($value);
+        $obj->save($con);
+      }
+    }
+  }
+
+  public function savesfSocialGroupUserList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['sf_social_group_user_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $c = new Criteria();
+    $c->add(sfSocialGroupUserPeer::USER_ID, $this->object->getPrimaryKey());
+    sfSocialGroupUserPeer::doDelete($c, $con);
+
+    $values = $this->getValue('sf_social_group_user_list');
+    if (is_array($values))
+    {
+      foreach ($values as $value)
+      {
+        $obj = new sfSocialGroupUser();
         $obj->setUserId($this->object->getPrimaryKey());
         $obj->setGroupId($value);
         $obj->save($con);

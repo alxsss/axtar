@@ -15,7 +15,7 @@ class sfGuardFormSignin extends sfForm
       'password' => new sfValidatorString(),
       'remember' => new sfValidatorBoolean(),
     ));
-
+    unset($this['remember']);
     $this->validatorSchema->setPostValidator(new sfGuardValidatorUser());
 
     $this->widgetSchema->setNameFormat('signin[%s]');
