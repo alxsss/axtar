@@ -14,7 +14,6 @@ class BiznesPeer extends BaseBiznesPeer
    $c = new Criteria();
    $c->setLimit(4);
    $c->add(self::APPROVED, 1);
-   $c->add(BiznesPeer::VISIBILITY, 0);
    $c->addDescendingOrderByColumn(BiznesPeer::RATING);
    $photos=BiznesPeer::doSelect($c);   
    return $photos;
@@ -24,7 +23,6 @@ class BiznesPeer extends BaseBiznesPeer
    $c = new Criteria();
    $c->setLimit(4);
    $c->add(self::APPROVED, 1);
-   $c->add(BiznesPeer::VISIBILITY, 0);
    $c->addDescendingOrderByColumn(BiznesPeer::CREATED_AT);
    $photos=BiznesPeer::doSelect($c);   
    return $photos;
@@ -34,7 +32,6 @@ public static function getPopularBiznessPager($page)
   $pager = new sfPropelPager('Biznes', sfConfig::get('app_pager_popular_photos_max'));  
   $c = new Criteria();
   $c->add(self::APPROVED, 1);
-  $c->add(BiznesPeer::VISIBILITY, 0);
   $c->addDescendingOrderByColumn(BiznesPeer::RATING);
   $pager->setCriteria($c);
   $pager->setPage($page);
@@ -47,7 +44,6 @@ public static function getPopularBiznessPager($page)
   $pager = new sfPropelPager('Biznes', sfConfig::get('app_pager_popular_photos_max'));  
   $c = new Criteria();
   $c->add(self::APPROVED, 1);
-  $c->add(BiznesPeer::VISIBILITY, 0);
   $c->addDescendingOrderByColumn(BiznesPeer::CREATED_AT);
   $pager->setCriteria($c);
   $pager->setPage($page);
@@ -69,8 +65,6 @@ public static function getShownewBiznesPager()
 {
   $c = new Criteria();
   $c->add(self::APPROVED, 1);
-  $c->add(BiznesPeer::POPULAR_BIZNES, 1);
-  $c->add(BiznesPeer::VISIBILITY, 0);
   $c->addDescendingOrderByColumn(BiznesPeer::CREATED_AT);
   $photos=BiznesPeer::doSelect($c); 
   return $photos;
@@ -79,7 +73,6 @@ public static function getShowpopularBiznesPager()
 {
   $c = new Criteria();
   $c->add(self::APPROVED, 1);
-  $c->add(BiznesPeer::VISIBILITY, 0);
   $c->addDescendingOrderByColumn(BiznesPeer::RATING);
   $photos=BiznesPeer::doSelect($c); 
   return $photos;
@@ -89,7 +82,6 @@ public static function getShowpopularBiznesPager()
    $pager = new sfPropelPager('Biznes', sfConfig::get('app_pager_friends_max'));  
    $c = new Criteria();
    $c->add(BiznesPeer::USER_ID, $user_id);
-   $c->add(BiznesPeer::ALBUM_ID, NULL);
    $c->addDescendingOrderByColumn(self::CREATED_AT);
    $pager->setCriteria($c);
    $pager->setPage($page);
