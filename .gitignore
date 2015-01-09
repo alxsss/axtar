@@ -1,11 +1,14 @@
 cache/*
 log/*
 lib/om/
-lib/model/om/
-lib/form/base/
-lib/filter/base/
+lib/model/om/*
+lib/form/base/*
+lib/filter/base/*
 data/
 test/
 web/uploads/
 web/sf*
 web/missing_thumb.txt
+plugins/sfGuardPlugin/lib/form/base/*
+plugins/sfGuardPlugin/lib/filter/base/*
+plugins/sfGuardPlugin/lib/model/om/*

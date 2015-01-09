@@ -1,30 +1,3 @@
-#biznes
-login:
-  url:   /login
-  param: { module: sfGuardAuth, action: signin }
-logout:
-  url:   /logout
-  param: { module: sfGuardAuth, action: signout }
-register:
-  url:   /:sf_culture/register/:id
-  param: { module: sfGuardAuth, action: register ,id: 0}
-upload:
-  url:   /:sf_culture/upload
-  param: { module: sfMediaLibrary, action: upload }
-sfMediaLibrary_delete:
-  url:   /sfMediaLibrary_delete
-  param: { module: sfMediaLibrary, action: delete }
-user_profile:
-  url:   /:sf_culture/user/:username
-  param: { module: sfGuardUser, action: show }
-  requirements: { sf_culture: (?:az|en|ru|tr),  username: \S+(\.?|\+?|\-?|\s?)\S* }
-reset:
-  url: /:sf_culture/reset
-  param: { module: sfApply, action: reset }
-resetRequest:
-  url: /:sf_culture/reset-request
-  param: { module: sfApply, action: resetRequest }
-#axtar
 news:
   url:  /:sf_culture/news
   param: {module: content, action: news }

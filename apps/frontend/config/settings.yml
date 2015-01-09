@@ -23,10 +23,23 @@ test:
     etag:                   false
 
 all:
+  .actions:
+    #    default_action:         index     # A routing rule doesn't set it
+    #
+    #    error_404_module:       default   # To be called when a 404 error is raised
+    #    error_404_action:       error404  # Or when the requested URL doesn't match any route
+    #
+    login_module:           sfGuardAuth
+    login_action:           signin
+
+    secure_module:          sfGuardAuth
+    secure_action:          secure
+
+
   .settings:
     # Form security secret (CSRF protection)
     #csrf_secret:            eb2febddf974beb2a9cf2082e3571905d9955262
-    enabled_modules:        [default, sfLanguageSwitch, sfGuardAuth, sfMediaLibrary, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, sfSimpleForum, sfApply,  sfSocialEvent, sfSocialUser, sfSocialGroup, openInviter,sfSimpleBlog, sfSimpleBlogPostAdmin, sfSimpleBlogCommentAdmin]
+    enabled_modules:        [default, sfLanguageSwitch, friends,sfGuardAuth, sfMediaLibrary, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, sfSimpleForum, sfApply,  sfSocialEvent, sfSocialUser, sfSocialGroup, openInviter,sfSimpleBlog, sfSimpleBlogPostAdmin, sfSimpleBlogCommentAdmin]
     # Output escaping settings
     escaping_strategy:      true
     escaping_method:        ESC_SPECIALCHARS

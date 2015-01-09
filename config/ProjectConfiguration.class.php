@@ -15,7 +15,12 @@ class ProjectConfiguration extends sfProjectConfiguration
 
     $this->enablePlugins('sfPropelORMPlugin');
     $this->enablePlugins('sfGuardPlugin');
+    $this->enablePlugins('sfSocialPlugin');
     $this->enablePlugins('sfLanguageSwitchPlugin');
+    $this->enablePlugins('sebekePlugin');
+    $this->enablePlugins('sfApplyPlugin');
+    $this->enablePlugins('sfMediaLibraryPlugin');
+    $this->enablePlugins('sfThumbnailPlugin');
     //$this->enablePlugins('sfSimpleGoogleSitemapPlugin');
   }
 
