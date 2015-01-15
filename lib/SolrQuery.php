@@ -121,6 +121,10 @@ class SolrQuery {
       {
         $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
       }
+      else if($site=='autosuggest')
+      {
+         $querystring = "/acbiznes/autosuggest/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&wt=json";
+      }
       else 
       {
          $querystring = "/newaxtar/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url+score";

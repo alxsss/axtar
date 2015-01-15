@@ -4,6 +4,7 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
+    <?php use_stylesheet('main?v=21') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />

@@ -4,6 +4,9 @@ news:
 autosuggest:
   url:   /autosuggest
   param: { module: search, action: autosuggest }
+biznes_autosuggest:
+  url:   /biznes_autosuggest
+  param: { module: biznes, action: autosuggest }
 map:
   url:  /:sf_culture/map
   param: {module: search, action: map }
@@ -45,6 +48,9 @@ xeber_index:
 xeber_search:
   url:  /:sf_culture/xeberaxtar
   param: { module:  xeber, action: searchgr }
+biznes_search:
+  url:  /:sf_culture/biznesaxtar
+  param: { module:  biznes, action: search }
 search_www:
   url:  /:sf_culture/axtarwww
   param: { module:  search, action: searchwww }
