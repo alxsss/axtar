@@ -1,3 +1,6 @@
+showproduct:
+  url:   biznes/:id/:title.html
+  param: { module: biznes, action: show }
 news:
   url:  /:sf_culture/news
   param: {module: content, action: news }

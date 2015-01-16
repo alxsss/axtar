@@ -11,7 +11,7 @@ class myUser extends sfSocialSecurityUser //sfGuardSecurityUser
   {
     if (!$this->authenticated)
     {      
-      if($cookie = sfContext::getInstance()->getRequest()->getCookie(sfConfig::get('app_sf_guard_plugin_remember_cookie_name', 'hemsinifRememberMe')))
+      if($cookie = sfContext::getInstance()->getRequest()->getCookie(sfConfig::get('app_sf_guard_plugin_remember_cookie_name', 'axtarRememberMe')))
       {
         $c = new Criteria();
         $c->add(sfGuardRememberKeyPeer::REMEMBER_KEY, $cookie);

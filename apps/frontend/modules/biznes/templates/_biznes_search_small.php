@@ -11,7 +11,7 @@
 
 <div class="search_small">
  <div class="help"></div>
-<form action="<?php echo url_for('@xeber_search') ?>" method="post">
+<form action="<?php echo url_for('@biznes_search') ?>" method="post">
   <input type="text" name="query" value="<?php echo $sf_request->getParameter('query') ?>" class="biznes_search_keywords" size="55" id="biznes_query" onfocus="this.value = this.value;" />
   <input type="submit" value="axtar" id="search_button" />
   

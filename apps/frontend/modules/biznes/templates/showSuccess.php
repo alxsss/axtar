@@ -1,57 +1,204 @@
-<?php use_helper('Date', 'Global', 'I18N') ?>
-<div id="left_column_user">
-  <div class="user_contact">
-  </div> 
-</div>
-<div id="right_column_user">
-    <div id="show_photo">
-           <?php $img_url_normal='/uploads/assets/biznes/normal/'.$biznes->getPhoto()?>
-      <div id="photo">
-        <div class="photo_title"><?php echo $biznes->getTitle()?></div>
-        <?php echo image_tag($img_url_normal, '')?>
-        <?php echo $biznes->getAddress()?>
-        <?php echo $biznes->getPhone()?>
-        <?php echo $biznes->getWebsite()?>
-         <span class="interested_block"><?php include_partial('biznes_rates', array('biznes' => $biznes)) ?></span>
-        <?php //$biznes_owner=$biznes->getsfGuardUser()->getUsername();?>
-        <?php echo __('uploaded on')?> <?php echo format_date($biznes->getCreatedAt(), 'p') ?>
-        <?php //$biznes_owner_id=$biznes->getUserId();?>	
-        <?php if($sf_user->isAuthenticated()&&($biznes_owner_id==$user_id)):?>
-          <?php echo link_to(__('edit photo'), 'biznes/edit?id='.$biznes->getId());?> 
-        <?php  endif;?>
-         <span class="interested_block"><?php include_partial('favorite', array('biznes' => $biznes)) ?></span> 
+<?php use_helper('I18N','Global','Text') ?>
+<div id="search_results">
+    <?php //include_component('xeber', 'acarsozler')?>
+   <?php foreach($product as $result): ?>
+      <?php $photo='';?>
+      <?php $phone=array();?>
+      <?php $website='';?>
+      <?php $description='';?>
+      <?php $address=array();?>
+      <?php $id='';?>
+      <?php $title='';?>
+      <?php $str=$result->str;?>
+      <?php 
+           $seek = array("sm", 135);
+           $replace  = array("", 400);
+?>
+      <?php foreach($str as $s){
+           if($s->attributes()=='id')
+           {
+             $id=$s;
+           }
+           else if($s->attributes()=='title')
+           {
+             $title=$s;
+           }
+           else if($s->attributes()=='description')
+           {
+             $description=$s;
+           }
+           else if($s->attributes()=='photo')
+           {
+             $photo=$s;
+           }
+           else if($s->attributes()=='website')
+           {
+             $website=$s;
+           }
+      }
+       ///arr types
+       $arrs=$result->arr;
+       foreach($arrs as $a)
+       {
+         if($a->attributes()=='category')
+         {
+           $category=$a;
+         }
+         else if($a->attributes()=='address')
+         {
+           $address=$a;
+         }
+           else if($s->attributes()=='phone')
+           {
+             $phone=$s;
+           }
+        }
+        //float types
+        $floats=$result->float;
+        foreach($floats as $float)
+        {
+          if($float->attributes()=='price')
+          {
+            $price=$float;
+          }
+          else if($float->attributes()=='score')
+          {
+           $score=$float;
+          }
+        }
+       ?>  
+      
+     
+         <div class="product" id="<?php echo $id;?>">
+          <?php if(!empty($photo)&&$photo!=''):?>
+             <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo $photo;?>" width="75" class="imageurl_biznes"/></a>
+          <?php endif;?>
+         </div>
 
-		<?php $rated= BiznesRatePeer::retrieveByPK($biznes->getId(), $user_id); if($rated){$rate=$rated->getRate(); $read_only=1;}else{$rate=0;$read_only='';}?>
-		 <div id="photo_rating" read_only="<?php echo $read_only;?>" photo_id="<?php echo $biznes->getId()?>" rate="<?php echo $rate;?>"></div>        
-		   <div class="rating_titles">
-		     <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
-		     <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>
-		     <div id="popup-3" class="popup"  style="position: absolute;left:32px;top:-40px;"><?php echo __('regular')?></div>
-		     <div id="popup-4" class="popup" style="position: absolute;left: 50px;top:-40px;"><?php echo __('good')?></div>
-		     <div id="popup-5" class="popup" style="position: absolute;left: 70px;top:-40px;"><?php echo __('gorgeus')?></div>
-		   </div>
-	  </div> 
-    </div> 
-    <div id="add_comment" class="add_status_comment">
-      <?php include_partial('comment', array('user_id'=>$user_id, 'biznes' => $biznes, 'comments' =>$biznes->getBiznesCommentsJoinsfGuardUser())) ?> 
-      <div class="user_status_comment_new"></div>  
-    </div>
-    <?php if ($sf_user->isAuthenticated()): ?>
-      <div class="status_comment_box" style="display:block;padding:0 0 50px 10px;">
-	    <form action="<?php echo url_for('@add_comment')?>" method="post">
-          <input type="hidden" value="<?php echo $biznes->getId()?>"  name="item_id">             
-          <input type="hidden" value="<?php echo $biznes->getUserId()?>"  name="item_user_id">	   
-		  <input type="hidden" value="1"  name="page">		 
-          <textarea cols="20" rows="3" class="expand24 status_box" id="comment" name="comment" style="height: 24px; overflow: hidden; padding-top: 0px; padding-bottom: 0px;"></textarea>
-          <div class="submit-row">      
-            <input type="submit" value="<?php echo __('comment')?>" class="status_comment_box_form"> 
-          </div>			  
-        </form>
+         <div class="product_details">
+           <?php if(!empty($description)):?>
+            <div class="abstract"><?php  echo $description;?></div>
+           <?php endif;?>
+         <div class="abstract"><?php foreach($address as $addr){echo $addr;}?> </div>
+         <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
+         <div class="url">
+           <?php foreach($category as $cat):?>
+             <a href="<?php echo url_for('@biznes_search?query='.$cat)?>"><?php echo $cat?></a>
+           <?php endforeach; ?>
+         </div>
+
+         </div>
+    <?php endforeach; ?>
+
+    <?php 
+         $user_agent=$_SERVER["HTTP_USER_AGENT"];
+         if(isset($id)&&!(strpos(strtolower($user_agent),'bot')||in_array($_SERVER['REMOTE_ADDR'],$bot->getRawValue() )) )
+         {
+           //write CTP to log
+           $log = new Logging();
+
+            // set path and name of log file (optional)
+           $log->lfile('/home/www/axtar/web/uploads/assets/score_logs/score_log.txt');
+
+           // write message to the log file
+           $log->lwrite($id.',CTP,1');
+           // close log file
+           $log->lclose();
+         }
+  ?>
+
+
+   <!-- Display Similar Producs -->
+<div class="similar_products">
+<h2>Similar Products</h2>
+   <?php foreach($similar_products as $result): ?>
+      <?php $imageurl='';?>
+      <?php $str=$result->str;?>
+      <?php foreach($str as $s){
+           if($s->attributes()=='id')
+           {
+             $id=$s;
+           }
+           else if($s->attributes()=='title')
+           {
+             $title=$s;
+           }
+           else if($s->attributes()=='description')
+           {
+             $description=$s;
+           }
+           else if($s->attributes()=='photo')
+           {
+             $photo=$s;
+           }
+           else if($s->attributes()=='website')
+           {
+             $website=$s;
+           }
+      }
+       ///arr types
+       $arrs=$result->arr;
+       foreach($arrs as $a)
+       {
+         if($a->attributes()=='category')
+         {
+           $category=$a;
+         }
+         else if($a->attributes()=='address')
+         {
+           $address=$a;
+         }
+        }
+        //float types
+        $floats=$result->float;
+        foreach($floats as $float)
+        {
+          if($float->attributes()=='price')
+          {
+            $price=$float;
+          }
+          else if($float->attributes()=='score')
+          {
+           $score=$float;
+          }
+        }
+       ?>  
+      
+     <div class="user_friend">
+      <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
+      <?php if(!empty($photo)&&$photo!=''):?>
+           <img class="image_with_border" src="<?php echo $photo;?>" alt="no img">
+      <?php else:?>
+      
+        <div class="popular_photo_title"><?php echo  sfOutputEscaper::unescape($title) ;?> </div>
+       <?php endif;?>
+    
+        </a>
       </div>
-    <?php else: ?>
-      <div class="comment">
-        <?php echo __('You must ')?><span class="toggle_to_login"><a href="#"><?php echo __('sign in')?></a><?php echo __(' to submit a comment') ?></span>
-	  </div>
-    <?php endif;//endif of comment ?>
-</div><!--end right column-->
-<?php //include_partial('friends/horizontal_ad')?>
+      <?php //log impression    
+       $user_agent=$_SERVER["HTTP_USER_AGENT"];
+           if(!(strpos(strtolower($user_agent),'bot')||in_array($_SERVER['REMOTE_ADDR'],$bot->getRawValue())) )
+           {
+             //write IMPRESSIONS to log
+             $current_row=2;
+             $num_rows=2;
+             $weight=$num_rows/($num_rows+($current_row-1));
+             $log = new Logging();
+
+             // set path and name of log file (optional)
+             $log->lfile('/home/www/axtar/web/uploads/assets/score_logs/score_log.txt');
+
+             // write message to the log file
+             $log->lwrite($id.',IMPR,'.round($weight,3).',row:'.$current_row);
+             // close log file
+             $log->lclose();
+           }
+  ?>
+    <?php endforeach; ?>
+</div>
+
+ <?php //include_partial('search/sponsor_ads')?>
+</div>
+
+
+

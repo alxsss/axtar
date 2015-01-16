@@ -33,11 +33,11 @@ class SolrQuerySlave4 {
           $url = "http://".SOLR_META_QUERY."/solr";
           if($handler=='similarity')
           {
-             $querystring = "/gift/similarity/?q=".trim(urlencode($query))."&wt=xml";
+             $querystring = "/biznes/similarity/?q=".trim(urlencode($query))."&wt=xml";
           }
-          else if($handler=='search')
+          else if($handler=='biznes_search')
           {
-            $querystring = "/gift/product_search/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&wt=xml&facet=true&facet.field=subcategory&facet.mincount=1&facet.range=price&f.price.facet.range.start=0&f.price.facet.range.end=1000&f.price.facet.range.gap=100&facet.limit=20";
+            $querystring = "/biznes/product_search/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&wt=json";
           }
           else if($handler=='filter')
           {
