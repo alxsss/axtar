@@ -3,9 +3,10 @@
 /**
  * PlaylistMusic filter form.
  *
- * @package    ##PROJECT_NAME##
+ * @package    hemsinif
  * @subpackage filter
- * @author     ##AUTHOR_NAME##
+ * @author     Your name here
+ * @version    SVN: $Id: sfPropelFormFilterTemplate.php 11675 2008-09-19 15:21:38Z fabien $
  */
 class PlaylistMusicFormFilter extends BasePlaylistMusicFormFilter
 {

@@ -112,8 +112,10 @@
   <?php //if($feed_feed&&empty($spellcheck)):?>
   <?php if($feed_feed):?>
     <?php foreach($xml->web->results->result as $result):?>
-      <div> <h3><a href="<?php echo $result->url;?>" target="_blank"><?php echo $result->title;?></a></h3> </div>
-      <div class="abstract"> <?php echo $result->abstract;?> </div>
+       <?php $title=$result->title->getRawValue();?> 
+      <div> <h3><a href="<?php echo $result->url;?>" target="_blank"><?php echo $title;?></a></h3> </div>
+       <?php $abstract=$result->abstract->getRawValue();?> 
+      <div class="abstract"> <?php echo $abstract;?> </div>
       <div class="url"> <?php echo $result->url;?> </div>
     <?php endforeach;?>
   <?php endif;?>

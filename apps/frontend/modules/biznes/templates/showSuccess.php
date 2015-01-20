@@ -31,47 +31,32 @@ color: #008000;padding: 5px 0;
 .similar_products {
 font-size:14px;
 }
+#photo {
+    font-family: "Times New Roman",Times,serif;
+    font-size: 12px;
+}
+#photo_rating {
+    float: right;
+}
+.rating_titles {
+    float: right;
+    position: relative;
+}
+.popup {
+    background: url("/images/new_tooltip4.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #ffffff;
+    display: none;
+    height: 30px;
+    left: 750px;
+    line-height: 20px;
+    padding: 3px 0 5px;
+    position: absolute;
+    text-align: left;
+    text-indent: 10px;
+    width: 100px;
+    z-index: 1000;
+}
 </style>
-<script type="text/javascript">
-   //photo rating
-        jQuery('#photo_rating').raty();
-  // initialize all expanding textareas
-  jQuery("textarea[class*=expand]").TextAreaExpander();
- jQuery('.comment_actions>a').live('click', function(e)
-  {
-    e.preventDefault();
-        jQuery(this).next().next().toggle();
-   });
-
-  jQuery('.toggle_to_login').live('click', function(e)
-  {
-    e.preventDefault();
-        jQuery('#login').toggle();
-   });
-
-//handle comment submission
-   jQuery('.status_comment_box_form').live('click', function(e)
-   {
-      //use click instead of submit  since submit does not work on ie
-          e.preventDefault();
-      //user_status_comment_new=jQuery(this).parents('.add_status_comment').siblings('.user_status_comment_new');
-          var user_status_comment_new=jQuery(this).parents('form').parents('.status_comment_box').siblings('.add_status_comment').children('.user_status_comment_new');
-          var textarea=jQuery(this).parents('form').children('textarea');
-          textarea.css('background-color', '#CCCCCC');
-          var submit_button=jQuery(this);
-          submit_button.hide();
-          var item_id=jQuery(this).parents('form').children('input[name="item_id"]').attr('value');
-      var item_user_id=jQuery(this).parents('form').children('input[name="item_user_id"]').attr('value');
-          var page=jQuery(this).parents('form').children('input[name="page"]').attr('value');
-          var comment=textarea.attr('value');
-          user_status_comment_new.load(jQuery(this).parents('form').attr('action'), {comment: comment, item_id: item_id, item_user_id:item_user_id, page:page},
-      function()  {textarea.css('background-color', '#FFFFFF'); textarea.val(''); submit_button.show();
-          user_status_comment_new.removeAttr('class');
-          user_status_comment_new.addClass('comments');
-          user_status_comment_new.after('<div class="user_status_comment_new"></div>');
-      });
-        });
-</script>
 <?php use_helper('I18N','Global','Text') ?>
 <div id="search_results">
    <?php include_partial('biznes_search_small')?>

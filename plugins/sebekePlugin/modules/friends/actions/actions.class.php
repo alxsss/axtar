@@ -42,7 +42,7 @@ class friendsActions extends sfActions
 	}
 	else
 	{
-	  $this->redirect('@homepage');
+	  return $this->forward('sfGuardAuth','signin');
 	}
   }
   public function executeIgnore(sfWebRequest $request)

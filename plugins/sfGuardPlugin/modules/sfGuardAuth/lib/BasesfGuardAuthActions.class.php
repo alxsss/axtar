@@ -42,7 +42,7 @@ class BasesfGuardAuthActions extends sfActions
 		//redirect to profile page
 		//$signinUrl = sfConfig::get('app_sf_guard_plugin_success_signin_url', $user->getReferer($request->getReferer()));
 		//if($request->getReferer()=='http://hemsinif/frontend_dev.php/')
-		if($request->getReferer()=='http://hemsinif.com/')
+		if($request->getReferer()=='http://axtar.az/')
 		{
 		  $signinUrl = 'user/'.$values['username'];
 		}

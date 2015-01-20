@@ -33,7 +33,7 @@ class SolrQuerySlave4 {
           $url = "http://".SOLR_META_QUERY."/solr";
           if($handler=='similarity')
           {
-             $querystring = "/biznes/similarity/?q=".trim(urlencode($query))."&wt=xml";
+             $querystring = "/biznes/similarity/?q=".trim(urlencode($query))."&wt=json";
           }
           else if($handler=='biznes_search')
           {

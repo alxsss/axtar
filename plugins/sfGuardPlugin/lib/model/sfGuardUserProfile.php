@@ -47,7 +47,7 @@ public function save(PropelPDO $con = null)
   {
     $ret = parent::save($con);
  
-    $this->updateLuceneIndex();     
+    //$this->updateLuceneIndex();     
 	
     $con->commit();
     return $ret;
