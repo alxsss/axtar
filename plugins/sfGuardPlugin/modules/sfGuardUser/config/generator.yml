@@ -12,7 +12,7 @@ generator:
 
     config:
       fields:
-        password_again: { label: "Password (again)" }
+        #password_again: { label: "Password (again)" }
 
       list:
         title:   User list
@@ -21,7 +21,8 @@ generator:
       form:
         class: sfGuardUserAdminForm
         display:
-          "NONE":                   [username, password, password_again]
+          #"NONE": [username, password, password_again]
+          "NONE": [username, password]
           "Permissions and groups": [is_active, is_super_admin, sf_guard_user_group_list, sf_guard_user_permission_list]
 
       edit:

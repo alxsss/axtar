@@ -1,7 +1,5 @@
 <?php
 
-require 'lib/model/om/BaseKeyphrasePeer.php';
-
 
 /**
  * Skeleton subclass for performing query and update operations on the 'keyphrase' table.

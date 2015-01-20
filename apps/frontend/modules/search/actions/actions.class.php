@@ -10,6 +10,87 @@
  */
 class searchActions extends sfActions
 {
+  public function executeSearchwww(sfWebRequest $request)
+  {
+    if (!$this->query = trim($request->getParameter('query')))
+    {
+      return $this->redirect('search/index');	  
+    }
+    $rows=10;
+    $this->page =$request->getParameter('page', 1);
+    $start=$rows*($this->page-1);
+    $this->query=trim($this->query);
+    $query_db=$this->query;
+    $nb_axtar_results=0;
+    $nbResults=0;
+    //declare boolean variables for each feed
+    $this->axtar_feed=0;
+    
+    //make a call to boss
+    $cc_key ="dj0yJmk9dkNjZ01PWjZrVllWJmQ9WVdrOWFGRTNiVFJPTlRnbWNHbzlOVFV3TlRVME56WXkmcz1jb25zdW1lcnNlY3JldCZ4PWY3";
+    $cc_secret="e3c4e087f77c0eb9da70afedcbf891527e21966a";
+    $url = "http://yboss.yahooapis.com/ysearch/web";
+    $args = array();
+    $args["q"] =$this->query;
+    $args["format"] = "xml";
+    $args["start"] =$start;
+    $args["count"] =$rows;
+    $consumer = new OAuthConsumer($cc_key, $cc_secret);
+    $request = OAuthRequest::from_consumer_and_token($consumer, NULL,"GET", $url, $args);
+    $request->sign_request(new OAuthSignatureMethod_HMAC_SHA1(), $consumer, NULL);
+    $url = sprintf("%s?%s", $url, OAuthUtil::build_http_query($args));
+    $ch = curl_init();
+    $headers = array($request->to_header());
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    $this->xml= simplexml_load_string(curl_exec($ch));
+    if($this->xml)
+    {
+      $nbResults=$this->xml->web['totalresults'];
+      if($nbResults>500){$nbResults=500;}
+    }
+
+       
+    $pages_in_boss=floor($nbResults/$rows);
+    //add this variable to show results that are less than 10
+    $residual=$nbResults%$rows;	
+    $additional_number=0;
+    if($residual>0)$additional_number=1;
+    
+    //display products from axtar feed
+    if($this->page>=$nbResults+$additional_number)
+    {
+      $solr_query = new SolrQuery;
+      $data = $solr_query->runQuery($this->query, $start, 'axtar');
+      if($data)
+      {
+        $this->axtar_feed=1;
+        $this->axtar_xml = simplexml_load_string($data);
+        $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
+        $nb_axtar_results=$this->axtar_xml->xpath("//lst[@name='grouped']/lst[@name='site']/int[@name='ngroups']");
+        $nb_axtar_results=$nb_axtar_results[0];
+        //get suggestions
+        $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");	
+      }
+    }
+      //get pagination
+     $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nbResults+$nb_axtar_results);
+     $this->feed_pager->setPage($this->page);
+     $this->feed_pager->init();
+     //set title
+     $this->getResponse()->setTitle($this->query.' -axtar.az');
+    //save search keyword
+    //exclude search bots $bots=array('66.249.65.124')
+    if($this->page==1)
+    {
+      $search=new Search();
+      $search->setQuery($query_db);
+      $search->setRawIp($_SERVER['REMOTE_ADDR']);
+      $search->save();	
+    }
+  }
   public function executeIndextest(sfWebRequest $request)
   {
   }
@@ -259,7 +340,7 @@ class searchActions extends sfActions
       $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
       $this->axtar_feed=1;
     }
-    if($this->page>$pages_in_axtar)
+    if($this->page>=$pages_in_axtar+$additional_number)
     {
       //$start_yahoo=10*($this->page-$pages_in_axtar-1);
       //bv2

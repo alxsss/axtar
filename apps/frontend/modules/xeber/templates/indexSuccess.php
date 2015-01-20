@@ -64,16 +64,16 @@
       }?>  
       
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-     
+     <?php $content=$content->getRawValue();?> 
        <?php if(!empty($date)):?>
           <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
        <?php endif;?>
      
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,60);}else{ echo truncate_text(str_replace('<!', '<',$title),60);}?></a></h3>
+      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{ echo truncate_text($title,80);}?></a></h3>
       <?php if(!empty($content)):?>
          <div class="abstract">
            <?php if(!empty($imageurl)):?>
-              <a href="<?php echo $url;?>" target="_blank"> <img src="<?php echo $imageurl;?>" width="100" class="imageurl"/> </a> 
+              <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo str_replace('http://www.azadliq.info/','',$imageurl);?>" width="100" class="imageurl"/></a> 
             <?php endif;?>
            <?php
               $hhmm=substr($azdate,strpos($azdate,':')-2,5);
@@ -82,7 +82,7 @@
               echo substr($content[0],$poshhmm+5, 250);?>
          </div>
       <?php endif;?>
-      <div class="url"><?php echo truncate_text($url,60);?> </div>
+      <div class="url"><?php echo truncate_text($url,80);?> </div>
        <div class="xeberdatetime"><?php echo $azdate ?></div>
     <?php endforeach; ?>
 

@@ -1,1 +1,1 @@
-<?php echo $sf_data->get('html') ?>
+<?php echo $sf_data->getRaw('html') ?>

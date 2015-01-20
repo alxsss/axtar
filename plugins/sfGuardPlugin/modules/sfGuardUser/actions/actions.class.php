@@ -1,15 +1,23 @@
 <?php
 
-require_once dirname(__FILE__).'/../lib/BasesfGuardUserActions.class.php';
+/*
+ * This file is part of the symfony package.
+ * (c) 2004-2006 Fabien Potencier <fabien.potencier@symfony-project.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+require_once(dirname(__FILE__).'/../lib/BasesfGuardUserActions.class.php');
 
 /**
- * sfGuardUser actions.
+ * User management.
  *
- * @package    sfGuardPlugin
- * @subpackage sfGuardUser
- * @author     Fabien Potencier
- * @version    SVN: $Id: actions.class.php 12965 2008-11-13 06:02:38Z fabien $
+ * @package    symfony
+ * @subpackage plugin
+ * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
+ * @version    SVN: $Id: actions.class.php 7634 2008-02-27 18:01:40Z fabien $
  */
-class sfGuardUserActions extends basesfGuardUserActions
+class sfGuardUserActions extends BasesfGuardUserActions
 {
 }

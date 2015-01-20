@@ -1,3 +1,12 @@
+biznes:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Biznes
+    module:               biznes
+    prefix_path:          /biznes
+    column:               id
+    with_wildcard_routes: true
+
 keyphrase:
   class: sfPropelRouteCollection
   options:

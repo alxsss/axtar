@@ -29,12 +29,20 @@
 }
 ?>
 <div id="search_results">
-  <?php include_partial('search_small')?>
+  <?php include_partial('search_smallaznet')?>
   <div id="results">
+ <div id="acar_sozler">
+      <?php // foreach($acar_sozler as $acar_soz):?>
+        <div class="acar_soz"> <?php // echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
+      <?php // endforeach;?>
+    </div>
+
+    <div id="xeber_results">
+
     <?php if($axtar_feed):?>
     <?php foreach($results as $result): ?>
-      <h3><a href="<?php echo $result['url'];?>" target="_blank"><?php if(empty($result['title'])){echo $result['url'];}else{echo truncate_text($result['title'],60);}?></a></h3> 
-      <div class="abstract"><?php echo $result['content'][0];?></div>
+      <h3><a href="<?php echo $result['url'];?>" target="_blank"><?php if(empty($result['title'])){echo $result['url'];}else{echo truncate_text(sfOutputEscaper::unescape($result['title']),60);}?></a></h3> 
+      <div class="abstract"><?php echo sfOutputEscaper::unescape($result['content'][0]);?></div>
       <div class="url"><?php echo  truncate_text($result['url'],60);?></div>
     <?php endforeach; ?>
   <div class="pagination">
@@ -43,12 +51,11 @@
     </div>
   </div>
  <?php endif;?>
- </div>
-<div class="sponsor_ads">
- <div class="sponsor_ads_title"><?php echo __('Sponsor ads')?></div>
-  <h3><a href="http://hemsinif.com" target="_blank">hemsinif.com</a></h3>
-  Sinif yoldaşlarını, dostalrı tapmaq və onlarla əlaqədə olmaq üçün sosial şəbəkə.
+
+
+ </div><!-- xeber_results -->
 </div>
 
-</div>
+  <?php include_partial('sponsor_ads')?>
 
+</div>

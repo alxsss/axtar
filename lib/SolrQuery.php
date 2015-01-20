@@ -110,7 +110,8 @@ class SolrQuery {
      */
       if($site=='axtar')
       {
-        $querystring = "/newaxtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml";
+        $querystring = "/newaxtar/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$this->limit."&indent=true&wt=xml&boost=if(exists(query({!v%3D'site:az.wikipedia.org'})),100,1)";
+             //{indent=true&start=0&q=???D&boost=if(exists(query({!v%3D'site:az.wikipedia.org'}))+,100,1)&wt=xml&rows=20
       }
       else if($site=='site')
       {
@@ -119,6 +120,10 @@ class SolrQuery {
       else if($site=='image')//image handler here
       {
         $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=35&wt=xml";
+      }
+      else if($site=='autosuggest')
+      {
+         $querystring = "/acbiznes/autosuggest/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&wt=json";
       }
       else 
       {

@@ -1,9 +1,15 @@
+showproduct:
+  url:   biznes/:id/:title.html
+  param: { module: biznes, action: show }
 news:
   url:  /:sf_culture/news
   param: {module: content, action: news }
 autosuggest:
   url:   /autosuggest
   param: { module: search, action: autosuggest }
+biznes_autosuggest:
+  url:   /biznes_autosuggest
+  param: { module: biznes, action: autosuggest }
 map:
   url:  /:sf_culture/map
   param: {module: search, action: map }
@@ -39,15 +45,18 @@ ts:
 privacyp:
   url:   /:sf_culture/privacypolicy
   param: { module: content, action: privacyp }
-contact:
-  url:   /:sf_culture/contact
-  param: { module: contact, action: create }
 xeber_index:
   url:  /:sf_culture/xeber
   param: { module:  xeber, action: index }
 xeber_search:
   url:  /:sf_culture/xeberaxtar
   param: { module:  xeber, action: searchgr }
+biznes_search:
+  url:  /:sf_culture/biznesaxtar
+  param: { module:  biznes, action: search }
+search_www:
+  url:  /:sf_culture/axtarwww
+  param: { module:  search, action: searchwww }
 search_search:
   url:  /:sf_culture/axtar
   param: { module:  search, action: search }
@@ -77,6 +86,10 @@ image_index:
  # url:   /:module/:action/*
 homepage:
   url:   /
+  param: {module: search, action: index }
+  requirements: { sf_culture: (?:az|en|ru) }
+homepage_culture:
+  url:   /:sf_culture
   param: {module: search, action: index }
   requirements: { sf_culture: (?:az|en|ru) }
 default_index:

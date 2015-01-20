@@ -4,6 +4,7 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
+    <?php use_stylesheet('main?v=22') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
@@ -29,5 +30,7 @@
                 <li class="keyboard lastitem">x</li>                 			
 	</ul>
 </div>
+<?php use_javascript('jquery.js')?>
+<?php use_javascript('jquery.axtar.js?v=8')?>
   </body>
 </html>

@@ -1,6 +1,0 @@
-rendering: ~
-security:
-  class: sfGuardBasicSecurityFilter
-cache:     ~
-common:    ~
-execution: ~

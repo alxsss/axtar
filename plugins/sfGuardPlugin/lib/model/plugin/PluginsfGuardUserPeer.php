@@ -17,13 +17,5 @@
  */
 class PluginsfGuardUserPeer extends BasesfGuardUserPeer
 {
-  public static function retrieveByUsername($username, $isActive = true)
-  {
-    $c = new Criteria();
-    $c->add(self::USERNAME, $username);
-    $c->add(self::IS_ACTIVE, $isActive);
-
-    return self::doSelectOne($c);
-  }
-
+  
 }

@@ -1,0 +1,12 @@
+#all:
+ # http_metas:
+  #  content-type: text/html
+ # metas:
+  #  title:        axtar search
+   # description:  new search engine
+   # keywords:     search, axtar
+    #language:     en
+    #robots:       index, follow
+  #stylesheets:    [main.css?v=21]
+  #stylesheets:    [layout_hf.css]
+  #javascripts:    [jquery.js, jquery.axtar.js?v=7]
