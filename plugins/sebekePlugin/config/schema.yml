@@ -1,8 +1,8 @@
 propel:
   _attributes:      { package: plugins.sebekePlugin.lib.model } 
+
   album: 
-    _attributes: 
-      idMethod: native
+    _attributes: {idMethod: native}
     id:  { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
     title: { type: VARCHAR, size: 255, required: true }
     description: { type: LONGVARCHAR, required: true  }
@@ -14,16 +14,8 @@ propel:
     id: { type: INTEGER, size: '10', primaryKey: true, autoIncrement: true, required: true }
     code: { type: VARCHAR, size: '5', required: true, defaultValue: '' }
     name: { type: VARCHAR, size: '30', required: true, defaultValue: '' }  
-  country:
-    _attributes: { idMethod:  native }
-    id: { type: INTEGER, size: '10', primaryKey: true, required: true, defaultValue: '0' }
-    name: { type: VARCHAR, size: '64', required: true, defaultValue: '' }
-    iso_code_2: { type: CHAR, size: '2', required: true, defaultValue: '' }
-    iso_code_3: { type: CHAR, size: '3', required: true, defaultValue: '' }
-    address_format_id: { type: INTEGER, size: '10', required: true, defaultValue: '0' }  
   friend:
-    _attributes: 
-      idMethod: native
+    _attributes: {idMethod: native}
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }    
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade}
     friend_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade}       
@@ -33,8 +25,7 @@ propel:
       friends_FI_1: 
         - user_id  
   message: 
-    _attributes: 
-      idMethod: native
+    _attributes: {idMethod: native}
     id:  { type: SMALLINT, required: true, autoIncrement: true,       primaryKey: true }
     subject: { type: VARCHAR, size: 255, required: true }
     from_userid:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
@@ -45,8 +36,7 @@ propel:
     msgtext: { type: LONGVARCHAR, required: true  }
     read_unread: { type: BOOLEAN, default:0} 
   photo: 
-    _attributes: 
-      idMethod: native
+    _attributes: {idMethod: native}
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
     album_id: { type: INTEGER, foreignTable: album, foreignReference: id,   onDelete: cascade}
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
@@ -65,8 +55,7 @@ propel:
        photo_FI_1: 
         - album_id    
   photo_comment: 
-    _attributes: 
-      idMethod: native
+    _attributes: {idMethod: native}
     photo_id: { type: INTEGER, required: true, foreignTable: photo, foreignReference: id, required: true, onDelete: cascade }      
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
     comment: { type: LONGVARCHAR }

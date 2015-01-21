@@ -77,3 +77,10 @@ propel:
     created_at: ~
     checked:  {type: BOOLEAN, default: 0 }
     deleted:  {type: BOOLEAN, default: 0 } 
+  country:
+    _attributes: { idMethod:  native }
+    id: { type: INTEGER, size: '10', primaryKey: true, required: true, defaultValue: '0' }
+    name: { type: VARCHAR, size: '64', required: true, defaultValue: '' }
+    iso_code_2: { type: CHAR, size: '2', required: true, defaultValue: '' }
+    iso_code_3: { type: CHAR, size: '3', required: true, defaultValue: '' }
+    address_format_id: { type: INTEGER, size: '10', required: true, defaultValue: '0' }
