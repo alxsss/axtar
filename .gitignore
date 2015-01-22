@@ -4,6 +4,8 @@ lib/om/
 lib/model/om/*
 lib/form/base/*
 lib/filter/base/*
+lib/model/map/
+
 data/
 test/
 web/uploads/

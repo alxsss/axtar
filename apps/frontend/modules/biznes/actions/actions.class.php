@@ -16,6 +16,46 @@ class biznesActions extends sfActions
   
  }
 
+
+   public function executeAddComment(sfWebRequest $request)
+  {
+    if ($this->getRequest()->getMethod() == sfRequest::POST)
+    {
+      $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');
+      $this->score=$request->getParameter('score');
+      
+      $this->biznes = BiznesPeer::retrieveByPk($request->getParameter('item_id'));
+      $this->forward404Unless($this->biznes);
+      $biznes_user_id=$request->getParameter('item_user_id');    ;//$this->biznes->getUserId();
+      $comment_body=$request->getParameter('comment');
+      if (!empty($comment_body)&&$this->score>0)
+      {
+        // create answer
+        $this->comment = new BiznesComment();
+        $this->comment->setBiznes($this->biznes);
+        $this->comment->setComment($comment_body);
+        $this->comment->setUserId($this->user_id);
+        $this->comment->setScore($this->score);
+        $this->comment->save();
+        //$user=sfGuardUserPeer::retrieveByPk($this->user_id);
+        //$biznes_owner_user = sfGuardUserPeer::retrieveByPk($biznes_user_id);
+        
+        //extract name if exists
+        /*
+        $this->name= $user->getProfile()->getName();
+        $this->name= trim($this->name);
+        $username=$user->getUsername();
+        if(empty($this->name))
+        {
+          $this->name=$username;
+        }
+        */
+      }//end if body
+   return sfView::SUCCESS;
+  }
+}
+
+
   public function executeShow(sfWebRequest $request)
   {
     $this->id = $request->getParameter('id');

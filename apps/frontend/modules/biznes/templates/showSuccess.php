@@ -36,7 +36,10 @@ font-size:14px;
     font-size: 12px;
 }
 #photo_rating {
-    float: right;
+    float: left;
+}
+#biznes_rating {
+    float: left;
 }
 .rating_titles {
     float: right;
@@ -55,6 +58,11 @@ font-size:14px;
     text-indent: 10px;
     width: 100px;
     z-index: 1000;
+}
+.error_message {
+    color: #ff0000;
+    display: none;
+    float: left;
 }
 </style>
 <?php use_helper('I18N','Global','Text') ?>
@@ -126,15 +134,7 @@ font-size:14px;
         <?php // endif;?>
          <span class="interested_block"><?php //include_partial('favorite', array('biznes' => $biznes)) ?></span>
 
-                <?php $rated= BiznesRatePeer::retrieveByPK($id, $user_id); if($rated){$rate=$rated->getRate(); $read_only=1;}else{$rate=0;$read_only='';}?>
-                 <div id="photo_rating" read_only="<?php echo $read_only;?>" photo_id="<?php echo $id?>" rate="<?php echo $rate;?>"></div>
-                   <div class="rating_titles">
-                     <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
-                     <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>
-                     <div id="popup-3" class="popup"  style="position: absolute;left:32px;top:-40px;"><?php echo __('regular')?></div>
-                     <div id="popup-4" class="popup" style="position: absolute;left: 50px;top:-40px;"><?php echo __('good')?></div>
-                     <div id="popup-5" class="popup" style="position: absolute;left: 70px;top:-40px;"><?php echo __('gorgeus')?></div>
-                   </div>
+                <?php //$rated= BiznesRatePeer::retrieveByPK($id, $user_id); if($rated){$rate=$rated->getRate(); $read_only=1;}else{$rate=0;$read_only='';}?>
     <div id="add_comment" class="add_status_comment">
       <?php $biznes=BiznesPeer::retrieveByPK($id);?>
       <?php include_partial('comment', array('user_id'=>$user_id, 'biznes' => $biznes, 'comments' =>$biznes->getBiznesCommentsJoinsfGuardUser())) ?>
@@ -142,10 +142,20 @@ font-size:14px;
     </div>
     <?php if ($sf_user->isAuthenticated()): ?>
       <div class="status_comment_box" style="display:block;padding:0 0 50px 10px;">
-            <form action="<?php echo url_for('@add_comment')?>" method="post">
+            <form action="<?php echo url_for('@add_biznes_comment')?>" method="post">
+               <div class="error_message"><?php echo __('Required.')?></div>   
+              <div class="photo_rating" read_only="" id="biznes_rating" rate="0"></div>
+                   <div class="rating_titles">
+                     <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
+                     <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>
+                     <div id="popup-3" class="popup"  style="position: absolute;left:32px;top:-40px;"><?php echo __('regular')?></div>
+                     <div id="popup-4" class="popup" style="position: absolute;left: 50px;top:-40px;"><?php echo __('good')?></div>
+                     <div id="popup-5" class="popup" style="position: absolute;left: 70px;top:-40px;"><?php echo __('gorgeus')?></div>
+                   </div>
           <input type="hidden" value="<?php echo $biznes->getId()?>"  name="item_id">
           <input type="hidden" value="<?php echo $biznes->getUserId()?>"  name="item_user_id">
                   <input type="hidden" value="1"  name="page">
+           <div class="error_message"><?php echo __('Required.')?></div>
           <textarea cols="20" rows="3" class="expand24 status_box" id="comment" name="comment" style="height: 24px; overflow: hidden; padding-top: 0px; padding-bottom: 0px;"></textarea>
           <div class="submit-row">
             <input type="submit" value="<?php echo __('comment')?>" class="status_comment_box_form">

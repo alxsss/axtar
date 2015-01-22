@@ -97,9 +97,9 @@ delete_updates_photo_comment:
 delete_photo_comment:
   url:   /deletephotocomment
   param: { module: photos, action: deleteComment }
-add_comment:
-  url:   /add_comment
-  param: { module: photos, action: addComment }
+add_biznes_comment:
+  url:   /addbiznescomment
+  param: { module: biznes, action: addComment }
 add_status_comment:
   url:   /addstatuscomment
   param: { module: friends, action: addstatuscomment }

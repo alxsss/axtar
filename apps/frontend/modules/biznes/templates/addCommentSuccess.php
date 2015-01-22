@@ -7,7 +7,7 @@
 <span class="comment_dates">(<?php echo status_date($comment->getCreatedAt('U'), $comment->getCreatedAt('F j, Y'))?>)</span>  
 <div class="comment_text">
 <div class="comment_body">  <?php echo $comment->getComment() ?></div>
-  <?php if($user_id==$photos->getUserId()||$user_id==$comment->getUserId()):?> 
+  <?php if($user_id==$biznes->getUserId()||$user_id==$comment->getUserId()):?> 
     <div class="delete_item">
       <?php  echo link_to(__('Delete'), '@delete_photo_comment?id='.$comment->getId()) ?> 
 	</div>		    
