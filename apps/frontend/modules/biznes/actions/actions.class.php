@@ -119,6 +119,17 @@ class biznesActions extends sfActions
         $this->docs = $json['response']['docs'];
     }
   }
+   public function executeDeleteComment(sfWebRequest $request)
+ {
+    if (!$request->getParameter('id'))
+    {
+      return sfView::NONE;
+    }
+    $this->comment = BiznesCommentPeer::retrieveByPk($request->getParameter('id'));
+    $this->forward404Unless($this->comment);
+    $this->comment->delete();
+    $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');
+}
 
   public function executeIndex(sfWebRequest $request)
   {
@@ -127,20 +138,55 @@ class biznesActions extends sfActions
 
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new BiznesForm();
+    if ($this->getUser()->isAuthenticated())
+    {
+      $this->form = new BiznesForm();
+    }
+    else
+    {
+      return $this->forward('sfGuardAuth','signin');
+    }
   }
 
   public function executeCreate(sfWebRequest $request)
   {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
+    if ($this->getUser()->isAuthenticated())
+    {
+      $this->forward404Unless($request->isMethod(sfRequest::POST));
 
-    $this->form = new BiznesForm();
+      $this->form = new BiznesForm();
+      $this->form->setDefaults(array('user_id' => $this->user_id ));
+      $this->processForm($request, $this->form);
+      return 'After';
 
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
+      //$this->setTemplate('edit');
+    }
+    else
+    {
+      return $this->forward('sfGuardAuth','signin');
+    }
+  }
+/*
+ public function executeCreate($request)
+  {
+    if ($this->getUser()->isAuthenticated())
+    {
+          //user id of the user whom the message is sent
+          $this->to_userid=$request->getParameter('to_userid');
+          $this->recepient = sfGuardUserPeer::retrieveByPk($this->to_userid);
+          $this->to_username=$this->recepient->getUsername();
+          $this->forward404Unless($this->to_userid);
+          $this->form = new MessageForm();
+          $this->form->setDefaults(array('from_userid' => $this->user_id, 'to_userid' =>$this->to_userid, 'to_deltype'=>'0', 'from_deltype'=>'0'));
+      $this->setTemplate('edit');
+        }
+        else
+        {
+          return $this->forward('sfGuardAuth','signin');
+        }
   }
 
+*/
   public function executeEdit(sfWebRequest $request)
   {
     $Biznes = BiznesQuery::create()->findPk($request->getParameter('id'));
@@ -178,7 +224,7 @@ class biznesActions extends sfActions
     {
       $Biznes = $form->save();
 
-      $this->redirect('biznes/edit?id='.$Biznes->getId());
+      //$this->redirect('biznes/edit?id='.$Biznes->getId());
     }
   }
 }

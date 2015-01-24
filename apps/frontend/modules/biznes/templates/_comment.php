@@ -17,18 +17,11 @@
     <div class="comment_text">
        <?php if($score):?>
         <div class="photo_rating" read_only="<?php echo $read_only;?>" id="<?php echo $comment->getId()?>" rate="<?php echo $score;?>"></div>
-           <div class="rating_titles">
-           <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
-           <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>
-           <div id="popup-3" class="popup"  style="position: absolute;left:32px;top:-40px;"><?php echo __('regular')?></div>
-           <div id="popup-4" class="popup" style="position: absolute;left: 50px;top:-40px;"><?php echo __('good')?></div>
-           <div id="popup-5" class="popup" style="position: absolute;left: 70px;top:-40px;"><?php echo __('gorgeus')?></div>
-         </div>
        <?php endif;?>
         <div class="comment_body"><?php echo $comment->getComment() ?></div>
 	  <?php if($user_id==$biznes->getUserId()||$user_id==$comment->getUserId()):?> 
 	    <div class="delete_item">
-          <?php  echo link_to(__('Delete'), '@delete_photo_comment?id='.$comment->getId()) ?> 
+          <?php  echo link_to(__('Delete'), '@delete_biznes_comment?id='.$comment->getId()) ?> 
 	    </div>		    
      <?php endif;?>
    </div>

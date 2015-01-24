@@ -42,7 +42,6 @@ font-size:14px;
     float: left;
 }
 .rating_titles {
-    float: right;
     position: relative;
 }
 .popup {
@@ -141,7 +140,7 @@ font-size:14px;
       <div class="user_status_comment_new"></div>
     </div>
     <?php if ($sf_user->isAuthenticated()): ?>
-      <div class="status_comment_box" style="display:block;padding:0 0 50px 10px;">
+      <div class="status_comment_box" style="display:block;padding:0 0 50px 0px;">
             <form action="<?php echo url_for('@add_biznes_comment')?>" method="post">
                <div class="error_message"><?php echo __('Required.')?></div>   
               <div class="photo_rating" read_only="" id="biznes_rating" rate="0"></div>

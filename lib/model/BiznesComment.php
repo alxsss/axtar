@@ -9,6 +9,7 @@
  */ 
 class BiznesComment extends BaseBiznesComment
 {
+  /*
   //override photoComment's save function to increment num_comment valuer in photo table
   public function save(PropelPDO  $con = null)
   {
@@ -30,5 +31,5 @@ class BiznesComment extends BaseBiznesComment
     $photo->save($con);
     return $ret;
  }
-
+*/
 }

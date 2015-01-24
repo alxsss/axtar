@@ -41,16 +41,15 @@ propel:
   biznes:
     _attributes:  {idMethod:  native  }
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    title:  { type: VARCHAR, size: 255 }
-    address: { type: varchar, size: 255 }
+    title:  { type: VARCHAR, size: 255 , required: true}
+    address: { type: varchar, size: 255 , required: true}
     phone: { type: varchar, size: 100 }
     website: { type: varchar, size: 255 }
     category: { type: varchar, size: 255 }
-    photo: { type: VARCHAR, size: 255, required: true }
+    photo: { type: VARCHAR, size: 255 }
     created_at: ~
-    rating: { type: INTEGER }
-    num_comment: { type: INTEGER }
     approved:  { type: BOOLEAN, default: 1 }
+    rating: { type: INTEGER }
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id  }
   biznes_comment:
     _attributes:  {idMethod:  native  }
@@ -67,17 +66,6 @@ propel:
     created_at: ~
     tag: { type: VARCHAR, size: 100  }
     normalized_tag: { type: VARCHAR, size: 100, required: true,       primaryKey: true, index: true }
-  biznes_fav:
-    biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
-    user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade, primaryKey: true }
-    created_at: ~
-  biznes_rate:
-    biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
-    user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade, primaryKey: true }
-    rate:  {  type:integer  }
-    created_at: ~
-    checked:  {type: BOOLEAN, default: 0 }
-    deleted:  {type: BOOLEAN, default: 0 } 
   country:
     _attributes: { idMethod:  native }
     id: { type: INTEGER, size: '10', primaryKey: true, required: true, defaultValue: '0' }

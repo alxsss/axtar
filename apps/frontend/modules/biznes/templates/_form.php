@@ -62,55 +62,6 @@
           <?php echo $form['photo'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php echo $form['created_at']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['created_at']->renderError() ?>
-          <?php echo $form['created_at'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['rating']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['rating']->renderError() ?>
-          <?php echo $form['rating'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['num_comment']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['num_comment']->renderError() ?>
-          <?php echo $form['num_comment'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['approved']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['approved']->renderError() ?>
-          <?php echo $form['approved'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['user_id']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['user_id']->renderError() ?>
-          <?php echo $form['user_id'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['biznes_fav_list']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['biznes_fav_list']->renderError() ?>
-          <?php echo $form['biznes_fav_list'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['biznes_rate_list']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['biznes_rate_list']->renderError() ?>
-          <?php echo $form['biznes_rate_list'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
 </form>

@@ -1,3 +1,6 @@
+delete_biznes_comment:
+  url:   /deletebiznescomment
+  param: { module: biznes, action: deleteComment }
 showproduct:
   url:   biznes/:id/:title.html
   param: { module: biznes, action: show }

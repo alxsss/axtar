@@ -9,7 +9,7 @@
 <div class="comment_body">  <?php echo $comment->getComment() ?></div>
   <?php if($user_id==$biznes->getUserId()||$user_id==$comment->getUserId()):?> 
     <div class="delete_item">
-      <?php  echo link_to(__('Delete'), '@delete_photo_comment?id='.$comment->getId()) ?> 
+      <?php  echo link_to(__('Delete'), '@delete_biznes_comment?id='.$comment->getId()) ?> 
 	</div>		    
   <?php endif;?>
 </div>  

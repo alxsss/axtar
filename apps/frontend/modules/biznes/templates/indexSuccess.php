@@ -4,7 +4,7 @@
   <div id="results">
 
     <div id="xeber_results">
-<div class="news_chronology"><a href="<?php echo url_for('@xeber_index');?>"><?php  echo __('Add Business');?></a> </div>
+<div class="news_chronology"><a href="<?php echo url_for('biznes/new');?>"><?php  echo __('Add Business');?></a> </div>
 <!-- group -->
 
 
