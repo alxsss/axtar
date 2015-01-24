@@ -72,14 +72,6 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 	if ($request->isMethod('post'))
         {
 	  $this->processForm($request, $this->form);
-	  if($request->getParameter('sf_guard_user[school_id]'))
-	  {
-	    $schoolUser=new SchoolUser();
-	    $schoolUser->setUserId($this->form->getSchoolUser()->getUserId());
-	    $schoolUser->setSchoolId($this->form->getValue('school_id'));
-	    $schoolUser->setGradYear($this->form->getValue('grad_year'));
-	    $schoolUser->save();
-	  }
 	}
       }
   }
@@ -121,7 +113,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 	  if(!empty($user_email))
 	  {
 	    ProjectConfiguration::registerZend();
-         $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+         $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
          Zend_Mail::setDefaultTransport($tr);
         $mail = new Zend_Mail('utf-8');
         $mail->setBodyText(<<<EOF
@@ -129,7 +121,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 	Sizin istifadəçi adınız : $sf_guard_user_username
 	              parolunuz : $sf_guard_user_password
 					   
-        hemsinif robotu.
+        axtar.az robotu.
 EOF
 );
         $mail->setFrom('info@hemsinif.com', 'hemsinif.com robotu');

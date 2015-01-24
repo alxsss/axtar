@@ -35,7 +35,7 @@ class friendsActions extends sfActions
 	  $this->ignorelists=$this->subscriber->getIgnorelistsRelatedByUserId();
 	  $this->newest_users=sfGuardUserPeer::getNewestUsers();
 	  $this->last_logged_in_users=sfGuardUserPeer::getLastLoggedINUsers();
-	  $this->popular_games=GamePeer::getPopularGames();
+	  //$this->popular_games=GamePeer::getPopularGames();
 	  $this->user_groups = $this->subscriber->getsfSocialGroupUsers();
 	  $this->popular_photos=PhotoPeer::getPopularPhotos();
 	  $this->new_photos=PhotoPeer::getNewPhotos();
