@@ -32,13 +32,8 @@
 <div id="search_results">
   <?php include_partial('search_smallwww')?>
   <div id="results">
-   <div id="acar_sozler">
-      <?php // foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php // echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
-      <?php // endforeach;?>
-    </div>
    
-    <div id="xeber_results">
+    <div id="axtar_results">
     <?php //$spellcheck=$spellcheck->getRawValue();?>
     <?php if(!empty($spellcheck)):?>  
       <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>

@@ -4,18 +4,18 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <?php use_stylesheet('main?v=22') ?>
+    <?php use_stylesheet('main?v=24') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
+   <div id="content">  
     <?php use_helper('I18N') ?>
     <?php //$sf_user->setCulture('az') ?>
     <?php // include_component('sfLanguageSwitch', 'get') ?>
     <?php include_partial('search/univhead') ?>
     <?php echo $sf_content ?>
     <?php include_partial('search/univfoot') ?>
-<div id="keyboard_container" style="display:none;">
-
+    <div id="keyboard_container" style="display:none;">
 	<ul id="keyboard">		
 		<li class="letter">ə</li>
                 <li class="letter">ç</li>
@@ -29,6 +29,7 @@
 		<li class="delete">delete</li>
                 <li class="keyboard lastitem">x</li>                 			
 	</ul>
+</div>
 </div>
 <?php use_javascript('jquery.js')?>
 <?php use_javascript('jquery.axtar.js?v=8')?>

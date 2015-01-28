@@ -1,0 +1,4 @@
+_forex:
+  enabled:     true
+  with_layout: false   # Default value
+  lifetime:    18000   

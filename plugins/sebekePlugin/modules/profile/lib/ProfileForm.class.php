@@ -66,8 +66,7 @@ class ProfileForm extends sfGuardUserProfileForm
 	  $this['school_user_list'] 
     );
 	$this->setValidator('email', new sfValidatorEmail(array('required' => false, 'trim' => true)));
-  $this->validatorSchema->setPostValidator( new sfValidatorCallback(array('callback' => array($this, 'checkFile')))
-    );
+  $this->validatorSchema->setPostValidator( new sfValidatorCallback(array('callback' => array($this, 'checkFile'))) );
 
 }
 

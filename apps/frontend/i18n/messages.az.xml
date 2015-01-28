@@ -203,6 +203,11 @@
         <source>Most frequent keywords in news</source>
         <target>Xəbərlərdə olan açar sözlər</target>
       </trans-unit>
+	  <trans-unit id="48">
+        <source>Exchange rates:</source>
+        <target>Valyuta:</target>
+      </trans-unit>
+	  
     </body>
   </file>
 </xliff>

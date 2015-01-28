@@ -102,6 +102,10 @@ class XeberQuery {
    else if($koma==3)//search in news
    {
        $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&fl=id%20url%20title%20tstamp%20imageurl&group=true&group.field=site&group.ngroups=true&boost=recip(ms(NOW,tstamp),2.7100271002710027e-8,0.9878048780487805,1)";
+   }
+   else if($koma==4)//top news
+   {
+      $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=json&fl=id%20url%20title%20tstamp";
    } 
    else
    {

@@ -202,7 +202,10 @@
         <source>Most frequent keywords in news</source>
         <target>Наиболее частые ключевые слова в новостях</target>
       </trans-unit>
-  	  
+  	  <trans-unit id="48">
+        <source>Exchange rates:</source>
+        <target>Курсы валют:</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

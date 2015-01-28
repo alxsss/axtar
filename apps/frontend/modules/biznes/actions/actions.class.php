@@ -156,37 +156,22 @@ class biznesActions extends sfActions
 
       $this->form = new BiznesForm();
       $this->form->setDefaults(array('user_id' => $this->user_id ));
-      $this->processForm($request, $this->form);
-      return 'After';
-
-      //$this->setTemplate('edit');
+      $this->form->bind($request->getParameter($this->form->getName()), $request->getFiles($this->form->getName()));
+      if ($this->form->isValid())
+      {
+        $this->form->save();
+        return 'After';
+      } 
+      else
+      {
+        $this->setTemplate('edit');
+      }
     }
     else
     {
       return $this->forward('sfGuardAuth','signin');
     }
   }
-/*
- public function executeCreate($request)
-  {
-    if ($this->getUser()->isAuthenticated())
-    {
-          //user id of the user whom the message is sent
-          $this->to_userid=$request->getParameter('to_userid');
-          $this->recepient = sfGuardUserPeer::retrieveByPk($this->to_userid);
-          $this->to_username=$this->recepient->getUsername();
-          $this->forward404Unless($this->to_userid);
-          $this->form = new MessageForm();
-          $this->form->setDefaults(array('from_userid' => $this->user_id, 'to_userid' =>$this->to_userid, 'to_deltype'=>'0', 'from_deltype'=>'0'));
-      $this->setTemplate('edit');
-        }
-        else
-        {
-          return $this->forward('sfGuardAuth','signin');
-        }
-  }
-
-*/
   public function executeEdit(sfWebRequest $request)
   {
     $Biznes = BiznesQuery::create()->findPk($request->getParameter('id'));
