@@ -14,7 +14,7 @@
       <?php  $results = $json['response']['docs'];?>
       <?php  $title = $results[0]['title'];?>
       <?php  $url = $results[0]['url'];?>
-      <div class="news"> <a target="_blank" href="<?php echo $url?>"><?php echo $title?></a> </div> 
+      <div class="news"> <a target="_blank" href="<?php echo url_for('@xeber_search?query="'.$title.'"');?> "><?php echo  truncate_text($title,40);?></a> </div> 
     <?php endif;?>
   <?php endforeach;?>
 </div>

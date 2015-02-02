@@ -1,6 +1,6 @@
 <?php use_helper('I18N','Text') ?>
 <div class="search_main_page">
-  <?php include_partial('forex')?>
+  <?php //include_partial('forex')?>
 <?php include_component('xeber', 'topnews')?>
 <div class="logo">
   <img src="/images/logo.png" alt="axtar" title="axtar">
