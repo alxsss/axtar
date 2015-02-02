@@ -67,12 +67,6 @@ font-size:14px;
 <?php use_helper('I18N','Global','Text') ?>
 <div id="search_results">
    <?php include_partial('biznes_search_small')?>
-   <div id="acar_sozler">
-      <?php // foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php // echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
-      <?php // endforeach;?>
-    </div>
-
      <div id="xeber_results"> 
    <?php //include_component('xeber', 'acarsozler')?>
    <?php foreach($docs as $result): ?>

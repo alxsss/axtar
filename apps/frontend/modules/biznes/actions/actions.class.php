@@ -86,6 +86,10 @@ class biznesActions extends sfActions
 
   public function executeSearch(sfWebRequest $request)
   {
+    if (!$this->query = trim($request->getParameter('query')))
+    {
+      return $this->redirect('biznes/index');
+    }
     $this->query = $request->getParameter('query');
     $this->page=$this->getRequestParameter('page', 1);
     $results_per_page=sfConfig::get('app_pager_biznes');
@@ -133,7 +137,18 @@ class biznesActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-    $this->Bizness = BiznesQuery::create()->find();
+    $connection = Propel::getConnection();
+    $query ='SELECT id , title, address, phone, category, photo FROM biznes ORDER BY RAND() LIMIT 10';
+    $statement = $connection->prepare($query);
+    $statement->execute();
+    $this->biznes=array(); 
+    while ($biznes=$statement->fetch(PDO::FETCH_BOTH))
+    {    
+       $this->biznes[]=$biznes; 
+    }
+
+    //SELECT id , title FROM biznes ORDER BY RAND() LIMIT 10;
+    //$this->Bizness = BiznesQuery::create()->find();
   }
 
   public function executeNew(sfWebRequest $request)

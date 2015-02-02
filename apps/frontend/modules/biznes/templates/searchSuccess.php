@@ -4,21 +4,15 @@
   <div id="results">
      <?php //include_component('xeber', 'acarsozler')?>
 
-   <div id="acar_sozler">
-      <?php // foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php // echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
-      <?php // endforeach;?>
-    </div>
-
     <div id="xeber_results">
 
     <?php foreach ($docs->getRawValue() as $result): ?>
        <?php $title=sfOutputEscaper::unescape($result['title']);?>
        <?php //$description=sfOutputEscaper::unescape($result['description']);?>
-       <?php $address=$result['address'];?>
-       <?php //$photo=$result['photo'];?>
-       <?php $phone=$result['phone'];?>
-       <?php $category=$result['category'];?>
+       <?php if(isset($result['address'])){$address=$result['address'];}else{$address='';}?>
+       <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
+       <?php if(isset($result['phone'])){$phone=$result['phone'];}else{$phone='';}?>
+       <?php if(isset($result['category'])){$category=$result['category'];}else{$category='';}?>
        <?php $id=$result['id'];?>
        <h3><a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo $title?></a></h3>
       <?php if(!empty($description)):?>
@@ -27,13 +21,19 @@
           <?php endif;?>
         <div class="abstract"><?php  echo $description;?></div>
       <?php endif;?>
-      <div class="abstract"><?php foreach($address as $addr){echo $addr;}?> </div>
-      <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
+      <?php if(!empty($address)):?>
+         <div class="abstract"><?php foreach($address as $addr){echo $addr;}?> </div>
+      <?php endif;?>
+      <?php if(!empty($phone)):?>
+         <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
+      <?php endif;?>
+      <?php if(!empty($category)):?>
       <div class="url">
        <?php foreach($category as $cat):?>
          <a href="<?php echo url_for('@biznes_search?query='.$cat)?>"><?php echo $cat?></a>
        <?php endforeach; ?> 
       </div>
+      <?php endif;?>
     <?php endforeach; ?>
 
  <div class="pagination">
