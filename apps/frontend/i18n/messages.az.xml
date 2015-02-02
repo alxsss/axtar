@@ -207,6 +207,10 @@
         <source>Exchange rates:</source>
         <target>Valyuta:</target>
       </trans-unit>
+	  <trans-unit id="49">
+        <source>Top News</source>
+        <target>Əsas Xəbərlər</target>
+      </trans-unit>
 	  
     </body>
   </file>

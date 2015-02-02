@@ -206,6 +206,10 @@
         <source>Exchange rates:</source>
         <target>Курсы валют:</target>
       </trans-unit>
+	  <trans-unit id="49">
+        <source>Top News</source>
+        <target>Главные новости</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

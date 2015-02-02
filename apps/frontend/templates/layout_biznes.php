@@ -13,7 +13,10 @@
     <?php //$sf_user->setCulture('az') ?>
     <?php // include_component('sfLanguageSwitch', 'get') ?>
     <?php include_partial('search/univhead') ?>
-    <?php echo $sf_content ?>
+    <div id="search_results"> 
+      <?php include_partial('biznes/biznes_search_small')?>
+      <?php echo $sf_content ?>
+    </div>
     <?php include_partial('search/univfoot') ?>
     <div id="keyboard_container" style="display:none;">
 	<ul id="keyboard">		

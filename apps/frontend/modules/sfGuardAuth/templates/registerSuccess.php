@@ -1,4 +1,8 @@
 <?php use_helper('I18N', 'Date') ?>
+  <div id="results">
+
+    <div id="xeber_results">
+
 <?php //use_helper('recaptcha') ?>
   <?php //echo $form ?>
   <div class="user_registerCol2">
@@ -120,4 +124,7 @@
 		</tbody>
       </table>  
     </form>
+  </div> 
+ 
+  </div> 
   </div> 

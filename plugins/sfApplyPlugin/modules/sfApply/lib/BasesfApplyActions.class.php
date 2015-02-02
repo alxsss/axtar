@@ -91,10 +91,10 @@ class BasesfApplyActions extends sfActions
       $profile->setValidate('r' . $guid);
       $profile->save();
       // Create the mailer and message objects
-	  $urlvalidate='http://hemsinif.com/confirm/r'.$guid;
+	  $urlvalidate='http://axtar.az/confirm/r'.$guid;
       $mail = $this->getMailer();
 	  $mail->setBodyText(<<<EOF
-      Biz sizin hemsinif.com da parolunuzu dəyişmək üçün tələbinizi
+      Biz sizin axtar.az saytinda parolunuzu dəyişmək üçün tələbinizi
       aldıq. Bunu etmək üçün siz bu linkə
 	
       $urlvalidate
@@ -106,9 +106,9 @@ class BasesfApplyActions extends sfActions
       sizin parol dəyişməyəcək.    
 EOF
 );
-      $mail->setFrom('info@hemsinif.com', 'hemsinif robotu');
+      $mail->setFrom('admin@axtar.az', 'axtar.az robotu');
       $mail->addTo($user->getEmail());
-      $mail->setSubject('hemsinif.com profilinizə dəyişiklik');
+      $mail->setSubject('axtar.az saytinda profilinizə dəyişiklik');
       $mail->send();
 	  
     return 'After';
@@ -248,10 +248,10 @@ EOF
 
   // There's a lot here. Symfony could benefit from a standard convenience
   // class with a method like this one.
-  protected function getMailer()
+  public function getMailer()
   {
     ProjectConfiguration::registerZend();
-    $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+    $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
     return $mail;
