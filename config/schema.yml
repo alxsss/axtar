@@ -14,6 +14,13 @@ propel:
     query:  {type:  VARCHAR, size: 256}
     raw_ip:  { type: VARCHAR, size: 50  }
     created_at: {  type: TIMESTAMP  }
+  biznes_stat:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    biznes_id: { type: INTEGER, required: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
+    type:  {type:  VARCHAR, size: 256}
+    user_ip:  { type: VARCHAR, size: 50  }
+    created_at: {  type: TIMESTAMP  }
   url:
     _attributes:  {idMethod:  native  }
     id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }

@@ -10,24 +10,29 @@ class ProfileForm extends sfGuardUserProfileForm
     $years_list = array_combine($years, $years); //Creates new array where key and value are both values from $years list
     $this->setWidget('birthday', new sfWidgetFormDate($options = array('format' => '%day%/%month%/%year%', 'years' => $years_list)));
     $this->widgetSchema['user_id']= new sfWidgetFormInputHidden();
-    $this->widgetSchema['aboutme']->setLabel('About Me');
-    $this->widgetSchema['tvshows']->setLabel('TV shows');
-    $this->widgetSchema['lookingfor']->setLabel('Looking for');
+    //$this->widgetSchema['aboutme']->setLabel('About Me');
+    //$this->widgetSchema['tvshows']->setLabel('TV shows');
+    //$this->widgetSchema['lookingfor']->setLabel('Looking for');
     sfContext::getInstance()->getConfiguration()->loadHelpers('I18N');
-	$visibility = array(__('Everyone'), __('Friends only'));
-	$this->widgetSchema['visibility'] = new sfWidgetFormSelect(array('choices' =>  $visibility));
+
+	//$visibility = array(__('Everyone'), __('Friends only'));
+	//$this->widgetSchema['visibility'] = new sfWidgetFormSelect(array('choices' =>  $visibility));
 	
 	$gender=array(1=>__('Male'), 0=>__('Female'));
 	$this->widgetSchema['gender']=  new sfWidgetFormChoice(array('multiple'=>false, 'choices'  => $gender, 'expanded'=>true,));
 	
-	$marital_status=array(0=>__(''), 1=>__('Single'), 2=>__('In a realtionship'), 3=>__('Engaged'), 4=>__('Married'), 5=>__('It is complicated'), 6=>__('Divorced/Widowed'));
+/*	$marital_status=array(0=>__(''), 1=>__('Single'), 2=>__('In a realtionship'), 3=>__('Engaged'), 4=>__('Married'), 5=>__('It is complicated'), 6=>__('Divorced/Widowed'));
 	$this->widgetSchema['status']=  new sfWidgetFormSelect(array('choices'  => $marital_status));
 	$this->widgetSchema['status']->setLabel('Marital Status'); 
-	$countries=CountryPeer::doSelect(new Criteria());
+*/	
+        /*$countries=CountryPeer::doSelect(new Criteria());
 	$default_countries=array(''=>__('select country'));
 	$countries=array_merge($default_countries,$countries); 
 	$this->widgetSchema['country_id'] = new sfWidgetFormPropelChoice(array('choices'  => $countries,'model' => 'Country', 'add_empty' => true ));
-	$this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
+	$this->validatorSchema['country_id']->setOption('required', false); 
+	$this->widgetSchema['country_id']->setLabel('Country of residence'); 
+*/	
+       $this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Profile picture',
       'file_src'  => $this->getObject()->getPhoto()?'/uploads/assets/avatars/'.$this->getObject()->getPhoto():'',
       'is_image'  => true,
@@ -42,10 +47,21 @@ class ProfileForm extends sfGuardUserProfileForm
       'path'       => sfConfig::get('sf_upload_dir').'/assets/avatars/',
       'validated_file_class' => 'FileSaveProfileThumb')
       );
-	$this->validatorSchema['country_id']->setOption('required', false); 
-	$this->widgetSchema['country_id']->setLabel('Country of residence'); 
 	
 	unset(
+      $this['country_id'],
+      $this['status'],
+      $this['visibility'],
+      $this['aboutme'],
+      $this['tvshows'],
+      $this['lookingfor'],
+      $this['city'],
+      $this['state'],
+      $this['movies'],
+      $this['tvshows'],
+      $this['activities'],
+      $this['books'],
+      $this['music'],
       $this['username'],
 	  $this['password'],
 	  $this['password_hint'],
@@ -66,7 +82,8 @@ class ProfileForm extends sfGuardUserProfileForm
 	  $this['school_user_list'] 
     );
 	$this->setValidator('email', new sfValidatorEmail(array('required' => false, 'trim' => true)));
-  $this->validatorSchema->setPostValidator( new sfValidatorCallback(array('callback' => array($this, 'checkFile'))) );
+  $this->validatorSchema->setPostValidator( new sfValidatorCallback(array('callback' => array($this, 'checkFile')))
+    );
 
 }
 

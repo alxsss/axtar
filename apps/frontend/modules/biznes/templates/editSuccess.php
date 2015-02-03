@@ -1,5 +1,3 @@
-<div id="search_results">
-  <?php include_partial('biznes_search_small')?>
   <div id="results">
 
     <div id="xeber_results">
@@ -8,5 +6,4 @@
 <?php include_partial('form', array('form' => $form)) ?>
   </div>
   </div>
-</div>
 ~    

@@ -77,10 +77,11 @@ public static function getShowpopularBiznesPager()
   $photos=BiznesPeer::doSelect($c); 
   return $photos;
 }
-  public static function getAllBiznessPager($page, $user_id)
+  public static function getAllBiznesPager($page, $user_id)
  {
-   $pager = new sfPropelPager('Biznes', sfConfig::get('app_pager_friends_max'));  
+   $pager = new sfPropelPager('Biznes', sfConfig::get('app_pager_biznes'));  
    $c = new Criteria();
+   $c->add(self::APPROVED, 1);
    $c->add(BiznesPeer::USER_ID, $user_id);
    $c->addDescendingOrderByColumn(self::CREATED_AT);
    $pager->setCriteria($c);

@@ -1,6 +1,4 @@
 <?php use_helper('I18N','Text') ?>
-<div id="search_results">
-  <?php include_partial('biznes_search_small')?>
   <div id="results">
 
     <div id="xeber_results">
@@ -44,6 +42,5 @@
   </div>
 
  <?php //include_partial('search/sponsor_ads')?>
-</div>
 
 

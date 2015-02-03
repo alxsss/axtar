@@ -16,6 +16,19 @@ class biznesActions extends sfActions
   
  }
 
+    public function executeList(sfWebRequest $request)
+   { 
+     $this->page=$request->getParameter('page', 1); 
+     $this->biznes_owner = sfGuardUserPeer::retrieveByUsername($this->getRequestParameter('username'));
+     $this->forward404Unless($this->biznes_owner);
+    
+     //id of a user whose photos are retrived
+     $biznes_owner_user_id=$this->biznes_owner->getId();
+     $this->bizness=BiznesPeer::getAllBiznesPager($this->page, $biznes_owner_user_id); 
+    
+     //id of a user who signed in
+     $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');        
+   }
 
    public function executeAddComment(sfWebRequest $request)
   {
@@ -63,25 +76,33 @@ class biznesActions extends sfActions
     $solr_query = new SolrQuerySlave4;
     $jsondata = $solr_query->runQuery($this->id, 0, 'similarity');
     $this->title='';
-
+    $this->similar_products = '';
     if($jsondata)
     {
        $json = json_decode($jsondata, true);
        $this->docs = $json['response']['docs'];
        $this->num_found=$json['response']['numFound'];
 
-       $this->similar_products = $json['moreLikeThis'][strval($this->id)]['docs'];
+       if(isset($json['moreLikeThis'][strval($this->id)]))
+       {
+         $this->similar_products = $json['moreLikeThis'][strval($this->id)]['docs'];
+       }
     }
 
      //set title
      $this->title=$this->docs[0]['title'];
      $this->getResponse()->setTitle(substr($this->title,0,60));
      if(isset($this->docs['description']))
-     //if(array_key_exists('description', $this->docs[0])) 
      {
        $this->desc=$this->docs[0]['description'];
        $this->getResponse()->addMeta('description', substr($this->desc,0,155));
      }
+     //save statistics
+     $bisnes_stat=new BiznesStat();
+     $bisnes_stat->setBiznesId($this->id);
+     $bisnes_stat->setType('CTP');
+     $bisnes_stat->setUserIp($_SERVER['REMOTE_ADDR']);
+     $bisnes_stat->save();
   }
 
   public function executeSearch(sfWebRequest $request)

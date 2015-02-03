@@ -14,6 +14,8 @@
 .add_status_comment{width:400px;margin:5px 0 2px 0;float:left;}.comments{clear:both;width:350px;_width:352px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:300px;float:left;font-size:11px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
 
 .product_details{
+float:left;
+width:450px;
 font-size:16px;
  margin: 20px 0;
 }
@@ -30,6 +32,9 @@ color: #008000;padding: 5px 0;
 }
 .similar_products {
 font-size:14px;
+float:left;
+width:150px;
+padding: 20px;
 }
 #photo {
     font-family: "Times New Roman",Times,serif;
@@ -65,9 +70,7 @@ font-size:14px;
 }
 </style>
 <?php use_helper('I18N','Global','Text') ?>
-<div id="search_results">
-   <?php include_partial('biznes_search_small')?>
-     <div id="xeber_results"> 
+<div id="xeber_results"> 
    <?php //include_component('xeber', 'acarsozler')?>
    <?php foreach($docs as $result): ?>
       <?php $id=$result['id'];?>
@@ -82,7 +85,7 @@ font-size:14px;
      
          <div class="product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
-             <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo $photo;?>" width="75" class="imageurl_biznes"/></a>
+             <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo $photo;?>" width="75" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
 
@@ -92,8 +95,10 @@ font-size:14px;
             <div class="abstract"><?php  echo $description;?></div>
            <?php endif;?>
          <div class="product_address"><?php foreach($address as $addr){echo $addr;}?> </div>
-         <div class="product_phone"><?php foreach($phone as $ph){echo $ph;}?> </div>
-         <div class="product_phone"><?php echo $website?> </div>
+         <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
+          <?php if($website!=''):?>
+             <div class="product_phone"><a target="_blank" href="<?php echo $website?>" ><?php echo $website?></a> </div>
+           <?php endif;?>
          <div class="product_url">
            <?php foreach($category as $cat):?>
              <a href="<?php echo url_for('@biznes_search?query='.$cat)?>"><?php echo $cat?></a>
@@ -103,6 +108,57 @@ font-size:14px;
          </div>
     <?php endforeach; ?>
 
+   <!-- Display Similar Producs -->
+<?php $sim_product=sfOutputEscaper::unescape($similar_products)?>
+<?php if(!empty($sim_product)):?>
+<div class="similar_products">
+
+  <div class="sponsor_ads_title"><?php echo __('Similar Businesses')?></div>
+   <?php foreach($similar_products as $result): ?>
+      <?php $id=$result['id'];?>
+      <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
+      <?php if(isset($result['phone'])){$phone=$result['phone'];}else{$phone=array();}?>
+      <?php if(isset($result['website'])){$website=$result['website'];}else{$website='';}?>
+      <?php if(isset($result['description'])){$description=$result['description'];}else{$description='';}?>
+      <?php if(isset($result['address'])){$address=$result['address'];}else{$address=array();}?>
+      <?php if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
+      <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
+<div class="news"> 
+      <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
+      <?php if(!empty($photo)&&$photo!=''):?>
+           <img class="image_with_border" src="<?php echo $photo;?>" alt="no img">
+      <?php else:?>
+      
+       <?php echo  sfOutputEscaper::unescape($title) ;?>
+       <?php endif;?>
+    
+        </a>
+</div>
+      <?php //log impression    
+/*
+       $user_agent=$_SERVER["HTTP_USER_AGENT"];
+           if(!(strpos(strtolower($user_agent),'bot')||in_array($_SERVER['REMOTE_ADDR'],$bot->getRawValue())) )
+           {
+             //write IMPRESSIONS to log
+             $current_row=2;
+             $num_rows=2;
+             $weight=$num_rows/($num_rows+($current_row-1));
+             $log = new Logging();
+
+             // set path and name of log file (optional)
+             $log->lfile('/home/www/axtar/web/uploads/assets/score_logs/score_log.txt');
+
+             // write message to the log file
+             $log->lwrite($id.',IMPR,'.round($weight,3).',row:'.$current_row);
+             // close log file
+             $log->lclose();
+           }
+*/
+  ?>
+    <?php endforeach; ?>
+
+  </div> <!-- end similar products -->
+<?php endif;?>
     <?php 
      /*
         $user_agent=$_SERVER["HTTP_USER_AGENT"];
@@ -162,62 +218,9 @@ font-size:14px;
     <?php endif;//endif of comment ?>
 
 
-</div><!-- xeber_results -->
 
  <?php //include_partial('search/sponsor_ads')?>
 
-<div class="sponsor_ads">
-
-   <!-- Display Similar Producs -->
-<div class="similar_products">
-<div class="sponsor_ads_title"><?php echo __('Similar Businesses')?></div>
-   <?php foreach($similar_products as $result): ?>
-      <?php $id=$result['id'];?>
-      <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
-      <?php if(isset($result['phone'])){$phone=$result['phone'];}else{$phone=array();}?>
-      <?php if(isset($result['website'])){$website=$result['website'];}else{$website='';}?>
-      <?php if(isset($result['description'])){$description=$result['description'];}else{$description='';}?>
-      <?php if(isset($result['address'])){$address=$result['address'];}else{$address=array();}?>
-      <?php if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
-      <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
- 
-     <div class="acar_soz">
-      <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
-      <?php if(!empty($photo)&&$photo!=''):?>
-           <img class="image_with_border" src="<?php echo $photo;?>" alt="no img">
-      <?php else:?>
-      
-        <div class="popular_photo_title"><?php echo  sfOutputEscaper::unescape($title) ;?> </div>
-       <?php endif;?>
-    
-        </a>
-      </div>
-      <?php //log impression    
-/*
-       $user_agent=$_SERVER["HTTP_USER_AGENT"];
-           if(!(strpos(strtolower($user_agent),'bot')||in_array($_SERVER['REMOTE_ADDR'],$bot->getRawValue())) )
-           {
-             //write IMPRESSIONS to log
-             $current_row=2;
-             $num_rows=2;
-             $weight=$num_rows/($num_rows+($current_row-1));
-             $log = new Logging();
-
-             // set path and name of log file (optional)
-             $log->lfile('/home/www/axtar/web/uploads/assets/score_logs/score_log.txt');
-
-             // write message to the log file
-             $log->lwrite($id.',IMPR,'.round($weight,3).',row:'.$current_row);
-             // close log file
-             $log->lclose();
-           }
-*/
-  ?>
-    <?php endforeach; ?>
-
-</div> <!-- end similar products -->
-</div>
 
 
-
-</div>
+</div><!-- xeber_results -->

@@ -1,0 +1,20 @@
+_topnews:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   
+_acarsozler:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   
+_acarsozlersearch:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   
+index:
+  enabled:     true
+  contextual: true
+  with_layout: true   # Default value
+  lifetime:    84600   

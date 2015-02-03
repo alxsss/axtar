@@ -34,60 +34,23 @@ public function preExecute()
   {
     $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser'); 
     $c=new Criteria();
-	$c->setLimit(6);
-	$this->username=$this->getRequestParameter('username');
+    $c->setLimit(6);
+    $this->username=$this->getRequestParameter('username');
     $this->subscriber = sfGuardUserPeer::retrieveByUsername($this->username);
     $this->forward404Unless($this->subscriber);	
-    //friends
-    //get friend ids in an array
-    $friendsIdArray=$this->subscriber->getFriendsIdArray();	
-    $this->num_friends=count($friendsIdArray);
-    if($this->num_friends<=6)
-    {
-     //since in case of one friend array_rand returns number but not array and does not change array elements when number returned is equal to array size
-      $rand_friend_ids=$friendsIdArray;
-    }
-    else
-    {
-      $rand_friends_key=array_rand($friendsIdArray, 6);
-      $rand_friend_ids=array();
-      foreach($rand_friends_key as $key)
-      {
-        $rand_friend_ids[]=$friendsIdArray[$key];
-      }
-    }
-   $cf=new Criteria();
-   $cf->add(sfGuardUserPeer::ID, $rand_friend_ids, Criteria::IN);
-   $this->user_friends=sfGuardUserPeer::doSelect($cf);
-   //end friends
-	
-	$cphotos=new Criteria();
-	$cphotos->setLimit(5);
-	$cphotos->add(PhotoPeer::ALBUM_ID, NULL);
-	$cphotos->addDescendingOrderByColumn(PhotoPeer::CREATED_AT);
-	$this->photos = $this->subscriber->getPhotos($cphotos);
-	$cnumphoto=new Criteria();
-	$cnumphoto->add(PhotoPeer::ALBUM_ID, NULL);
-	$this->num_photos=$this->subscriber->countPhotos($cnumphoto);
-	
-	$calbums=new Criteria();
-	$calbums->setLimit(5);
-	$calbums->addDescendingOrderByColumn(AlbumPeer::CREATED_AT);
-    $this->albums = $this->subscriber->getAlbums($calbums);	
-	$this->num_albums = $this->subscriber->countAlbums();
-	
-	$this->inbox_num_msgs = $this->subscriber->countInboxMessages();
-    $this->num_requests = $this->subscriber->count_num_friend_requests()+$this->subscriber->count_group_invites()+$this->subscriber->count_event_invites();	
-	$cSchoolUsers=new Criteria();
-	$cSchoolUsers->addDescendingOrderByColumn(SchoolUserPeer::GRAD_YEAR);	
-	$this->schoolUsers=$this->subscriber->getSchoolUsers($cSchoolUsers);
-	
-    $c3=new Criteria();
-	$c3->addDescendingOrderByColumn(sfGuardUserStatusPeer::CREATED_AT);	
-    $this->statuses=$this->subscriber->getsfGuardUserStatuss($c3);
-	
-	$this->statusForm=new sfGuardUserStatusForm();
-	$this->statusForm->setDefaults(array('user_id'=>$this->user_id));
+
+    //num messages and requests
+    $this->inbox_num_msgs = $this->subscriber->countInboxMessages();
+    $this->num_requests = $this->subscriber->count_num_friend_requests();
+
+    //get biznes	
+     $cbiznes=new Criteria();
+     $cbiznes->setLimit(5);
+     $cbiznes->addDescendingOrderByColumn(BiznesPeer::CREATED_AT);
+     $cbiznes->add(BiznesPeer::APPROVED,1);
+     $this->biznes = $this->subscriber->getBizness($cbiznes);
+     $cnumbiznes=new Criteria();
+     $this->num_biznes=$this->subscriber->countBizness($cnumbiznes);
 	
 	$cphotoComment=new Criteria();
 	$cphotoComment->addDescendingOrderByColumn(PhotoCommentPeer::CREATED_AT);	
@@ -117,36 +80,6 @@ public function preExecute()
 	  }
 	  $guest->save();	
 	}
-        //games
- 	$c_games=new Criteria();
-        $c_games->setLimit(1);
-	$c_games->addDescendingOrderByColumn(GameUserPeer::CREATED_AT);	
-	$this->game_users=$this->subscriber->getGameUsers($c_games);
-	$this->num_games=$this->subscriber->countGameUsers();
-	//groups
-	$this->user_groups = $this->subscriber->getsfSocialGroupUsers();
-       //events
-       $this->user_events = $this->subscriber->getsfSocialEventUsers();
-	//fav photos
-	$cfavphotos=new Criteria();
-	$cfavphotos->setLimit(4);
-	$cfavphotos->addDescendingOrderByColumn(PhotoFavPeer::CREATED_AT);	
-	$this->fav_photos = $this->subscriber->getPhotoFavsJoinPhoto($cfavphotos);
-
-        //music
-        //$this->musics = $this->subscriber->getMusicsJoinPlaylist();
-        $this->playlists = $this->subscriber->getPlaylists($c);
-        $this->fav_playlists = $this->subscriber->getPlaylistFavsJoinPlaylist($c);
-      
-        //videos
-        $cvideolist=new Criteria();
-	$cvideolist->setLimit(3);
-	$cvideolist->addDescendingOrderByColumn(VideolistPeer::CREATED_AT);	
-
-        $this->videolists = $this->subscriber->getVideolists($cvideolist);
-        $this->num_videolists = $this->subscriber->countVideolists();
-        //$this->fav_videos = $this->subscriber->getYtvideoFavs($c);
-       // $this->videos = $this->subscriber->getVideos($c);     
   } 
   public function executeUserupdates(sfWebRequest $request)
   {
@@ -218,14 +151,14 @@ public function preExecute()
     $this->subscriber = sfGuardUserPeer::retrieveByUsername($this->username);
     $this->forward404Unless($this->subscriber);
 	
-	$cphotos=new Criteria();
-	$cphotos->setLimit(5);
-	$cphotos->add(PhotoPeer::ALBUM_ID, NULL);
-	$cphotos->addDescendingOrderByColumn(PhotoPeer::CREATED_AT);
-	$this->photos = $this->subscriber->getPhotos($cphotos);
+	$cbiznes=new Criteria();
+	$cbiznes->setLimit(5);
+	$cbiznes->add(PhotoPeer::ALBUM_ID, NULL);
+	$cbiznes->addDescendingOrderByColumn(PhotoPeer::CREATED_AT);
+	$this->biznes = $this->subscriber->getPhotos($cbiznes);
 	$cnumphoto=new Criteria();
 	$cnumphoto->add(PhotoPeer::ALBUM_ID, NULL);
-	$this->num_photos=$this->subscriber->countPhotos($cnumphoto);
+	$this->num_biznes=$this->subscriber->countPhotos($cnumphoto);
 	  
 	$this->albums = $this->subscriber->getAlbums($c);
 	$this->num_albums = $this->subscriber->countAlbums();
@@ -339,7 +272,7 @@ protected function processForm(sfWebRequest $request, sfForm $form)
     $this->forward404Unless($this->subscriber);
 	$c=new Criteria();
 	$c->setLimit(6);
-    $this->fav_photos = $this->subscriber->getPhotoFavs($c);
+    $this->fav_biznes = $this->subscriber->getPhotoFavs($c);
   }
 
   public function executeRemovefriend(sfWebRequest $request)
@@ -391,7 +324,7 @@ EOF
 	  {
 	    $mail->addTo($recepientArray[$i]);
 	  }      
-      $mail->setSubject('fmpsv.com-friends music photos shopping videos');
+      $mail->setSubject('fmpsv.com-friends music biznes shopping videos');
       $mail->send();
 	//  
     }
