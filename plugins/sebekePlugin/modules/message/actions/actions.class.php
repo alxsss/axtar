@@ -424,25 +424,25 @@ public function executeDeletefrominbox($request)
   protected function sendMessageNotification($recepientemail, $from_name)
   {    
     ProjectConfiguration::registerZend();
-    $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+    $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
 	$mail->setBodyText(<<<EOF
-    $from_name sizə hemsinif də məktub göndərib
+    $from_name sizə  axtar.az saytinda də məktub göndərib
 	
     Bu məktuba aşağıdakı linkdə
    
-    http://hemsinif.com/inbox 
+    http://axtar.az/inbox 
         
     baxa bilərsiniz.
    
     Sag olun,
-    hemsinif.com kollektivi.
+    axtar.az kollektivi.
 EOF
 );
-      $mail->setFrom('info@hemsinif.com', 'hemsinif.com kollektivi');
+      $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
       $mail->addTo($recepientemail);
-      $mail->setSubject($from_name.' hemsinif.com da sizə məktub göndərib');
+      $mail->setSubject($from_name.' axtar.az saytinda sizə məktub göndərib');
       $mail->send();
   }
 }

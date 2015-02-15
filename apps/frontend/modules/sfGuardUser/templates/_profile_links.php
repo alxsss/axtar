@@ -15,12 +15,12 @@
   <div class="user_contact">
     <?php if($user_id!=$subscriber->getId()):?>
       <?php echo link_to(__('Send a message'), 'message/create?to_userid='.$subscriber->getId(), 'class=user_links')?>
-      <?php //echo link_to(__('Add to friends'), 'friends/new?friend_id='.$subscriber->getId(), 'class=user_links')?>
+      <?php echo link_to(__('Add to friends'), 'friends/new?friend_id='.$subscriber->getId(), 'class=user_links')?>
     <?php else :?>
         <?php //echo link_to(__('upload a photo'), '@upload', 'class=user_links') ?> 
  	<?php //echo link_to(__('add your school'), 'school/list', 'class=user_links');?>
 	<?php echo link_to(__('edit profile'), 'profile/'.$subscriber->getSalt(), 'class=user_links') ?>
-	<?php //echo link_to(__('messages').($inbox_num_msgs?'(<span class="ulinks_color">'.$inbox_num_msgs.'</span>)':''), '@user_inbox', 'class=user_links') ?>
+	<?php echo link_to(__('messages').($inbox_num_msgs?'(<span class="ulinks_color">'.$inbox_num_msgs.'</span>)':''), '@user_inbox', 'class=user_links') ?>
         <?php //echo link_to(__('suggestions').($num_requests?'(<span class="ulinks_color">'.$num_requests.'</span>)':''), 'friends/list', 'class=user_links') ?>
 	<?php //echo link_to(__('guests').($num_guests?'(<span class="ulinks_color">'.$num_guests.'</span>)':''), '@guest', 'class=user_links') ?>
 	<?php //echo link_to(__('rates').($num_rates?'(<span class="ulinks_color">'.$num_rates.'</span>)':''), '@ratings', 'class=user_links') ?>

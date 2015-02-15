@@ -181,7 +181,7 @@ class sfGuardUser extends sfSocialGuardUser
   {
     $ret = parent::save($con);
  
-    $this->updateLuceneIndex();     
+  //  $this->updateLuceneIndex();     
 	
     $con->commit();
     return $ret;

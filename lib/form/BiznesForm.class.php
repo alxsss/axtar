@@ -15,6 +15,9 @@ class BiznesForm extends BaseBiznesForm
     // unset($this['created_at']);
      //$this->widgetSchema['address']->setLabel('Bakı, Nəsimi rayonu, Süleyman Rəhimov küçəsi, 179 A, AZ1000');
      sfContext::getInstance()->getConfiguration()->loadHelpers('I18N');
+    
+     $this->widgetSchema['address'] = new sfWidgetFormInput(array(), array('size'=>79));
+
      $this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Biznes picture',
       'file_src'  => $this->getObject()->getPhoto()?'/uploads/assets/biznes/'.$this->getObject()->getPhoto():'',

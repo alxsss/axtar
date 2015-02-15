@@ -4,7 +4,8 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <?php use_stylesheet('main?v=25') ?>
+    <?php use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
+    <?php use_stylesheet('main?v=31') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
@@ -12,9 +13,16 @@
     <?php use_helper('I18N') ?>
     <?php //$sf_user->setCulture('az') ?>
     <?php // include_component('sfLanguageSwitch', 'get') ?>
-    <?php include_partial('search/univhead') ?>
+    <div id="header">
+      <?php include_partial('sidebar/univhead') ?>
+      <?php include_partial('sidebar/univhead_login') ?>
+    </div>
+    
+    <?php //include_partial('search/univhead') ?>
     <?php echo $sf_content ?>
-    <?php include_partial('search/univfoot') ?>
+<div id="footer">
+         <?php include_partial('sidebar/univfoot') ?>
+        </div>    
     <div id="keyboard_container" style="display:none;">
 	<ul id="keyboard">		
 		<li class="letter">ə</li>

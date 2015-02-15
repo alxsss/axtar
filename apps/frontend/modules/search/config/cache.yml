@@ -1,8 +1,10 @@
 _forex:
   enabled:     true
+  contextual: true
   with_layout: false   # Default value
-  lifetime:    18000   
+  lifetime:    3600   
 _topnews:
   enabled:     true
+  contextual: true
   with_layout: false   # Default value
-  lifetime:    18000   
+  lifetime:    36000   

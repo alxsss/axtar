@@ -39,6 +39,32 @@ public function preExecute()
     $this->subscriber = sfGuardUserPeer::retrieveByUsername($this->username);
     $this->forward404Unless($this->subscriber);	
 
+     //friends
+    //get friend ids in an array
+    $friendsIdArray=$this->subscriber->getFriendsIdArray();
+    $this->num_friends=count($friendsIdArray);
+    if($this->num_friends<=6)
+    {
+     //since in case of one friend array_rand returns number but not array and does not change array elements when number returned is equal to array size
+      $rand_friend_ids=$friendsIdArray;
+    }
+    else
+    {
+      $rand_friends_key=array_rand($friendsIdArray, 6);
+      $rand_friend_ids=array();
+      foreach($rand_friends_key as $key)
+      {
+        $rand_friend_ids[]=$friendsIdArray[$key];
+      }
+    }
+   $cf=new Criteria();
+   $cf->add(sfGuardUserPeer::ID, $rand_friend_ids, Criteria::IN);
+   $this->user_friends=sfGuardUserPeer::doSelect($cf);
+   //end friends
+
+
+
+
     //num messages and requests
     $this->inbox_num_msgs = $this->subscriber->countInboxMessages();
     $this->num_requests = $this->subscriber->count_num_friend_requests();

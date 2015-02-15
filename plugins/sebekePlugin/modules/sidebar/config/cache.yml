@@ -1,8 +1,5 @@
-_univhead:
-  enabled:     off
-_univhead_login:
-  enabled:     off
 _univfoot:
   enabled:     off 
   with_layout: false   # Default value
   lifetime:    86400   # Default value
+  contextual: true

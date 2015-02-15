@@ -6,6 +6,7 @@
   <a id="image" href="<?php echo url_for('@search_www?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('web')?></a>
   <a id="veb" href="<?php echo  url_for('@xeber_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('news')?></a>
   <a id="image" href="<?php echo url_for('@image_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('image')?></a>
+  <a id="image" href="<?php echo  url_for('@biznes_search')?>"><?php echo __('business')?></a>
 </div>
 
 <div class="search_small">

@@ -90,7 +90,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     {
       $this->getUser()->setFlash('notice', $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.');
       $sf_guard_user = $form->save();
-	  $sf_guard_user->updateLuceneIndex();	
+	  //$sf_guard_user->updateLuceneIndex();	
   	  $sf_guard_user_username=$sf_guard_user->getUsername();
 	  $sf_guard_user_password=$form->getValue('password');
 
@@ -108,7 +108,6 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 	  $friend->save();
 	        
 	  // send an email to the user
-	  //$urlvalidate='http://hemsinif.com/confirm/n'.$guid;
 	  $user_email=$sf_guard_user->getEmail();
 	  if(!empty($user_email))
 	  {
@@ -117,16 +116,16 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
          Zend_Mail::setDefaultTransport($tr);
         $mail = new Zend_Mail('utf-8');
         $mail->setBodyText(<<<EOF
-        hemsinif.com da profil açdirdiginiza görə sag olun.
+        axtar.az saytinda profil açdirdiginiza görə sag olun.
 	Sizin istifadəçi adınız : $sf_guard_user_username
 	              parolunuz : $sf_guard_user_password
 					   
         axtar.az robotu.
 EOF
 );
-        $mail->setFrom('info@hemsinif.com', 'hemsinif.com robotu');
+        $mail->setFrom('admin@axtar.az', 'axtar.az robotu');
         $mail->addTo($user_email);
-        $mail->setSubject('hemsinif.com da profil açdırdıgınıza görə sag olun');
+        $mail->setSubject('axtar.az saytinda profil açdırdıgınıza görə sag olun');
         $mail->send();	 
 	  }
       $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $sf_guard_user)));

@@ -1,7 +1,8 @@
 <?php use_helper('I18N','Text') ?>
 <div class="search_main_page">
-  <?php //include_partial('forex')?>
-<?php include_component('xeber', 'topnews')?>
+  <?php include_partial('forex')?>
+  <?php include_component('xeber', 'topnews')?>
+
 <div class="logo">
   <img src="/images/logo.png" alt="axtar" title="axtar">
 </div>
@@ -10,6 +11,7 @@
   <a id="image" href="<?php echo url_for('@search_www?query='.$sf_request->getParameter('query'))?>"><?php echo __('web')?></a>
   <a id="image" href="<?php echo url_for('@xeber_index')?>"><?php echo __('news')?></a> 
   <a id="image" href="<?php echo url_for('@image_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('image')?></a>
+  <a id="image" href="<?php echo  url_for('@biznes_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('business')?></a>
 </div>
   <div class="search">
     <div class="help"></div>
@@ -18,6 +20,7 @@
       <input type="submit" value="axtar" id="search_button" />
     </form>
   </div>
-<?php include_component('xeber', 'acarsozlersearch')?>
+ <?php include_component('biznes', 'newbiznessearch')?>
+<?php //include_component('xeber', 'acarsozlersearch')?>
   <?php // include_partial('search')?>
 </div>

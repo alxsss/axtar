@@ -129,6 +129,10 @@ friend_search:
   param: { module: friends, action: search }
   requirements: { sf_culture: (?:az|en|ru|tr) }
 updates:
+  url:  /:sf_culture/search/:page
+  param: { module: search, action: index, page:1 }
+  requirements: { sf_culture: (?:az|en|ru|tr) }
+updates_old:
   url:  /:sf_culture/updates/:page
   param: { module: friends, action: updates, page:1 }
   requirements: { sf_culture: (?:az|en|ru|tr) }

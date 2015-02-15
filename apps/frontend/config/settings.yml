@@ -39,7 +39,7 @@ all:
   .settings:
     # Form security secret (CSRF protection)
     #csrf_secret:            eb2febddf974beb2a9cf2082e3571905d9955262
-    enabled_modules:        [default, sfLanguageSwitch, profile,sfGuardAuth, sfMediaLibrary, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, sfSimpleForum, sfApply,  sfSocialEvent, sfSocialUser, sfSocialGroup, openInviter,sfSimpleBlog, sfSimpleBlogPostAdmin, sfSimpleBlogCommentAdmin]
+    enabled_modules:        [default, sfLanguageSwitch, profile,message,friends,sfGuardAuth, sfMediaLibrary, sfGuardGroup, sfGuardUser, sfGuardPermission, sfGuardAuth, sfSimpleForum, sfApply,  sfSocialEvent, sfSocialUser, sfSocialGroup, openInviter,sfSimpleBlog, sfSimpleBlogPostAdmin, sfSimpleBlogCommentAdmin]
     # Output escaping settings
     escaping_strategy:      true
     escaping_method:        ESC_SPECIALCHARS

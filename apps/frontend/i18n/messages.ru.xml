@@ -132,7 +132,7 @@
       </trans-unit>
 	  <trans-unit id="33">
         <source>Ads in Sponsor links section appear under "Sponsor links" on the right corner for any search keyword. Our records show that we had around 1000 unique visitors and 5000 impressions last month. We charge $10 for one month advertising on sponsor links. After you submit this form you will be given a link to pay this amount using Paypal.</source>
-        <target>Рекламы спонсоров размешаются в правом углу на любой поиск по ключевым словам. Наши данные показывают, что у нас было около 1000 уникальных посетителей и 5000 показов в прошлом месяце. Мы берем $10 за один месяц рекламы. После отправки этой формы вам будет предоставлена ​​ссылка для оплату этой суммы через Paypal.</target>
+        <target>Рекламы спонсоров размешаются в правом углу на любой поиск по ключевым словам. Наши данные показывают, что у нас было около 1000 уникальных посетителей и 5000 показов в прошлом месяце. Мы берем $10 за один месяц рекламы. После отправки этой формы вам будет предоставлена ссылка для оплату этой суммы через Paypal.</target>
       </trans-unit>
 	  <trans-unit id="34">
         <source>Thank you for submitting you site to sponsor links at axtar.az. Your site display will be active shortly after we receive your payment. Please make payment by clicking this button.</source>
@@ -154,31 +154,31 @@
         <source>Translate</source>
         <target>Переводь</target>
       </trans-unit>		
-	  <trans-unit id="39">
+  <trans-unit id="39">
         <source>Map</source>
         <target>Карта</target>
       </trans-unit>	
-	   <trans-unit id="40">
+   <trans-unit id="40">
         <source>Did you mean %keyword%?</source>
         <target>Вы имели в виду %keyword%?</target>
       </trans-unit> 
-	  <trans-unit id="41">
+  <trans-unit id="41">
         <source>News</source>
         <target>Новости</target>
       </trans-unit>	
-	  <trans-unit id="42">
+  <trans-unit id="42">
         <source>%numfound% more results from this link</source>
         <target>еще %numfound% результатов по этой ссылке</target>
       </trans-unit>	
-	   <trans-unit id="43">
+   <trans-unit id="43">
         <source>Investor</source>
         <target>Инвестор</target>
       </trans-unit>
-	   <trans-unit id="42">
+   <trans-unit id="42">
         <source>Faq</source>
         <target>Чзв</target>
       </trans-unit>
-	   <trans-unit id="43">
+      <trans-unit id="43">
         <source>Keyboard</source>
         <target>Клавиатура</target>
       </trans-unit>      
@@ -202,13 +202,57 @@
         <source>Most frequent keywords in news</source>
         <target>Наиболее частые ключевые слова в новостях</target>
       </trans-unit>
-  	  <trans-unit id="48">
+      <trans-unit id="48">
         <source>Exchange rates:</source>
         <target>Курсы валют:</target>
       </trans-unit>
-	  <trans-unit id="49">
+      <trans-unit id="49">
         <source>Top News</source>
         <target>Главные новости</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>business</source>
+        <target>компании</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>Business</source>
+        <target>Компании</target>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>Axtar.az is the most powerful place to search for Businesses by their name, category and address.</source>
+        <target>Axtar.az является самым мощным местом для поиска предприятий пользуясь их именем, категории и адресом.</target>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>If you see your Businesses in the list but you have never added it here, it means it was given to us by a third party. Please add your business with details and the original one will be deleted.</source>
+        <target>Если вы видите ваш бизнеса в списке, но вы никогда не добавил это здесь, это означает, что было дано нам третьей стороной. Пожалуйста, добавьте свой бизнес с деталями и оригинал, будет удален.</target>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>Add Business</source>
+        <target>Добавить компанию</target>
+      </trans-unit>
+       <trans-unit id="55">
+        <source>New Businesses</source>
+        <target>Новые предприятия</target>
+      </trans-unit>
+       <trans-unit id="56">
+        <source>Your business has has been successfully added and will be in the results in 1-2 days.</source>
+        <target>Ваш бизнес успешно добавлен и будет в результатах в течение 1-2 дней.</target>
+      </trans-unit>
+        <trans-unit id="57">
+        <source>Similar Businesses</source>
+        <target>Похожие Компании</target>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>Edit Business</source>
+        <target>Редактировать бизнес</target>
+      </trans-unit>
+       <trans-unit id="59">
+        <source>New Business</source>
+        <target>Новый бизнес</target>
+      </trans-unit>
+       <trans-unit id="60">
+        <source>Oil Prices</source>
+        <target>Цены на нефть</target>
       </trans-unit>
     </body>
   </file>

@@ -21,6 +21,25 @@
      $data = explode($to_Currency, $data[1]);
      return round($data[0], 2);
 }
+  function get_oil_price($url) 
+  {
+     //$url='http://www.oil-price.net/TABLE3/gen.php?lang=en';
+
+     $ch = curl_init();
+     $timeout = 0;
+     curl_setopt ($ch, CURLOPT_URL, $url);
+     curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+
+     curl_setopt ($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)");
+     curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+     $rawdata = curl_exec($ch);
+     $rawdata = str_replace(array("\r\n", "\r", "\n"), '', $rawdata);
+     $regex='#.*(\d\d\.\d\d).*(<font.*\d\.\d\d%).*#';
+     preg_match($regex, $rawdata, $matches);
+
+     curl_close($ch);
+     return '$'.stripslashes($matches[1]).' '.stripslashes($matches[2]).'</font>';
+  }
 
 
 

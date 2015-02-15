@@ -4,18 +4,17 @@
 <?php include_http_metas() ?>
 <?php include_metas() ?>
 <?php include_title() ?>
-<?php use_stylesheet('/sebekePlugin/css/layout?v=5') ?>
-<!--
-<link rel="stylesheet" type="text/css" href="/sebekePlugin/css/layout.css" />
--->
+<?php use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
+<?php use_stylesheet('/css/main?v=31') ?>
 <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body> 
 <div id="content">
-  <div id="header">  
-    <?php include_partial('sidebar/univhead') ?> 
-    <?php include_partial('sidebar/univhead_login') ?>       
-  </div>  
+    <div id="header">
+      <?php include_partial('sidebar/univhead') ?>
+      <?php include_partial('sidebar/univhead_login') ?>
+    </div>
+  
   <div id="content_main">
     <div id="breadcrumb">
        <?php include_slot('hemsinif_breadcrumb') ?>
@@ -24,8 +23,8 @@
   </div>    
   <!-- footer -->	
   <div id="footer">
-	<?php include_partial('sidebar/univfoot') ?>
-  </div>
+         <?php include_partial('sidebar/univfoot') ?>
+ </div>
 </div>
 <?php use_javascript('jquery.js')?>
 <?php use_javascript('/sebekePlugin/js/jquery.hf.js?v=7')?>

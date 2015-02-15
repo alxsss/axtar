@@ -2,13 +2,11 @@
 <div id="updates_left_column">
   <div class="user_contact">
     <?php echo link_to($subscriber_username.__('\'s profile'), 'user/'.$subscriber_username, 'class=user_links') ?>
-   	<?php echo link_to( __('All albums by %author%', array('%author%'=>$subscriber_username)), '@all_albums?username='.$subscriber_username, 'class=user_links')?>
-	<?php echo link_to( __('All photos by %author%', array('%author%'=>$subscriber_username)), '@all_photos?username='.$subscriber_username, 'class=user_links')?>
   </div> 
 <?php if($sf_user->isAuthenticated()):?> 
  <?php include_component('friends', 'ulinks')?>
 <?php else:?>
-  <?php include_partial('home/inhemsinif')?>	    
+  <?php //include_partial('home/inhemsinif')?>	    
 <?php endif;?>
 </div>
 <div id="right_column_user">
