@@ -1,6 +1,4 @@
 <?php use_helper('Global', 'I18N') ?>
-<div id="search_results">
-  <?php include_partial('biznes_search_small')?>
   <div id="results">
 
     <div id="xeber_results">
@@ -11,6 +9,5 @@
   </div>
    <div class="content_bar_large"></div>
 
-  </div>
   </div>
   </div>

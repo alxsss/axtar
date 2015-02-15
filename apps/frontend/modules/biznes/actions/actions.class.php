@@ -97,12 +97,21 @@ class biznesActions extends sfActions
        $this->desc=$this->docs[0]['description'];
        $this->getResponse()->addMeta('description', substr($this->desc,0,155));
      }
-     //save statistics
-     $bisnes_stat=new BiznesStat();
-     $bisnes_stat->setBiznesId($this->id);
-     $bisnes_stat->setType('CTP');
-     $bisnes_stat->setUserIp($_SERVER['REMOTE_ADDR']);
-     $bisnes_stat->save();
+
+       //extract ip without digits after last dot
+     $remote_ip=$_SERVER['REMOTE_ADDR'];
+     $ip = substr($remote_ip, 0, strrpos($remote_ip, "."));
+     $user_agent=$_SERVER["HTTP_USER_AGENT"];
+
+     if(!(strpos(strtolower($user_agent),'bot')||in_array($ip,$this->bot)) )
+     {
+       //save statistics
+       $bisnes_stat=new BiznesStat();
+       $bisnes_stat->setBiznesId($this->id);
+       $bisnes_stat->setType('CTP');
+       $bisnes_stat->setUserIp($_SERVER['REMOTE_ADDR']);
+       $bisnes_stat->save();
+     }
   }
 
   public function executeSearch(sfWebRequest $request)
@@ -159,7 +168,7 @@ class biznesActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $connection = Propel::getConnection();
-    $query ='SELECT id , title, address, phone, category, photo FROM biznes ORDER BY RAND() LIMIT 10';
+    $query ='SELECT id , title, address, phone, category, photo FROM biznes where approved=1 ORDER BY RAND() LIMIT 10';
     $statement = $connection->prepare($query);
     $statement->execute();
     $this->biznes=array(); 
