@@ -77,35 +77,9 @@ public function preExecute()
      $this->biznes = $this->subscriber->getBizness($cbiznes);
      $cnumbiznes=new Criteria();
      $this->num_biznes=$this->subscriber->countBizness($cnumbiznes);
-	
-	$cphotoComment=new Criteria();
-	$cphotoComment->addDescendingOrderByColumn(PhotoCommentPeer::CREATED_AT);	
-	$this->photoComments=$this->subscriber->getPhotoCommentsJoinPhoto($cphotoComment);
-	$page=$this->getRequestParameter('page', 1);
-	$this->subscriber_updates =UpdatesPeer::getUpdatesSubscriberPager($page, $this->subscriber->getId());
-	$this->num_guests = $this->subscriber->count_num_guests();
-	$this->num_rates = $this->subscriber->count_num_rates();       
-	$subscriber_id=$this->subscriber->getId();
-	if($subscriber_id!=$this->user_id&&!empty($this->user_id)&&$this->user_id!=1)
-	{
-	  //check if this user is already visited the page and update time
-	  $cguest=new Criteria();
-	  $cguest->add(GuestPeer::USER_ID, $subscriber_id);
-	  $cguest->add(GuestPeer::GUEST_ID, $this->user_id);
-	  $guest=GuestPeer::doSelectOne($cguest);
-	  if(empty($guest))
-	  {
-	    $guest=new Guest();
-	    $guest->setUserId($subscriber_id);
-	    $guest->setGuestId($this->user_id);	   
-	  }
-	  else
-	  {
-	    $guest->setCreatedAt(time());
-		$guest->setChecked(0);	
-	  }
-	  $guest->save();	
-	}
+
+     $this->subscriber_id=$this->subscriber->getId();
+
   } 
   public function executeUserupdates(sfWebRequest $request)
   {

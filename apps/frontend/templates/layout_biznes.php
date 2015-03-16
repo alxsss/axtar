@@ -15,7 +15,6 @@
     <?php // include_component('sfLanguageSwitch', 'get') ?>
     <?php //include_partial('search/univhead') ?>
     <div id="header">
-      <?php include_partial('sidebar/univhead') ?>
       <?php include_partial('sidebar/univhead_login') ?>
     </div>    
     

@@ -11,7 +11,6 @@
 <body> 
 <div id="content">
     <div id="header">
-      <?php include_partial('sidebar/univhead') ?>
       <?php include_partial('sidebar/univhead_login') ?>
     </div>
   

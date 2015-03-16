@@ -97,7 +97,7 @@
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,60);?>
         <?php if($numfound->getRawValue()>1):?>
-          <span class="more_results"><a href="<?php echo url_for('@search_site?query='.$query.'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
+          <span class="more_results"><a href="<?php echo url_for('@search_site?query='.sfOutputEscaper::unescape($query).'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
         <?php endif;?>
       </div>
     <?php endforeach; ?>
@@ -117,7 +117,7 @@
  <?php //if($axtar_feed||empty($spellcheck)):?>
   <div class="pagination">
     <div id="photos_pager">
-      <?php echo pager_navigation($feed_pager, '@search_search?query='.$query) ?>
+      <?php echo pager_navigation($feed_pager, '@search_search?query='.sfOutputEscaper::unescape($query)) ?>
       <?php //echo pager_navigation($feed_pager, '@search_search?query='.$query, 'content_main_music') ?>
     </div>
   </div>

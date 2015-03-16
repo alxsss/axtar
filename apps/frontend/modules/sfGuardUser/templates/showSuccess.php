@@ -1,7 +1,7 @@
 <?php use_helper('Text',  'I18N', 'Status', 'Date')?>
 <div id="left_column_user">
 <?php include_partial('sfGuardUser/profile_links', array('subscriber' => $subscriber, 'inbox_num_msgs' => $inbox_num_msgs,
-'num_requests'=>$num_requests, 'num_guests'=>$num_guests, 'num_rates'=>$num_rates, 'user_id'=>$user_id)) ?>
+'num_requests'=>$num_requests,  'user_id'=>$user_id)) ?>
 <?php if($num_friends>0):?>
   <div class="right_boxes_profile">
       <div class="suggestion_title"><?php echo __('Friends') ?>(<?php echo $num_friends?>)</div>
@@ -59,6 +59,10 @@
              <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()))?>"><?php echo $biz->getTitle()?></a>
          </div> 
     <?php endif;?>
+      <?php if($user_id==$subscriber_id):?>
+       <a href="<?php echo url_for('biznes/edit?id='.$biz->getId().'&token='.$subscriber->getSalt())?>"><img src="/images/edit.png" title="<?php echo __('edit')?>" alt="<?php echo __('edit')?>"></a>
+     <?php endif;?>
+
     <?php endforeach; ?>
    </div>	
     <?php if($num_biznes>5):?>

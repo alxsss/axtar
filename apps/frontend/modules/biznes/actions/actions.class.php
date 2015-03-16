@@ -11,11 +11,17 @@ class biznesActions extends sfActions
 {
   public function preExecute()
   {
-     $this->bot=array('144.76.195','62.210.170','37.58.100','92.232.53','37.58.100','46.165.197','199.192.207','31.31.72','199.58.86','162.210.196','199.21.99','81.70.141','95.91.179','108.59.8','207.46.13','78.46.94','88.198.247','142.4.209','142.4.213','148.251.124','46.235.12','66.249.79','66.249.65','66.249.67','100.43.90','157.55.39','192.99.149','192.241.242','89.163.224','198.27.82','198.27.64','144.76.95','208.115.111','88.198.160','88.198.247');
+     $this->bot=array('148.251.236','68.180.228','194.187.168','78.46.174','144.76.195','62.210.170','37.58.100','92.232.53','37.58.100','46.165.197','199.192.207','31.31.72','199.58.86','162.210.196','199.21.99','81.70.141','95.91.179','108.59.8','207.46.13','78.46.94','88.198.247','142.4.209','142.4.213','148.251.124','46.235.12','66.249.79','66.249.65','66.249.67','100.43.90','157.55.39','192.99.149','192.241.242','89.163.224','198.27.82','198.27.64','144.76.95','208.115.111','88.198.160','88.198.247');
   $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');
   
  }
 
+    public function executeSolrindex(sfWebRequest $request)
+   { 
+     $c=new Criteria(); 
+     $this->bizness=BiznesPeer::doSelect($c); 
+    
+   }
     public function executeList(sfWebRequest $request)
    { 
      $this->page=$request->getParameter('page', 1); 
@@ -140,6 +146,20 @@ class biznesActions extends sfActions
     $this->feed_pager->setPage($this->page);
     $this->feed_pager->init();
 
+    //extract ip without digits after last dot
+    $remote_ip=$_SERVER['REMOTE_ADDR'];
+    $ip = substr($remote_ip, 0, strrpos($remote_ip, "."));
+    $user_agent=$_SERVER["HTTP_USER_AGENT"];
+
+    //if($this->page==1&&!in_array($ip,$this->bot))
+    if($this->page==1&&!(strpos(strtolower($user_agent),'bot')||in_array($ip,$this->bot)) )
+    {
+       $search=new BiznesSearch();
+       $search->setQuery($this->query);
+       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+       $search->save();
+    }
+
   }
 
    public function executeAutosuggest(sfWebRequest $request)
@@ -252,9 +272,9 @@ class biznesActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $Biznes = $form->save();
+      $biz = $form->save();
 
-      //$this->redirect('biznes/edit?id='.$Biznes->getId());
+      $this->redirect('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()) );
     }
   }
 }

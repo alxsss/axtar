@@ -16,5 +16,5 @@ _newbiznessearch:
 index:
   enabled:     true
   contextual: true
-  with_layout: true   # Default value
+  with_layout: false   # Default value
   lifetime:    84600   

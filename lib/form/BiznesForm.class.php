@@ -11,9 +11,10 @@ class BiznesForm extends BaseBiznesForm
 {
   public function configure()
   {
-     //unset($this['approved']);
-    // unset($this['created_at']);
-     //$this->widgetSchema['address']->setLabel('Bakı, Nəsimi rayonu, Süleyman Rəhimov küçəsi, 179 A, AZ1000');
+
+     $this->widgetSchema['user_id'] = new sfWidgetFormInputHidden();
+     $this->widgetSchema['approved'] = new sfWidgetFormInputHidden();
+
      sfContext::getInstance()->getConfiguration()->loadHelpers('I18N');
     
      $this->widgetSchema['address'] = new sfWidgetFormInput(array(), array('size'=>79));

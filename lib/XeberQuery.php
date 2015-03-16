@@ -88,7 +88,7 @@ class XeberQuery {
       else if($koma==0)//select all news
       {
         //$querystring = "/xeber/axtar/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc";
-        $querystring = "/xeber/select/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&hl=true&hl.fl=content&f.content.hl.alternateField=content&hl.maxAlternateFieldLength=700&fl=id%20url%20title%20tstamp%20imageurl";
+        $querystring = "/xeber/select/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=xml&sort=tstamp%20desc&fl=id%20url%20title%20tstamp%20imageurl%20description";
 /*
 <str name="hl">true</str>
       <str name="hl.fl">content</str>

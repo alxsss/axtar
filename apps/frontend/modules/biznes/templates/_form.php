@@ -70,6 +70,21 @@
           <?php echo $form['description'] ?>
         </td>
       </tr>
+      <tr>
+        <th><?php //echo $form['user_id']->renderLabel() ?></th>
+        <td>
+          <?php // echo $form['user_id']->renderError() ?>
+          <?php echo $form['user_id'] ?>
+        </td>
+      </tr>
+
+      <tr>
+        <th><?php //echo $form['user_id']->renderLabel() ?></th>
+        <td>
+          <?php // echo $form['user_id']->renderError() ?>
+          <?php echo $form['approved'] ?>
+        </td>
+      </tr>
     </tbody>
   </table>
 </form>

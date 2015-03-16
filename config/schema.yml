@@ -14,6 +14,12 @@ propel:
     query:  {type:  VARCHAR, size: 256}
     raw_ip:  { type: VARCHAR, size: 50  }
     created_at: {  type: TIMESTAMP  }
+  biznes_search:
+    _attributes:  {idMethod:  native  }
+    id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
+    query:  {type:  VARCHAR, size: 256}
+    raw_ip:  { type: VARCHAR, size: 50  }
+    created_at: {  type: TIMESTAMP  }
   biznes_stat:
     _attributes:  {idMethod:  native  }
     id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
@@ -53,10 +59,11 @@ propel:
     description: {type:LONGVARCHAR }
     phone: { type: varchar, size: 100 }
     website: { type: varchar, size: 255 }
+    email: { type: varchar, size: 255 }
     category: { type: varchar, size: 255 }
     photo: { type: VARCHAR, size: 255 }
     created_at: ~
-    approved:  { type: BOOLEAN, default: 1 }
+    approved:  { type: BOOLEAN, default: 0 }
     rating: { type: INTEGER }
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id  }
   biznes_comment:

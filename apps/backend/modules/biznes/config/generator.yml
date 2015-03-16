@@ -13,9 +13,22 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        user_id:
+          credentials: [super_admin]
+        approved:
+          credentials: [super_admin]
       list:    ~
       filter:  ~
       form:    ~
-      edit:    ~
+      edit: 
+        display: ~
+        #display: [title, description, phone, user_id, approved]
+        fields:
+          title:
+            credentials: [super_admin]
+          user_id:
+            credentials: [super_admin]
+          approved:
+            credentials: [super_admin]
       new:     ~

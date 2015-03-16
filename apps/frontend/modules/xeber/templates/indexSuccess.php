@@ -41,47 +41,47 @@
     <div id="xeber_results">
 
     <?php foreach($results->doc as $result): ?>
-      <?php $azdate='';$imageurl='';?>
+      <?php $azdate='';$imageurl=''; $description='';?>
       <?php $str=$result->str;?>
       <?php $date=$result->date;?>
       <?php foreach($str as $s){
-            if($s->attributes()=='id')
+           if($s->attributes()=='id')
            {
              $id=$s;
            }
-           if($s->attributes()=='title')
+           else if($s->attributes()=='title')
            {
              $title=$s;
            }
-           if($s->attributes()=='url')
+           else if($s->attributes()=='url')
            {
              $url=$s;
            }
-           if($s->attributes()=='imageurl')
+           else if($s->attributes()=='imageurl')
            {
              $imageurl=$s;
            }
+           else if($s->attributes()=='description')
+           {
+             $description=$s;
+           }
       }?>  
       
-      <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-     <?php $content=$content->getRawValue();?> 
+      <?php //$content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
+     <?php //$content=$content->getRawValue();?> 
        <?php if(!empty($date)):?>
           <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
        <?php endif;?>
      
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{ echo truncate_text($title,80);}?></a></h3>
-      <?php if(!empty($content)):?>
          <div class="abstract">
            <?php if(!empty($imageurl)):?>
               <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo str_replace('http://www.azadliq.info/','',$imageurl);?>" width="100" class="imageurl"/></a> 
             <?php endif;?>
-           <?php
-              $hhmm=substr($azdate,strpos($azdate,':')-2,5);
-              $poshhmm=strpos($content[0],$hhmm);
-
-              echo substr($content[0],$poshhmm+5, 250);?>
-         </div>
+         <?php if(!empty($description)):?>
+           <?php echo truncate_text($description, 200);?>
       <?php endif;?>
+         </div>
       <div class="url"><?php echo truncate_text($url,80);?> </div>
        <div class="xeberdatetime"><?php echo $azdate ?></div>
     <?php endforeach; ?>

@@ -33,24 +33,26 @@ class keyphraseActions extends autoKeyphraseActions
 
   public function executeBatchEdit(sfWebRequest $request)
   {
-     $ids = $request->getParameter(‘ids’);
+     $ids = $request->getParameter('ids');
      $count = 0;
      foreach (KeyphrasePeer::retrieveByPks($ids) as $object)
      {
+       $object->setActive(1);
        $this->dispatcher->notify(new sfEvent($this, 'admin.edit_object', array('object' => $object)));
-       $this->form = $this->configuration->getForm($object);
-       $this->processForm($request, $this->form);
+       //$this->form = $this->configuration->getForm($object);
+       //$this->processForm($request, $this->form);
          $count++;
+       $object->save();
      }
-    if ($count >= count($ids))
-    {
-      $this->getUser()->setFlash('notice', 'The selected items have been edited successfully.');
-    }
-    else
-    {
-      $this->getUser()->setFlash('error', 'A problem occurs when editing the selected items.');
-    }
-    $this->setTemplate('edit');
-}
+     if ($count >= count($ids))
+     {
+       $this->getUser()->setFlash('notice', 'The selected items have been edited successfully.');
+     }
+     else
+     {
+       $this->getUser()->setFlash('error', 'A problem occurs when editing the selected items.');
+     }
+     $this->setTemplate('index');
+  }
 
 }

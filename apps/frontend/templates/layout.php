@@ -14,7 +14,6 @@
     <?php //$sf_user->setCulture('az') ?>
     <?php // include_component('sfLanguageSwitch', 'get') ?>
     <div id="header">
-      <?php include_partial('sidebar/univhead') ?>
       <?php include_partial('sidebar/univhead_login') ?>
     </div>
     

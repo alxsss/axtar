@@ -85,7 +85,7 @@ padding: 20px;
      
          <div class="product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
-             <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo $photo;?>" width="75" class="imageurl_biznes"/></a>
+             <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/normal/'.$photo;?>" width="75" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
 

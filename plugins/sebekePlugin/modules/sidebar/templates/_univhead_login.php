@@ -7,14 +7,14 @@
 </ul>
  <?php //include_component('sfLanguageSwitch', 'get') ?>
   <ul id="navlinks">  	
-	    <?php if ($sf_user->isAuthenticated()): ?>
-          <?php //put this instead of link_to in order to handle utf-8 chars in url?>
-          <li><a href="<?php echo url_for('@user_profile?username='.$sf_user->getUsername())?>" title="<?php echo __('my profile')?>"><?php echo $sf_user->getUsername()?></a>		  </li>
-          <li><?php echo link_to(__('sign out'), '@logout') ?></li>
-		<?php else: ?>
-          <li><?php echo link_to(__('sign in'), '@login') ?></li>
-        <?php endif ?> 
+   <li><a href="<?php echo url_for('biznes/new');?>"><?php  echo __('Add Business');?></a> </li>
+   <?php if ($sf_user->isAuthenticated()): ?>
+       <?php //put this instead of link_to in order to handle utf-8 chars in url?>
+       <li><a href="<?php echo url_for('@user_profile?username='.$sf_user->getUsername())?>" title="<?php echo __('my profile')?>"><?php echo $sf_user->getUsername()?></a>		  </li>
+       <li><?php echo link_to(__('sign out'), '@logout') ?></li>
+   <?php else: ?>
+       <li><?php echo link_to(__('sign in'), '@login') ?></li>
+   <?php endif ?> 
 		<?php // include_component('sfLanguageSwitch', 'get') ?>    
-    <li><?php echo link_to(__('Map'), '@map') ?></li>
     </ul>
 </div>
