@@ -73,7 +73,7 @@ public function preExecute()
      $cbiznes=new Criteria();
      $cbiznes->setLimit(5);
      $cbiznes->addDescendingOrderByColumn(BiznesPeer::CREATED_AT);
-     $cbiznes->add(BiznesPeer::APPROVED,1);
+     //$cbiznes->add(BiznesPeer::APPROVED,1);
      $this->biznes = $this->subscriber->getBizness($cbiznes);
      $cnumbiznes=new Criteria();
      $this->num_biznes=$this->subscriber->countBizness($cnumbiznes);

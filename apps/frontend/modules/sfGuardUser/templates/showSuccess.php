@@ -42,26 +42,26 @@
 		 </div>
        <?php endif;?> 	 
   </div>
-  
   <!--end of information section--> 
-   <?php if($num_biznes>0&&$username!='admin'):?>
+  
+ <?php if($num_biznes>0&&$username!='admin'):?>
     <div class="profile_section">
     <span class="recent_activity"><?php echo __('Businesses')?>(<?php echo $num_biznes?>)</span>
     <div class="friends_to_be_invited_line_profile">
      <?php foreach ($biznes as $biz): ?>
+          <div class="user_friend">
       <?php if($biz->getPhoto()!=''):?>
           <?php $pic_url='/uploads/assets/biznes/thumbnails/'.$biz->getPhoto()?>
-          <div class="user_friend">
-		   <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()));?>"><?php echo image_tag($pic_url, 'alt=no img class=image_with_border')?></a>         
-         </div>
+	   <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()));?>">
+                   <?php echo image_tag($pic_url, 'alt=no img class=image_with_border')?>
+            </a>         
       <?php else : ?>
-         <div class="user_friend">
              <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()))?>"><?php echo $biz->getTitle()?></a>
-         </div> 
     <?php endif;?>
       <?php if($user_id==$subscriber_id):?>
        <a href="<?php echo url_for('biznes/edit?id='.$biz->getId().'&token='.$subscriber->getSalt())?>"><img src="/images/edit.png" title="<?php echo __('edit')?>" alt="<?php echo __('edit')?>"></a>
      <?php endif;?>
+         </div> 
 
     <?php endforeach; ?>
    </div>	

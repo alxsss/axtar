@@ -49,6 +49,15 @@
           <?php echo $form['website'] ?>
         </td>
       </tr>
+
+        <tr>
+        <th><?php echo $form['email']->renderLabel() ?></th>
+        <td>
+          <?php  echo $form['email']->renderError() ?>
+          <?php  echo $form['email'] ?>
+        </td>
+      </tr>
+
       <tr>
         <th><?php echo $form['category']->renderLabel() ?></th>
         <td>
@@ -70,21 +79,8 @@
           <?php echo $form['description'] ?>
         </td>
       </tr>
-      <tr>
-        <th><?php //echo $form['user_id']->renderLabel() ?></th>
-        <td>
-          <?php // echo $form['user_id']->renderError() ?>
-          <?php echo $form['user_id'] ?>
-        </td>
-      </tr>
 
-      <tr>
-        <th><?php //echo $form['user_id']->renderLabel() ?></th>
-        <td>
-          <?php // echo $form['user_id']->renderError() ?>
-          <?php echo $form['approved'] ?>
-        </td>
-      </tr>
     </tbody>
   </table>
+        <?php echo $form['user_id']?>
 </form>

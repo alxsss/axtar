@@ -27,9 +27,5 @@
 </div>
 <?php use_javascript('jquery.js')?>
 <?php use_javascript('/sebekePlugin/js/jquery.hf.js?v=7')?>
-<?php if ($sf_user->isAuthenticated()): ?>
-    <link type="text/css" href="/hfchat/hfchatcss.php" rel="stylesheet" charset="utf-8">
-    <script type="text/javascript" src="/hfchat/hfchatjs.php" charset="utf-8"></script>
-<?php endif;?>
 </body>
 </html>

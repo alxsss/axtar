@@ -13,7 +13,7 @@ class BiznesForm extends BaseBiznesForm
   {
 
      $this->widgetSchema['user_id'] = new sfWidgetFormInputHidden();
-     $this->widgetSchema['approved'] = new sfWidgetFormInputHidden();
+     //$this->widgetSchema['approved'] = new sfWidgetFormInputHidden();
 
      sfContext::getInstance()->getConfiguration()->loadHelpers('I18N');
     

@@ -12,6 +12,7 @@ class biznesActions extends sfActions
   public function preExecute()
   {
      $this->bot=array('148.251.236','68.180.228','194.187.168','78.46.174','144.76.195','62.210.170','37.58.100','92.232.53','37.58.100','46.165.197','199.192.207','31.31.72','199.58.86','162.210.196','199.21.99','81.70.141','95.91.179','108.59.8','207.46.13','78.46.94','88.198.247','142.4.209','142.4.213','148.251.124','46.235.12','66.249.79','66.249.65','66.249.67','100.43.90','157.55.39','192.99.149','192.241.242','89.163.224','198.27.82','198.27.64','144.76.95','208.115.111','88.198.160','88.198.247');
+  
   $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');
   
  }
@@ -206,6 +207,7 @@ class biznesActions extends sfActions
     if ($this->getUser()->isAuthenticated())
     {
       $this->form = new BiznesForm();
+      $this->form->setDefaults(array('user_id' => $this->user_id ));
     }
     else
     {
@@ -239,9 +241,17 @@ class biznesActions extends sfActions
   }
   public function executeEdit(sfWebRequest $request)
   {
-    $Biznes = BiznesQuery::create()->findPk($request->getParameter('id'));
-    $this->forward404Unless($Biznes, sprintf('Object Biznes does not exist (%s).', $request->getParameter('id')));
-    $this->form = new BiznesForm($Biznes);
+    if ($this->getUser()->isAuthenticated())
+    {
+      $Biznes = BiznesQuery::create()->findPk($request->getParameter('id'));
+      $this->forward404Unless($Biznes, sprintf('Object Biznes does not exist (%s).', $request->getParameter('id')));
+      $this->form = new BiznesForm($Biznes);
+    } 
+    else
+    {
+      return $this->forward('sfGuardAuth','signin');
+    }
+
   }
 
   public function executeUpdate(sfWebRequest $request)
@@ -273,8 +283,9 @@ class biznesActions extends sfActions
     if ($form->isValid())
     {
       $biz = $form->save();
+      $this->redirect('biznes/index');
 
-      $this->redirect('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()) );
+      //$this->redirect('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()) );
     }
   }
 }

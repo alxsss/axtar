@@ -25,10 +25,18 @@ public function delete(PropelPDO $con = null)
    //delete file from hard disk
   $uploadDirName='/uploads/assets';
   $uploadDir     = sfConfig::get('sf_web_dir').$uploadDirName;
-  $photo_imageFile = $uploadDir.'/photos/normal/'.$this->getFilename();
-  unlink($photo_imageFile);
+  $biznes_imageFile = $uploadDir.'/biznes/'.$this->getPhoto();
+  if(is_readable($biznes_imageFile))
+  {
+    unlink($biznes_imageFile);
+  }
+  $biznes_normal_imageFile = $uploadDir.'/biznes/normal/'.$this->getPhoto();
+  if(is_readable($biznes_normal_imageFile))
+  {
+    unlink($biznes_normal_imageFile);
+  }
   $thumbnailsDir = sfConfig::get('app_sfMediaLibrary_thumbnails_dir', 'thumbnail');
-  $itemThumbnailFile = $uploadDir.'/photos/'.$thumbnailsDir.'/'.$this->getFilename();
+  $itemThumbnailFile = $uploadDir.'/biznes/'.$thumbnailsDir.'/'.$this->getPhoto();
   if (is_readable($itemThumbnailFile))
   {
      unlink($itemThumbnailFile);

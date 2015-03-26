@@ -18,18 +18,18 @@
       <?php if($sf_user->isAuthenticated()):?>
         <?php include_component('friends', 'ulinks')?>
       <?php else:?>
-        <?php include_partial('home/inhemsinif')?>
+        <?php //include_partial('home/inhemsinif')?>
       <?php endif;?>
      </div>
 	 <div id="right_column_user">	
 	   <div id="breadcrumb">
- 	     <?php include_slot('hemsinif_breadcrumb') ?>
+ 	     <?php //include_slot('hemsinif_breadcrumb') ?>
        </div>       
        <?php echo $sf_content ?>	  
      </div>
     </div>
 	 <?php if(!($sf_params->get('module')=='message'&&$sf_params->get('action')=='show')):?>
-	   <?php include_partial('friends/horizontal_ad')?>
+	   <?php //include_partial('friends/horizontal_ad')?>
 	 <?php endif;?>
 	<div id="footer">	
 	 <?php include_partial('sidebar/univfoot') ?>
@@ -37,9 +37,5 @@
   </div>
   <?php use_javascript('jquery.js')?>
   <?php use_javascript('/sebekePlugin/js/jquery.hf.js?v=7')?>
-  <?php if($sf_user->isAuthenticated()): ?>
-    <link type="text/css" href="/hfchat/hfchatcss.php" rel="stylesheet" charset="utf-8">
-    <script type="text/javascript" src="/hfchat/hfchatjs.php" charset="utf-8"></script>
-  <?php endif;?>
 </body>
 </html>

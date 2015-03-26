@@ -81,11 +81,12 @@ padding: 20px;
       <?php if(isset($result['address'])){$address=$result['address'];}else{$address=array();}?>
       <?php if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
       <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
+      <?php if(isset($result['email'])){$email=$result['email'];}else{$email='';}?>
       
      
          <div class="product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
-             <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/normal/'.$photo;?>" width="75" class="imageurl_biznes"/></a>
+             <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/'.$photo;?>" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
 
@@ -98,6 +99,9 @@ padding: 20px;
          <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
           <?php if($website!=''):?>
              <div class="product_phone"><a target="_blank" href="<?php echo $website?>" ><?php echo $website?></a> </div>
+           <?php endif;?>
+          <?php if($email!=''):?>
+             <div class="product_phone"><b><?php echo $email; ?></b></div>
            <?php endif;?>
          <div class="product_url">
            <?php foreach($category as $cat):?>
@@ -117,16 +121,16 @@ padding: 20px;
    <?php foreach($similar_products as $result): ?>
       <?php $id=$result['id'];?>
       <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
-      <?php if(isset($result['phone'])){$phone=$result['phone'];}else{$phone=array();}?>
-      <?php if(isset($result['website'])){$website=$result['website'];}else{$website='';}?>
-      <?php if(isset($result['description'])){$description=$result['description'];}else{$description='';}?>
-      <?php if(isset($result['address'])){$address=$result['address'];}else{$address=array();}?>
-      <?php if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
+      <?php //if(isset($result['phone'])){$phone=$result['phone'];}else{$phone=array();}?>
+      <?php //if(isset($result['website'])){$website=$result['website'];}else{$website='';}?>
+      <?php //if(isset($result['description'])){$description=$result['description'];}else{$description='';}?>
+      <?php //if(isset($result['address'])){$address=$result['address'];}else{$address=array();}?>
+      <?php //if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
       <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
 <div class="news"> 
       <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
       <?php if(!empty($photo)&&$photo!=''):?>
-           <img class="image_with_border" src="<?php echo $photo;?>" alt="no img">
+           <img class="image_with_border" src="<?php echo '/uploads/assets/biznes/thumbnails/'.$photo;?>" alt="no img">
       <?php else:?>
       
        <?php echo  sfOutputEscaper::unescape($title) ;?>
