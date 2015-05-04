@@ -17,7 +17,7 @@ class BiznesForm extends BaseBiznesForm
 
      sfContext::getInstance()->getConfiguration()->loadHelpers('I18N');
     
-     $this->widgetSchema['address'] = new sfWidgetFormInput(array(), array('size'=>79));
+     //$this->widgetSchema['address'] = new sfWidgetFormInput(array(), array('size'=>79));
 
      $this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
       'label'     => 'Biznes picture',

@@ -55,7 +55,7 @@ propel:
     _attributes:  {idMethod:  native  }
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
     title:  { type: VARCHAR, size: 255 , required: true}
-    address: { type: varchar, size: 255 , required: true}
+    address: { type: LONGVARCHAR}
     description: {type:LONGVARCHAR }
     phone: { type: varchar, size: 100 }
     website: { type: varchar, size: 255 }

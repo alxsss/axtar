@@ -25,6 +25,11 @@ font-size: 25px;
 padding: 0 0 5px;
 }
 .product_address{padding: 5px 0;}
+.product_address_title{font-size: 17px;
+    font-weight: bold;
+    padding: 5px 0;}
+
+.address{padding: 5px 0 10px;}
 .product_phone{padding: 5px 0;}
 .product_url{
 color: #008000;padding: 5px 0;
@@ -95,8 +100,12 @@ padding: 20px;
            <?php if(!empty($description)):?>
             <div class="abstract"><?php  echo $description;?></div>
            <?php endif;?>
-         <div class="product_address"><?php foreach($address as $addr){echo $addr;}?> </div>
-         <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
+
+         <div class="address">
+            <div class="product_address_title"> <?php echo __('Address')?></div>
+            <div class="product_address"><?php foreach($address as $addr){echo nl2br($addr);}?> </div>
+         </div>
+          <div class="url"><?php foreach($phone as $ph){echo $ph;}?> </div>
           <?php if($website!=''):?>
              <div class="product_phone"><a target="_blank" href="<?php echo $website?>" ><?php echo $website?></a> </div>
            <?php endif;?>
