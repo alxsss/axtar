@@ -39,6 +39,7 @@
 
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
      <?php $content=$content->getRawValue();?> 
+<div class="xeber">
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{/*truncate_text(str_replace('<!', '<',$title),80);*/ echo truncate_text($title,80); }?></a></h3>
       <?php if(!empty($content)):?>
           <?php if(!empty($imageurl)):?>
@@ -54,7 +55,8 @@
        <?php if(!empty($date)):?>     
           <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?> 
           <div class="xeberdatetime"><?php echo $azdate ?></div>
-       <?php endif;?>     
+       <?php endif;?>
+</div>     
     <?php endforeach; ?>
 
 <!-- -->

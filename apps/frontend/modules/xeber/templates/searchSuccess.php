@@ -69,6 +69,7 @@
        <?php if(!empty($date)):?>     
           <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?> 
        <?php endif;?>     
+<div class="xeber">
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{ echo truncate_text($title,80);}?></a></h3>
       <?php if(!empty($content)):?>
           <?php if(!empty($imageurl)):?>
@@ -78,6 +79,7 @@
       <?php endif;?>
       <div class="url"><?php echo truncate_text($url,80);?> </div>
        <div class="xeberdatetime"><?php echo $azdate ?></div>
+</div>
     <?php endforeach; ?>
 
  <div class="pagination">
