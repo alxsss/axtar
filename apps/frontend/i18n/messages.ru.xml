@@ -250,10 +250,34 @@
         <source>New Business</source>
         <target>Новый бизнес</target>
       </trans-unit>
-       <trans-unit id="60">
+	   <trans-unit id="60">
+        <source>Businesses</source>
+        <target>Компании</target>
+      </trans-unit>
+       <trans-unit id="61">
         <source>Oil Prices</source>
         <target>Цены на нефть</target>
       </trans-unit>
+	    <trans-unit id="62">
+        <source>These are frequently used keywords in todays news articles. By  clicking on each keyword you can see news articles related to it on the right side, ordered by publication date. Since usually a few articles on the same subject is published, this functionality helps readers to find conceptually related articles.</source>
+        <target>Наиболее часто используемые ключевые слова в сегодняшних новостных статей. При нажатии на каждое ключевое слово можно увидеть новости, связанные с ней на правой стороне, упорядоченные по дате публикации. Так как обычно несколько статей на ту же тему опубликована эта функциональность помогает читателям найти концептуально связанные статьи.</target>
+      </trans-unit>
+	  <trans-unit id="63">
+        <source>Category</source>
+        <target>Категория</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>Address</source>
+        <target>адрес</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>Picture</source>
+        <target>Фото</target>
+      </trans-unit> 
+      <trans-unit id="66">
+        <source>What is this?</source>
+        <target>Что это?</target>
+      </trans-unit>  	  
     </body>
   </file>
 </xliff>

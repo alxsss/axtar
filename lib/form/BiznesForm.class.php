@@ -20,7 +20,7 @@ class BiznesForm extends BaseBiznesForm
      //$this->widgetSchema['address'] = new sfWidgetFormInput(array(), array('size'=>79));
 
      $this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
-      'label'     => 'Biznes picture',
+      'label'     => 'Picture',
       'file_src'  => $this->getObject()->getPhoto()?'/uploads/assets/biznes/'.$this->getObject()->getPhoto():'',
       'is_image'  => true,
       'edit_mode' => !$this->isNew(),

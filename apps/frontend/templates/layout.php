@@ -5,7 +5,8 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <?php use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
-    <?php use_stylesheet('main?v=33') ?>
+    <?php use_stylesheet('main?v=34') ?>
+    <?php use_stylesheet('jquery.qtip.min.css') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
@@ -38,7 +39,9 @@
 	</ul>
 </div>
 </div>
-<?php use_javascript('jquery.js')?>
-<?php use_javascript('jquery.axtar.js?v=8')?>
+<?php //use_javascript('jquery.js')?>
+<?php use_javascript('jquery.1.6-min.js')?>
+<?php use_javascript('jquery.axtar.js?v=9')?>
+<?php use_javascript('jquery.qtip.min.js')?>
   </body>
 </html>

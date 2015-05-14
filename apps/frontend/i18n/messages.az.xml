@@ -247,14 +247,38 @@
         <source>Edit Business</source>
         <target>Biznesə düzəliş et</target>
       </trans-unit>
-      <trans-unit id="59">
+	   <trans-unit id="59">
         <source>New Business</source>
         <target>Yeni Biznes</target>
       </trans-unit>
-      <trans-unit id="60">
+	   <trans-unit id="60">
+        <source>Businesses</source>
+        <target>Компании</target>
+      </trans-unit>
+       <trans-unit id="61">
         <source>Oil Prices</source>
         <target>Neftin Qiyməti</target>
       </trans-unit>
+	    <trans-unit id="62">
+        <source>These are frequently used keywords in todays news articles. By  clicking on each keyword you can see news articles related to it on the right side, ordered by publication date. Since usually a few articles on the same subject is published, this functionality helps readers to find conceptually related articles.</source>
+        <target>Bunlar xəbərlərdə ən çox istifadə olunan açar sözlərdir. Hər hansı bir sözü klik edəndə, ona aid olan xəbərlər sağ tərəfdə  dərc edildiyi vaxt ardıcılliğı ilə görünür. Eyni mövzu üzrə adətən bir neçə məqalə dərc olunduğundan, bu funksionallıq oxucuya oxşar məqalələri tapmaq üçün kömək edir.</target>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>Category</source>
+        <target>Kateqoriya</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>Address</source>
+        <target>Ünvan</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>Picture</source>
+        <target>Şəkil</target>
+      </trans-unit>  
+      <trans-unit id="66">
+        <source>What is this?</source>
+        <target>Bu nədir?</target>
+      </trans-unit> 	  
     </body>
   </file>
 </xliff>
