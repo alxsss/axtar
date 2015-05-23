@@ -13,7 +13,7 @@
 <!-- group -->
 
  <?php foreach($results as $result): ?>
-      <?php $azdate=''; $imageurl='';?>     
+      <?php $title=''; $azdate=''; $imageurl='';?>     
       <?php $site= $result->str;?>
       <?php $numfound= $result->result->attributes()->numFound;?>
       <?php $str=$result->result->doc->str;?>

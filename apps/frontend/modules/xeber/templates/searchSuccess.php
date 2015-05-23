@@ -41,7 +41,7 @@
     <div id="xeber_results">
 
       <?php foreach($results->doc as $result): ?>
-        <?php $azdate=''; $imageurl='';?>     
+        <?php $title=''; $azdate=''; $imageurl='';?>     
         <?php $str=$result->str;?>
         <?php $date=$result->date;?>
         <?php foreach($str as $s){
