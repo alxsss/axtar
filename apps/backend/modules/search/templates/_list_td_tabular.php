@@ -4,6 +4,9 @@
 <td class="sf_admin_text sf_admin_list_td_query">
   <?php echo urldecode($search->getQuery()) ?>
 </td>
+<td class="sf_admin_text sf_admin_list_td_module">
+  <?php echo $search->getModule() ?>
+</td>
 <td class="sf_admin_text sf_admin_list_td_raw_ip">
   <?php echo $search->getRawIp() ?>
 </td>

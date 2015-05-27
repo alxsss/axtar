@@ -1,0 +1,21 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           BiznesSearch
+    theme:                 admin15
+    non_verbose_templates: true
+    with_show:             false
+    singular:              BiznesSearch
+    plural:                BiznesSearchs
+    route_prefix:          biznes_search
+    with_propel_route:     1
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

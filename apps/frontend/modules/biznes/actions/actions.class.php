@@ -157,6 +157,7 @@ class biznesActions extends sfActions
     {
        $search=new BiznesSearch();
        $search->setQuery($this->query);
+       //$search->setModule('biznes');
        $search->setRawIp($_SERVER['REMOTE_ADDR']);
        $search->save();
     }

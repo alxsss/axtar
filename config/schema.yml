@@ -12,6 +12,7 @@ propel:
     _attributes:  {idMethod:  native  }
     id:  {  type: INTEGER, required:  true,  autoIncrement: true, primaryKey: true  }
     query:  {type:  VARCHAR, size: 256}
+    module:  {type:  VARCHAR, size: 20}
     raw_ip:  { type: VARCHAR, size: 50  }
     created_at: {  type: TIMESTAMP  }
   biznes_search:
