@@ -2,7 +2,7 @@
 /**
  * message actions.
  *
- * @package    hemsinif
+ * @package    axtar
  * @subpackage message
  * @author     Alexander Kingson
  * @version    SVN: $Id: actions.class.php 8507 2008-04-17 17:32:20Z fabien $
@@ -428,7 +428,7 @@ public function executeDeletefrominbox($request)
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
 	$mail->setBodyText(<<<EOF
-    $from_name sizə  axtar.az saytinda də məktub göndərib
+    $from_name sizə  axtar.az saytinda məktub göndərib
 	
     Bu məktuba aşağıdakı linkdə
    

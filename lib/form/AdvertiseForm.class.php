@@ -12,8 +12,9 @@ class AdvertiseForm extends BaseAdvertiseForm
 {
   public function configure()
   {
+    $this->widgetSchema['ip'] = new sfWidgetFormInputHidden();
     $this->validatorSchema['company']->setOption('required', false);
-	$this->validatorSchema['phone']->setOption('required', false);
-	$this->validatorSchema['email']=new sfValidatorEmail();	
+    $this->validatorSchema['phone']->setOption('required', false);
+    $this->validatorSchema['email']=new sfValidatorEmail();	
   }
 }

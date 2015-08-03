@@ -3,7 +3,7 @@
 /**
  * friends actions.
  *
- * @package    hemsinif
+ * @package    axtar
  * @subpackage friends
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12474 2008-10-31 10:41:27Z fabien $
@@ -233,17 +233,17 @@ class friendsActions extends sfActions
 		  {
 	        $recepient_username=$status_owner_user->getUsername();
 		    $page=$this->getRequestParameter('page', 1);
-		    $url='http://hemsinif.com/az/user/'.$recepient_username;			
-		    $subject=$this->name.' hemsinif.com da sizin statusunuza rəyini bildirdi';
+		    $url='http://axtar.az/az/user/'.$recepient_username;			
+		    $subject=$this->name.' axtar.az saytinda sizin statusunuza rəyini bildirdi';
 		$body=<<<EOF
           Salam $recepient_username,
 
-          $this->name hemsinif.com da sizin statusunuza rəyini bildirdi. Ona  linkdə $url baxa bilərsiniz.
+          $this->name axtar.az saytinda sizin statusunuza rəyini bildirdi. Ona  linkdə $url baxa bilərsiniz.
 
           Sag olun,
-          hemsinif.com
+          axtar.az
 EOF;
-		  $this->sendhemsinifEmail(trim($email), $subject, $body);
+		  $this->sendaxtar.azEmail(trim($email), $subject, $body);
 		 }//end if email 
 		}
 	  }
@@ -316,17 +316,17 @@ EOF;
             if(!empty($email))
 	    {
 	        $recepient_username=$photo_owner_user->getUsername();
-	        $url='http://hemsinif.com/az/photos/show/id/'.$this->photo_id;
-	        $subject=$this->name.' hemsinif.com da sizin şəkilinizə rəyini bildirdi';
+	        $url='http://axtar.az/az/photos/show/id/'.$this->photo_id;
+	        $subject=$this->name.' axtar.az da sizin şəkilinizə rəyini bildirdi';
 	        $body=<<<EOF
 	      Salam $recepient_username,
-              $this->name hemsinif.com da sizin şəkilinizə rəyini 
+              $this->name axtar.az da sizin şəkilinizə rəyini 
               bildirdi.  Onu bu linkdə $url baxa bilərsiniz.
 
            Sag olun,
-           hemsinif.com
+           axtar.az
 EOF;
-		    $this->sendhemsinifEmail(trim($email), $subject, $body);
+		    $this->sendaxtar.azEmail(trim($email), $subject, $body);
 		  
 	    }
 	  }//end if userid!=
@@ -470,14 +470,14 @@ EOF;
 	//$this->username_user_id=$this->subscriber_username->getId();
 	$this->user_pager = sfGuardUserPeer::getRecentPager($this->getRequestParameter('page', 1));
   }  
-  protected function sendhemsinifEmail($email, $subject, $body)
+  protected function sendaxtar.azEmail($email, $subject, $body)
   {    
     ProjectConfiguration::registerZend();
-    $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+    $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
 	$mail->setBodyText($body);
-    $mail->setFrom('info@hemsinif.com', 'hemsinif kollektivi');
+    $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
     $mail->addTo($email);
     $mail->setSubject($subject);
     $mail->send();
@@ -489,96 +489,96 @@ EOF;
 	$mail->setBodyText(<<<EOF
 Salam $recepient_name,
 
-  $from_name sizi hemsinifdə  dost kimi əlavə etdi.  $from_name sizin 
+  $from_name sizi axtar.az saytinda  dost kimi əlavə etdi.  $from_name sizin 
   dostunuz olmaq üçün siz bu təklifi təsdiq etməlisiniz.
   
   Xahiş edirik onu bu linkde
    
-  http://hemsinif.com/az/friends/list 
+  http://axtar.az/az/friends/list 
 
   edəsiniz.
    
   $p_message
 
 Sag olun,
-hemsinif.com kollektivi 
+axtar.az kollektivi 
 EOF
 );
-      $mail->setFrom('info@hemsinif.com', 'hemsinif.com kollektivi');
+      $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
       $mail->addTo($email);
-      $mail->setSubject($from_name.' sizi hemsinif.com da dost kimi əlavə etdi');
+      $mail->setSubject($from_name.' sizi axtar.az da dost kimi əlavə etdi');
       $mail->send();
   }
   
   protected function sendFriendApproved($email, $recepient_name,  $from_name, $from_username)
   {    
 	ProjectConfiguration::registerZend();
-      $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+      $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
          Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
-	$url='http://hemsinif.com/az/user/'.urlencode(trim($from_username));
+	$url='http://axtar.az/az/user/'.urlencode(trim($from_username));
 $mail->setBodyText(<<<EOF
 Salam $recepient_name,
 
-  $from_name hemsinif.com da sizin dostluq təklifinizi qəbul etdi. Siz 
+  $from_name axtar.az da sizin dostluq təklifinizi qəbul etdi. Siz 
   bu istifadəçinin profilinə bu linkdə $url baxa bilərsiniz.
 	
 Sag olun,
-hemsinif.com kollektivi  
+axtar.az kollektivi  
 EOF
 );
-      $mail->setFrom('info@hemsinif.com', 'hemsinif kollektivi');
+      $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
       $mail->addTo($email);
-      $mail->setSubject($from_name.' hemsinif.com da sizin dostluq təklifinizi qəbul etdi');
+      $mail->setSubject($from_name.' axtar.az da sizin dostluq təklifinizi qəbul etdi');
       $mail->send();
   }
   
  protected function  sendStatusComment($email, $recepient_name,  $name, $page)
  {
-    $url='http://hemsinif.com/updates/'.$page;
-    $subject=$name.' hemsinif.com saytında sizin rəyinizdən sonra öz rəyini bildirdi';
+    $url='http://axtar.az/updates/'.$page;
+    $subject=$name.' axtar.az saytında sizin rəyinizdən sonra öz rəyini bildirdi';
     $body=<<<EOF
     Salam $recepient_name,
   
-      $name hemsinif.com saytında sizin rəyinizdən sonra öz rəyini 
+      $name axtar.az saytında sizin rəyinizdən sonra öz rəyini 
       bildirdi.  Ona bu lindkə 
       $url
       baxa bilərsiniz.
 
     Sag olun,
-    hemsinif.com kollektivi
+    axtar.az kollektivi
 EOF;
     ProjectConfiguration::registerZend();
-    $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+    $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
     $mail->setBodyText($body);
-    $mail->setFrom('info@hemsinif.com', 'hemsinif kollektivi');
+    $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
     $mail->addTo($email);
     $mail->setSubject($subject);
     $mail->send(); 
  }
   protected function  sendPhotoComment($email, $recepient_name,  $name, $photo_id)
  {
-    $url='http://hemsinif.com/az/photos/show/id/'.$photo_id;
-    $subject=$name.' hemsinif.com saytında sizin rəyinizdən sonra öz rəyini bildirdi';
+    $url='http://axtar.az/az/photos/show/id/'.$photo_id;
+    $subject=$name.' axtar.az saytında sizin rəyinizdən sonra öz rəyini bildirdi';
     $body=<<<EOF
     Salam $recepient_name,
   
-      $name hemsinif.com saytında sizin rəyinizdən sonra öz rəyini 
+      $name axtar.az saytında sizin rəyinizdən sonra öz rəyini 
       bildirdi.  Ona bu lindkə 
       $url
       baxa bilərsiniz.
 
     Sag olun,
-    hemsinif.com kollektivi
+    axtar.az kollektivi
 EOF;
     ProjectConfiguration::registerZend();
-    $tr = new Zend_Mail_Transport_Sendmail('-finfo@hemsinif.com');
+    $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');
     Zend_Mail::setDefaultTransport($tr);
     $mail = new Zend_Mail('utf-8');
     $mail->setBodyText($body);
-    $mail->setFrom('info@hemsinif.com', 'hemsinif kollektivi');
+    $mail->setFrom('admin@axtar.az', 'axtar.az kollektivi');
     $mail->addTo($email);
     $mail->setSubject($subject);
     $mail->send(); 

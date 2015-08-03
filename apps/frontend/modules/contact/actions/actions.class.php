@@ -13,6 +13,9 @@ class contactActions extends sfActions
   public function executeCreate($request)
   {
     $this->form = new AdvertiseForm();
+    $ip=$_SERVER['REMOTE_ADDR'];
+  
+    $this->form->setDefaults(array('ip' => $ip));
     if (!$this->getRequest()->isMethod('post'))
     {
       // Prepare data for the template
@@ -24,6 +27,7 @@ class contactActions extends sfActions
    else
    {
      $this->form->bind($request->getParameter('advertise'));
+     $this->form->setDefaults(array('ip' => $ip));
      if ($this->form->isValid())
      {
        $advertise = $this->form->save();

@@ -53,5 +53,6 @@
       </tr>      
     </tbody>
   </table>
+  <?php echo $form['ip']?>
 </form>
 </div>

@@ -5,7 +5,7 @@
     <?php include_metas() ?>
     <?php include_title() ?>
 <?php use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
-<?php use_stylesheet('main?v=33') ?>
+<?php use_stylesheet('main?v=35') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
