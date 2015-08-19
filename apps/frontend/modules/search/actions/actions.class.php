@@ -242,6 +242,7 @@ class searchActions extends sfActions
     //declare boolean variables for each feed
     $axtar_feed=0;
     $solr_query = new SolrQuery;
+/*
     $data = $solr_query->runQuery($this->query, $start,'image');
     if($data)
     {
@@ -253,6 +254,16 @@ class searchActions extends sfActions
        $pages_in_axtar=floor($nb_axtar_results/10);
        $this->results=$this->axtar_xml->xpath("//doc");
     }
+  */
+    $jsondata = $solr_query->runQuery($this->query, $start, 'image');
+
+    if($jsondata)
+    {
+       $json = json_decode($jsondata, true);
+       $this->docs = $json['response']['docs'];
+       $nb_axtar_results=$json['response']['numFound'];
+    }
+
     //get pagination
     $this->feed_pager = new sfFeedPager('Feed', $limit, $nb_axtar_results);
     $this->feed_pager->setPage($this->page);

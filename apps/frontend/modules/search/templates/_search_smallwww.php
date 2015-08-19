@@ -1,6 +1,4 @@
-  <div class="logo_small">
-    <img src="/images/logo_small.png" alt="axtar" title="axtar">
- </div>
+<?php include_partial('search/logo')?>  
  <div id="veb_image_links_small">
   <a id="image" href="<?php echo url_for('@search_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('aznet')?></a>
   <a id="veb" href="<?php echo url_for('@search_www?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('web')?></a>

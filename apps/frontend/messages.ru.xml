@@ -1,0 +1,283 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en_US" datatype="plaintext">
+    <body>
+	  <trans-unit id="1">
+        <source>About</source>
+        <target>О нас</target>
+      </trans-unit>
+	  <trans-unit id="2">
+        <source>Advertise</source>
+        <target>Реклама</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Contact us</source>
+        <target>Контакты</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Privacy Policy</source>
+        <target>nash polisy </target>
+      </trans-unit>
+	  <trans-unit id="5">
+        <source>Home</source>
+        <target>Главная </target>
+      </trans-unit>
+	  <trans-unit id="6">
+        <source>axtar.az is a search engine created in 2010.</source>
+        <target>axtar.az это созданный в 2010 году поисковик домейнов.</target>
+      </trans-unit>
+	  <trans-unit id="7">
+        <source>Results of searches for keywords from azeri domains are displayed first and after that ones from international domains.</source>
+        <target>В начале размешается результаты поиска любого слова из доменов на Азербайджанском языке а затем из остальных.</target>
+      </trans-unit>
+	  <trans-unit id="8">
+        <source>This search engine supports Azeri, English and Russian languages.</source>
+        <target>axtar.az поддерживает поиск на Азербайджанском, Английском и Русском языках.</target>
+      </trans-unit>
+	  <trans-unit id="9">
+        <source>Please fill out this contact form or email us at admin at axtar dot az.</source>
+        <target>Пожалуста запольните эту форму или контактируйте нас по электронной почте admin at axtar точка az.</target>
+      </trans-unit>
+	  <trans-unit id="10">
+        <source>Name</source>
+        <target>Имя</target>
+      </trans-unit>	
+	  <trans-unit id="11">
+        <source>Company</source>
+        <target>Компания</target>
+      </trans-unit>	
+	  <trans-unit id="12">
+        <source>Email</source>
+        <target>Электронная почта</target>
+      </trans-unit>	
+	  <trans-unit id="13">
+        <source>Phone</source>
+        <target>Телефон</target>
+      </trans-unit>	
+	  <trans-unit id="14">
+        <source>Comment</source>
+        <target>Замечания</target>
+      </trans-unit>	
+	  <trans-unit id="15">
+        <source>Submit</source>
+        <target>Отправить</target>
+      </trans-unit>	
+	  <trans-unit id="16">
+        <source>Thank you for your submission. We will contact you as soon as possible.</source>
+        <target>Спасибо. Мы скоро вас контактируем.</target>
+      </trans-unit>	
+	    <trans-unit id="17">
+        <source>Prev</source>
+        <target>Предыдущий</target>
+      </trans-unit>
+	  <trans-unit id="18">
+        <source>Next</source>
+        <target>Следующий</target>
+      </trans-unit>
+	     <trans-unit id="19">
+        <source>First</source>
+        <target>Первый</target>
+      </trans-unit>	
+	  <trans-unit id="20">
+        <source>Last</source>
+        <target>Последний</target>
+      </trans-unit>
+	   <trans-unit id="21">
+        <source>Submit your site</source>
+        <target>Добавить Ваш сайт</target>
+      </trans-unit>
+	    <trans-unit id="22">
+        <source>Please include the http:// prefix (for example, http://www.axtar.az).</source>
+        <target>Пожалуйста, добавите префикс http:// (например, http://www.axtar.az).</target>
+      </trans-unit>	
+	    <trans-unit id="23">
+        <source>the url you provided does not have correct form</source>
+        <target>URL не имеет правильную форму</target>
+      </trans-unit>	
+	  <trans-unit id="24">
+        <source>Your website has been successfully submitted. Please allow about 2-4 weeks for our engine to include it in search results.</source>
+        <target>Ваш сайт был успешно отправлен. Пожалуйста, позвольте около двух недель для нашего двигателя включить его в результатах поиска.</target>
+      </trans-unit>	
+	  <trans-unit id="25">
+        <source>Required.</source>
+        <target>требуется</target>
+      </trans-unit>		
+  	  <trans-unit id="26">
+        <source>Sponsor ads</source>
+        <target>Рекламы спонсоров</target>
+      </trans-unit>	
+	   <trans-unit id="27">
+        <source>Submit your site for free</source>
+        <target>Добавить свой сайт для свободного поиска</target>
+      </trans-unit>	
+	  <trans-unit id="28">
+        <source>Submit your site to sponsored links</source>
+        <target>Регистрация сайта в рекламных ссылках</target>
+      </trans-unit>	
+	  <trans-unit id="29">
+        <source>Submit your site to pay per click</source>
+        <target>Добавить свой сайт в список платить за клик</target>
+      </trans-unit>	
+	  <trans-unit id="30">
+        <source>Start</source>
+        <target>Начало</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>End</source>
+        <target>Конец</target>
+      </trans-unit>		
+	  <trans-unit id="32">
+        <source>Price: 1 month</source>
+        <target>Цена: 1 месяц</target>
+      </trans-unit>
+	  <trans-unit id="33">
+        <source>Ads in Sponsor links section appear under "Sponsor links" on the right corner for any search keyword. Our records show that we had around 20000 unique visitors and 50000 impressions last month. We charge $50 for one month advertising on sponsor links. After you submit this form you will be given a link to pay this amount using Paypal.</source>
+        <target>Рекламы спонсоров размешаются в правом углу на любой поиск по ключевым словам. Наши данные показывают, что у нас было около 20000 уникальных посетителей и 50000 показов в прошлом месяце. Мы берем $50 за один месяц рекламы. После отправки этой формы вам будет предоставлена ссылка для оплату этой суммы через Paypal.</target>
+      </trans-unit>
+	  <trans-unit id="34">
+        <source>Thank you for submitting you site to sponsor links at axtar.az. Your site display will be active shortly after we receive your payment. Please make payment by clicking this button.</source>
+        <target>Спасибо за отправку вашего сайта, в Рекламы спонсоров. Ваш сайт будет активен вскоре после получения оплаты. Пожалуйста нажмите на эту кнопку, чтобы заплатить.</target>
+      </trans-unit>
+	   <trans-unit id="35">
+        <source>Description</source>
+        <target>Описание</target>
+      </trans-unit>	
+	  <trans-unit id="36">
+        <source>Send</source>
+        <target>Отправить</target>
+      </trans-unit>	
+	  <trans-unit id="37">
+        <source>Cancel</source>
+        <target>Отменить</target>
+      </trans-unit>	
+	   <trans-unit id="38">
+        <source>Translate</source>
+        <target>Переводь</target>
+      </trans-unit>		
+  <trans-unit id="39">
+        <source>Map</source>
+        <target>Карта</target>
+      </trans-unit>	
+   <trans-unit id="40">
+        <source>Did you mean %keyword%?</source>
+        <target>Вы имели в виду %keyword%?</target>
+      </trans-unit> 
+  <trans-unit id="41">
+        <source>News</source>
+        <target>Новости</target>
+      </trans-unit>	
+  <trans-unit id="42">
+        <source>%numfound% more results from this link</source>
+        <target>еще %numfound% результатов по этой ссылке</target>
+      </trans-unit>	
+   <trans-unit id="43">
+        <source>Investor</source>
+        <target>Инвестор</target>
+      </trans-unit>
+   <trans-unit id="42">
+        <source>Faq</source>
+        <target>Чзв</target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>Keyboard</source>
+        <target>Клавиатура</target>
+      </trans-unit>      
+      <trans-unit id="44">
+        <source>image</source>
+        <target>картинки</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>web</source>
+        <target>веб</target>
+      </trans-unit> 
+      <trans-unit id="45">
+        <source>Collaboration</source>
+        <target>Сотрудничествo</target>
+      </trans-unit> 
+      <trans-unit id="46">
+        <source>news</source>
+        <target>новости</target>
+      </trans-unit> 
+      <trans-unit id="47">
+        <source>Most frequent keywords in news</source>
+        <target>Наиболее частые ключевые слова в новостях</target>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>Exchange rates:</source>
+        <target>Курсы валют:</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>Top News</source>
+        <target>Главные новости</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>business</source>
+        <target>компании</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>Business</source>
+        <target>Компании</target>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>Axtar.az is the most powerful place to search for Businesses by their name, category and address.</source>
+        <target>Axtar.az является самым мощным местом для поиска предприятий пользуясь их именем, категории и адресом.</target>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>If you see your Businesses in the list but you have never added it here, it means it was given to us by a third party. Please add your business with details and the original one will be deleted.</source>
+        <target>Если вы видите ваш бизнеса в списке, но вы никогда не добавил это здесь, это означает, что было дано нам третьей стороной. Пожалуйста, добавьте свой бизнес с деталями и оригинал, будет удален.</target>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>Add Business</source>
+        <target>Добавить компанию</target>
+      </trans-unit>
+       <trans-unit id="55">
+        <source>New Businesses</source>
+        <target>Новые предприятия</target>
+      </trans-unit>
+       <trans-unit id="56">
+        <source>Your business has has been successfully added and will be in the results in 1-2 days.</source>
+        <target>Ваш бизнес успешно добавлен и будет в результатах в течение 1-2 дней.</target>
+      </trans-unit>
+        <trans-unit id="57">
+        <source>Similar Businesses</source>
+        <target>Похожие Компании</target>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>Edit Business</source>
+        <target>Редактировать бизнес</target>
+      </trans-unit>
+       <trans-unit id="59">
+        <source>New Business</source>
+        <target>Новый бизнес</target>
+      </trans-unit>
+	   <trans-unit id="60">
+        <source>Businesses</source>
+        <target>Компании</target>
+      </trans-unit>
+       <trans-unit id="61">
+        <source>Oil Prices</source>
+        <target>Цены на нефть</target>
+      </trans-unit>
+	    <trans-unit id="62">
+        <source>These are frequently used keywords in todays news articles. By  clicking on each keyword you can see news articles related to it on the right side, ordered by publication date. Since usually a few articles on the same subject is published, this functionality helps readers to find conceptually related articles.</source>
+        <target>Наиболее часто используемые ключевые слова в сегодняшних новостных статей. При нажатии на каждое ключевое слово можно увидеть новости, связанные с ней на правой стороне, упорядоченные по дате публикации. Так как обычно несколько статей на ту же тему опубликована эта функциональность помогает читателям найти концептуально связанные статьи.</target>
+      </trans-unit>
+	  <trans-unit id="63">
+        <source>Category</source>
+        <target>Категория</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>Address</source>
+        <target>адрес</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>Picture</source>
+        <target>Фото</target>
+      </trans-unit> 
+      <trans-unit id="66">
+        <source>What is this?</source>
+        <target>Что это?</target>
+      </trans-unit>  	  
+    </body>
+  </file>
+</xliff>

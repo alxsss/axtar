@@ -13,3 +13,8 @@ _acarsozlersearch:
   contextual: true
   with_layout: false   # Default value
   lifetime:    84600   
+_sponsorads:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   

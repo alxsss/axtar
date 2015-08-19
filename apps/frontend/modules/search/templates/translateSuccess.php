@@ -118,4 +118,3 @@
   <div id="translate">hhhhhhhh
   </div>
 </div>
-<?php include_partial('sponsor_ads')?>

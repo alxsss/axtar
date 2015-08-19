@@ -12,7 +12,7 @@
     <?php  if($jsondata):?>
       <?php $json = json_decode($jsondata, true); ?>
       <?php  $results = $json['response']['docs'];?>
-      <?php  $title = $results[0]['title'];?>
+      <?php  if(isset($results[0]['title'])){$title = $results[0]['title'];}else {continue;}?>
       <?php  //$title = str_replace(array('“','”','\n'),array('','',' '),$title);?>
       <?php $title = trim(preg_replace('/\s+/', ' ', $title));?>
       <div class="news"> <a target="_blank" href="<?php echo url_for('@xeber_search?query="'.trim($soz->getKeyphrase()).'"');?> "><?php echo  truncate_text($title,40);?></a> </div> 

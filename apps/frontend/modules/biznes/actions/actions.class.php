@@ -189,7 +189,7 @@ class biznesActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-    $connection = Propel::getConnection();
+  /*  $connection = Propel::getConnection();
     $query ='SELECT id , title, address, phone, category, photo FROM biznes where approved=1 ORDER BY RAND() LIMIT 10';
     $statement = $connection->prepare($query);
     $statement->execute();
@@ -198,7 +198,7 @@ class biznesActions extends sfActions
     {    
        $this->biznes[]=$biznes; 
     }
-
+*/
     //SELECT id , title FROM biznes ORDER BY RAND() LIMIT 10;
     //$this->Bizness = BiznesQuery::create()->find();
   }

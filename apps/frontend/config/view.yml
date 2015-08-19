@@ -7,7 +7,7 @@ default:
     keywords:     search, axtar
     language:     en
     robots:       index, follow
-  #stylesheets:    [main.css?v=21]
+  stylesheets:    [/sebekePlugin/css/layout?v=7, main.css?v=38,jquery.qtip.min.css]
   #javascripts:    [jquery.js, jquery.axtar.js?v=7]
   has_layout:     true
   layout:         layout

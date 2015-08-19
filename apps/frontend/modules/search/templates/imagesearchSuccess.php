@@ -1,47 +1,10 @@
-<?php use_helper('I18N','Text') ?>
-<?php
-  function pager_navigation($pager, $uri)
-  {
-    $navigation = '';
-    if ($pager->haveToPaginate())
-    {
-      $uri .= (preg_match('/\?/', $uri) ? '&' : '?').'page=';
-     // First and previous page
-      if ($pager->getPage() != 1)
-      {
-       $navigation .= link_to(__('First'), $uri.'1');
-       $navigation .= link_to(__('Prev'), $uri.$pager->getPreviousPage()).'&nbsp;';
-      }
-    // Pages one by one
-    $links = array();
-    foreach ($pager->getLinks() as $page)
-    {
-      $links[] = link_to_unless($page == $pager->getPage(), $page, $uri.$page);
-    }
-    $navigation .= join('&nbsp;&nbsp;', $links);
-    // Next and last page
-    if ($pager->getPage() != $pager->getCurrentMaxLink())
-    {
-      $navigation .= '&nbsp;'.link_to(__('Next'), $uri.$pager->getNextPage());
-      //$navigation .= link_to(__('Last'), $uri.$pager->getLastPage());
-    }
-  }
-  return $navigation;
-}
-?>
+<?php use_helper('I18N','Text','Global') ?>
 <div id="search_results">
 
 <?php include_partial('image_search')?>
 <div id="image_results">
- <div id="acar_sozler">
-      <div class="title_acar_sozler"><?php //echo __('Most frequent keywords');?> </div>
-      <?php //foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php //echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
-      <?php //endforeach;?>
-    </div>
 
     <div id="xeber_results_image">
-
 
   <?php if(!empty($spellcheck)):?>  
     <?php echo __('Did you mean %keyword%?', array('%keyword%'=> link_to($spellcheck[0], url_for('@search_search?query='.$spellcheck[0]))));?>
@@ -56,34 +19,17 @@
       $thumbfile_cnt=0
   ?>
   <div class="image_line">
-    <?php foreach($results as $result): ?>
-      <?php $str=$result->str;?>
-        <?php foreach($str as $s){
-          if($s->attributes()=='id')
-          {
-            $id=$s;
-          }
-          else if($s->attributes()=='site')
-          {
-            $site=$s;
-          }
-          else if($s->attributes()=='parent_url')
-          {
-            $parent_url=$s;
-          }
-          else if($s->attributes()=='image_id')
-          {
-            $image_id=$s;
-          }
-          else if($s->attributes()=='thumbnail')
-          {
-            $thumbnail=$s;
-          }
-        }
-        ?>
+    <?php foreach ($docs->getRawValue() as $result): ?>
+       <?php //$description=sfOutputEscaper::unescape($result['description']);?>
+       <?php if(isset($result['parent_url'])){$parent_url=$result['parent_url'];}else{$parent_url='';}?>
+       <?php if(isset($result['thumbnail'])){$thumbnail=$result['thumbnail'];}else{$thumbnail='';}?>
+      <div class="image">
       <?php $cnt++;?>
-      <div class="image"><a href="<?php echo  $parent_url ?>" target="_blank"><img src="data:image/jpeg;base64,<?php echo $thumbnail ?>" title="<?php echo  $parent_url ?>" /></a></div>
-      <?php if($cnt==7){echo '</div><div class="image_line">';$cnt=0;}?>
+        <a href="<?php echo sfOutputEscaper::unescape($parent_url) ?>" target="_blank">
+          <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" title="<?php echo sfOutputEscaper::unescape($parent_url) ?>" />
+        </a>
+      </div>
+      <?php if($cnt==5){echo '</div><div class="image_line">';$cnt=0;}?>
     <?php endforeach; ?>
   </div>
   <div class="pagination">
@@ -93,8 +39,7 @@
   </div>
 
 </div><!--xeber_result-->
+ <?php include_component('xeber', 'sponsorads')?>
 </div>
-
- <?php include_partial('sponsor_ads')?>
 
 </div>

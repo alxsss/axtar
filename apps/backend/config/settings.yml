@@ -90,7 +90,7 @@ all:
 #
 #    # Activated modules from plugins or from the symfony core
 #    enabled_modules:        [default]
-    enabled_modules:        [sfGuardUser, sfGuardAuth, default]
+    enabled_modules:        [sfGuardUser, sfGuardAuth, friends,message,sfLanguageSwitch,default]
 #    # Charset used for the response
 #    charset:                utf-8
 #

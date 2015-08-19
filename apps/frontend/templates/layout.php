@@ -4,9 +4,9 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <?php use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
-    <?php use_stylesheet('main?v=35') ?>
-    <?php use_stylesheet('jquery.qtip.min.css') ?>
+    <?php //use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
+    <?php //use_stylesheet('main?v=36') ?>
+    <?php //use_stylesheet('jquery.qtip.min.css') ?>
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>

@@ -1,34 +1,4 @@
-<?php use_helper('I18N','Text') ?>
-<?php
-  function pager_navigation($pager, $uri)
-  {
-    $navigation = '';
-    if ($pager->haveToPaginate())
-    {
-      $uri .= (preg_match('/\?/', $uri) ? '&' : '?').'page=';
-     // First and previous page
-      if ($pager->getPage() != 1)
-      {
-       $navigation .= link_to(__('First'), $uri.'1');
-       $navigation .= link_to(__('Prev'), $uri.$pager->getPreviousPage()).'&nbsp;';
-      }
-    // Pages one by one
-    $links = array();
-    foreach ($pager->getLinks() as $page)
-    {
-      $links[] = link_to_unless($page == $pager->getPage(), $page, $uri.$page);
-    }
-    $navigation .= join('&nbsp;&nbsp;', $links);
-    // Next and last page
-    if ($pager->getPage() != $pager->getCurrentMaxLink())
-    {
-      $navigation .= '&nbsp;'.link_to(__('Next'), $uri.$pager->getNextPage());
-      //$navigation .= link_to(__('Last'), $uri.$pager->getLastPage());
-    }
-  }
-  return $navigation;
-}
-?>
+<?php use_helper('I18N','Text','Global') ?>
 <div id="search_results">
   <?php include_partial('search_smallaznet')?>
   <div id="results">
@@ -124,8 +94,7 @@
   <?php // endif;?>
 
  </div><!-- xeber_results -->
+ <?php include_component('xeber', 'sponsorads')?>
 </div>
-
-  <?php include_partial('sponsor_ads')?>
 
 </div>

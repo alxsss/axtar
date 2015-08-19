@@ -45,6 +45,7 @@ propel:
     phone:  {type:  VARCHAR, size: 15 }
     comment: {type:  LONGVARCHAR }
     payment:  {type:TINYINT, size: 4, default:0}
+    rank:  {  type: INTEGER  }
     created_at: {type: timestamp }
   keyphrase:
     _attributes:  {idMethod:  native  }

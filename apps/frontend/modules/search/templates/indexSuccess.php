@@ -4,7 +4,7 @@
   <?php include_component('xeber', 'topnews')?>
 
 <div class="logo">
-  <img src="/images/logo.png" alt="axtar" title="axtar">
+  <img src="/images/logo.png?v=1" alt="axtar" title="axtar">
 </div>
  <div id="veb_image_links">
   <a id="veb" href="<?php echo url_for('@search_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('aznet')?></a>

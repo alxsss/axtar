@@ -1,3 +1,12 @@
+message:
+  class: sfPropelORMRouteCollection
+  options:
+    model:                Message
+    module:               message
+    prefix_path:          /message
+    column:               id
+    with_wildcard_routes: true
+
 biznes_search:
   class: sfPropelORMRouteCollection
   options:
@@ -60,6 +69,9 @@ search:
     prefix_path:          search
     column:               id
     with_wildcard_routes: true
+xeber_search:
+  url:  /:sf_culture/xeberaxtar
+  param: { module:  xeber, action: searchgr }
 
 # default rules
 homepage:

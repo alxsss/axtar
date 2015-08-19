@@ -41,8 +41,7 @@
   </div>
 
 </div><!-- xeber_results -->
-
- <?php include_partial('search/sponsor_ads')?>
+ <?php include_component('xeber', 'sponsorads')?>
 </div>
 
 

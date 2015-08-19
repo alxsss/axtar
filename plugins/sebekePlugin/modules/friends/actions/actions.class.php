@@ -243,7 +243,7 @@ class friendsActions extends sfActions
           Sag olun,
           axtar.az
 EOF;
-		  $this->sendaxtar.azEmail(trim($email), $subject, $body);
+		  $this->sendaxtarEmail(trim($email), $subject, $body);
 		 }//end if email 
 		}
 	  }
@@ -326,7 +326,7 @@ EOF;
            Sag olun,
            axtar.az
 EOF;
-		    $this->sendaxtar.azEmail(trim($email), $subject, $body);
+		    $this->sendaxtarEmail(trim($email), $subject, $body);
 		  
 	    }
 	  }//end if userid!=
@@ -470,7 +470,7 @@ EOF;
 	//$this->username_user_id=$this->subscriber_username->getId();
 	$this->user_pager = sfGuardUserPeer::getRecentPager($this->getRequestParameter('page', 1));
   }  
-  protected function sendaxtar.azEmail($email, $subject, $body)
+  protected function sendaxtarEmail($email, $subject, $body)
   {    
     ProjectConfiguration::registerZend();
     $tr = new Zend_Mail_Transport_Sendmail('-fadmin@axtar.az');

@@ -33,4 +33,23 @@ class xeberComponents extends sfComponents
      $c->setLimit(5);
      $this->acar_sozler=KeyphrasePeer::doSelect($c);
   }  
+  public function executeSponsorads()
+  {
+  /*   $c=new Criteria();
+     $c->add(SponsorPeer::PAYMENT, 1);
+     $c->add(SponsorPeer::END, now(), Criteria::GREATER_THAN);
+     $c->addDescendingOrderByColumn(SponsorPeer::RANK);
+     $this->sponsors=SponsorPeer::doSelect($c);
+*/
+      $connection = Propel::getConnection();
+      $query ='select url, description from sponsor where payment=1 and end >NOW() order by rank desc';
+      $statement = $connection->prepare($query);
+      $statement->execute();
+
+      $this->sponsors=array();
+      while ($sponsor=$statement->fetch(PDO::FETCH_BOTH))
+      {
+        $this->sponsors[]=$sponsor;
+      }
+  }  
 }
