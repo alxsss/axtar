@@ -89,6 +89,7 @@ class searchActions extends sfActions
       $search->setQuery($query_db);
       $search->setModule('veb');
       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+      $search->setReferer($_SERVER['HTTP_REFERER']);
       $search->save();	
     }
   }
@@ -277,6 +278,7 @@ class searchActions extends sfActions
       $search->setQuery($query_db);
       $search->setModule('image');
       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+      $search->setReferer($_SERVER['HTTP_REFERER']);
       $search->save();	
     }
   }
@@ -426,6 +428,7 @@ class searchActions extends sfActions
       $search->setQuery($query_db);
       $search->setModule('aznet');
       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+      $search->setReferer($_SERVER['HTTP_REFERER']);
       $search->save();	
     }
   }

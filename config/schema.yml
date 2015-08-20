@@ -15,6 +15,7 @@ propel:
     query:  {type:  VARCHAR, size: 256}
     module:  {type:  VARCHAR, size: 20}
     raw_ip:  { type: VARCHAR, size: 50  }
+    referer:  { type: LONGVARCHAR  }
     created_at: {  type: TIMESTAMP  }
   biznes_search:
     _attributes:  {idMethod:  native  }
