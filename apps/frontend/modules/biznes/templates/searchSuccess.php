@@ -3,6 +3,29 @@
      <?php //include_component('xeber', 'acarsozler')?>
 
     <div id="xeber_results">
+        <?php if(!empty($spellcheck)):?>
+          <?php
+            $spell='';
+            foreach ($spellcheck->getRawValue() as $key => $value) { 
+              foreach($value as $key1=>$val)
+              {
+                if($key1=='suggestion'){
+                if(!empty($val))
+                {
+                   foreach($val as $v)
+                   {
+                      $spell= link_to($val[0], url_for('@biznes_search?query='.$val[0]));
+                      break;
+                   }
+                }
+               }
+             }
+           }
+          ?>
+          <?php if($spell!=''):?>
+            <?php echo __('Did you mean %keyword%?', array('%keyword%'=> $spell));?>
+          <?php endif;?>
+       <?php endif;?>
 
     <?php foreach ($docs->getRawValue() as $result): ?>
        <?php $title=sfOutputEscaper::unescape($result['title']);?>

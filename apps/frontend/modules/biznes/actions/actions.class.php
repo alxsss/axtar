@@ -139,6 +139,7 @@ class biznesActions extends sfActions
        $json = json_decode($jsondata, true);
        $this->docs = $json['response']['docs'];
        $this->num_found=$json['response']['numFound'];
+       $this->spellcheck=$json['spellcheck']['suggestions'];
     }
      //set title
      $this->getResponse()->setTitle($this->query.' -axtar.az-biznes');
