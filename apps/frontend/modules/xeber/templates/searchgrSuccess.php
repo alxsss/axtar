@@ -43,7 +43,7 @@
       <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{/*truncate_text(str_replace('<!', '<',$title),80);*/ echo truncate_text($title,80); }?></a></h3>
       <?php if(!empty($content)):?>
           <?php if(!empty($imageurl)):?>
-             <a href="<?php echo $url;?>" target="_blank"><img src="<?php  echo str_replace('http://www.azadliq.info/','',$imageurl);?>" width="75" class="imageurl"/></a>
+             <a href="<?php echo $url;?>" target="_blank"><img src="<?php  echo $imageurl;?>" width="75" class="imageurl"/></a>
           <?php endif;?>
        <div class="abstract"><?php echo $content[0];?></div>
       <?php endif;?>
