@@ -66,7 +66,7 @@
     if ($pager->getPage() != $pager->getCurrentMaxLink())
     {
       $navigation .= '&nbsp;'.link_to(__('Next'), $uri.$pager->getNextPage());
-      $navigation .= link_to(__('Last'), $uri.$pager->getLastPage());
+      //$navigation .= link_to(__('Last'), $uri.$pager->getLastPage());
     } 
   } 
   return $navigation;
