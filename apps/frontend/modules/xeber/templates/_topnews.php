@@ -15,7 +15,7 @@
       <?php  if(isset($results[0]['title'])){$title = $results[0]['title'];}else {continue;}?>
       <?php  //$title = str_replace(array('“','”','\n'),array('','',' '),$title);?>
       <?php $title = trim(preg_replace('/\s+/', ' ', $title));?>
-      <div class="news"> <a target="_blank" href="<?php echo url_for('@xeber_search?query="'.trim($soz->getKeyphrase()).'"');?> "><?php echo  truncate_text($title,400);?></a> </div> 
+      <div class="news"> <a target="_blank" href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> "><?php echo  truncate_text($title,400);?></a> </div> 
     <?php endif;?>
   <?php endforeach;?>
 </div>

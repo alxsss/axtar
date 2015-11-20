@@ -9,6 +9,6 @@
 </div>
 
      <?php foreach($acar_sozler as $acar_soz):?>
-        <div class="acar_soz"> <?php echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query="'.$acar_soz->getKeyphrase().'"');?></div>
+        <div class="acar_soz"> <?php echo link_to($acar_soz->getKeyphrase(),'@xeber_search?query='.$acar_soz->getKeyphrase());?></div>
       <?php endforeach;?>
     </div>
