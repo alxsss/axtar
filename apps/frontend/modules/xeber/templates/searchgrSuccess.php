@@ -13,7 +13,7 @@
 <!-- group -->
 
  <?php foreach($results as $result): ?>
-      <?php $title=''; $azdate=''; $imageurl='';?>     
+      <?php $title=''; $azdate=''; $imageurl='';$thumbnail='';?>     
       <?php $site= $result->str;?>
       <?php $numfound= $result->result->attributes()->numFound;?>
       <?php $str=$result->result->doc->str;?>
@@ -35,6 +35,10 @@
            {
              $imageurl=$s;
            }
+           else if($s->attributes()=='thumbnail')
+           {
+             $thumbnail=$s;
+           }
       }?>
 
       <?php $content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
@@ -44,6 +48,11 @@
       <?php if(!empty($content)):?>
           <?php if(!empty($imageurl)):?>
              <a href="<?php echo $url;?>" target="_blank"><img src="<?php  echo $imageurl;?>" width="75" class="imageurl"/></a>
+<!--
+     <a href="<?php echo $url ?>" target="_blank">
+          <img src="data:image/jpg;base64,<?php //echo sfOutputEscaper::unescape($thumbnail)?>"  />
+     </a>
+-->
           <?php endif;?>
        <div class="abstract"><?php echo $content[0];?></div>
       <?php endif;?>

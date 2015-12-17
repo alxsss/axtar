@@ -1,6 +1,12 @@
 mapSuccess:
   has_layout:     true
   layout:         layout_map
+searchtestSuccess:
+  has_layout:     true
+  layout:         bootstrap_layout
+indextestSuccess:
+  has_layout:     true
+  layout:         bootstrap_layout
 autosuggestSuccess:
   has_layout:     false
 apiSuccess:
