@@ -14,6 +14,39 @@ class xeberActions extends sfActions
   {
      $this->bot=array('148.251.236','68.180.228','194.187.168','78.46.174','188.165.15','144.76.85','144.76.195','62.210.170','37.58.100','92.232.53','37.58.100','46.165.197','199.192.207','31.31.72','199.58.86','162.210.196','199.21.99','81.70.141','95.91.179','108.59.8','207.46.13','78.46.94','88.198.247','142.4.209','142.4.213','148.251.124','46.235.12','66.249.79','66.249.65','66.249.67','100.43.90','157.55.39','192.99.149','192.241.242','89.163.224','198.27.82','198.27.64','144.76.95','208.115.111','88.198.160','88.198.247');
   }
+
+  public function executeShow(sfWebRequest $request)
+  {
+    $this->id = $request->getParameter('id');
+    $this->forward404Unless($this->id);
+    $xeber_query = new XeberQuery;
+    $rows=5;
+    $jsondata = $xeber_query->runQuery($this->id, 0, 2,$rows);
+    $this->title='';
+    $this->similar_products = '';
+    if($jsondata)
+    {
+       $json = json_decode($jsondata, true);
+       $this->docs = $json['response']['docs'];
+       $this->num_found=$json['response']['numFound'];
+
+       if(isset($json['moreLikeThis'][strval($this->id)]))
+       {
+         $this->similar_products = $json['moreLikeThis'][strval($this->id)]['docs'];
+       }
+    }
+
+     //set title
+     $this->title=$this->docs[0]['title'];
+     $this->getResponse()->setTitle(substr($this->title,0,60));
+     if(isset($this->docs['description']))
+     {
+       $this->desc=$this->docs[0]['description'];
+       $this->getResponse()->addMeta('description', substr($this->desc,0,155));
+     }
+
+  }
+
  public function executeSearchgr(sfWebRequest $request)
   {
     if (!$this->query = $request->getParameter('query'))
@@ -81,6 +114,11 @@ class xeberActions extends sfActions
   {
     $rows=20;
     $this->page =$request->getParameter('page', 1);
+    //restrict page for more than 1000, since robots make requests for the last documents, which is a bug in solr ann possible gives OM heap space error
+    if($this->page>1000)
+    { 
+      $this->page=1000; 
+    }
     $start=$rows*($this->page-1);
     $this->query="*:*";
     $query_db=$this->query;
