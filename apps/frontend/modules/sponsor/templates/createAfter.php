@@ -7,9 +7,9 @@
 <input type="hidden" name="hosted_button_id" value="FAF6LBGST2LF4">
 <table>
 <tr><td><input type="hidden" name="on0" value="yerler">yerler</td></tr><tr><td><select name="os0">
-	<option value="1">1 $12.00</option>
-	<option value="2">2 $11.00</option>
-	<option value="3">3 $10.00</option>
+	<option value="1">1 $150.00</option>
+	<option value="2">2 $140.00</option>
+	<option value="3">3 $130.00</option>
 </select> </td></tr>
 </table>
 <input type="hidden" name="currency_code" value="USD">
