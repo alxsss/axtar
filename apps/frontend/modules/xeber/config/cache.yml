@@ -18,3 +18,7 @@ _sponsorads:
   contextual: true
   with_layout: false   # Default value
   lifetime:    84600   
+#index:
+  #enabled:     true
+  #with_layout: false   # Default value
+  #lifetime:    84600
