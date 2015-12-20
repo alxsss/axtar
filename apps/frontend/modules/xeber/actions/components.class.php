@@ -1,6 +1,16 @@
 <?php
 class xeberComponents extends sfComponents
 { 
+  public function executeTopnewswithimages()
+  {
+      //get keyphrases
+     $c=new Criteria();
+     $c->add(KeyphrasePeer::ACTIVE, 1);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
+     $c->setLimit(6);
+     $this->acar_sozler=KeyphrasePeer::doSelect($c);
+  }  
   public function executeAcarsozler()
   {
       //get keyphrases

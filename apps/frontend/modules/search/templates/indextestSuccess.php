@@ -43,7 +43,6 @@
               <a id="image" href="<?php echo url_for('@biznes_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('business')?></a>
             </div>
 
-
   <div class="search">
     <form action="<?php echo url_for('@search_search') ?>" method="post" class="search_form">
  <div class="search_keywords_responsive"> 
@@ -58,19 +57,4 @@
         <div class="col-xs-0 col-md-3"></div>
       </div>
 
-
-    <div class="row film">
-    <?php for($i=0; $i<6;$i++){?>
-     <div class="col-xs-6 col-md-2">
-        <div class="thumbnail">
-         <div class="news_keyword"> MTN Emaliyyat</div>
-         <img src="/images/icons/page/sample_news.png?" alt="Sample Image">
-         <div class="caption">MTN den antirerror emaliyyati</div>
-        </div>
-      </div>
-    <?php }?>
-    </div>
-
-
-
-
+ <?php include_component('xeber', 'topnewswithimages')?>
