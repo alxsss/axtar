@@ -27,6 +27,22 @@
       <?php include_partial('search/bootstrap_univhead') ?>
     <div class="container-fluid">
       <?php echo $sf_content ?>
+      <div id="keyboard_container" style="display:none;">
+        <ul id="keyboard">
+                <li class="letter">ə</li>
+                <li class="letter">ç</li>
+                <li class="letter">ğ</li>
+                <li class="letter">ı</li>
+                <li class="letter">ö</li>
+                <li class="letter">ş</li>
+                <li class="letter">ü</li>
+                <li class="right-shift">shift</li>
+                <li class="capslock">caps lock</li>
+                <li class="delete">delete</li>
+                <li class="keyboard lastitem">x</li>
+        </ul>
+       </div>
+
     </div>
     <?php use_javascript('jquery.1.6-min.js')?>
     <?php use_javascript('jquery.axtar.js?v=9')?>

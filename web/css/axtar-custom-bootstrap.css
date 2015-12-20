@@ -38,16 +38,30 @@ border:none;
 .film{padding:0 40px;}
 .logo_search_box{padding:100px 0;}
 .search_keywords_responsive{
-background: url("/images/icons/page/klaviatura.png") no-repeat 99% 50% / 27px 12px;
     border: 1px solid #0096eb;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
-    height: 30px;
-    padding: 3px 6px;
     position: relative;
-width: 80%;
+    width: 80%;
+   float:left;
+margin: 0 5px 0 0;
+}
+.search_keywords_responsive input{
+border:none;
+    width: 80%;
+   float:left;
+}
+.keyboard_input{
+float:right;
+}
+.keyboard_input img{
+padding: 5px;
+    width: 45px;
 }
 
+.btn-default {
+    border-color:  #0096eb;
+}
 .veb_image_links {
      margin: 15px 0 0;
       min-width: 500px;
