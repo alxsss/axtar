@@ -30,28 +30,42 @@
       <div class="row logo_search_box">
         <div class="col-xs-12  col-md-2 col-md-offset-2">
           <div class="thumbnail">
-          <img class="img" width="200" height=100" alt="axtar" src="/images/icons/page/logo.png">
-        </div>
+           <img class="img" width="200" height=100" alt="axtar" src="/images/icons/page/logo.png">
+          </div>
         </div>
         <div class="col-xs-12  col-md-5">
 
-             <div class="veb_image_links">
+           <div class="col-xs-12 veb_image_links">
+             <div class="col-xs-1">
               <a id="veb" href="<?php echo url_for('@search_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('aznet')?></a>
+             </div> 
+             <div class="col-xs-1">
               <a id="image" href="<?php echo url_for('@search_www?query='.$sf_request->getParameter('query'))?>"><?php echo __('web')?></a>
+             </div> 
+             <div class="col-xs-1">
               <a id="image" href="<?php echo url_for('@xeber_index')?>"><?php echo __('news')?></a>
+             </div> 
+             <div class="col-xs-1">
               <a id="image" href="<?php echo url_for('@image_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('image')?></a>
+             </div> 
+             <div class="col-xs-1">
               <a id="image" href="<?php echo url_for('@biznes_search?query='.sfOutputEscaper::unescape($sf_request->getParameter('query')))?>"><?php echo __('business')?></a>
             </div>
+             <div class="col-xs-7">
+             </div> 
+          </div> 
 
-  <div class="search">
-    <form action="<?php echo url_for('@search_search') ?>" method="post" class="search_form">
- <div class="search_keywords_responsive"> 
-   <input type="text" name="query" value="<?php echo sfOutputEscaper::unescape($sf_request->getParameter('query')) ?>" id="search_keywords" onfocus="this.value = this.value;" />
-   <div class="keyboard_input"><a href="#" class="keyboard"><img src="/images/icons/page/klaviatura.png"></a></div>
- </div>
-<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-    </form>
-  </div>
+            <div class="col-xs-12">
+             <form action="<?php echo url_for('@search_search') ?>" method="post" class="search_form">
+               <div class="col-xs-11 search_keywords_responsive">
+                 <div class="col-xs-11">
+                    <input type="text" name="query" value="<?php echo sfOutputEscaper::unescape($sf_request->getParameter('query')) ?>"  class="col-xs-12" id="search_keywords" onfocus="this.value = this.value;" />
+                 </div>
+                 <div class="keyboard_input col-xs-1" ><a href="#" class="keyboard"><img src="/images/icons/page/klaviatura.png"></a></div>
+               </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+             </form>
+            </div>
 
         </div>
         <div class="col-xs-0 col-md-3"></div>

@@ -16,11 +16,15 @@
     font-size: 10px;
     padding: 10px 0 20px 0px;}
 .oil_image{}
-[class*="col-"] {
-    background:none!important;
+ [class*="col-"] {
+/*    background:none!important;
     background-color:none!important;
     border: none!important;
+*/
     padding:15px 10px 0 10px;
+}
+.logo_search_box [class*="col-"] {
+    padding:0;
 }
 .news_thumbnail {
 padding:0;
@@ -59,17 +63,12 @@ text-align:center;
     font-size: 14px;
     font-weight: bold;
     position: relative;
-    width: 80%;
-   float:left;
 margin: 0 5px 0 0;
 }
 .search_keywords_responsive input{
 border:none;
-    width: 90%;
-   float:left;
 }
 .keyboard_input{
-float:right;
 }
 .keyboard_input img{
 padding: 5px;
@@ -80,6 +79,10 @@ padding: 5px;
     border-color:  #0096eb;
 }
 .veb_image_links {
-     margin: 15px 0 0;
-      min-width: 500px;
+ margin: 10px 0 0;
  }
+.carousel-caption p {
+    font-family: tahoma;
+    font-size: 12px;
+    margin: 0 0 10px;
+}
