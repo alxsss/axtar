@@ -71,7 +71,7 @@ border:none;
 .keyboard_input{
 }
 .keyboard_input img{
-padding: 5px;
+padding: 3px;
     width: 45px;
 }
 
@@ -86,3 +86,4 @@ padding: 5px;
     font-size: 12px;
     margin: 0 0 10px;
 }
+.search_keywords_responsive .thumbnail{margin-bottom:0;padding: 3px 0 0;}

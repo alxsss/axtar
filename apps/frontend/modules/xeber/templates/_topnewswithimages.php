@@ -33,7 +33,7 @@
                        else
                        { ?>
                          <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>"  />
-                       <?php }?>
+                       <?php $thumbnail='';}?>
               <div class="carousel-caption"><p><?php echo $title?></p></div>
            </div>
           </a>
