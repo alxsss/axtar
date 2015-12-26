@@ -6,25 +6,23 @@
              <img class="img"  alt="weather" src="/images/icons/weather/gun.png">
           </div>
         </div>
-        <div class="col-xs-2 col-md-1">
+        <div class="col-xs-3 col-md-1">
             <span class="weather"><?php include_partial('search/weather')?>°C</span>
             <?php date_default_timezone_set('Asia/Baku');?>
             <div class="date_time"><?php echo date("F j, Y");?></div>
             <div class="date_time">Baki, Azerbaycan</div>
         </div>
-        <div class="col-xs-2  col-xs-offset-3  col-md-1 col-md-offset-1">
+        <div class="col-xs-2  col-xs-offset-1  col-md-1 col-md-offset-1">
           <div class="thumbnail">
            <img class="img oil_image"  alt="neft" src="/images/icons/page/neft.png">
           </div>
         </div>
-        <div class="col-xs-1  col-md-1">
+        <div class="col-xs-2  col-md-1">
            <div class="oil_price"> <span class="currency">Brent</span> <?php echo get_oil_price('http://www.oil-price.net/widgets/brent_text/gen.php?lang=en')?></div>
             <div class="oil_price"><span class="currency">WTI</span> <?php echo get_oil_price('http://www.oil-price.net/TABLE3/gen.php?lang=en');?></div>
         </div>
         <div class="col-xs-1 col-md-6"></div>
       </div>
-
-
 
 
       <div class="row logo_search_box">
@@ -33,7 +31,7 @@
            <img class="img" width="200" height=100" alt="axtar" src="/images/icons/page/logo.png">
           </div>
         </div>
-        <div class="col-xs-10 col-xs-offset-2 col-md-offset-1 col-md-5">
+        <div class="col-xs-10 col-xs-offset-1 col-md-offset-0 col-md-5">
 
            <div class="col-xs-12 veb_image_links">
              <div class="col-xs-2 col-lg-1">
@@ -69,7 +67,7 @@
              </form>
            </div>
         </div>
-        <div class="col-xs-0 col-md-2"></div>
+        <div class="col-xs-offset-1 col-md-3"></div>
       </div>
 
  <?php include_component('xeber', 'topnewswithimages')?>

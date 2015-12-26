@@ -12,7 +12,7 @@
      $rawdata = curl_exec($ch);
      $jsondata=json_decode($rawdata,true);
      curl_close($ch);
-     return trim($jsondata['main']['temp']);
+     return ceil(trim($jsondata['main']['temp']));
   }
   function get_currency($from_Currency, $to_Currency, $amount) 
   {
