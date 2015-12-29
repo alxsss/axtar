@@ -1,10 +1,11 @@
 <?php
  //get top news from solr
- $rows=2;
+ $rows=5;
  $start=0;
  $axtar_query = new XeberQuery;
  $has_image=false;
  $thumbnail ='';
+ $num_images=12/$num_news;
 ?>
 
   <div class="row film">
@@ -19,11 +20,11 @@
        <?php foreach($results as $doc):?>
           <?php  if(isset($doc['title'])){$title = $doc['title'];}else {continue;}?>
           <?php  if(isset($doc['thumbnail'])){$thumbnail = $doc['thumbnail'];$has_image=true;}else {continue ;}?>
-             <?php  if($has_image){break;}?>
+          <?php  if($has_image){break;}?>
       <?php endforeach;?>
-          <div class="col-xs-6 col-md-2">
+          <div class="col-xs-6 col-xm-4 col-md-<?php echo $num_images;?>">
             <div class="news_thumbnail">
-             <a target="_blank" href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> ">
+             <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
 
               <div class="news_keyword"> <?php echo trim($soz->getKeyphrase())?></div>
                <?php  if($thumbnail=='')

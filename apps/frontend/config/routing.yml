@@ -58,6 +58,9 @@ xeber_index:
 xeber_search:
   url:  /:sf_culture/xeberaxtar
   param: { module:  xeber, action: searchgr }
+xeber_search_test:
+  url:  /:sf_culture/xeberaxtartest
+  param: { module:  xeber, action: searchgrtest }
 biznes_search:
   url:  /:sf_culture/biznesaxtar
   param: { module:  biznes, action: search }

@@ -1,14 +1,24 @@
 <?php
 class xeberComponents extends sfComponents
 { 
-  public function executeTopnewswithimages()
+  public function executeTopnewswithimagesmainpage()
   {
       //get keyphrases
      $c=new Criteria();
      $c->add(KeyphrasePeer::ACTIVE, 1);
      $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
      $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
-     $c->setLimit(6);
+     $c->setLimit($this->num_news);
+     $this->acar_sozler=KeyphrasePeer::doSelect($c);
+  }  
+  public function executeTopnewswithimagesxeber()
+  {
+      //get keyphrases
+     $c=new Criteria();
+     $c->add(KeyphrasePeer::ACTIVE, 1);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::CREATED_AT);
+     $c->addDescendingOrderByColumn(KeyphrasePeer::COUNT);
+     $c->setLimit($this->num_news);
      $this->acar_sozler=KeyphrasePeer::doSelect($c);
   }  
   public function executeAcarsozler()

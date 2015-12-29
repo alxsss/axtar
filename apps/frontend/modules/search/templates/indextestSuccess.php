@@ -70,4 +70,4 @@
         <div class="col-xs-offset-1 col-md-3"></div>
       </div>
 
- <?php include_component('xeber', 'topnewswithimages')?>
+ <?php include_component('xeber', 'topnewswithimagesmainpage',array('num_news' => 6))?>

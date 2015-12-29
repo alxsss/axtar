@@ -46,6 +46,53 @@ class xeberActions extends sfActions
      }
 
   }
+ public function executeSearchgrtest(sfWebRequest $request)
+  {
+    if (!$this->query = $request->getParameter('query'))
+    {
+      return $this->redirect('xeber/indextest');
+    }
+    $rows=20;
+    $this->page =$request->getParameter('page', 1);
+    $start=$rows*($this->page-1);
+    $this->query=trim($this->query);
+    $nb_axtar_results=0;
+    $axtar_query = new XeberQuery;
+    $data = $axtar_query->runQuery($this->query, $start, 3, $rows);
+
+    if($data)
+    {
+       $this->axtar_xml = simplexml_load_string($data);
+       $nb_axtar_results=$this->axtar_xml->xpath("//lst[@name='grouped']/lst[@name='site']/int[@name='ngroups']");
+       $nb_axtar_results=$nb_axtar_results[0];
+       //get suggestions
+       $this->results=$this->axtar_xml->xpath("//arr[@name='groups']/lst");
+       $this->spellcheck=$this->axtar_xml->xpath("//lst[@name='spellcheck']/lst[@name='suggestions']/str[@name='collation']");
+    }
+     //get pagination
+     $this->feed_pager = new sfFeedPager('Feed', $rows, $nb_axtar_results);
+     $this->feed_pager->setPage($this->page);
+     $this->feed_pager->init();
+
+      //set title
+     $this->getResponse()->setTitle($this->query.' -axtar.az/xeber');
+ 
+     //extract ip without digits after last dot
+     $remote_ip=$_SERVER['REMOTE_ADDR'];
+     $ip = substr($remote_ip, 0, strrpos($remote_ip, "."));
+     $user_agent=$_SERVER["HTTP_USER_AGENT"];
+         
+     //if($this->page==1&&!in_array($ip,$this->bot)) 
+     if($this->page==1&&!(strpos(strtolower($user_agent),'bot')||in_array($ip,$this->bot)) ) 
+     {
+       $search=new Search();
+       $search->setQuery($this->query);
+       $search->setModule('xeber');
+       $search->setRawIp($_SERVER['REMOTE_ADDR']);
+       $search->setReferer(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST));
+       $search->save();
+     }
+  }
 
  public function executeSearchgr(sfWebRequest $request)
   {
