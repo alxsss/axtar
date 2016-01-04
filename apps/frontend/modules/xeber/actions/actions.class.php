@@ -89,7 +89,9 @@ class xeberActions extends sfActions
        $search->setQuery($this->query);
        $search->setModule('xeber');
        $search->setRawIp($_SERVER['REMOTE_ADDR']);
-       $search->setReferer(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST));
+       if(isset($_SERVER['HTTP_REFERER'])) {
+         $search->setReferer(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST));
+       }
        $search->save();
      }
   }
@@ -148,7 +150,9 @@ class xeberActions extends sfActions
        $search->setQuery($this->query);
        $search->setModule('xeber');
        $search->setRawIp($_SERVER['REMOTE_ADDR']);
-       $search->setReferer(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST));
+       if(isset($_SERVER['HTTP_REFERER'])) {
+         $search->setReferer(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST));
+       }
        $search->save();
      }
   }

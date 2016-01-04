@@ -7,11 +7,11 @@
  $thumbnail ='';
  $num_images=12/$num_news;
 ?>
-
-  <div class="row film">
+<div class="col-md-12">
+<div class="carousel slide" data-ride="carousel" data-type="multi" data-interval="3000" id="mainCarousel">
+  <div class="carousel-inner">
 
  <?php foreach($acar_sozler as $i=>$soz):?>
-    <?php //if($i<3){continue;}?>
     <?php  $jsondata = $axtar_query->runQuery(trim($soz->getKeyphrase()), $start, 4, $rows);?>
     <?php  if($jsondata):?>
       <?php $json = json_decode($jsondata, true); ?>
@@ -22,25 +22,55 @@
           <?php  if(isset($doc['thumbnail'])){$thumbnail = $doc['thumbnail'];$has_image=true;}else {continue ;}?>
           <?php  if($has_image){break;}?>
       <?php endforeach;?>
-          <div class="col-xs-6 col-xm-4 col-md-<?php echo $num_images;?>">
-            <div class="news_thumbnail">
-             <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
-
-              <div class="news_keyword"> <?php echo trim($soz->getKeyphrase())?></div>
-               <?php  if($thumbnail=='')
+            <div class="item active">
+                   <div class="col-md-2 col-sm-4 col-xs-6">
+                    <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
+                     <div class="news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
+                      <?php  if($thumbnail=='')
                        {
                          echo '<img src="/images/icons/page/sample_news.png" />';
                        }
                        else
                        { ?>
-                         <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>"  />
+                         <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" class="img-responsive">
                        <?php $thumbnail='';}?>
               <div class="carousel-caption"><p><?php echo $title?></p></div>
-           </div>
-          </a>
-         </div>
+
+                     </a></div>
+            </div>
+
 
     <?php endif;?>
   <?php endforeach;?>
 
-    </div>
+ </div>
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+/*
+jQuery('.carousel[data-type="multi"] .item').each(function(){
+  var next = jQuery(this).next();
+  if (!next.length) {
+    next = jQuery(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo(jQuery(this));
+  
+  for (var i=0;i<2;i++) {
+    next=next.next();
+    if (!next.length) {
+    	next = jQuery(this).siblings(':first');
+  	}
+    
+    next.children(':first-child').clone().appendTo(jQuery(this));
+  }
+});
+*/
+</script>
