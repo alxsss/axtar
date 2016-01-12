@@ -28,7 +28,7 @@
                      <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
                       <?php  if($thumbnail=='')
                        {
-                         echo '<img src="/images/icons/page/sample_news.png" />';
+                         echo '<img src="/images/icons/page/sample_news.png"  class="img-responsive"/>';
                        }
                        else
                        { ?>

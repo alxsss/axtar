@@ -2,6 +2,7 @@
 
   function get_weather($url) 
   {
+     $weather=array();
      $ch = curl_init();
      $timeout = 0;
      curl_setopt ($ch, CURLOPT_URL, $url);
@@ -12,7 +13,10 @@
      $rawdata = curl_exec($ch);
      $jsondata=json_decode($rawdata,true);
      curl_close($ch);
-     return ceil(trim($jsondata['main']['temp']));
+ 
+     $weather[0]=ceil(trim($jsondata['main']['temp']));
+     $weather[1]=trim($jsondata['weather'][0]['icon']);
+     return $weather;
   }
   function get_currency($from_Currency, $to_Currency, $amount) 
   {

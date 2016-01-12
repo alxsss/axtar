@@ -23,12 +23,12 @@
           <?php  if($has_image){break;}?>
       <?php endforeach;?>
             <div class="item active">
-                   <div class="col-md-2 col-sm-4 col-xs-6">
+                   <div class="col-md-2 col-sm-2 col-xs-4">
                     <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
-                     <div class="news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
+                     <div class="row news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
                       <?php  if($thumbnail=='')
                        {
-                         echo '<img src="/images/icons/page/sample_news.png" />';
+                         echo '<img src="/images/icons/page/sample_news.png"   class="img-responsive" />';
                        }
                        else
                        { ?>
@@ -44,8 +44,10 @@
   <?php endforeach;?>
 
  </div>
+<!--
   <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
   <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+-->
 </div>
 </div>
 

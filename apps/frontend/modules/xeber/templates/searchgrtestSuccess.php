@@ -1,6 +1,6 @@
 <?php use_helper('I18N','Text', 'Global') ?>
  <?php include_component('xeber', 'topnewswithimagesxeber',array('num_news' => 12))?>
- <div class="row logo_search_box">
+ <div class="col-md-12 logo_search_box_xeber">
         <div class="col-xs-12  col-md-2 col-md-offset-2">
           <div class="thumbnail">
            <img class="img" width="140" height="60" alt="axtar" src="/images/icons/page/logo.png">
@@ -8,7 +8,7 @@
         </div>
         <div class="col-xs-10 col-xs-offset-1 col-md-offset-0 col-md-5">
 
-           <div class="col-xs-12 veb_image_links">
+           <div class="col-xs-12">
              <div class="col-xs-2 col-lg-1">
               <a id="veb" href="<?php echo url_for('@search_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('aznet')?></a>
              </div>
@@ -49,7 +49,7 @@
 <div class="news_chronology"><a href="<?php echo url_for('@xeber_index');?>">Xronologiya <?php // echo __('News Chronology');?></a> </div>
 
 
- <div class="row">
+ <div class="col-md-12">
    <div class="col-md-8">
 
     <?php foreach($results as $result): ?>
@@ -92,11 +92,11 @@
         </div>
         <div class="col-md-10">
           
-          <div class="col-md-12 news_title"><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{echo truncate_text($title,80); }?></a></div>
+          <div class="news_title"><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{echo truncate_text($title,80); }?></a></div>
           <?php if(!empty($content)):?>
-            <div class="col-md-12 abstract"><?php echo $content[0];?></div>
+            <div class="abstract"><?php echo $content[0];?></div>
           <?php endif;?>
-          <div class="col-md-12 url"><?php echo truncate_text($url,80);?>
+          <div class="url"><?php echo truncate_text($url,80);?>
             <?php if($numfound->getRawValue()>1):?>
               <span class="more_results"><a href="<?php echo url_for('@search_site?query='.sfOutputEscaper::unescape($query).'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
             <?php endif;?>
