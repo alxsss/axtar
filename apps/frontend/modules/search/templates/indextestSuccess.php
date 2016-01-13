@@ -2,16 +2,16 @@
 
   <div class="row">
     <?php include_partial('search/weather')?>
-        <div class="col-xs-2  col-xs-offset-1  col-md-1 col-md-offset-1">
+        <div class="col-xs-2  col-xs-offset-1  col-md-1 col-md-offset-0">
           <div class="thumbnail">
            <img class="img oil_image"  alt="neft" src="/images/icons/page/neft.png">
           </div>
         </div>
-        <div class="col-xs-2  col-md-1">
+        <div class="col-xs-2  col-md-2">
            <div class="row oil_price"> <span class="currency">Brent</span> <?php echo get_oil_price('http://www.oil-price.net/widgets/brent_text/gen.php?lang=en')?></div>
             <div class="row oil_price"><span class="currency">WTI</span> <?php echo get_oil_price('http://www.oil-price.net/TABLE3/gen.php?lang=en');?></div>
         </div>
-        <div class="col-xs-1 col-md-6"></div>
+        <div class="col-xs-1 col-md-5"></div>
       </div>
 
 

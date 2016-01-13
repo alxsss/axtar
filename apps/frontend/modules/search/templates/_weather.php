@@ -8,7 +8,7 @@ $weather=get_weather('http://api.openweathermap.org/data/2.5/weather?id=587081&a
              <img class="img"  alt="weather" src="<?php echo '/images/icons/weather/'.$weather[1].'.png';?>">
           </div>
         </div>
-        <div class="col-xs-3 col-md-1">
+        <div class="col-xs-3 col-md-2">
             <span class="weather"><?php echo $weather[0].'°C';?></span>
             <?php date_default_timezone_set('Asia/Baku');?>
             <div class="date_time"><?php setlocale(LC_TIME, "az_AZ"); echo strftime("%e, %B %Y");?></div>
