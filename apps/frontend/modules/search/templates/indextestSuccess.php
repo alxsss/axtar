@@ -1,6 +1,6 @@
 <?php use_helper('I18N','Text') ?>
 
-  <div class="row">
+  <div id="first_row" class="row">
     <?php include_partial('search/weather')?>
         <div class="col-xs-2  col-xs-offset-1  col-md-1 col-md-offset-0">
           <div class="thumbnail">
@@ -51,7 +51,7 @@
                  </div>
                  <div class="thumbnail keyboard_input col-xs-1 col-md-1" ><a href="#" class="keyboard"><img src="/images/icons/page/klaviatura.png"></a></div>
                </div>
-            <div class="col-xs-7 col-xs-offset-5 col-md-offset-0 col-md-1">
+            <div class="search-button col-xs-7 col-xs-offset-5 col-md-offset-0 col-md-1">
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
             </div>
              </form>
