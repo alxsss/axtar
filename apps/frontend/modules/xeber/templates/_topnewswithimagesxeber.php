@@ -26,7 +26,7 @@
             <div class="item active">
                    <div class="col-md-1 col-sm-2 col-xs-4">
                      <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
-                     <div class="row news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
+                     <div class="row xeber_news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
                       <?php  if($thumbnail=='')
                        {
                          echo '<img src="/images/icons/page/sample_news.png"  class="img-responsive"/>';
@@ -35,8 +35,6 @@
                        { ?>
                          <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" class="img-responsive">
                        <?php $thumbnail='';}?>
-              <div class="carousel-caption"><p><?php echo  trim($soz->getKeyphrase())?></p></div>
-
                      </a></div>
             </div>
 

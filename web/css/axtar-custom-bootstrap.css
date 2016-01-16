@@ -7,7 +7,7 @@
 .weather_icon{padding:0!important;}
 .oil_price{font-size: 14px;padding:10px 0;}
 .carousel-caption p {display:block;font-size:12px;}
-.news_keyword{font-size: 14px;text-align:center;}
+.xeber_news_keyword,.news_keyword{font-size: 14px;text-align:center;}
 
 
 
@@ -113,56 +113,68 @@ border:none;
    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:120px;;width:100%;}
 @media (max-width:320px){
     #first_row [class*="col-"] {padding:5px;}
+    #xeber_row [class*="col-"] {padding:5px;}
     .thumbnail .oil_image{height:45px;}
     .weather{font-size:20px;}
     .date_time{font-size:8px;padding:0;}
     .oil_price{font-size:8px;padding:5px 0 0;}
     .logo_search_box{padding:0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 9px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 9px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:50px;;width:100%;}
     #xeberCarousel > .carousel-inner > .item   .img-responsive {height:50px;;width:100%;}
+    .url{display:none;}
+    .xeber_imageurl {height: 70px;}
 }
 
 @media (min-width:321px) and (max-width:360px ) {
     #first_row [class*="col-"] {padding:5px;}
+    #xeber_row [class*="col-"] {padding:5px;}
     .thumbnail .oil_image{height:50px;}
     .weather{font-size: 25px;}
     .date_time{font-size:9px;padding:0;}
     .oil_price{font-size:8px;padding:5px 0;}
     .logo_search_box{padding:50px 0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 9px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 9px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:50px;;width:100%;}
     #xeberCarousel > .carousel-inner > .item   .img-responsive {height:50px;;width:100%;}
+    .url{display:none;}
+    .xeber_imageurl {height: 70px;}
 }
 @media (min-width:361px) and (max-width:480px ) {
     #first_row [class*="col-"] {padding:5px;}
+    #xeber_row [class*="col-"] {padding:5px;}
     .thumbnail .oil_image{height:70px;}
     .weather{font-size: 40px;}
     .date_time{font-size:10px;padding: 0 0 0 2px;}
     .oil_price{font-size:10px;padding:5px 0;}
     .logo_search_box{padding:50px 0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 9px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 9px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:80px;;width:100%;}
-    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:50px;;width:100%;}
+    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:70px;;width:100%;}
+    .url{display:none;}
+    .xeber_imageurl {height:90px;}
 }
 @media (min-width:481px ) and (max-width:640px ) {
     #first_row [class*="col-"] {padding:5px;}
+    #xeber_row [class*="col-"] {padding:5px;}
     .thumbnail .oil_image{height:90px;}
     .weather{font-size:55px;}
     .date_time{font-size:12px;padding: 0 0 0 5px;}
     .oil_price{font-size:12px;padding:5px 0;}
     .logo_search_box{padding:50px 0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 9px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 9px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:90px;;width:100%;}
-    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:50px;;width:100%;}
+    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:80px;;width:100%;}
+    .url{display:none;}
+    .xeber_imageurl {height:100px;}
 }
 
 @media (min-width:641px ) and (max-width: 768px) {
@@ -173,23 +185,25 @@ border:none;
     .oil_price{font-size:14px;padding:10px 0 0;}
     .logo_search_box{padding:70px 0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 12px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 12px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:80px;;width:100%;}
-    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:60px;;width:100%;}
+    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:70px;;width:100%;}
+    .xeber_imageurl {height:100px;}
 }
 @media (min-width:769px) and (max-width: 800px) {
     #first_row [class*="col-"] {padding:5px;}
+    #xeber_row [class*="col-"] {padding:5px;}
     .thumbnail .oil_image{height:100px;}
     .weather{font-size:65px;}
     .date_time{font-size:14px;padding: 0 0 0 10px;}
     .oil_price{font-size:14px;padding:10px 0 0;}
     .logo_search_box{padding:70px 0;}
     .carousel-caption p {display:none;}
-    .news_keyword {font-size: 12px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .xeber_news_keyword, .news_keyword {font-size: 12px;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:70px;;width:100%;}
-    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:60px;;width:100%;}
+    #xeberCarousel > .carousel-inner > .item   .img-responsive {height:70px;;width:100%;}
 }
 
 /* md */
@@ -201,10 +215,12 @@ border:none;
     .oil_price{font-size:14px;padding:10px 0 0;}
     .logo_search_box{padding:70px 0;}
     .carousel-caption p {display:none;font-size:12px;}
+    .xeber_news_keyword {font-size:12px;}
     .news_keyword {font-size: 14px;}
-    .logo_search_box .search-button{padding:5px 0;}
+    .logo_search_box_xeber .search-button{padding:5px 0;} .logo_search_box .search-button{padding:5px 0;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:110px;;width:100%;}
     #xeberCarousel > .carousel-inner > .item   .img-responsive {height:80px;;width:100%;}
+    .xeber_imageurl {height:100px;}
 }
 
 /* lg */
@@ -216,19 +232,21 @@ border:none;
     .oil_price{font-size:12px;padding:10px 0 0;}
     .logo_search_box{padding:70px 0;}
     .carousel-caption p {display:none;font-size:12px;}
-    .news_keyword {font-size: 12px;}
+    .xeber_news_keyword {font-size:9px;}
+    .news_keyword {font-size:12px;}
     #mainCarousel > .carousel-inner > .item    .img-responsive {height:110px;width:100%;}
     #xeberCarousel > .carousel-inner > .item   .img-responsive {height:80px;;width:100%;}
     .veb_image_links{margin:0;}
 }
 @media (min-width:1025px) and  (max-width:1280px) {
+    .xeber_news_keyword {font-size:9px;}
     #first_row [class*="col-"] {padding:5px;}
    #mainCarousel > .carousel-inner > .item    .img-responsive {height:174px;;width:100%;}
-   #xeberCarousel > .carousel-inner > .item   .img-responsive {height:120px;;width:100%;}
+   #xeberCarousel > .carousel-inner > .item   .img-responsive {height:90px;;width:100%;}
 }
 
 @media (min-width: 1281px) and (max-width: 1600px) {
    #mainCarousel > .carousel-inner > .item    .img-responsive {height:174px;;width:100%;}
-   #xeberCarousel > .carousel-inner > .item   .img-responsive {height:120px;;width:100%;}
+   #xeberCarousel > .carousel-inner > .item   .img-responsive {height:100px;;width:100%;}
 }
 
