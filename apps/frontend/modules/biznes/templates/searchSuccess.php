@@ -1,8 +1,7 @@
 <?php use_helper('I18N','Global') ?>
 <?php include_partial('biznes/biznes_search_small')?>
-  <div id="results">
 
-    <div id="xeber_results">
+    <div class="col-xs-9 col-xs-offset-1" id="xeber_results">
         <?php if(!empty($spellcheck)):?>
           <?php
             $spell='';
@@ -28,6 +27,7 @@
        <?php endif;?>
 
     <?php foreach ($docs->getRawValue() as $result): ?>
+      <div class="col-xs-11 col-xs-offset-1">
        <?php $title=sfOutputEscaper::unescape($result['title']);?>
        <?php //$description=sfOutputEscaper::unescape($result['description']);?>
        <?php if(isset($result['address'])){$address=$result['address'];}else{$address='';}?>
@@ -35,7 +35,7 @@
        <?php if(isset($result['phone'])){$phone=$result['phone'];}else{$phone='';}?>
        <?php if(isset($result['category'])){$category=$result['category'];}else{$category='';}?>
        <?php $id=$result['id'];?>
-       <h3><a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo $title?></a></h3>
+       <div class="news_title"><a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo $title?></a></div>
       <?php if(!empty($description)):?>
           <?php if(!empty($photo)):?>
              <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo $photo;?>" width="75" class="imageurl"/></a>    
@@ -55,16 +55,16 @@
        <?php endforeach; ?> 
       </div>
       <?php endif;?>
+     </div>
     <?php endforeach; ?>
 
- <div class="pagination">
-    <div id="photos_pager">
-      <?php echo pager_navigation($feed_pager, '@biznes_search?query='.$query) ?>
-    </div>
-  </div>
 
-</div><!-- xeber_results -->
- <?php include_component('xeber', 'sponsorads')?>
-</div>
+   </div><!-- xeber_results -->
+  <div class="col-xs-2">
+   <?php //include_component('xeber', 'sponsorads')?>
+ </div>
+ <div class="col-xs-10 col-xs-offset-2 pagination" id="photos_pager">
+      <?php echo pager_navigation($feed_pager, '@biznes_search?query='.$query) ?>
+ </div>
 
 

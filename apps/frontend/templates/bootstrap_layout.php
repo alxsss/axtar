@@ -44,7 +44,7 @@
 
     </div>
     <?php use_javascript('jquery.1.6-min.js')?>
-    <?php use_javascript('jquery.axtar.js?v=9')?>
+    <?php use_javascript('jquery.axtar.js?v=10')?>
     <?php use_javascript('jquery.qtip.min.js')?>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
