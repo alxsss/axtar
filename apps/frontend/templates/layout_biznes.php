@@ -6,17 +6,21 @@
     <?php include_title() ?>
 <?php //use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
 <?php //use_stylesheet('main?v=36') ?>
+   <link href="/css/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/axtar-custom-bootstrap.css" rel="stylesheet">
+
     <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 <body>
-   <div id="content">  
     <?php use_helper('I18N') ?>
     <?php //$sf_user->setCulture('az') ?>
     <?php // include_component('sfLanguageSwitch', 'get') ?>
     <?php //include_partial('search/univhead') ?>
-    <div id="header">
-      <?php include_partial('sidebar/univhead_login') ?>
-    </div>    
+
+      <?php include_partial('search/bootstrap_univhead') ?>
+      <?php //include_partial('sidebar/univhead_login') ?>
+   <div id="content">  
+  
     
     <div id="search_results"> 
       <?php include_partial('biznes/biznes_search_small')?>

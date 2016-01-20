@@ -25,7 +25,7 @@
       <?php endforeach;?>
             <div class="item active">
                    <div class="col-md-1 col-sm-2 col-xs-4">
-                     <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
+                     <a  href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> ">
                      <div class="row xeber_news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
                       <?php  if($thumbnail=='')
                        {

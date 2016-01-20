@@ -7,17 +7,9 @@
 .weather_icon{padding:0!important;}
 .oil_price{font-size: 14px;padding:10px 0;}
 .carousel-caption p {display:block;font-size:12px;}
-.xeber_news_keyword,.news_keyword{font-size: 14px;text-align:center;}
-
-
-
-
+.xeber_news_keyword,.news_keyword{font-size: 12px;text-align:center;}
 
  [class*="col-"] {
-/*    background:none!important;
-    background-color:none!important;
-    border: none!important;
-*/
     padding:15px 10px 0 10px;
 }
 .logo_search_box [class*="col-"] {
@@ -29,23 +21,21 @@
     padding:0;
 }
 
-.film{}
 .logo_search_box{padding:100px 0;}
 .logo_search_box_xeber{padding:20px 0 0 0;}
-.search_keywords_responsive{
+.search_keywords{
     border: 1px solid #0096eb;
     font-size: 14px;
     font-weight: bold;
     position: relative;
-margin: 0 5px 0 0;
+    margin: 0 5px 0 0;
+    height:35px;
 }
-.search_keywords_responsive input{
+.search_keywords input{
 border:none;
 }
-.search_keywords_responsive input:focus{
+.search_keywords input:focus{
     outline: 0;
-}
-.keyboard_input{
 }
 .keyboard_input img{
 padding: 3px;
@@ -63,7 +53,7 @@ padding: 3px;
     font-size: 12px;
     margin: 0 0 10px;
 }
-.search_keywords_responsive .thumbnail{margin-bottom:0;padding: 3px 0 0;}
+.search_keywords .thumbnail{margin-bottom:0;padding: 3px 0 0;}
 
 .thumbnail {
 padding:0;

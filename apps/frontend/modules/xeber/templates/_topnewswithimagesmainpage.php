@@ -24,7 +24,7 @@
       <?php endforeach;?>
             <div class="item active">
                    <div class="col-md-2 col-sm-2 col-xs-4">
-                    <a target="_blank" href="<?php echo url_for('@xeber_search_test?query='.trim($soz->getKeyphrase()));?> ">
+                    <a href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> ">
                      <div class="row news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
                       <?php  if($thumbnail=='')
                        {
@@ -50,29 +50,3 @@
 -->
 </div>
 </div>
-
-
-
-
-
-
-<script type="text/javascript">
-/*
-jQuery('.carousel[data-type="multi"] .item').each(function(){
-  var next = jQuery(this).next();
-  if (!next.length) {
-    next = jQuery(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo(jQuery(this));
-  
-  for (var i=0;i<2;i++) {
-    next=next.next();
-    if (!next.length) {
-    	next = jQuery(this).siblings(':first');
-  	}
-    
-    next.children(':first-child').clone().appendTo(jQuery(this));
-  }
-});
-*/
-</script>

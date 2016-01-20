@@ -3,6 +3,10 @@
       <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+             <li><?php echo link_to(__('Home'), '@homepage') ?></li>
+              <li><?php echo link_to(__('News'), '@xeber_search') ?></li>
+              <li><?php echo link_to(__('Business'), '@biznes_search') ?></li>
+
   <?php if ($sf_user->isAuthenticated()): ?>
     <li>
      <a href="<?php echo url_for('@user_profile?username='.$sf_user->getUsername())?>" title="<?php echo __('my profile')?>"><?php echo $sf_user->getUsername()?></a>       </li>

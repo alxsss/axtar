@@ -11,7 +11,7 @@
 .submit-row {
     display: none;
 }
-.add_status_comment{width:400px;margin:5px 0 2px 0;float:left;}.comments{clear:both;width:350px;_width:352px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:300px;float:left;font-size:11px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
+.comments{clear:both;width:350px;_width:352px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:300px;float:left;font-size:11px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
 
 .product_details{
 float:left;
@@ -75,8 +75,8 @@ padding: 20px;
 }
 </style>
 <?php use_helper('I18N','Global','Text') ?>
-<div id="xeber_results"> 
-   <?php //include_component('xeber', 'acarsozler')?>
+<?php include_partial('biznes/biznes_search_small')?>
+ <div class="col-xs-11 col-xs-offset-1">
    <?php foreach($docs as $result): ?>
       <?php $id=$result['id'];?>
       <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
@@ -190,13 +190,10 @@ padding: 20px;
          }
  */
  ?>
+</div>
 <!-- COMMENT -->
-      <?php //if($sf_user->isAuthenticated()&&($biznes_owner_id==$user_id)):?>
-          <?php //echo link_to(__('edit photo'), 'biznes/edit?id='.$biznes->getId());?>
-        <?php // endif;?>
-         <span class="interested_block"><?php //include_partial('favorite', array('biznes' => $biznes)) ?></span>
 
-                <?php //$rated= BiznesRatePeer::retrieveByPK($id, $user_id); if($rated){$rate=$rated->getRate(); $read_only=1;}else{$rate=0;$read_only='';}?>
+ <div class="col-xs-11 col-xs-offset-1">
     <div id="add_comment" class="add_status_comment">
       <?php $biznes=BiznesPeer::retrieveByPK($id);?>
       <?php include_partial('comment', array('user_id'=>$user_id, 'biznes' => $biznes, 'comments' =>$biznes->getBiznesCommentsJoinsfGuardUser())) ?>
@@ -231,9 +228,4 @@ padding: 20px;
     <?php endif;//endif of comment ?>
 
 
-
- <?php //include_partial('search/sponsor_ads')?>
-
-
-
-</div><!-- xeber_results -->
+</div>

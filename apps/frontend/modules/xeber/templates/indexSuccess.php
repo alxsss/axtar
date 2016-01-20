@@ -1,16 +1,15 @@
-<?php use_helper('I18N','Text','Global') ?>
-<div id="search_results">
-  <?php include_partial('search_small')?>
-  <div id="results">
-    <?php include_component('xeber', 'acarsozler')?>
-   
-    <!-- Generate the date picker input field -->
-    <!-- The parameter represents the name & id of the input field generated -->
-    <?php //echo $cal->RenderAjax("mydate")?>
+<?php use_helper('I18N','Text', 'Global') ?>
+ <?php include_component('xeber', 'topnewswithimagesxeber',array('num_news' => 12))?>
+ <?php include_partial('xeber/search_small')?>
 
-    <div id="xeber_results">
 
-    <?php foreach($results->doc as $result): ?>
+<div class="col-xs-12 news_chronology"><a href="<?php echo url_for('@xeber_index');?>">Xronologiya <?php // echo __('News Chronology');?></a> </div>
+
+
+ <div class="col-xs-12 col-md-12">
+   <div class="col-xs-12 col-md-8">
+
+ <?php foreach($results->doc as $result): ?>
       <?php $title=''; $azdate='';$imageurl=''; $description='';?>
       <?php $str=$result->str;?>
       <?php $date=$result->date;?>
@@ -35,37 +34,44 @@
            {
              $description=$s;
            }
-      }?>  
-      
-      <?php //$content=$axtar_xml->xpath("//lst[@name='highlighting']/lst[@name='$id']/arr[@name='content']/str");?>
-     <?php //$content=$content->getRawValue();?> 
-       <?php if(!empty($date)):?>
-          <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
-       <?php endif;?>
-<div class="xeber">     
-      <h3><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{ echo truncate_text($title,80);}?></a></h3>
-         <div class="abstract">
+      }?>
+
+      <div id="xeber_row" class="row">
+        <div class="col-xs-4 col-sm-2 col-md-2">
            <?php if(!empty($imageurl)):?>
-              <a href="<?php echo $url;?>" target="_blank"><img src="<?php echo $imageurl;?>" width="100" class="imageurl"/></a> 
-            <?php endif;?>
-         <?php if(!empty($description)):?>
-           <?php echo truncate_text($description, 200);?>
-      <?php endif;?>
-         </div>
-      <div class="url"><?php echo truncate_text($url,80);?> </div>
-       <div class="xeberdatetime"><?php echo $azdate ?></div>
- </div>
+              <a href="<?php echo $url;?>" target="_blank"><img src="<?php  echo $imageurl;?>" class="xeber_imageurl"/></a>
+           <?php endif;?>
+        </div>
+
+        <div class="col-xs-8 col-sm-10 col-md-10">
+          
+      <div class="news_title"><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{echo truncate_text($title,80); }?></a></div>
+          <?php if(!empty($description)):?>
+            <div class="abstract"><?php echo truncate_text($description, 200);?></div>
+          <?php endif;?>
+          <div class="url"><?php echo truncate_text($url,40);?>
+          </div>
+          <?php if(!empty($date)):?>     
+             <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?> 
+             <div class="xeberdatetime"><?php echo $azdate ?></div>
+          <?php endif;?>
+        </div>     
+      </div><!--close inner row-->     
+
     <?php endforeach; ?>
 
- <div class="pagination">
-    <div id="photos_pager"> <?php echo pager_navigation($feed_pager, '@xeber_index?query=') ?> </div>
- </div>
+   </div> <!--close class col-md-8-->
+  <div class="col-xs-6 col-md-2">
+    <?php include_component('xeber', 'acarsozler')?>
+  </div>
+  <div class="col-xs-6 col-md-2">
+    <?php include_component('xeber', 'sponsorads')?>
+  </div>
+</div> <!--close class col-md-12-->
 
-</div><!-- xeber_results -->
- <?php include_component('xeber','sponsorads')?>
-</div>
-
-</div>
+    <div class="col-xs-10 col-xs-offset-2 pagination" id="photos_pager">
+      <?php echo pager_navigation($feed_pager, '@xeber_search?query='.sfOutputEscaper::unescape($query)) ?>
+    </div>
 
 
 

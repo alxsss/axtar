@@ -6,13 +6,12 @@
 <?php include_title() ?>
 <?php //use_stylesheet('/sebekePlugin/css/layout?v=7') ?>
 <?php //use_stylesheet('/css/main?v=36') ?>
+ <link href="/css/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="shortcut icon" href="/favicon.ico" />
 </head>
 <body> 
+ <?php include_partial('search/bootstrap_univhead') ?>
 <div id="content">
-    <div id="header">
-      <?php include_partial('sidebar/univhead_login') ?>
-    </div>
   
   <div id="content_main">
     <div id="breadcrumb">

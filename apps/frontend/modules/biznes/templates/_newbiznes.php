@@ -1,6 +1,5 @@
 <?php use_helper('I18N','Text') ?>
-   
-          <div class="biznes_entry_title"><?php echo __('New Businesses')?></div>
+          <div class="col-xs-11 col-xs-offset-1 biznes_entry_title"><?php echo __('New Businesses')?></div>
           <?php foreach ($biznes->getRawValue() as $result): ?>
           <?php $title=sfOutputEscaper::unescape($result['title']);?>
           <?php $address=sfOutputEscaper::unescape($result['address']);?>
@@ -8,7 +7,8 @@
           <?php $phone=$result['phone'];?>
           <?php $category=$result['category'];?>
           <?php $id=$result['id'];?>
-          <h3><a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo $title?></a></h3>
+<div class="col-xs-11 col-xs-offset-1">
+          <div class="news_title"><a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo $title?></a></div>
           <?php if(!empty($description)):?>
              <?php if(!empty($photo)):?>
                <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title));?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/thumbnails/'.$photo;?>" width="75" class="imageurl"/></a>
@@ -27,4 +27,5 @@
                 <a href="<?php echo url_for('@biznes_search?query='.$category)?>"><?php echo $category?></a>
             </div>
           <?php endif;?>
+</div>
     <?php endforeach; ?>

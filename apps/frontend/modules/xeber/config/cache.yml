@@ -1,19 +1,14 @@
-_topnews:
-  enabled:     true
-  contextual: true
-  with_layout: false   # Default value
-  lifetime:    84600   
-_acarsozler:
-  enabled:     true
-  contextual: true
-  with_layout: false   # Default value
-  lifetime:    84600   
-_acarsozlersearch:
-  enabled:     true
-  contextual: true
-  with_layout: false   # Default value
-  lifetime:    84600   
 _sponsorads:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   
+_topnewswithimagesmainpage:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    84600   
+_topnewswithimagesxeber:
   enabled:     true
   contextual: true
   with_layout: false   # Default value
@@ -22,3 +17,11 @@ _sponsorads:
   #enabled:     true
   #with_layout: false   # Default value
   #lifetime:    84600
+  #topnewswithimagesmainpage.php
+  #-rw-rw-r--. 1 kingson kingson 2045 Jan 16 01:09 _topnewswithimagesxeber.php
+  #
+#_topnews:
+ # enabled:     true
+ # contextual: true
+ # with_layout: false   # Default value
+  #lifetime:    84600   

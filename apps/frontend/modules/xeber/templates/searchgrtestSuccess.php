@@ -30,7 +30,7 @@
 
             <div class="col-xs-12 col-md-12">
              <form action="<?php echo url_for('@search_search') ?>" method="post" class="search_form">
-               <div class="col-xs-12 col-md-10 search_keywords_responsive">
+               <div class="col-xs-12 col-md-10 search_keywords">
                  <div class="col-xs-11 col-md-11">
                     <input type="text" name="query" value="<?php echo sfOutputEscaper::unescape($sf_request->getParameter('query')) ?>"  class="col-xs-12" id="search_keywords" onfocus="this.value = this.value;" />
                  </div>

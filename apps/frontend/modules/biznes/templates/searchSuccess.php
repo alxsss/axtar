@@ -1,6 +1,6 @@
 <?php use_helper('I18N','Global') ?>
+<?php include_partial('biznes/biznes_search_small')?>
   <div id="results">
-     <?php //include_component('xeber', 'acarsozler')?>
 
     <div id="xeber_results">
         <?php if(!empty($spellcheck)):?>
