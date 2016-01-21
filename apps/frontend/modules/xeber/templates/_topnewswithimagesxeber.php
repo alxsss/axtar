@@ -26,7 +26,7 @@
             <div class="item active">
                    <div class="col-md-1 col-sm-2 col-xs-4">
                      <a  href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> ">
-                     <div class="row xeber_news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
+                     <div class="row xeber_news_keyword"><?php echo truncate_text(trim($soz->getKeyphrase()),20);?></div>
                       <?php  if($thumbnail=='')
                        {
                          echo '<img src="/images/icons/page/sample_news.png"  class="img-responsive"/>';

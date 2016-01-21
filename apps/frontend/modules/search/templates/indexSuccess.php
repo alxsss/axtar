@@ -1,4 +1,4 @@
-<?php use_helper('I18N','Text') ?>
+<?php use_helper('I18N','Text','Global') ?>
 
   <div id="first_row" class="row">
     <?php include_partial('search/weather')?>

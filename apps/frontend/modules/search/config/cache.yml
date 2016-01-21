@@ -3,6 +3,11 @@ _forex:
   contextual: true
   with_layout: false   # Default value
   lifetime:    3600   
+_weather:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    1800   
 _topnews:
   enabled:     true
   contextual: true
