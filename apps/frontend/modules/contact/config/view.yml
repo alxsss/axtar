@@ -5,4 +5,4 @@ all:
   
   stylesheets:    [main]
   has_layout:     true
-  layout:         layout
+  layout:         bootstrap_layout

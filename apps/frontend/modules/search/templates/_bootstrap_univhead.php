@@ -30,7 +30,7 @@
              <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="/images/icons/page/teker.png"/><span class="caret"></span></a>
               <ul class="dropdown-menu">
-
+                 <?php include_component('sfLanguageSwitch', 'get') ?>
                  <li class="first"><?php echo link_to(__('About'), '@about') ?></li>
                  <li class="first"><?php echo link_to(__('Contact us'), '@contact') ?></li>
                  <li class="first"><?php echo link_to(__('Investor'), '@investor') ?></li>

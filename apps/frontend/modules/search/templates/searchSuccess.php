@@ -2,7 +2,7 @@
   <?php include_partial('search_smallaznet')?>
 
  
-    <div class="col-xs-11 col-xs-offset-1" id="axtar_results">
+    <div class="col-md-11 col-md-offset-1 col-xs-12" id="axtar_results">
      <div class="col-xs-12 col-md-10">
     <?php $spellcheck=$spellcheck->getRawValue();?>
     <?php if(!empty($spellcheck)):?>  
