@@ -1,6 +1,6 @@
 <?php use_helper('I18N','Global') ?>
 <?php
-$weather=get_weather('http://api.openweathermap.org/data/2.5/weather?id=587081&appid=2de143494c0b295cca9337e1e96b00e0&units=metric');
+$weather=get_weather('http://api.openweathermap.org/data/2.5/weather?id=587081&appid=1227070f821eaea1522c2b2b560b2eed&units=metric');
 ?>
 
        <div class="col-xs-2 col-xs-offset-1 col-md-1 col-md-offset-1 weather_icon">

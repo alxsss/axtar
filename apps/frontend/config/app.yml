@@ -1,7 +1,7 @@
 all:
   pager:
     search_max: 10
-    image_search_max:  10
+    image_search_max: 36
     biznes:  10
     homepage_max: 25
     games_max: 20

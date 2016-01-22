@@ -10,7 +10,7 @@
               <a id="image" href="<?php echo url_for('@search_www?query='.$sf_request->getParameter('query'))?>"><?php echo __('web')?></a>
              </div>
              <div class="col-xs-2 col-lg-1">
-              <a id="image" href="<?php echo url_for('@xeber_index')?>"><?php echo __('news')?></a>
+              <a id="image" href="<?php echo url_for('@xeber_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('news')?></a>
              </div>
              <div class="col-xs-2 col-lg-1">
               <a id="image" href="<?php echo url_for('@image_search?query='.$sf_request->getParameter('query'))?>"><?php echo __('image')?></a>

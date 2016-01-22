@@ -119,7 +119,7 @@ class SolrQuery {
       }
       else if($site=='image')//image handler here
       {
-        $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=10&wt=json";
+        $querystring = "/image/imageaxtar/?q=".trim(urlencode($query))."&start=".$start."&rows=36&wt=json";
       }
       else if($site=='autosuggest')
       {

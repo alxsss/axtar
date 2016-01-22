@@ -61,4 +61,4 @@
       </div>
 
  <?php include_component('xeber', 'topnewswithimagesmainpage',array('num_news' => 6))?>
- <?php include_component('biznes', 'newbiznessearch')?>
+ <?php //include_component('biznes', 'newbiznessearch')?>
