@@ -15,9 +15,9 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
 
-             <li><?php echo link_to(__('Home'), '@homepage') ?></li>
-              <li><?php echo link_to(__('News'), '@xeber_search') ?></li>
-              <li><?php echo link_to(__('Business'), '@biznes_search') ?></li>
+             <li><?php echo link_to(__('home'), '@homepage') ?></li>
+              <li><?php echo link_to(__('news'), '@xeber_search') ?></li>
+              <li><?php echo link_to(__('business'), '@biznes_search') ?></li>
 
              <?php if ($sf_user->isAuthenticated()): ?>
              <li>

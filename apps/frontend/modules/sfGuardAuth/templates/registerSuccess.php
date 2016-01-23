@@ -1,7 +1,6 @@
 <?php use_helper('I18N', 'Date') ?>
-  <div id="results">
 
-    <div id="xeber_results">
+   <div class="col-xs-12 col-md-9 col-md-offset-3" id="xeber_results">  
 
 <?php //use_helper('recaptcha') ?>
   <?php //echo $form ?>
@@ -126,5 +125,4 @@
     </form>
   </div> 
  
-  </div> 
   </div> 

@@ -1,4 +1,4 @@
-<?php use_helper('I18N','Text') ?>
+<?php use_helper('I18N','Text','Global') ?>
 
   <div id="first_row" class="row">
     <?php include_partial('search/weather')?>
@@ -61,4 +61,4 @@
       </div>
 
  <?php include_component('xeber', 'topnewswithimagesmainpage',array('num_news' => 6))?>
- <?php include_component('biznes', 'newbiznessearch')?>
+ <?php //include_component('biznes', 'newbiznessearch')?>

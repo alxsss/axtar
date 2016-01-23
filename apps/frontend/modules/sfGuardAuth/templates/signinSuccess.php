@@ -1,7 +1,6 @@
 <?php use_helper('I18N') ?>
-  <div id="results">
 
-    <div id="xeber_results">
+    <div class="col-xs-12 col-md-9 col-md-offset-3" id="xeber_results">
 
 <form action="<?php echo url_for('@login') ?>" method="post" >
   <table class="sigin_page">
@@ -17,5 +16,3 @@
 
 
 </div> 
-</div> 
- 

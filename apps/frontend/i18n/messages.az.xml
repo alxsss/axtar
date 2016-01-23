@@ -217,7 +217,7 @@
       </trans-unit>
       <trans-unit id="51">
         <source>Business</source>
-        <target>Biznes</target>
+        <target>biznes</target>
       </trans-unit>
       <trans-unit id="52">
         <source>Axtar.az is the most powerful place to search for Businesses by their name, category and address.</source>
@@ -225,7 +225,7 @@
       </trans-unit>
       <trans-unit id="53">
         <source>If you see your Businesses in the list but you have never added it here, it means it was given to us by a third party. Please add your business with details and the original one will be deleted.</source>
-        <target>Zəhmət olmasa biznesinizi əlavə edin. Əgər biznesiniz burda artiq varsa bu o demekdir ki, üçüncü bir tərəf bu məlumati bizə vermisdir. Detalları ilə əlavə edilən biznesin originali avtomatik silinir.</target>
+        <target>Zəhmət olmasa biznesinizi əlavə edin. Əgər biznesiniz burda artıq varsa bu o demekdir ki, üçüncü bir tərəf bu məlumatı bizə vermişdir. Detalları ilə əlavə edilən biznesin originalı avtomatik silinir.</target>
       </trans-unit>
       <trans-unit id="54">
         <source>Add Business</source>
@@ -237,7 +237,7 @@
       </trans-unit>
       <trans-unit id="56">
         <source>Your business has has been successfully added and will be in the results in 1-2 days.</source>
-        <target>Sizin biznes uğurla əlavə edildi və 1-2 gün ərzində nəticələrdə olacaqdir.</target>
+        <target>Sizin biznes uğurla əlavə edildi və 1-2 gün ərzində nəticələrdə olacaqdır.</target>
       </trans-unit>
       <trans-unit id="57">
         <source>Similar Businesses</source>
@@ -261,7 +261,7 @@
       </trans-unit>
 	    <trans-unit id="62">
         <source>These are frequently used keywords in todays news articles. By  clicking on each keyword you can see news articles related to it on the right side, ordered by publication date. Since usually a few articles on the same subject is published, this functionality helps readers to find conceptually related articles.</source>
-        <target>Bunlar xəbərlərdə ən çox istifadə olunan açar sözlərdir. Hər hansı bir sözü klik edəndə, ona aid olan xəbərlər sağ tərəfdə  dərc edildiyi vaxt ardıcılliğı ilə görünür. Eyni mövzu üzrə adətən bir neçə məqalə dərc olunduğundan, bu funksionallıq oxucuya oxşar məqalələri tapmaq üçün kömək edir.</target>
+        <target>Bunlar xəbərlərdə ən çox istifadə olunan açar sözlərdir. Hər hansı bir sözü klik edəndə, ona aid olan xəbərlər sol tərəfdə  dərc edildiyi vaxt ardıcılliğı ilə görünür.</target>
       </trans-unit>
       <trans-unit id="63">
         <source>Category</source>
@@ -278,6 +278,10 @@
       <trans-unit id="66">
         <source>What is this?</source>
         <target>Bu nədir?</target>
+      </trans-unit>
+       <trans-unit id="67">
+        <source>home</source>
+        <target>ev</target>
       </trans-unit> 	  
     </body>
   </file>
