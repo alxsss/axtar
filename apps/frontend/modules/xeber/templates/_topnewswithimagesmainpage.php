@@ -23,7 +23,7 @@
           <?php  if($has_image){break;}?>
       <?php endforeach;?>
             <div class="item active">
-                   <div class="col-md-2 col-sm-2 col-xs-4">
+                   <div class="col-md-2 col-sm-2 col-xs-12">
                     <a href="<?php echo url_for('@xeber_search?query='.trim($soz->getKeyphrase()));?> ">
                      <div class="row news_keyword"><?php echo trim($soz->getKeyphrase())?></div>
                       <?php  if($thumbnail=='')

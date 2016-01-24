@@ -22,7 +22,7 @@
        <?php if(isset($result['parent_url'])){$parent_url=$result['parent_url'];}else{$parent_url='';}?>
        <?php if(isset($result['thumbnail'])){$thumbnail=$result['thumbnail'];}else{$thumbnail='';}?>
 
-      <div class="col-md-1 col-sm-2 col-xs-4">
+      <div class="col-md-3 col-sm-6 col-xs-12">
         <a href="<?php echo sfOutputEscaper::unescape($parent_url) ?>" target="_blank">
           <img class="img-responsive" src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" title="<?php echo sfOutputEscaper::unescape($parent_url) ?>" />
         </a>

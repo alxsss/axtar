@@ -42,13 +42,13 @@
      <?php $content=$content->getRawValue();?> 
      
       <div id="xeber_row" class="row">
-        <div class="col-xs-4 col-sm-2 col-md-2">
+        <div class="col-xs-12 col-sm-2 col-md-2">
            <?php if(!empty($imageurl)):?>
               <a href="<?php echo $url;?>" target="_blank"><img src="<?php  echo $imageurl;?>" class="xeber_imageurl"/></a>
            <?php endif;?>
         </div>
 
-        <div class="col-xs-8 col-sm-10 col-md-10">
+        <div class="col-xs-12 col-sm-10 col-md-10">
           
       <div class="news_title"><a href="<?php echo $url;?>" target="_blank"><?php if(empty($title)){echo truncate_text($url,80);}else{echo truncate_text($title,80); }?></a></div>
           <?php if(!empty($content)):?>
