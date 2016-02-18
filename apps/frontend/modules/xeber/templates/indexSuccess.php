@@ -70,7 +70,7 @@
 </div> <!--close class col-md-12-->
 
     <div class="col-xs-10 col-xs-offset-2 pagination" id="photos_pager">
-      <?php echo pager_navigation($feed_pager, '@xeber_search?query='.sfOutputEscaper::unescape($query)) ?>
+      <?php echo pager_navigation($feed_pager, '@xeber_index') ?>
     </div>
 
 
