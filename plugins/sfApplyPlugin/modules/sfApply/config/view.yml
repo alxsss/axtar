@@ -1,3 +1,4 @@
 all:
   has_layout:     on
-  layout:         layout_biznes
+  layout:         bootstrap_layout
+  #layout:         layout_biznes

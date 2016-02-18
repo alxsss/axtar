@@ -61,8 +61,9 @@ class BasesfApplyActions extends sfActions
     {
       $guardUser = $this->getUser()->getGuardUser();
       $this->forward404Unless($guardUser);
-	  $this->getUser()->setAttribute('Reset',$guardUser->getId(), 'sfApplyPlugin');
-      return $this->redirect('sfApply/reset');
+      $this->getUser()->setAttribute('Reset',$guardUser->getId());
+      return $this->forward('sfApply','reset');
+      //return $this->redirect('sfApply/reset');
       //return $this->resetRequestBody($guardUser);
     }
     else
@@ -76,6 +77,41 @@ class BasesfApplyActions extends sfActions
           $user = sfGuardUserPeer::retrieveByUsername($this->form->getValue('username'));
           return $this->resetRequestBody($user);
         }
+      }
+    }
+  }
+  public function executeReset(sfRequest $request)
+  {
+    $this->form = $this->newForm('sfApplyResetForm');
+    if ($request->isMethod('post'))
+    {
+      $this->form->bind($request->getParameter('sfApplyReset'));
+     /* 
+      $guardUser = $this->getUser()->getGuardUser();
+      $this->forward404Unless($guardUser);
+      $this->getUser()->setAttribute('Reset',$guardUser->getId());
+
+	error_log('attrubute set ='.$guardUser->getId());  
+	error_log('attrubute id='.$this->getUser()->getAttribute('Reset'));  
+*/
+      if ($this->form->isValid())
+      {
+        $this->id = $this->getUser()->getAttribute('Reset');
+        
+        $this->forward404Unless($this->id);
+		$this->sfGuardUser = sfGuardUserPeer::retrieveByPk($this->id);
+        $this->forward404Unless($this->sfGuardUser);
+        $sfGuardUser = $this->sfGuardUser;
+        $sfGuardUser->setPassword($this->form->getValue('password'));
+		$password_hint=$this->form->getValue('password_hint');
+		if(!empty($password_hint))
+		{
+		  $sfGuardUser->setPasswordHint($password_hint);
+		}
+        $sfGuardUser->save();
+        $this->getUser()->signIn($sfGuardUser);
+        $this->getUser()->setAttribute('Reset', null, 'sfApplyPlugin');
+        return 'After';
       }
     }
   }
@@ -120,33 +156,6 @@ EOF
 	}
   }
  
-  public function executeReset(sfRequest $request)
-  {
-    $this->form = $this->newForm('sfApplyResetForm');
-    if ($request->isMethod('post'))
-    {
-      $this->form->bind($request->getParameter('sfApplyReset'));
-	  
-      if ($this->form->isValid())
-      {
-        $this->id = $this->getUser()->getAttribute('Reset', false, 'sfApplyPlugin', false);
-        $this->forward404Unless($this->id);
-		$this->sfGuardUser = sfGuardUserPeer::retrieveByPk($this->id);
-        $this->forward404Unless($this->sfGuardUser);
-        $sfGuardUser = $this->sfGuardUser;
-        $sfGuardUser->setPassword($this->form->getValue('password'));
-		$password_hint=$this->form->getValue('password_hint');
-		if(!empty($password_hint))
-		{
-		  $sfGuardUser->setPasswordHint($password_hint);
-		}
-        $sfGuardUser->save();
-        $this->getUser()->signIn($sfGuardUser);
-        $this->getUser()->setAttribute('Reset', null, 'sfApplyPlugin');
-        return 'After';
-      }
-    }
-  }
  public function executeConfirm(sfRequest $request)
   {
     $validate = $this->request->getParameter('validate');

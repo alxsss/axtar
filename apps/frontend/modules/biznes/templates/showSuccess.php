@@ -34,8 +34,6 @@ color: #008000;padding: 5px 0;
 }
 .similar_products {
 font-size:14px;
-float:left;
-width:150px;
 padding: 20px;
 }
 #photo {
@@ -73,7 +71,7 @@ padding: 20px;
 </style>
 <?php use_helper('I18N','Global','Text') ?>
 <?php include_partial('biznes/biznes_search_small')?>
- <div class="col-xs-11 col-xs-offset-1">
+ <div class="col-xs-12 col-md-11 col-md-offset-1">
    <?php foreach($docs as $result): ?>
       <?php $id=$result['id'];?>
       <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
@@ -86,13 +84,14 @@ padding: 20px;
       <?php if(isset($result['email'])){$email=$result['email'];}else{$email='';}?>
       
      
-         <div class="product" id="<?php echo $id;?>">
+
+      <div class="col-xs-12 col-md-6 product_details">
+         <div class="col-xs-12 col-md-5 product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
              <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/'.$photo;?>" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
-
-         <div class="product_details">
+         <div class="col-md-7 col-xs-12">
             <div class="product_title"><?php echo sfOutputEscaper::unescape($title);?> </div>
            <?php if(!empty($description)):?>
             <div class="abstract"><?php  echo $description;?></div>
@@ -114,14 +113,14 @@ padding: 20px;
              <a href="<?php echo url_for('@biznes_search?query='.$cat)?>"><?php echo $cat?></a>
            <?php endforeach; ?>
          </div>
-
-         </div>
+        </div>
+      </div>
     <?php endforeach; ?>
 
    <!-- Display Similar Producs -->
 <?php $sim_product=sfOutputEscaper::unescape($similar_products)?>
 <?php if(!empty($sim_product)):?>
-<div class="similar_products">
+<div class="col-xs-12 col-md-5 similar_products">
 
   <div class="sponsor_ads_title"><?php echo __('Similar Businesses')?></div>
    <?php foreach($similar_products as $result): ?>
