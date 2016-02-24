@@ -5,6 +5,9 @@ all_biznes:
 delete_biznes_comment:
   url:   /deletebiznescomment
   param: { module: biznes, action: deleteComment }
+showxeber:
+  url:   xeberler/:id/:title.html
+  param: { module: xeber, action: show }
 showproduct:
   url:   biznes/:id/:title.html
   param: { module: biznes, action: show }
