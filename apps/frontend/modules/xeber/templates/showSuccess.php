@@ -66,8 +66,8 @@ padding: 20px;
       
      
 
-      <div class="col-xs-12 col-md-6 product_details">
-        <div class="col-xs-12 col-sm-2 col-md-2">
+      <div class="col-xs-12 col-md-9 product_details">
+        <div class="col-xs-12 col-sm-2 col-md-4">
            <?php if(!empty($imageurl)):?>
               <a href="<?php echo $url;?>" target="_blank">
                 <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" class="img-responsive">
@@ -79,7 +79,7 @@ padding: 20px;
           <?php if(!empty($content)):?>
             <div class="abstract"><?php echo $content;?></div>
           <?php endif;?>
-          <div class="url"><?php echo __('source');?><a href="<?php echo $url;?>" target="_blank"><?php echo truncate_text($url,80);?></a> </div>
+          <div class="url"><?php echo __('source');?> <a href="<?php echo $url;?>" target="_blank"><?php echo truncate_text($url,80);?></a> </div>
           <?php if(!empty($date)):?>
              <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?>
              <div class="xeberdatetime"><?php echo $azdate ?></div>
@@ -116,7 +116,7 @@ padding: 20px;
 </div>
 <!-- COMMENT -->
 
- <div class="col-xs-11 col-xs-offset-1">
+ <div class="col-xs-11 col-xs-offset-1 col-md-5">
     <div id="add_comment" class="add_status_comment">
       <?php $c=new Criteria(); $c->add(XeberCommentPeer::XEBER_ID, $id);?>
       <?php include_partial('comment', array('user_id'=>$user_id,  'comments' =>XeberCommentPeer::doSelectJoinsfGuardUser($c))) ?>
@@ -124,7 +124,7 @@ padding: 20px;
     </div>
     <?php if ($sf_user->isAuthenticated()): ?>
       <div class="status_comment_box" style="display:block;padding:0 0 50px 0px;">
-            <form action="<?php echo url_for('@add_biznes_comment')?>" method="post">
+            <form action="<?php echo url_for('@add_xeber_comment')?>" method="post">
                <div class="error_message"><?php echo __('Required.')?></div>   
               <div class="photo_rating" read_only="" id="biznes_rating" rate="0"></div>
                    <div class="rating_titles">

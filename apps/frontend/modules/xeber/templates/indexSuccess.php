@@ -55,7 +55,7 @@
              <div class="xeberdatetime"><?php echo $azdate ?></div>
           <?php endif;?>
           <?php if (0&&$sf_user->isAuthenticated()): ?>
-            <div class="xeberdatetime"><a href="<?php echo url_for('@showxeber?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title))?>"><?php echo __('discuss');?></a></div>
+          <?php //if ($sf_user->isAuthenticated()): ?>
             <div class="xeberdatetime"><a href="<?php echo url_for('xeber/show').'?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title)?>"><?php echo __('discuss');?></a></div>
           <?php endif;?>
         </div>     

@@ -72,7 +72,7 @@ propel:
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id  }
   xeber_comment:
     _attributes:  {idMethod:  native  }
-    xeber_id: { type: INTEGER, required: true }
+    xeber_id: { type: LONGVARCHAR, required: true }
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
     comment: { type: LONGVARCHAR }
     created_at: ~

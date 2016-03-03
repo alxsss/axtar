@@ -1,3 +1,6 @@
+add_xeber_comment:
+  url:   /addxebercomment
+  param: { module: xeber, action: addComment }
 all_biznes:
   url:   /:sf_culture/:username/allbiznes/:page
   param: { module: biznes, action: list, page: 1 }
