@@ -2,8 +2,7 @@
 <?php include_partial('sidebar/signin')?>
 
 <?php foreach ($comments as $comment): ?>
- <?php //$rated= BiznesRatePeer::retrieveByPK($id, $user_id); if($rated){$rate=$rated->getRate(); $read_only=1;}else{$rate=0;$read_only='';}?>
-   <?php $score= $comment->getScore(); if($score){$read_only=1;}else{$score=0;$read_only='';}?>
+   <?php $score= $comment->getScore(); if($score){$read_only='true';}else{$score=0;$read_only='false';}?>
   <div class="items comments">
     <?php $photo=$comment->getsfGuardUser()->getProfile()->getPhoto();  if(empty($photo)){$photo='no_pic.gif';} ?>
 	<div class="status_comment_photo">

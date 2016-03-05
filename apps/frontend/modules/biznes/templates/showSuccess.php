@@ -8,9 +8,6 @@
 .status_box {
     width: 348px;
 }
-.submit-row {
-    display: none;
-}
 .comments{clear:both;width:350px;_width:352px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:300px;float:left;font-size:11px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
 
 .product_details{
@@ -68,6 +65,53 @@ padding: 20px;
     display: none;
     float: left;
 }
+
+.cancel-on-png, .cancel-off-png, .star-on-png, .star-off-png, .star-half-png {
+  font-size: 2em;
+}
+
+@font-face {
+  font-family: "raty";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/raty.eot");
+  src: url("fonts/raty.eot?#iefix") format("embedded-opentype");
+  src: url("fonts/raty.svg#raty") format("svg");
+  src: url("fonts/raty.ttf") format("truetype");
+  src: url("fonts/raty.woff") format("woff");
+}
+
+.cancel-on-png, .cancel-off-png, .star-on-png, .star-off-png, .star-half-png {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "raty";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+}
+
+.cancel-on-png:before {
+  content: "\e600";
+}
+
+.cancel-off-png:before {
+  content: "\e601";
+}
+
+.star-on-png:before {
+  content: "\f005";
+}
+
+.star-off-png:before {
+  content: "\f006";
+}
+
+.star-half-png:before {
+  content: "\f123";
+}
 </style>
 <?php use_helper('I18N','Global','Text') ?>
 <?php include_partial('biznes/biznes_search_small')?>
@@ -89,6 +133,8 @@ padding: 20px;
          <div class="col-xs-12 col-md-5 product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
              <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/'.$photo;?>" class="imageurl_biznes"/></a>
+          <?php else:?>
+             <a href="<?php echo $website;?>" target="_blank"><img src="/images/no-logo.png" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
          <div class="col-md-7 col-xs-12">
@@ -124,7 +170,7 @@ padding: 20px;
 
   <div class="sponsor_ads_title"><?php echo __('Similar Businesses')?></div>
    <?php foreach($similar_products as $result): ?>
-      <?php $id=$result['id'];?>
+      <?php $similar_biznes_id=$result['id'];?>
       <?php if(isset($result['photo'])){$photo=$result['photo'];}else{$photo='';}?>
       <?php //if(isset($result['phone'])){$phone=$result['phone'];}else{$phone=array();}?>
       <?php //if(isset($result['website'])){$website=$result['website'];}else{$website='';}?>
@@ -189,17 +235,17 @@ padding: 20px;
 </div>
 <!-- COMMENT -->
 
- <div class="col-xs-11 col-xs-offset-1">
+ <div class="col-xs-11 col-xs-offset-1 col-md-5">
     <div id="add_comment" class="add_status_comment">
       <?php $biznes=BiznesPeer::retrieveByPK($id);?>
       <?php include_partial('comment', array('user_id'=>$user_id, 'biznes' => $biznes, 'comments' =>$biznes->getBiznesCommentsJoinsfGuardUser())) ?>
       <div class="user_status_comment_new"></div>
     </div>
     <?php if ($sf_user->isAuthenticated()): ?>
-      <div class="status_comment_box" style="display:block;padding:0 0 50px 0px;">
+      <div class="status_comment_box col-md-6" style="display:block;padding:0 0 50px 0px;">
             <form action="<?php echo url_for('@add_biznes_comment')?>" method="post">
                <div class="error_message"><?php echo __('Required.')?></div>   
-              <div class="photo_rating" read_only="" id="biznes_rating" rate="0"></div>
+              <div class="photo_rating col-md-6"  id="biznes_rating"></div>
                    <div class="rating_titles">
                      <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
                      <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>

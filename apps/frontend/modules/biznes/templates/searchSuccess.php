@@ -6,19 +6,21 @@
           <?php
             $spell='';
             foreach ($spellcheck->getRawValue() as $key => $value) { 
-              foreach($value as $key1=>$val)
-              {
-                if($key1=='suggestion'){
-                if(!empty($val))
+              if(is_array($value)){
+                foreach($value as $key1=>$val)
                 {
-                   foreach($val as $v)
-                   {
-                      $spell= link_to($val[0], url_for('@biznes_search?query='.$val[0]));
-                      break;
-                   }
-                }
-               }
-             }
+                  if($key1=='suggestion'){
+                    if(is_array($val))
+                    {
+                       foreach($val as $v)
+                       {
+                          $spell= link_to($val[0], url_for('@biznes_search?query='.$val[0]));
+                          break;
+                       }
+                    }//end if(!empty($val))
+                 }//end if($key1=='suggestion')
+               }//end  foreach($value as $key1=>$val)
+             }//end  if(!empty($value))
            }
           ?>
           <?php if($spell!=''):?>

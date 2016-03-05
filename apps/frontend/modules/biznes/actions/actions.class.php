@@ -41,14 +41,13 @@ class biznesActions extends sfActions
   {
     if ($this->getRequest()->getMethod() == sfRequest::POST)
     {
-      $this->user_id=$this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser');
       $this->score=$request->getParameter('score');
       
       $this->biznes = BiznesPeer::retrieveByPk($request->getParameter('item_id'));
       $this->forward404Unless($this->biznes);
       $biznes_user_id=$request->getParameter('item_user_id');    ;//$this->biznes->getUserId();
       $comment_body=$request->getParameter('comment');
-      if (!empty($comment_body)&&$this->score>0)
+      if (!empty($comment_body))
       {
         // create answer
         $this->comment = new BiznesComment();
@@ -56,20 +55,8 @@ class biznesActions extends sfActions
         $this->comment->setComment($comment_body);
         $this->comment->setUserId($this->user_id);
         $this->comment->setScore($this->score);
+        $this->comment->setRawIp($_SERVER['REMOTE_ADDR']);
         $this->comment->save();
-        //$user=sfGuardUserPeer::retrieveByPk($this->user_id);
-        //$biznes_owner_user = sfGuardUserPeer::retrieveByPk($biznes_user_id);
-        
-        //extract name if exists
-        /*
-        $this->name= $user->getProfile()->getName();
-        $this->name= trim($this->name);
-        $username=$user->getUsername();
-        if(empty($this->name))
-        {
-          $this->name=$username;
-        }
-        */
       }//end if body
    return sfView::SUCCESS;
   }

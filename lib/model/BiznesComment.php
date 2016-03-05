@@ -29,11 +29,14 @@ class BiznesComment extends BaseBiznesComment
     //update num_comment column in photo table
     $biznes = $this->getBiznes();
     $num_comment = $biznes->getNumComment();
-    $biznes->setNumComment($num_comment - 1);
-    $old_score=$biznes->getScore();
-    $new_score=($old_score*$num_comment-$this->getScore())/($num_comment-1);
-    $biznes->setScore($new_score);
-    $biznes->save($con);
+    if($num_comment>0)
+    {
+      $biznes->setNumComment($num_comment - 1);
+      $old_score=$biznes->getScore();
+      $new_score=($old_score*$num_comment-$this->getScore())/($num_comment-1);
+      $biznes->setScore($new_score);
+      $biznes->save($con);
+    }
     return $ret;
  }
 }

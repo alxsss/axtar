@@ -6,6 +6,10 @@
 <?php echo link_to($comment->getsfGuardUser()->getUsername(), 'user/'.$comment->getsfGuardUser()->getUsername()) ?>
 <span class="comment_dates">(<?php echo status_date($comment->getCreatedAt('U'), $comment->getCreatedAt('F j, Y'))?>)</span>  
 <div class="comment_text">
+ <?php if($score):?>
+        <div class="photo_rating" read_only="true" id="<?php echo $comment->getId()?>" rate="<?php echo $score;?>"></div>
+       <?php endif;?>
+
 <div class="comment_body">  <?php echo $comment->getComment() ?></div>
   <?php if($user_id==$biznes->getUserId()||$user_id==$comment->getUserId()):?> 
     <div class="delete_item">

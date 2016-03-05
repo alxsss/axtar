@@ -70,20 +70,22 @@ propel:
     approved:  { type: BOOLEAN, default: 0 }
     rating: { type: INTEGER }
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id  }
-  xeber_comment:
-    _attributes:  {idMethod:  native  }
-    xeber_id: { type: LONGVARCHAR, required: true }
-    id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
-    comment: { type: LONGVARCHAR }
-    created_at: ~
-    raw_ip:  { type: VARCHAR, size: 50  }
-    user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+    num_comment: {  type:integer  }
+    score:  {  type:integer  }
   biznes_comment:
     _attributes:  {idMethod:  native  }
     biznes_id: { type: INTEGER, required: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
     id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
     comment: { type: LONGVARCHAR }
     score:  {  type:integer  }
+    created_at: ~
+    raw_ip:  { type: VARCHAR, size: 50  }
+    user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+  xeber_comment:
+    _attributes:  {idMethod:  native  }
+    xeber_id: { type: LONGVARCHAR, required: true }
+    id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
+    comment: { type: LONGVARCHAR }
     created_at: ~
     raw_ip:  { type: VARCHAR, size: 50  }
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
