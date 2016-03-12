@@ -28,7 +28,7 @@ class XeberQuery {
 	        
 	} 
 	// Example of a query -- different queries with their own logic should be made as separate functions
-       function runQuery($titlekeywords, $start, $koma=false,$limit=10) {
+       function runQuery($titlekeywords, $start, $koma=false,$limit=10, $site='') {
 		//$string = "+(a_name:($titlekeywords)) ";
                 // remove spaces
 		// change to mb_eregi_replace if using multibyte
@@ -37,7 +37,7 @@ class XeberQuery {
 		$string =$titlekeywords;
 		$query=$string;
 		$query = trim($query);
-		$results = $this->fetchResults($query, $start, $koma, $limit);
+		$results = $this->fetchResults($query, $start, $koma, $limit,$site);
 		return $results;
 	} // end function sortQuery
 	
@@ -76,7 +76,7 @@ class XeberQuery {
 	}
 	
 	// Send the query to the server
-    function fetchResults($query, $start, $koma=0, $limit=10)
+    function fetchResults($query, $start, $koma=0, $limit=10, $site='')
     {
 		
       if ($this->debug) echo "parsing string $query";
@@ -97,6 +97,10 @@ class XeberQuery {
       {
         $querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=json&fl=id%20url%20title%20tstamp%20imageurl%20thumbnail&boost=recip(ms(NOW,tstamp),2.7100271002710027e-8,0.9878048780487805,1)";
         //$querystring = "/xeber/axtar_nogr/?q=".trim(urlencode($query))."&start=".$start."&rows=".$limit."&indent=true&wt=json&fl=id%20url%20title%20tstamp%20imageurl%20thumbnail&group=true&group.field=site&group.ngroups=true&boost=recip(ms(NOW,tstamp),2.7100271002710027e-8,0.9878048780487805,1)";
+      } 
+      else if($koma==5)//filter from a spesific site
+      {
+        $querystring = "/xeber/axtarsite/?q=".trim(urlencode($query))."&fq=site:".$site."&start=".$start."&rows=".$this->limit."&fl=id,title,url,tstamp,imageurl&boost=recip(ms(NOW,tstamp),2.7100271002710027e-8,0.9878048780487805,1)";
       } 
       else if($koma==1)
       {

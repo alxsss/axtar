@@ -179,7 +179,7 @@ padding: 20px;
       <?php //if(isset($result['category'])){$category=$result['category'];}else{$category=array();}?>
       <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
 <div class="news"> 
-      <a href="<?php echo url_for('@showproduct?id='.$id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
+      <a href="<?php echo url_for('@showproduct?id='.$similar_biznes_id.'&title='.str_replace(array(' ','.','\'','/','#'),array('-','_','','',''), sfOutputEscaper::unescape($title)))?>">
       <?php if(!empty($photo)&&$photo!=''):?>
            <img class="image_with_border" src="<?php echo '/uploads/assets/biznes/thumbnails/'.$photo;?>" alt="no img">
       <?php else:?>

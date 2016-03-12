@@ -56,7 +56,7 @@
           <?php endif;?>
           <div class="url"><?php echo truncate_text($url,40);?>
             <?php if($numfound->getRawValue()>1):?>
-              <span class="more_results"><a href="<?php echo url_for('@search_site?query='.sfOutputEscaper::unescape($query).'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
+              <span class="more_results"><a href="<?php echo url_for('@xeber_site?query='.sfOutputEscaper::unescape($query).'&site='.$site)?>" target="blank"><?php echo __('%numfound% more results from this link', array('%numfound%'=>$numfound));?></a></span>
             <?php endif;?>
           </div>
           <?php if(!empty($date)):?>     

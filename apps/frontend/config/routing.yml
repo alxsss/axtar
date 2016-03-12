@@ -79,6 +79,9 @@ search_search:
 search_site:
   url:  /:sf_culture/axtarsite
   param: { module:  search, action: searchsite }
+xeber_site:
+  url:  /:sf_culture/xebersite
+  param: { module:  xeber, action: searchsite }
 image_search:
   url:  /:sf_culture/imageaxtar
   param: { module:  search, action: imagesearch }

@@ -249,6 +249,71 @@ class xeberActions extends sfActions
     $this->cal = $cal;
 */
   }
+ public function executeSearchsite(sfWebRequest $request)
+  {
+    if (!$this->query = $request->getParameter('query'))
+    {
+      return $this->redirect('search/index');	  
+    }
+    $this->page =$request->getParameter('page', 1);
+    $this->site=$request->getParameter('site');
+    $start=10*($this->page-1);
+    $this->query=trim($this->query);
+    //$this->query=str_replace(' ','+',$this->query);
+    $this->query=str_replace('[','',$this->query);
+    $this->query=str_replace(']','',$this->query);
+    $solr_query = new XeberQuery;
+    $data = $solr_query->runQuery($this->query, $start,5, 20, $this->site);
+    if($data)
+    {
+       $xml = simplexml_load_string($data);
+       $nb_axtar_results=$xml->result[0]->attributes()->numFound;
+    }
+       
+    $pages_in_axtar=floor($nb_axtar_results/10);
+    //add this variable to show results that are less than 10
+    $residual=$nb_axtar_results%10;	
+    $additional_number=0;
+    if($residual>0)$additional_number=1;
+    if($this->page<=($pages_in_axtar+$additional_number))
+    {
+      $results = array();
+      foreach ($xml->result->doc as $story)
+      {
+        $xmlarray = array();
+        try
+        {
+          foreach ($story as $item)
+          {
+            $name = $item->attributes()->name;
+	    $value = $item;
+            if($name=='id')
+            {
+              $xmlarray["content"] =$xml->xpath("//lst[@name='highlighting']/lst[@name='$value']/arr[@name='content']/*");
+            }
+            if($name=='content')
+            { 
+              continue;
+            }
+            $xmlarray["$name"] = "$value";
+           } // end foreach
+        }
+        catch (Exception $e)
+        {
+           echo 'Problem handling  array.';
+        }
+        //if ($this->debug) echo "checking if ".$xmlarray['score']." > ".$this->min_score;
+        $results[] = $xmlarray;
+      } // end foreach
+
+      $this->results=$results;
+      $this->axtar_feed=1;
+    }
+     //get pagination
+     $this->feed_pager = new sfFeedPager('Feed', sfConfig::get('app_pager_search_max'), $nb_axtar_results);
+     $this->feed_pager->setPage($this->page);
+     $this->feed_pager->init();
+  }
 
  public function executeSearch(sfWebRequest $request)
   {
