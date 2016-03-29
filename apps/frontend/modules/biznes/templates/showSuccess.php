@@ -129,15 +129,15 @@ padding: 20px;
       
      
 
-      <div class="col-xs-12 col-md-6 product_details">
-         <div class="col-xs-12 col-md-5 product" id="<?php echo $id;?>">
+      <div class="col-xs-12 col-sm-9 product_details">
+         <div class="col-xs-12 col-sm-5 product" id="<?php echo $id;?>">
           <?php if(!empty($photo)&&$photo!=''):?>
              <a href="<?php echo $website;?>" target="_blank"><img src="<?php echo '/uploads/assets/biznes/'.$photo;?>" class="imageurl_biznes"/></a>
           <?php else:?>
              <a href="<?php echo $website;?>" target="_blank"><img src="/images/no-logo.png" class="imageurl_biznes"/></a>
           <?php endif;?>
          </div>
-         <div class="col-md-7 col-xs-12">
+         <div class="col-sm-5 col-xs-12">
             <div class="product_title"><?php echo sfOutputEscaper::unescape($title);?> </div>
            <?php if(!empty($description)):?>
             <div class="abstract"><?php  echo $description;?></div>
@@ -166,7 +166,7 @@ padding: 20px;
    <!-- Display Similar Producs -->
 <?php $sim_product=sfOutputEscaper::unescape($similar_products)?>
 <?php if(!empty($sim_product)):?>
-<div class="col-xs-12 col-md-5 similar_products">
+<div class="col-xs-12 col-sm-3 similar_products">
 
   <div class="sponsor_ads_title"><?php echo __('Similar Businesses')?></div>
    <?php foreach($similar_products as $result): ?>
