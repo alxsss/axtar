@@ -54,7 +54,7 @@
              <?php $time = strtotime($date); $azdate= date("d-m-Y, H:i", $time); ?> 
              <div class="xeberdatetime"><?php echo $azdate ?></div>
           <?php endif;?>
-            <div class="xeberdatetime"><a href="<?php echo url_for('xeber/show').'?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title)?>"><?php echo __('discuss');?></a></div>
+            <div class="xeberdatetime"><a  target="blank" href="<?php echo url_for('xeber/show').'?id='.urlencode($id).'&title='.str_replace(array(' ','.'),array('-','_'),$title)?>"><?php echo __('discuss');?></a></div>
         </div>     
       </div><!--close inner row-->     
 

@@ -53,13 +53,15 @@ padding: 20px;
 }
 </style>
 <?php use_helper('I18N','Global','Text') ?>
-<?php include_partial('biznes/biznes_search_small')?>
+ <?php include_partial('xeber/search_small')?>
+
  <div class="col-xs-12 col-md-11 col-md-offset-1">
    <?php foreach($docs as $result): ?>
       <?php $id=$result['id'];?>
       <?php if(isset($result['imageurl'])){$imageurl=$result['imageurl'];}else{$imageurl='';}?>
       <?php if(isset($result['url'])){$url=$result['url'];}else{$url='';}?>
-      <?php if(isset($result['content'])){$content=$result['content'];}else{$content='';}?>
+      <?php //if(isset($result['content'])){$content=$result['content'];}else{$content='';}?>
+      <?php if(isset($result['description'])){$description=$result['description'];}else{$description='';}?>
       <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
       <?php if(isset($result['tstamp'])){$date=$result['tstamp'];}else{$date='';}?>
       <?php if(isset($result['thumbnail'])){$thumbnail=$result['thumbnail'];}else{$thumbnail='';}?>
@@ -73,8 +75,8 @@ padding: 20px;
         </div>
 
         <div class="news_title"><?php echo truncate_text($title,80); ?></div>
-          <?php if(!empty($content)):?>
-            <div class="abstract"><?php echo $content;?></div>
+          <?php if(!empty($description)):?>
+            <div class="abstract"><?php echo $description;?></div>
           <?php endif;?>
           <div class="url"><?php echo __('source');?> <a href="<?php echo $url;?>" target="_blank"><?php echo truncate_text($url,80);?></a> </div>
           <?php if(!empty($date)):?>

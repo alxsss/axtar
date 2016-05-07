@@ -91,7 +91,7 @@ class XeberQuery {
       }
       else if($koma==2)//show page/similarity
       {
-             $querystring = "/xeber/similarity/?q=".trim(urlencode($query))."&wt=json&fl=*";
+             $querystring = "/xeber/similarity/?q=".trim(urlencode($query))."&wt=json&fl=id%20url%20title%20tstamp%20imageurl%20description%20thumbnail";
       }
       else if($koma==4)//top news
       {
