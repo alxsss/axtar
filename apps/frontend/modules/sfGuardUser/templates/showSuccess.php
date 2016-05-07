@@ -56,7 +56,7 @@
                    <?php echo image_tag($pic_url, 'alt=no img class=image_with_border')?>
             </a>         
       <?php else : ?>
-             <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()))?>"><?php echo $biz->getTitle()?></a>
+             <a href="<?php echo url_for('@showproduct?id='.$biz->getId().'&title='.str_replace(array(' ','.'),array('-','_'),$biz->getTitle()))?>"><?php echo truncate_text($biz->getTitle(),30)?></a>
     <?php endif;?>
       <?php if($user_id==$subscriber_id):?>
        <a href="<?php echo url_for('biznes/edit?id='.$biz->getId().'&token='.$subscriber->getSalt())?>"><img src="/images/edit.png" title="<?php echo __('edit')?>" alt="<?php echo __('edit')?>"></a>
