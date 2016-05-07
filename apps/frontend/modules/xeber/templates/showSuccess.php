@@ -63,11 +63,8 @@ padding: 20px;
       <?php if(isset($result['title'])){$title=$result['title'];}else{$title='';}?>
       <?php if(isset($result['tstamp'])){$date=$result['tstamp'];}else{$date='';}?>
       <?php if(isset($result['thumbnail'])){$thumbnail=$result['thumbnail'];}else{$thumbnail='';}?>
-      
-     
-
       <div class="col-xs-12 col-md-9 product_details">
-        <div class="col-xs-12 col-sm-2 col-md-4">
+        <div class="news_image">
            <?php if(!empty($imageurl)):?>
               <a href="<?php echo $url;?>" target="_blank">
                 <img src="data:image/jpg;base64,<?php echo sfOutputEscaper::unescape($thumbnail)?>" class="img-responsive">
@@ -126,14 +123,6 @@ padding: 20px;
       <div class="status_comment_box" style="display:block;padding:0 0 50px 0px;">
             <form action="<?php echo url_for('@add_xeber_comment')?>" method="post">
                <div class="error_message"><?php echo __('Required.')?></div>   
-              <div class="photo_rating" read_only="" id="biznes_rating" rate="0"></div>
-                   <div class="rating_titles">
-                     <div id="popup-1" class="popup" style="position: absolute;left:-7px; top:-40px;"><?php echo __('bad')?></div>
-                     <div id="popup-2" class="popup" style="position: absolute;left: 12px; top:-40px;"><?php echo __('poor')?></div>
-                     <div id="popup-3" class="popup"  style="position: absolute;left:32px;top:-40px;"><?php echo __('regular')?></div>
-                     <div id="popup-4" class="popup" style="position: absolute;left: 50px;top:-40px;"><?php echo __('good')?></div>
-                     <div id="popup-5" class="popup" style="position: absolute;left: 70px;top:-40px;"><?php echo __('gorgeus')?></div>
-                   </div>
           <input type="hidden" value="<?php echo $id?>"  name="item_id">
           <input type="hidden" value="1"  name="page">
            <div class="error_message"><?php echo __('Required.')?></div>
@@ -148,6 +137,4 @@ padding: 20px;
         <?php echo __('You must ')?><span class="toggle_to_login"><a href="#"><?php echo __('sign in')?></a><?php echo __(' to submit a comment') ?></span>
           </div>
     <?php endif;//endif of comment ?>
-
-
 </div>

@@ -282,7 +282,15 @@
        <trans-unit id="67">
         <source>home</source>
         <target>ev</target>
-      </trans-unit> 	  
+      </trans-unit>
+      <trans-unit id="68">
+        <source>source</source>
+        <target>mənbə</target>
+      </trans-unit> 
+      <trans-unit id="69">
+        <source>discuss</source>
+        <target>müzakirə et</target>
+      </trans-unit>  	  
     </body>
   </file>
 </xliff>
