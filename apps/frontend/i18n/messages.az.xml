@@ -56,8 +56,8 @@
         <target>Telefon</target>
       </trans-unit>	
 	  <trans-unit id="14">
-        <source>Comment</source>
-        <target>Komentlər</target>
+        <source>comments</source>
+        <target>rəylər</target>
       </trans-unit>	
 	  <trans-unit id="15">
         <source>Submit</source>
@@ -290,7 +290,11 @@
       <trans-unit id="69">
         <source>discuss</source>
         <target>müzakirə et</target>
-      </trans-unit>  	  
+      </trans-unit> 
+      <trans-unit id="70">
+        <source>Most popular</source>
+        <target>Ən populyar</target>
+      </trans-unit> 	  
     </body>
   </file>
 </xliff>

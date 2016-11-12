@@ -1,6 +1,14 @@
 <?php
 class xeberComponents extends sfComponents
 { 
+  public function executePopularnews()
+  {
+      //get 5 most commented news
+    $c=new Criteria();
+    $c->addDescendingOrderByColumn(XeberNumCommentPeer::NUM_COMMENT);
+    $c->setLimit(5);
+    $this->xeber_num_comment=XeberNumCommentPeer::doSelect($c);
+  }  
   public function executeTopnewswithimagesmainpage()
   {
       //get keyphrases

@@ -89,6 +89,12 @@ propel:
     created_at: ~
     raw_ip:  { type: VARCHAR, size: 50  }
     user_id: { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }
+  xeber_num_comment:
+    _attributes:  {idMethod:  native  }
+    id: { type: INTEGER, required: true, autoIncrement: true, primaryKey: true}
+    xeber_id: { type: LONGVARCHAR, foreignTable: xeber_comment, foreignReference: xeber_id, required: true, onDelete: cascade  }
+    xeber_title: { type: LONGVARCHAR}
+    num_comment: { type: integer }
   biznes_tag:
     biznes_id: { type: INTEGER, required: true, primaryKey: true, foreignTable: biznes, foreignReference: id, required: true, onDelete: cascade }
     user_id:  { type: integer, foreignTable: sf_guard_user, foreignReference: id, required: true, onDelete: cascade }

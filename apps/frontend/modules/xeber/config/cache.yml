@@ -1,3 +1,8 @@
+_popularnews:
+  enabled:     true
+  contextual: true
+  with_layout: false   # Default value
+  lifetime:    1200   
 _acarsozler:
   enabled:     true
   contextual: true

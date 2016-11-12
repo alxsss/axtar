@@ -21,6 +21,7 @@ class xeberActions extends sfActions
     {
 
       $this->xeber_id = $request->getParameter('item_id');
+      $title = $request->getParameter('item_title');
       $this->forward404Unless($this->xeber_id);
       $comment_body=$request->getParameter('comment');
       if (!empty($comment_body))
@@ -31,7 +32,7 @@ class xeberActions extends sfActions
         $this->comment->setComment($comment_body);
         $this->comment->setUserId($this->user_id);
         $this->comment->setRawIp($_SERVER['REMOTE_ADDR']);
-        $this->comment->save();
+        $this->comment->save1($this->xeber_id,$title);
       }//end if body
    return sfView::SUCCESS;
   }
@@ -78,7 +79,7 @@ class xeberActions extends sfActions
     $rows=20;
     $this->page =$request->getParameter('page', 1);
     $start=$rows*($this->page-1);
-    $this->query=trim($this->query);
+    $this->query=htmlspecialchars(trim($this->query), ENT_QUOTES);
     $nb_axtar_results=0;
     $axtar_query = new XeberQuery;
     $data = $axtar_query->runQuery($this->query, $start, 3, $rows);
@@ -127,7 +128,12 @@ class xeberActions extends sfActions
     }
     $rows=20;
     $this->page =$request->getParameter('page', 1);
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
     $start=$rows*($this->page-1);
+    //$this->query=htmlspecialchars(trim($this->query), ENT_NOQUOTES);
     $this->query=trim($this->query);
     $nb_axtar_results=0;
     $axtar_query = new XeberQuery;
@@ -257,6 +263,10 @@ class xeberActions extends sfActions
     }
     $this->page =$request->getParameter('page', 1);
     $this->site=$request->getParameter('site');
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
     $start=10*($this->page-1);
     $this->query=trim($this->query);
     //$this->query=str_replace(' ','+',$this->query);
@@ -323,6 +333,11 @@ class xeberActions extends sfActions
     }
     $rows=20;
     $this->page =$request->getParameter('page', 1);
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
+
     $this->site=$request->getParameter('site');
     $start=$rows*($this->page-1);
     $this->query=trim($this->query);
@@ -380,6 +395,11 @@ class xeberActions extends sfActions
     }
     $rows=100;
     $this->page =$request->getParameter('page', 1);
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
+
     $this->site=$request->getParameter('site');
     $start=$rows*($this->page-1);
     $this->query=trim($this->query);
@@ -472,6 +492,11 @@ class xeberActions extends sfActions
       return $this->redirect('xeber/index');
     }
     $this->page =$request->getParameter('page', 1);
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
+
     $start=10*($this->page-1);
     $this->query=trim($this->query);
     $query_db=$this->query;
@@ -519,6 +544,11 @@ class xeberActions extends sfActions
     }
     $limit=sfConfig::get('app_pager_image_search_max');
     $this->page =$request->getParameter('page', 1);
+    if($this->page>1000)
+    {
+      $this->page=1000;
+    }
+
     $start=$limit*($this->page-1);
     $this->query=trim($this->query);
     $query_db=$this->query;

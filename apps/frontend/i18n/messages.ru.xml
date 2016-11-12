@@ -55,8 +55,8 @@
         <target>Телефон</target>
       </trans-unit>	
 	  <trans-unit id="14">
-        <source>Comment</source>
-        <target>Замечания</target>
+        <source>comments</source>
+        <target>комментарий</target>
       </trans-unit>	
 	  <trans-unit id="15">
         <source>Submit</source>
@@ -289,7 +289,11 @@
       <trans-unit id="69">
         <source>discuss</source>
         <target>обсуждать</target>
-      </trans-unit>     	  
+      </trans-unit> 
+     <trans-unit id="70">
+        <source>Most popular</source>
+        <target>Самый популярный</target>
+      </trans-unit> 	  
     </body>
   </file>
 </xliff>

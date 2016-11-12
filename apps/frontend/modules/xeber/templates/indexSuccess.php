@@ -62,7 +62,8 @@
 
    </div> <!--close class col-md-8-->
   <div class="col-xs-6 col-md-2">
-    <?php include_component('xeber', 'acarsozler')?>
+    <?php //include_component('xeber', 'acarsozler')?>
+    <?php include_component('xeber', 'popularnews')?>
   </div>
   <div class="col-xs-6 col-md-2">
     <?php include_component('xeber', 'sponsorads')?>

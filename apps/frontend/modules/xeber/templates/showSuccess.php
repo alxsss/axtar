@@ -6,9 +6,9 @@
     overflow: auto;
 }
 .status_box {
-    width: 348px;
+    width: 450px;
 }
-.comments{clear:both;width:350px;_width:352px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:300px;float:left;font-size:11px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
+.comments{clear:both;width:450px;float:left;font-size:12px;margin:2px 0;background-color:#EDEFF5;}.comment_text{width:400px;float:left;font-size:12px;padding:2px;}.status_comment_box{margin:0 0 5px 0;float:left;display:none;}.status_comment_photo{float:left;margin:5px; height:30px; width:30px;}.status_comment_photo img{ height:30px; width:30px;}.user_status_photo{width:48px;height:48px;float:left;margin:5px 10px 5px 0;}.user_status{width:475px;float:left;margin:0 0 10px 0;}.show-comment{display:block;}.delete_item{font-size:10px;float:left;margin:0 3px;}.comment_actions{font-size:10px;float:left;margin:3px 0 0 0;}.rate_time{font-size:10px;margin:3px 0 0 15px;}
 
 .product_details{
 font-size:16px;
@@ -126,6 +126,7 @@ padding: 20px;
             <form action="<?php echo url_for('@add_xeber_comment')?>" method="post">
                <div class="error_message"><?php echo __('Required.')?></div>   
           <input type="hidden" value="<?php echo $id?>"  name="item_id">
+          <input type="hidden" value="<?php echo $title?>"  name="item_title">
           <input type="hidden" value="1"  name="page">
            <div class="error_message"><?php echo __('Required.')?></div>
           <textarea cols="20" rows="3" class="expand status_box" id="comment" name="comment" style="height: 24px; overflow: hidden; padding-top: 0px; padding-bottom: 0px;"></textarea>

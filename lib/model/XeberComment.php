@@ -19,4 +19,29 @@
  */
 class XeberComment extends BaseXeberComment
 {
+  //override xeberComment's save function to increment num_comment valuer in xeber_num_comment table
+  public function save1($id,$title)
+  {
+    $ret = parent::save();
+    $num_comment=0;
+    //update num_comment column in xeber_num_comment table
+    $c=new Criteria();
+    $c->add(XeberNumCommentPeer::XEBER_ID, $id);
+    $xeber_num_comment=XeberNumCommentPeer::doSelectOne($c);
+    if(!is_object($xeber_num_comment))
+    {
+      $xeber_num_comment=new XeberNumComment();
+    }
+    else
+    { 
+      $num_comment = $xeber_num_comment->getNumComment();
+    }
+    
+    $xeber_num_comment->setNumComment($num_comment + 1);
+    $xeber_num_comment->setXeberId($id);
+    $xeber_num_comment->setXeberTitle($title);
+    $xeber_num_comment->save();
+    return $ret;
+ }
+
 }
