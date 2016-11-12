@@ -36,7 +36,7 @@ class XeberQuery {
 	//	$string = "+(title:($titlekeywords)) ";
 		$string =$titlekeywords;
 		$query=$string;
-		$query = trim($query);
+	//	$query = trim($query);
 		$results = $this->fetchResults($query, $start, $koma, $limit,$site);
 		return $results;
 	} // end function sortQuery
