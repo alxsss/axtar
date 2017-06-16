@@ -6,6 +6,7 @@ class xeberComponents extends sfComponents
       //get 5 most commented news
     $c=new Criteria();
     $c->addDescendingOrderByColumn(XeberNumCommentPeer::NUM_COMMENT);
+    $c->addDescendingOrderByColumn(XeberNumCommentPeer::CREATED_AT);
     $c->setLimit(5);
     $this->xeber_num_comment=XeberNumCommentPeer::doSelect($c);
   }  

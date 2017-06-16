@@ -13,6 +13,7 @@
       <?php $imageurl=$result['imageurl'];?>
       <?php $url=$result['url'];?>
       <?php $content=$result['content'][0];?>
+      <?php $id=$result['id'];?>
 
       <div id="xeber_row" class="row">
         <div class="col-xs-12 col-sm-2 col-md-2">
@@ -36,6 +37,8 @@
           <?php //if ($sf_user->isAuthenticated()): ?>
             <div class="xeberdatetime"><a href="<?php echo url_for('xeber/show').'?id='.$id.'&title='.str_replace(array(' ','.'),array('-','_'),$title)?>"><?php echo __('discuss');?></a></div>
           <?php endif;?>
+           <div class="xeberdatetime"><a  target="blank" href="<?php echo url_for('xeber/show').'?id='.urlencode($id).'&title='.str_replace(array(' ','.'),array('-','_'),$title)?>"><?php echo __('discuss');?></a></div>
+
         </div>     
       </div><!--close inner row-->     
 
@@ -43,7 +46,9 @@
 
    </div> <!--close class col-md-8-->
   <div class="col-xs-6 col-md-2">
-    <?php include_component('xeber', 'acarsozler')?>
+    <?php //include_component('xeber', 'acarsozler')?>
+ <?php include_component('xeber', 'popularnews')?>
+
   </div>
   <div class="col-xs-6 col-md-2">
     <?php include_component('xeber', 'sponsorads')?>

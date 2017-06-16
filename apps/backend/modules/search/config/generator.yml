@@ -9,11 +9,14 @@ generator:
     plural:                ~
     route_prefix:          search
     with_propel_route:     1
-
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:
+        max_per_page: 20
+        batch_actions:
+          delete: ~
+          edit: ~
       filter:  ~
       form:    ~
       edit:    ~

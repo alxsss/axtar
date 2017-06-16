@@ -1,5 +1,6 @@
 <?php
-define('SOLR_META_QUERY', 'slave4:8983');
+#define('SOLR_META_QUERY', 'slave4:8983');
+define('SOLR_META_QUERY', 'slave3:8984');
 
 class SolrQuerySlave4 {
 	
@@ -33,7 +34,7 @@ class SolrQuerySlave4 {
           $url = "http://".SOLR_META_QUERY."/solr";
           if($handler=='similarity')
           {
-             $querystring = "/biznes/similarity/?q=".trim(urlencode($query))."&wt=json";
+             $querystring = "/biznes/similarity/?q=".trim(urlencode($query))."&wt=json&fl=*";
           }
           else if($handler=='biznes_search')
           {
