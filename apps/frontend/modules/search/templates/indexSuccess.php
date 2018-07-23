@@ -8,8 +8,7 @@
           </div>
         </div>
         <div class="col-xs-2  col-md-2">
-           <div class="row oil_price"> <span class="currency">Brent</span> <?php echo get_oil_price('http://www.oil-price.net/widgets/brent_text/gen.php?lang=en')?></div>
-            <div class="row oil_price"><span class="currency">WTI</span> <?php echo get_oil_price('http://www.oil-price.net/TABLE3/gen.php?lang=en');?></div>
+           <?php include_partial('search/oil_prices')?>
         </div>
         <div class="col-xs-1 col-md-5"></div>
       </div>
